@@ -1,35 +1,60 @@
-require('dotenv').config();
-
 const core = require("@actions/core");
 const github = require("@actions/github");
-const { Octokit } = require('@octokit/rest');
 
 const {
-  doAddAssignees
-} = require('./tool');
+  doAddAssignees,
+  doAddLabels,
+  doCreateComment,
+  doCreateCommentContent,
+  doCreateIssue,
+  doCreateIssueContent,
+  doDeleteComment,
+  doLockIssue,
+  doRemoveAssignees,
+  doSetLabels,
+  doUnlockIssue,
+  doUpdateIssue,
+  doUpdateComment
+} = require('./base.js');
 
 const ALLACTIONS = [
   'add-assignees',
-  'add-labels'
+  'add-labels',
+  'create-comment',
+  'create-issue',
+  'delete-comment',
+  'lock-issue',
+  'remove-assignees',
+  'set-labels',
+  'unlock-issue',
+  'update-issue',
+  'update-comment',
 ];
 
 async function main() {
-  try { 
-    const token = core.getInput('token') || process.env.GH_TOKEN;
-
-    const octokit = new Octokit({ auth: `token ${token}` });
-    // const owner = github.context.repo.owner;
-    // const repo = github.context.repo.repo;
-    const owner = 'actions-cool';
-    const repo = 'issue-helper';
-    const issueNumber = core.getInput('issue-number') || 1;
+  try {
+    const owner = github.context.repo.owner;
+    const repo = github.context.repo.repo;
+    const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
-    const body = core.getInput("body");
-    // const assignees = core.getInput("assignees");
-    const assignees = 'xrkffgg'
 
-    const actions = ['add-assignees', 'add-labels'];
-    // const actions = core.getInput("actions", { required: true });
+    const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`
+    const body = core.getInput("body") || defaultBody;
+
+    const defaultTitle = `Default Title`;
+    const title = core.getInput("title") || defaultTitle;
+
+    const assignees = core.getInput("assignees");
+
+    const labels = core.getInput("labels");
+    const state = core.getInput("state");
+
+    let updateMode = core.getInput("state") || 'replace';
+    if (updateMode !== 'append') {
+      updateMode = 'replace';
+    }
+
+    const actions = core.getInput("actions", { required: true });
 
     if (typeof(actions) === 'object') {
       actions.forEach(item => {
@@ -50,11 +75,56 @@ async function main() {
     async function choseActions(action) {
       switch (action) {
         case 'add-assignees':
-          await doAddAssignees(octokit, owner, repo, issueNumber, assignees);
-        default: 
+          await doAddAssignees(owner, repo, issueNumber, assignees);
+          break;
+        case 'add-labels':
+          await doAddLabels(owner, repo, issueNumber, labels);
+          break;
+        case 'create-comment':
+          await doCreateComment(owner, repo, issueNumber, body);
+          break;
+        case 'create-issue':
+          await doCreateIssue(owner, repo, title, body, labels, assignees);
+          break;
+        case 'delete-comment':
+          await doDeleteComment(owner, repo, commentId);
+          break;
+        case 'lock-issue':
+          await doLockIssue(owner, repo, issueNumber);
+          break;
+        case 'remove-assignees':
+          await doRemoveAssignees(owner, repo, issueNumber, assignees);
+          break;
+        case 'set-labels':
+          await doSetLabels(owner, repo, issueNumber, labels);
+          break;
+        case 'unlock-issue':
+          await doUnlockIssue(owner, repo, issueNumber);
+          break;
+        case 'update-issue':
+          await doUpdateIssue(
+            owner,
+            repo,
+            issueNumber,
+            state,
+            title,
+            body,
+            updateMode,
+            assignees,
+            labels
+          );
+        case 'update-comment':
+          await doUpdateComment(
+            owner,
+            repo,
+            commentId,
+            body,
+            updateMode
+          );
+        default:
           break;
       }
-    }
+    };
   }
   catch (error) {
     core.setFailed(error.message);

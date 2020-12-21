@@ -8,6 +8,11 @@ inputs:
   github_token:
     description: 'github_token'
     default: ${{ github.token }}
+outputs:
+  issue_number:
+    description: 'Create Issue Number'
+  comment-id:
+    description: 'Create comment ID'
 runs:
   using: node12
   main: 'dist/index.js'
