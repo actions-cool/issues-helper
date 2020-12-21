@@ -1,0 +1,31 @@
+{
+  "name": "issue-helper",
+  "version": "0.0.1",
+  "private": true,
+  "description": "Some operations on issue.",
+  "main": "lib/main.js",
+  "scripts": {
+    "build": "tsc",
+    "package": "ncc build --source-map"
+  },
+  "author": "xrkffgg",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/actions-cool/issue-helper.git"
+  },
+  "keywords": [
+    "actions",
+    "issue",
+    "helper",
+    "github"
+  ],
+  "dependencies": {
+    "@actions/core": "^1.2.6",
+    "@actions/github": "^4.0.0",
+    "@octokit/rest": "^18.0.12"
+  },
+  "devDependencies": {
+    "@vercel/ncc": "^0.25.1"
+  }
+}

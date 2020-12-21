@@ -1,0 +1,13 @@
+name: '🤖 Issue Helper'
+description: 'Some operations on issue'
+author: 'xrkffgg'
+branding:
+  icon: 'message-square'
+  color: 'blue'
+inputs:
+  github_token:
+    description: 'github_token'
+    default: ${{ github.token }}
+runs:
+  using: node12
+  main: 'dist/index.js'

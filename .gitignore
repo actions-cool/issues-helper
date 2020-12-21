@@ -1,0 +1,53 @@
+# @source: https://github.com/xrkffgg/gitignore/blob/master/.gitignore
+
+# production
+/dist
+/docs-dist
+
+# Log file
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Private
+
+# misc
+.DS_Store
+
+# dependencies
+node_modules
+yarn.lock
+package-lock.json
+
+# local env files
+.env.local
+.env.*.local
+
+# Compiled file
+*.class
+*.css.map
+*.sass.map
+*.scss.map
+
+# Editor directories and files
+.idea
+.vscode
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+~$*.*
+
+# umi
+.umi
+.umi-production
+.umi-test
+.env.local
+
+# cache
+.sass-cache/
+
+# test
+coverage
