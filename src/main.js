@@ -27,8 +27,8 @@ const ALLACTIONS = [
   'remove-assignees',
   'set-labels',
   'unlock-issue',
-  'update-issue',
   'update-comment',
+  'update-issue',
 ];
 
 async function main() {
@@ -47,9 +47,9 @@ async function main() {
     const assignees = core.getInput("assignees");
 
     const labels = core.getInput("labels");
-    const state = core.getInput("state");
+    const state = core.getInput("state") || 'open';
 
-    let updateMode = core.getInput("state") || 'replace';
+    let updateMode = core.getInput("update-mode") || 'replace';
     if (updateMode !== 'append') {
       updateMode = 'replace';
     }
@@ -101,6 +101,15 @@ async function main() {
         case 'unlock-issue':
           await doUnlockIssue(owner, repo, issueNumber);
           break;
+        case 'update-comment':
+          await doUpdateComment(
+            owner,
+            repo,
+            commentId,
+            body,
+            updateMode
+          );
+          break;
         case 'update-issue':
           await doUpdateIssue(
             owner,
@@ -113,14 +122,7 @@ async function main() {
             assignees,
             labels
           );
-        case 'update-comment':
-          await doUpdateComment(
-            owner,
-            repo,
-            commentId,
-            body,
-            updateMode
-          );
+          break;
         default:
           break;
       }

@@ -86,7 +86,7 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
     labels
   };
   if (typeof(assignees) === 'string') {
-    params.assignee = assignees;
+    params.assignees.push(assignees);
   } else {
     params.assignees = assignees;
   }
@@ -170,63 +170,6 @@ async function doUnlockIssue (owner, repo, issueNumber) {
   core.info(`Actions: [unlock-issue][${issueNumber}] success!`);
 };
 
-async function doUpdateIssue (
-  owner,
-  repo,
-  issueNumber,
-  state,
-  title,
-  body,
-  updateMode,
-  assignees,
-  labels
-) {
-  const issue = await octokit.issues.get({
-    owner,
-    repo,
-    issue_number: issueNumber
-  })
-  const issue_body = issue.data.body;
-  const issue_title = issue.data.title;
-  const issue_labels = issue.data.labels;
-
-  let params = {
-    owner,
-    repo,
-    issue_number: issueNumber,
-    state
-  };
-
-  params.title = core.getInput("title") ? title : issue_title;
-
-  let next_body;
-  if (core.getInput("body")) {
-    if (updateMode === 'append') {
-      next_body = `${issue_body}\n${body}`;
-    } else {
-      next_body = body;
-    }
-  } else {
-    next_body = issue_body;
-  }
-  params.body = next_body;
-
-  if (typeof(assignees) === 'string') {
-    params.assignee = assignees;
-  } else {
-    params.assignees = assignees;
-  }
-
-  params.labels = labels ? labels : issue_labels;
-
-  await octokit.issues.update(params);
-  core.info(`Actions: [update-issue][${issueNumber}] success!`);
-
-  if (contents) {
-    await doCreateIssueContent(owner, repo, issueNumber, contents);
-  }
-};
-
 async function doUpdateComment (
   owner,
   repo,
@@ -261,6 +204,69 @@ async function doUpdateComment (
   }
 };
 
+async function doUpdateIssue (
+  owner,
+  repo,
+  issueNumber,
+  state,
+  title,
+  body,
+  updateMode,
+  assignees,
+  labels
+) {
+  const issue = await octokit.issues.get({
+    owner,
+    repo,
+    issue_number: issueNumber
+  })
+  const issue_body = issue.data.body;
+  const issue_title = issue.data.title;
+  const issue_labels = issue.data.labels;
+  const issue_assignees = issue.data.assignees;
+
+  let params = {
+    owner,
+    repo,
+    issue_number: issueNumber,
+    state
+  };
+
+  params.title = core.getInput("title") ? title : issue_title;
+
+  let next_body;
+  if (core.getInput("body")) {
+    if (updateMode === 'append') {
+      next_body = `${issue_body}\n${body}`;
+    } else {
+      next_body = body;
+    }
+  } else {
+    next_body = issue_body;
+  }
+  params.body = next_body;
+
+  if (core.getInput("assignees")) {
+    if (typeof(assignees) === 'string') {
+      params.assignees.push(assignees);
+    } else {
+      params.assignees = assignees;
+    }
+  } else {
+    params.assignees = issue_assignees;
+  }
+
+  params.labels = labels ? labels : issue_labels;
+
+  await octokit.issues.update(params);
+  core.info(`Actions: [update-issue][${issueNumber}] success!`);
+
+  if (contents) {
+    await doCreateIssueContent(owner, repo, issueNumber, contents);
+  }
+};
+
+// tool
 function testContent(con) {
   if (ALLREACTIONS.includes(con)) {
     return true;
@@ -270,6 +276,7 @@ function testContent(con) {
   }
 };
 
+// exports
 module.exports = {
   doAddAssignees,
   doAddLabels,
