@@ -17,17 +17,23 @@ English | [简体中文](./README.zh-CN.md)
 - ⭐ 基 础
   - [`add-assignees`](#add-assignees)
   - [`add-labels`](#add-labels)
+  - [`close-issue`](#close-issue)
   - [`create-comment`](#create-comment)
   - [`create-issue`](#create-issue)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
+  - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
   - [`set-labels`](#set-labels)
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
 - ⭐ 进 阶
+  - [`find-comment`](#find-comments)
 - ⭐ 高 级
+  - 222
+- 🌰 例 子
+  - [`find-comments + create-comment + update-comment`](#find-comments--create-comment--update-comment)
 
 ## 🚀 使 用
 
@@ -37,14 +43,14 @@ English | [简体中文](./README.zh-CN.md)
 
 #### `add-assignees`
 
-当一个 issue 新增时，将这个 issue 指定某人或多人。
+当一个 issue 新增或修改时，将这个 issue 指定某人或多人。
 
 ```yml
 name: Add Assigness
 
 on:
   issues:
-    types: [opened]
+    types: [opened, edited]
 
 jobs:
   add-assigness:
@@ -67,8 +73,8 @@ jobs:
 | assignees | 指定人。当不填或者为空字符、空数组时，不指定 | string \| string\[] | ✖ | v1 |
 
 - 其中的 `name` 可根据自行根据实际情况修改
-- [on 参考](#触发机制)
-- `${{ github.event.issue.number }}` 表示当前 issue。[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)。
+- [on 参考](#github-docs)
+- `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)。
 
 ⏫ [返回列表](#列-表)
 
@@ -103,6 +109,29 @@ jobs:
 | token | [token 说明](#token) | string | ✖ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | labels | 新增的 labels。当不填或者为空字符、空数组时，不新增 | string \| string\[] | ✖ | v1 |
+
+⏫ [返回列表](#列-表)
+
+#### `close-issue`
+
+关闭指定 issue。当输入 `body` 时，会同时进行评论。
+
+```yml
+- name: Close issue
+    uses: actions-cool/issue-helper@v1
+    with:
+      actions: 'close-issue'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: xxx
+      body: 'This is auto closed.'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| token | [token 说明](#token) | string | ✖ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| body | 关闭 issue 时，可进行评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -145,8 +174,8 @@ jobs:
 
 - `body` 默认为：`Currently at ${owner}/${repo}. And this is default comment.`
   - 其中 `${owner}/${repo}` 表示当前仓库
-- 返回 `comment-id`，可用于之后操作。用法参考
-- `${{ github.event.issue.user.login }}` 表示该 issue 的创建者。
+- 返回 `comment-id`，可用于之后操作。[用法参考](#输出使用)
+- `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
 
 ⏫ [返回列表](#列-表)
 
@@ -188,14 +217,14 @@ jobs:
 | contents | 为新增 issue 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
 
 - `title` 默认为：`Default Title`
-- `body` 默认同上
-- 返回 `issue_number`，用法同上
+- `body` 默认值同上
+- 返回 `issue-number`，[用法参考](#输出使用)
 
 ⏫ [返回列表](#列-表)
 
 #### `delete-comment`
 
-根据 [`comment_id`](#comment_id-获取) 删除指定评论。单个应用场景不多，可参考高级用法。
+根据 [`comment_id`](#comment_id-获取) 删除指定评论。
 
 ```yml
 - name: Delete comment
@@ -243,6 +272,28 @@ jobs:
 | actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
 | token | [token 说明](#token) | string | ✖ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
+
+⏫ [返回列表](#列-表)
+
+#### `open-issue`
+
+打开指定 issue。
+
+```yml
+- name:  Open issue
+    uses: actions-cool/issue-helper@v1
+    with:
+      actions: 'open-issue'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: xxx
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| token | [token 说明](#token) | string | ✖ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| body | 打开 issue 时，可进行评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -315,18 +366,28 @@ jobs:
 
 #### `update-comment`
 
-根据 [`comment_id`](#comment_id-获取) 更新指定评论。单个应用场景不多，可参考高级用法。
+根据 [`comment_id`](#comment_id-获取) 更新指定评论。
+
+下面的例子展示的是，为每个新增的 comment 增加 👀 。
 
 ```yml
-- name: Update comment
-    uses: actions-cool/issue-helper@v1
-    with:
-      actions: 'update-comment'
-      token: ${{ secrets.GITHUB_TOKEN }}
-      comment-id: xxx
-      body: 'xxxx'
-      update-mode: 'replace'
-      contents: '+1'
+name: Add eyes to each comment
+
+on:
+  issue_comment:
+    types: [created]
+
+jobs:
+  update-comment:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Update comment
+          uses: actions-cool/issue-helper@v1
+          with:
+            actions: 'update-comment'
+            token: ${{ secrets.GITHUB_TOKEN }}
+            comment-id: ${{ github.event.comment.id }}
+            contents: 'eyes'
 ```
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
@@ -338,7 +399,7 @@ jobs:
 | update-mode | 更新模式。`replace` 替换，`append` 附加 | string | ✖ | v1 |
 | contents | 为 comment 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
 
-- `body` 默认同上
+- `body` 不输入时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效。
 
 ⏫ [返回列表](#列-表)
@@ -382,7 +443,92 @@ jobs:
 
 ### ⭐ 进 阶
 
+#### `find-comments`
+
+查找当前仓库 1 号 issue 中，创建者是 k ，内容包含 `this` 的评论列表。
+
+```yml
+- name: Find comments
+    uses: actions-cool/issue-helper@v1
+    with:
+      actions: 'find-comments'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: 1
+      comment-auth: k
+      body-includes: 'this'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| token | [token 说明](#token) | string | ✖ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| comment-auth | 评论创建者，不填时会查询所有 | string | ✖ | v1 |
+| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ | v1 |
+
+- 返回 `comments`, 格式如下：
+
+```js
+[
+  {id: 1, body: 'xxx'},
+  {id: 2, body: 'xxxx'}
+]
+```
+
+⏫ [返回列表](#列-表)
+
 ### ⭐ 高 级
+
+## 🌰 例 子
+
+以下列举一些例子，请灵活参考。
+
+### `find-comments + create-comment + update-comment`
+
+假设场景：当 issue 修改时，查找是否有 k 创建的包含 `error` 的评论，如果只有一个，则更新该 comment，如果没有，则新增一个 comment。
+
+```yml
+name: Test
+
+on:
+  isssue:
+    types: [edited]
+
+jobs:
+  do-test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: find comments
+        uses: actions-cool/issue-helper@v1
+        id: fcid
+        with:
+          actions: 'find-comments'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          comment-auth: k
+          body-includes: 'error'
+
+      - name: create comment
+        if: ${{ steps.fcid.outputs.comments.length == 0 }}
+        uses: actions-cool/issue-helper@v1
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: 'Some error!'
+
+      - name: update comment
+        if: ${{ steps.fcid.outputs.comments.length == 1 }}
+        uses: actions-cool/issue-helper@v1
+        with:
+          actions: 'update-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          comment-id: ${{ steps.fcid.outputs.comments[0].id }}
+          body: 'Some error again!'
+          update-mode: 'append'
+```
+
+⏫ [返回列表](#列-表)
 
 ## 🎁 参 考
 
@@ -401,12 +547,21 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
-### 条件判断
+### 输出使用
+```yml
+- name: Create issue
+  uses: actions-cool/issue-helper@v1
+  id: createissue
+  with:
+    actions: 'create-issue'
+    token: ${{ secrets.GITHUB_TOKEN }}
+- name: Check outputs
+  run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
+```
+### GitHub Docs
 
-### 触发机制
-
-- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 ⏫ [返回列表](#列-表)
 

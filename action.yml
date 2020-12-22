@@ -9,7 +9,7 @@ inputs:
     description: 'github_token'
     default: ${{ github.token }}
 outputs:
-  issue_number:
+  issue-number:
     description: 'Create Issue Number'
   comment-id:
     description: 'Create comment ID'

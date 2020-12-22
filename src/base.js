@@ -38,6 +38,20 @@ async function doAddLabels (owner, repo, issueNumber, labels) {
   core.info(`Actions: [add-labels][${labels}] success!`);
 };
 
+async function doCloseIssue (owner, repo, issueNumber) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
+  await octokit.issues.update({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    state: 'closed'
+  });
+  core.info(`Actions: [close-issue][${issueNumber}] success!`);
+};
+
 async function doCreateComment (owner, repo, issueNumber, body) {
   const { data } = await octokit.issues.createComment({
     owner,
@@ -92,7 +106,7 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
   }
   const { data } = await octokit.issues.create(params);
   core.info(`Actions: [create-issue][${title}] success!`);
-  core.setOutput("issue_number", data.number);
+  core.setOutput("issue-number", data.number);
 
   if (contents) {
     await doCreateIssueContent(owner, repo, data.number, contents);
@@ -139,6 +153,20 @@ async function doLockIssue (owner, repo, issueNumber) {
     issue_number: issueNumber,
   });
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
+};
+
+async function doOpenIssue (owner, repo, issueNumber) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
+  await octokit.issues.update({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    state: 'open'
+  });
+  core.info(`Actions: [open-issue][${issueNumber}] success!`);
 };
 
 async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
@@ -190,14 +218,16 @@ async function doUpdateComment (
     comment_id: commentId
   };
 
-  if (updateMode === 'append') {
-    params.body = `${comment_body}\n${body}`;
-  } else {
-    params.body = body;
-  }
+  if (core.getInput("body")) {
+    if (updateMode === 'append') {
+      params.body = `${comment_body}\n${body}`;
+    } else {
+      params.body = body;
+    }
 
-  await octokit.issues.updateComment(params);
-  core.info(`Actions: [update-comment][${commentId}] success!`);
+    await octokit.issues.updateComment(params);
+    core.info(`Actions: [update-comment][${commentId}] success!`);
+  } 
 
   if (contents) {
     await doCreateCommentContent(owner, repo, commentId, contents);
@@ -280,15 +310,17 @@ function testContent(con) {
 module.exports = {
   doAddAssignees,
   doAddLabels,
+  doCloseIssue,
   doCreateComment,
   doCreateCommentContent,
   doCreateIssue,
   doCreateIssueContent,
   doDeleteComment,
   doLockIssue,
+  doOpenIssue,
   doRemoveAssignees,
   doSetLabels,
   doUnlockIssue,
+  doUpdateComment,
   doUpdateIssue,
-  doUpdateComment
 };
