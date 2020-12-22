@@ -280,7 +280,7 @@ jobs:
 打开指定 issue。
 
 ```yml
-- name:  Open issue
+- name: Open issue
     uses: actions-cool/issue-helper@v1
     with:
       actions: 'open-issue'
