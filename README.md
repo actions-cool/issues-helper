@@ -30,8 +30,6 @@ English | [简体中文](./README.zh-CN.md)
   - [`update-issue`](#update-issue)
 - ⭐ 进 阶
   - [`find-comments`](#find-comments)
-- ⭐ 高 级
-  - 222
 - 🌰 例 子
   - [`find-comments + create-comment + update-comment`](#find-comments--create-comment--update-comment)
 
@@ -477,8 +475,6 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
-### ⭐ 高 级
-
 ## 🌰 例 子
 
 以下列举一些例子，请灵活参考。
@@ -547,7 +543,8 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
-### 输出使用
+### `outputs` 使用
+
 ```yml
 - name: Create issue
   uses: actions-cool/issue-helper@v1
@@ -558,6 +555,7 @@ jobs:
 - name: Check outputs
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
+
 ### GitHub Docs
 
 - [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
@@ -586,7 +584,7 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
-## 谁在使用？
+## 💖 谁在使用？
 
 ## LICENSE
 

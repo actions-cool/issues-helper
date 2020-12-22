@@ -20,6 +20,7 @@ const {
 } = require('./base.js');
 
 const {
+  doCloseIssues,
   doFindComments,
 } = require('./advanced.js');
 
@@ -40,7 +41,9 @@ const ALLACTIONS = [
   'update-issue',
 
   // advanced
+  'close-issues',
   'find-comments',
+  'lock-issues',
 ];
 
 async function main() {
@@ -61,7 +64,7 @@ async function main() {
 
     const assignees = core.getInput("assignees");
 
-    const labels = core.getInput("labels");
+    const labels = core.getInput("labels") || ['test'];
     const state = core.getInput("state") || 'open';
 
     let updateMode = core.getInput("update-mode") || 'replace';
@@ -70,7 +73,7 @@ async function main() {
     }
 
     // const actions = core.getInput("actions", { required: true });
-    const actions = 'find-comments';
+    const actions = 'close-issues';
 
     if (typeof(actions) === 'object') {
       actions.forEach(item => {
@@ -146,7 +149,15 @@ async function main() {
             labels
           );
           break;
+
         // advanced
+        case 'close-issues':
+          await doCloseIssues(
+            owner,
+            repo,
+            labels
+          )
+          break;
         case 'find-comments':
           await doFindComments(
             owner,
@@ -154,8 +165,6 @@ async function main() {
             issueNumber
           );
           break;
-
-        // ultimate
 
         // default
         default:
