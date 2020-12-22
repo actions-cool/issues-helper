@@ -29,7 +29,7 @@ English | [简体中文](./README.zh-CN.md)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
 - ⭐ 进 阶
-  - [`find-comment`](#find-comments)
+  - [`find-comments`](#find-comments)
 - ⭐ 高 级
   - 222
 - 🌰 例 子
