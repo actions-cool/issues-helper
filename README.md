@@ -78,7 +78,7 @@ jobs:
 - `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
 - The `name` can be modified according to the actual situation
 - [on reference](#github-docs)
-- `${{ github.event.issue.number }}` is the current issue, [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
+- `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
 
 ⏫ [Back to list](#List)
 
