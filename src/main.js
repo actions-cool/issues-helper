@@ -20,8 +20,10 @@ const {
 } = require('./base.js');
 
 const {
+  doCheckInactive,
   doCloseIssues,
   doFindComments,
+  doLockIssues,
 } = require('./advanced.js');
 
 const ALLACTIONS = [
@@ -41,6 +43,7 @@ const ALLACTIONS = [
   'update-issue',
 
   // advanced
+  'check-inactive',
   'close-issues',
   'find-comments',
   'lock-issues',
@@ -48,12 +51,10 @@ const ALLACTIONS = [
 
 async function main() {
   try {
-    // const owner = github.context.repo.owner;
-    // const repo = github.context.repo.repo;
-    const owner = 'actions-cool';
-    const repo = 'issue-helper';
+    const owner = github.context.repo.owner;
+    const repo = github.context.repo.repo;
 
-    const issueNumber = core.getInput('issue-number') || 1;
+    const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
 
     const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`
@@ -64,16 +65,15 @@ async function main() {
 
     const assignees = core.getInput("assignees");
 
-    const labels = core.getInput("labels") || ['test'];
+    const labels = core.getInput("labels");
     const state = core.getInput("state") || 'open';
 
-    let updateMode = core.getInput("update-mode") || 'replace';
+    let updateMode = core.getInput("update-mode");
     if (updateMode !== 'append') {
       updateMode = 'replace';
     }
 
-    // const actions = core.getInput("actions", { required: true });
-    const actions = 'close-issues';
+    const actions = core.getInput("actions", { required: true });
 
     if (typeof(actions) === 'object') {
       actions.forEach(item => {
@@ -151,6 +151,13 @@ async function main() {
           break;
 
         // advanced
+        case 'check-inactive':
+          await doCheckInactive(
+            owner,
+            repo,
+            labels
+          )
+          break;
         case 'close-issues':
           await doCloseIssues(
             owner,
@@ -165,7 +172,13 @@ async function main() {
             issueNumber
           );
           break;
-
+        case 'lock-issues':
+          await doLockIssues(
+            owner,
+            repo,
+            labels
+          );
+          break;
         // default
         default:
           break;

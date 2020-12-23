@@ -13,27 +13,37 @@ const ALLREACTIONS = [
   "eyes",
 ];
 
-const token = core.getInput('token') || process.env.GH_TOKEN;
+const { dealInput } = require('./util.js');
+
+const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
 const contents = core.getInput("contents");
 
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.addAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees
+    assignees: dealInput(assignees)
   });
   core.info(`Actions: [add-assignees][${assignees}] success!`);
 };
 
 async function doAddLabels (owner, repo, issueNumber, labels) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.addLabels({
     owner,
     repo,
     issue_number: issueNumber,
-    labels
+    labels: dealInput(labels)
   });
   core.info(`Actions: [add-labels][${labels}] success!`);
 };
@@ -97,13 +107,10 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
     repo,
     title,
     body,
-    labels
+    labels: dealInput(labels),
+    assignees: dealInput(assignees),
   };
-  if (typeof(assignees) === 'string') {
-    params.assignees.push(assignees);
-  } else {
-    params.assignees = assignees;
-  }
+
   const { data } = await octokit.issues.create(params);
   core.info(`Actions: [create-issue][${title}] success!`);
   core.setOutput("issue-number", data.number);
@@ -147,6 +154,10 @@ async function doDeleteComment (owner, repo, commentId) {
 };
 
 async function doLockIssue (owner, repo, issueNumber) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.lock({
     owner,
     repo,
@@ -170,26 +181,38 @@ async function doOpenIssue (owner, repo, issueNumber) {
 };
 
 async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.removeAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees
+    assignees: dealInput(assignees),
   });
   core.info(`Actions: [remove-assignees][${assignees}] success!`);
 };
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.setLabels({
     owner,
     repo,
     issue_number: issueNumber,
-    labels
+    labels: dealInput(labels)
   });
   core.info(`Actions: [set-labels][${labels}] success!`);
 };
 
 async function doUnlockIssue (owner, repo, issueNumber) {
+  if (core.getInput("body")) {
+    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
+  }
+
   await octokit.issues.unlock({
     owner,
     repo,
@@ -276,17 +299,8 @@ async function doUpdateIssue (
   }
   params.body = next_body;
 
-  if (core.getInput("assignees")) {
-    if (typeof(assignees) === 'string') {
-      params.assignees.push(assignees);
-    } else {
-      params.assignees = assignees;
-    }
-  } else {
-    params.assignees = issue_assignees;
-  }
-
-  params.labels = labels ? labels : issue_labels;
+  params.labels = labels ? dealInput(labels) : issue_labels;
+  params.assignees = assignees ? dealInput(assignees) : issue_assignees;
 
   await octokit.issues.update(params);
   core.info(`Actions: [update-issue][${issueNumber}] success!`);

@@ -5,14 +5,56 @@ branding:
   icon: 'message-square'
   color: 'blue'
 inputs:
-  github_token:
-    description: 'github_token'
+  actions:
+    description: 'Action name'
+  token:
+    description: 'Github_token'
     default: ${{ github.token }}
+  issue-number:
+    description: 'Issue-number'
+  comment-id:
+    description: 'Comment-id'
+  body:
+    description: 'Issue body'
+  title:
+    description: 'Issue title'
+  assignees:
+    description: 'Issue assignees'
+  labels:
+    description: 'Issue labels'
+  state:
+    description: 'Issue state'
+  update-mode:
+    description: 'Body update mode'
+  contents:
+    description: 'Issue reactions emoji'
+  direction:
+    description: 'Find comments direction'
+  comment-auth:
+    description: 'Find comments query auth'
+  body-includes:
+    description: 'Query use'
+  title-includes:
+    description: 'Query use'
+  issue-creator:
+    description: 'Query use'
+  issue-assignee:
+    description: 'Query use'
+  issue-mentioned:
+    description: 'Query use'
+  issue-state:
+    description: 'Query use'
+  inactive-day:
+    description: 'Query use'
+  inactive-label:
+    description: 'Issue label set use'
 outputs:
   issue-number:
     description: 'Create Issue Number'
   comment-id:
     description: 'Create comment ID'
+  comments:
+    description: 'Find comments'
 runs:
   using: node12
   main: 'dist/index.js'
