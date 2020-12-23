@@ -2,7 +2,7 @@
 
 English | [简体中文](./README.zh-CN.md)
 
-![ci](https://github.com/actions-cool/issue-helper/workflows/ci/badge.svg)
+[![](https://img.shields.io/github/workflow/status/actions-cool/issue-helper/ci?style=flat-square)](https://github.com/actions-cool/issue-helper/actions) [![](https://img.shields.io/github/stars/actions-cool/issue-helper?style=flat-square)](https://github.com/actions-cool/issue-helper/stargazers) [![](https://img.shields.io/github/v/release/actions-cool/issue-helper?style=flat-square)](https://github.com/actions-cool/issue-helper/releases) [![](https://img.shields.io/github/license/actions-cool/issue-helper?style=flat-square)](https://github.com/actions-cool/issue-helper/blob/main/LICENSE)
 
 A GitHub Action to help you deal with issues
 
