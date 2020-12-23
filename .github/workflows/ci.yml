@@ -1,0 +1,16 @@
+name: test-build
+
+on: [push, pull_request]
+
+jobs:
+  setup:
+    runs-on: ubuntu-latest
+    steps:
+      - name: checkout
+        uses: actions/checkout@main
+
+      - name: install
+        run: yarn install
+
+      - name: package
+        run: yarn package
