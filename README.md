@@ -4,19 +4,19 @@ English | [简体中文](./README.zh-CN.md)
 
 ![ci](https://github.com/actions-cool/issue-helper/workflows/ci/badge.svg)
 
-一个帮你处理 issue 的 GitHub Action
+A GitHub Action to help you deal with issues
 
-## 😎 为什么用 GitHub Action？
+## 😎 Why use GitHub Action?
 
-1. 完全免费。
-2. 全自动操作。
-3. 托管于 GitHub 服务器，只要 GitHub 不宕机，它就会一直跑下去。
+1. Complete free.
+2. Fully automatic.
+3. Hosted on the GitHub server, as long as GitHub is not down, it will keep running.
 
-> Private 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。Public 项目无限制。
+> Private projects have a limit of 2000 times per month, [Specific view](https://github.com/settings/billing). Public are unlimited.
 
-## 列 表
+## List
 
-- ⭐ 基 础
+- ⭐ Base
   - [`add-assignees`](#add-assignees)
   - [`add-labels`](#add-labels)
   - [`close-issue`](#close-issue)
@@ -30,17 +30,17 @@ English | [简体中文](./README.zh-CN.md)
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
-- ⭐ 进 阶
+- ⭐ Advanced
   - [`check-inactive`](#check-inactive)
   - [`close-issues`](#close-issues)
   - [`find-comments`](#find-comments)
   - [`lock-issues`](#lock-issues)
-- 🌰 例 子
+- 🌰 Example
   - [`find-comments + create-comment + update-comment`](#find-comments--create-comment--update-comment)
 
-## 🚀 使 用
+## 🚀 Usage
 
-### ⭐ 基 础
+### ⭐ Base
 
 为了更好的展示功能，下面以实际场景举例，请灵活参考。
 
@@ -80,7 +80,7 @@ jobs:
 - [on 参考](#github-docs)
 - `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `add-labels`
 
@@ -96,7 +96,7 @@ on:
 jobs:
   add-labels:
     runs-on: ubuntu-latest
-    if: github.event.issue.body.indexOf('Create by specifying way') == -1
+    if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
         uses: actions-cool/issue-helper@v1
@@ -114,7 +114,7 @@ jobs:
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | labels | 新增的 labels。当不填或者为空字符、空数组时，不新增 | string \| string\[] | ✖ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `close-issue`
 
@@ -136,7 +136,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `create-comment`
 
@@ -180,7 +180,7 @@ jobs:
 - 返回 `comment-id`，可用于之后操作。[用法参考](#outputs-使用)
 - `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `create-issue`
 
@@ -223,7 +223,7 @@ jobs:
 - `body` 默认值同上
 - 返回 `issue-number`，[用法参考](#outputs-使用)
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `delete-comment`
 
@@ -244,7 +244,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | comment-id | 指定的 comment | number | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `lock-issue`
 
@@ -276,7 +276,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `open-issue`
 
@@ -297,7 +297,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `remove-assignees`
 
@@ -320,7 +320,7 @@ jobs:
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | assignees | 移除的指定人。当为空字符、空数组时，不进行移除 | string \| string\[] | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `set-labels`
 
@@ -343,7 +343,7 @@ jobs:
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | labels | labels 设置。当空字符、空数组时，会移除所有 | string \| string\[] | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `unlock-issue`
 
@@ -364,7 +364,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `update-comment`
 
@@ -404,7 +404,7 @@ jobs:
 - `body` 不输入时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `update-issue`
 
@@ -442,9 +442,9 @@ jobs:
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
-### ⭐ 进 阶
+### ⭐ Advanced
 
 进阶用法不建议 actions 多重使用。
 
@@ -533,7 +533,7 @@ jobs:
 - `issue-assignee`：不支持多人。不输入或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不输入时，会查询所有
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `find-comments`
 
@@ -571,7 +571,7 @@ jobs:
 - `direction` 默认为升序，只有设置 `desc` 时，会返回降序
 - 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 #### `lock-issues`
 
@@ -616,7 +616,7 @@ jobs:
 - `issue-assignee`：不支持多人。不输入或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不输入时，会查询所有
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 ## 🌰 例 子
 
@@ -668,7 +668,7 @@ jobs:
           update-mode: 'append'
 ```
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 ## 🎁 参 考
 
@@ -685,7 +685,7 @@ jobs:
 
 当 actions 不填写 token 时，会默认为 github-actions <kbd>bot</kbd>。
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 ### `outputs` 使用
 
@@ -705,7 +705,7 @@ jobs:
 - [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
 - [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 ### Reactions types
 
@@ -720,13 +720,17 @@ jobs:
 | `rocket` | 🚀 |
 | `eyes` | 👀 |
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
 
 ### `comment-id` 获取
 
 点击某个评论右上角 `···` 图标，选择 `Copy link`，url 末尾数字即是 `comment_id`。
 
-⏫ [返回列表](#列-表)
+⏫ [返回列表](#List)
+
+## Actions 模板
+
+[GitHub Actions workflow template](https://github.com/actions-cool/.github) Fork 后，可直接使用模板。
 
 ## 💖 谁在使用？
 

@@ -1,10 +1,10 @@
 # 🤖 Issue Helper
 
-English | [简体中文](./README.zh-CN.md)
+[English](./README.md) | 简体中文
 
 ![ci](https://github.com/actions-cool/issue-helper/workflows/ci/badge.svg)
 
-一个帮你处理 issue 的 GitHub Action
+一个帮你处理 issues 的 GitHub Action
 
 ## 😎 为什么用 GitHub Action？
 
@@ -96,7 +96,7 @@ on:
 jobs:
   add-labels:
     runs-on: ubuntu-latest
-    if: github.event.issue.body.indexOf('Create by specifying way') == -1
+    if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
         uses: actions-cool/issue-helper@v1
@@ -727,6 +727,10 @@ jobs:
 点击某个评论右上角 `···` 图标，选择 `Copy link`，url 末尾数字即是 `comment_id`。
 
 ⏫ [返回列表](#列-表)
+
+## Actions 模板
+
+[GitHub Actions workflow template](https://github.com/actions-cool/.github) Fork 后，可直接使用模板。
 
 ## 💖 谁在使用？
 
