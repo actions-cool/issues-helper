@@ -6564,14 +6564,10 @@ async function main() {
     }
 
     const actions = core.getInput("actions", { required: true });
-
-    if (typeof(actions) === 'object') {
-      actions.forEach(item => {
-        testActions(item);
-      })
-    } else {
-      testActions(actions);
-    }
+    const actionsArr = actions.split(',');
+    actionsArr.forEach(item => {
+      testActions(item.trim());
+    });
 
     function testActions(action) {
       if (ALLACTIONS.includes(action)) {
