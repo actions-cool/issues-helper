@@ -1,6 +1,8 @@
 # 🤖 Issue Helper
 
-[English](./README.md) | 简体中文
+English | [简体中文](./README.zh-CN.md)
+
+![ci](https://github.com/actions-cool/issue-helper/workflows/ci/badge.svg)
 
 一个帮你处理 issue 的 GitHub Action
 
@@ -407,7 +409,7 @@ jobs:
 | contents | 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
 
 - `body` 不输入时，会保持原有
-- `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效。
+- `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
 
 ⏫ [返回列表](#列-表)
 
@@ -497,7 +499,7 @@ jobs:
 
 #### `close-issues`
 
-每 7 天 UTC 0 时，关闭已填加 `need info` label 并 7 天以上未活跃的 issues。
+每 7 天 UTC 0 时，关闭已填加 `need info` label 且 7 天以上未活跃的 issues。
 
 ```yml
 name: Check need info
@@ -578,7 +580,7 @@ jobs:
 
 #### `lock-issues`
 
-每 3 个月 1 号 UTC 0 时，锁定已填加 `inactive` label，并 128 天以上未活跃的所有 issues。
+每 3 个月 1 号 UTC 0 时，锁定已填加 `inactive` label 且 128 天以上未活跃的所有 issues。
 
 ```yml
 name: Lock inactive issues
