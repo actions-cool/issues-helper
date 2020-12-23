@@ -21,10 +21,6 @@ const octokit = new Octokit({ auth: `token ${token}` });
 const contents = core.getInput("contents");
 
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.addAssignees({
     owner,
     repo,
@@ -35,10 +31,6 @@ async function doAddAssignees (owner, repo, issueNumber, assignees) {
 };
 
 async function doAddLabels (owner, repo, issueNumber, labels) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.addLabels({
     owner,
     repo,
@@ -49,10 +41,6 @@ async function doAddLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doCloseIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.update({
     owner,
     repo,
@@ -154,10 +142,6 @@ async function doDeleteComment (owner, repo, commentId) {
 };
 
 async function doLockIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.lock({
     owner,
     repo,
@@ -167,10 +151,6 @@ async function doLockIssue (owner, repo, issueNumber) {
 };
 
 async function doOpenIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.update({
     owner,
     repo,
@@ -181,10 +161,6 @@ async function doOpenIssue (owner, repo, issueNumber) {
 };
 
 async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.removeAssignees({
     owner,
     repo,
@@ -195,10 +171,6 @@ async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
 };
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.setLabels({
     owner,
     repo,
@@ -209,10 +181,6 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doUnlockIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.unlock({
     owner,
     repo,

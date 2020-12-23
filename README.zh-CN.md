@@ -62,7 +62,7 @@ jobs:
       - name: Add assigness
         uses: actions-cool/issue-helper@v1
         with:
-          actions: 'add-assignees' or ['add-assignees']
+          actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           assignees: 'xxx' or ['xxx'] or ['xx1', 'xx2']
@@ -70,15 +70,15 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | assignees | 指定人。当不填或者为空字符、空数组时，不指定 | string \| string\[] | ✖ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
+- `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
 - [on 参考](#github-docs)
-- `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)。
+- `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
 
 ⏫ [返回列表](#列-表)
 
@@ -109,11 +109,10 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | labels | 新增的 labels。当不填或者为空字符、空数组时，不新增 | string \| string\[] | ✖ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -133,10 +132,9 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -171,7 +169,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | body | 新增评论的内容  | string | ✖ | v1 |
@@ -213,7 +211,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | title | 新增 issue 的标题 | string | ✖ | v1 |
 | body | 新增 issue 的内容 | string | ✖ | v1 |
@@ -242,7 +240,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | comment-id | 指定的 comment | number | ✔ | v1 |
 
@@ -274,10 +272,9 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -296,10 +293,9 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -319,11 +315,10 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | assignees | 移除的指定人。当为空字符、空数组时，不进行移除 | string \| string\[] | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -343,11 +338,10 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | labels | labels 设置。当空字符、空数组时，会移除所有 | string \| string\[] | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -366,10 +360,9 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| body | 解锁 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -401,7 +394,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | comment-id | 指定的 comment | number | ✔ | v1 |
 | body | 更新 comment 的内容 | string | ✖ | v1 |
@@ -435,7 +428,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ | v1 |
@@ -452,6 +445,8 @@ jobs:
 ⏫ [返回列表](#列-表)
 
 ### ⭐ 进 阶
+
+进阶用法不建议 actions 多重使用。
 
 #### `check-inactive`
 
@@ -478,7 +473,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 | labels | 标签筛选 | string \| string\[] | ✖ | v1 |
@@ -523,7 +518,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 | labels | 标签筛选 | string \| string\[] | ✖ | v1 |
@@ -557,7 +552,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ | v1 |
@@ -604,7 +599,7 @@ jobs:
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | actions 类型，当为数组时，会进行多个操作 | string \| string\[] | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不输入时，不评论 | string | ✖ | v1 |
 | labels | 标签筛选 | string \| string\[] | ✖ | v1 |

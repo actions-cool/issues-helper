@@ -5992,6 +5992,7 @@ dayjs.extend(isSameOrBefore);
 const {
   doAddLabels,
   doCloseIssue,
+  doCreateComment,
   doLockIssue
 } = __webpack_require__(9932);
 
@@ -6025,6 +6026,9 @@ async function doCheckInactive (owner, repo, labels) {
     for (let i = 0; i < issues.length; i++) {
       if (!JSON.stringify(issues[i].labels).includes(inactiveLabel)) {
         await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
+        if (core.getInput("body")) {
+          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+        }
       } else {
         core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
       }
@@ -6040,6 +6044,9 @@ async function doCloseIssues (owner, repo, labels) {
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doCloseIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
@@ -6079,6 +6086,9 @@ async function doLockIssues (owner, repo, labels) {
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doLockIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
@@ -6164,10 +6174,6 @@ const octokit = new Octokit({ auth: `token ${token}` });
 const contents = core.getInput("contents");
 
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.addAssignees({
     owner,
     repo,
@@ -6178,10 +6184,6 @@ async function doAddAssignees (owner, repo, issueNumber, assignees) {
 };
 
 async function doAddLabels (owner, repo, issueNumber, labels) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.addLabels({
     owner,
     repo,
@@ -6192,10 +6194,6 @@ async function doAddLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doCloseIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.update({
     owner,
     repo,
@@ -6297,10 +6295,6 @@ async function doDeleteComment (owner, repo, commentId) {
 };
 
 async function doLockIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.lock({
     owner,
     repo,
@@ -6310,10 +6304,6 @@ async function doLockIssue (owner, repo, issueNumber) {
 };
 
 async function doOpenIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.update({
     owner,
     repo,
@@ -6324,10 +6314,6 @@ async function doOpenIssue (owner, repo, issueNumber) {
 };
 
 async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.removeAssignees({
     owner,
     repo,
@@ -6338,10 +6324,6 @@ async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
 };
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.setLabels({
     owner,
     repo,
@@ -6352,10 +6334,6 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doUnlockIssue (owner, repo, issueNumber) {
-  if (core.getInput("body")) {
-    await doCreateComment(owner, repo, issueNumber, core.getInput("body"))
-  }
-
   await octokit.issues.unlock({
     owner,
     repo,

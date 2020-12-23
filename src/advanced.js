@@ -11,6 +11,7 @@ dayjs.extend(isSameOrBefore);
 const {
   doAddLabels,
   doCloseIssue,
+  doCreateComment,
   doLockIssue
 } = require('./base.js');
 
@@ -44,6 +45,9 @@ async function doCheckInactive (owner, repo, labels) {
     for (let i = 0; i < issues.length; i++) {
       if (!JSON.stringify(issues[i].labels).includes(inactiveLabel)) {
         await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
+        if (core.getInput("body")) {
+          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+        }
       } else {
         core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
       }
@@ -59,6 +63,9 @@ async function doCloseIssues (owner, repo, labels) {
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doCloseIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
@@ -98,6 +105,9 @@ async function doLockIssues (owner, repo, labels) {
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doLockIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
