@@ -145,7 +145,8 @@ async function doQueryIssues (owner, repo, labels, state) {
     if (a && b) {
       if (inactiveDay && typeof(inactiveDay) === 'number') {
         let lastTime = dayjs.utc().subtract(inactiveDay, 'day');
-        if (iss.updated_at.isSameOrBefore(lastTime)) {
+        let updateTime = dayjs.utc(iss.updated_at);
+        if (updateTime.isSameOrBefore(lastTime)) {
           issues.push(iss);
         }
       } else {
