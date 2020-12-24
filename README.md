@@ -6,6 +6,8 @@ English | [简体中文](./README.zh-CN.md)
 
 A GitHub Action to help you manage issues
 
+Online documentation | [Changelog](./changelog.md)
+
 ## 😎 Why use GitHub Action?
 
 1. Complete free.
@@ -26,12 +28,14 @@ A GitHub Action to help you manage issues
   - [`lock-issue`](#lock-issue)
   - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
+  - [`remove-labels`](#remove-labels)
   - [`set-labels`](#set-labels)
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
 - ⭐ Advanced
   - [`check-inactive`](#check-inactive)
+  - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)
   - [`find-comments`](#find-comments)
   - [`lock-issues`](#lock-issues)
@@ -325,6 +329,31 @@ Remove the person designated by issue.
 
 ⏫ [Back to list](#List)
 
+#### `remove-labels`
+
+Remove the specified labels.
+
+```yml
+- name: Remove labels
+    uses: actions-cool/issues-helper@v1.2
+    with:
+      actions: 'remove-labels'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+      labels: 'xx'
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.2 |
+| token | [Token explain](#token) | string | ✔ | v1.2 |
+| issue-number | The number of issue | number | ✔ | v1.2 |
+| labels | The removed labels. When it is a blank character, do not remove | string | ✔ | v1.2 |
+
+- `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
+
+⏫ [Back to list](#List)
+
 #### `set-labels`
 
 Replace the labels of issue.
@@ -449,7 +478,7 @@ Update the specified issue according to the `issue-number`.
 
 ### ⭐ Advanced
 
-It is not recommended to use multiple actions for advanced usage.
+Advanced usage is not recommended to use multiple actions at the same time.
 
 #### `check-inactive`
 
@@ -494,6 +523,60 @@ jobs:
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
 - `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
+
+⏫ [Back to list](#List)
+
+#### `check-issue`
+
+Check whether the issue meets the conditions according to the passed parameters and `issue-number`, and return a boolean value.
+
+The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`. If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions. The conditions are as follows:
+
+```
+x1 + y1
+x2 + y1
+x1 + y2
+x2 + y2
+
+"x1y3y2"  true
+"1x2y"    false
+"y2 x1"   true
+```
+
+```yml
+name: Check Issue
+
+on:
+  issues:
+    types: [edited]
+
+jobs:
+  check-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-issue
+        uses: actions-cool/issues-helper@v1
+        with:
+          actions: 'check-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          assignee-includes: 'x1,x2'
+          title-includes: 'x1,x2/y1,y2'
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.2 |
+| token | [Token explain](#token) | string | ✔ | v1.2 |
+| issue-number | The number of issue | number | ✔ | v1.2 |
+| assignee-includes | Assignees contains check | string | ✔ | v1.2 |
+| title-includes | Title contains check | string | ✔ | v1.2 |
+| body-includes | Body contains check | string | ✔ | v1.2 |
+
+- `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
+- Return `check-result`
+
+⏫ [Back to list](#List)
 
 #### `close-issues`
 

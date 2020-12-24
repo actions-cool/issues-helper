@@ -6,6 +6,8 @@
 
 一个帮你管理 issues 的 GitHub Action
 
+在线文档 | [更新日志](./changelog.zh-CN.md)
+
 ## 😎 为什么用 GitHub Action？
 
 1. 完全免费。
@@ -26,12 +28,14 @@
   - [`lock-issue`](#lock-issue)
   - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
+  - [`remove-labels`](#remove-labels)
   - [`set-labels`](#set-labels)
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
 - ⭐ 进 阶
   - [`check-inactive`](#check-inactive)
+  - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)
   - [`find-comments`](#find-comments)
   - [`lock-issues`](#lock-issues)
@@ -325,6 +329,31 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
+#### `remove-labels`
+
+移除指定 labels。
+
+```yml
+- name: Remove labels
+    uses: actions-cool/issues-helper@v1.2
+    with:
+      actions: 'remove-labels'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+      labels: 'xx'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ | v1.2 |
+| token | [token 说明](#token) | string | ✔ | v1.2 |
+| issue-number | 指定的 issue | number | ✔ | v1.2 |
+| labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ | v1.2 |
+
+- `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
+
+⏫ [返回列表](#列-表)
+
 #### `set-labels`
 
 替换 issue 的 labels。
@@ -449,7 +478,7 @@ jobs:
 
 ### ⭐ 进 阶
 
-进阶用法不建议 actions 多重使用。
+进阶用法不建议 actions 多个一次同时使用。
 
 #### `check-inactive`
 
@@ -494,6 +523,60 @@ jobs:
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 - `inactive-label`：默认为 `inactive`，可自定义其他。当项目未包含该 label 时，会自动新建
+
+⏫ [返回列表](#列-表)
+
+#### `check-issue`
+
+根据传入的参数和 `issue-number` 来检查该 issue 是否满足条件，返回一个布尔值。
+
+下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件。条件如下：
+
+```
+x1 + y1
+x2 + y1
+x1 + y2
+x2 + y2
+
+"x1y3y2"  true
+"1x2y"    false
+"y2 x1"   true
+```
+
+```yml
+name: Check Issue
+
+on:
+  issues:
+    types: [edited]
+
+jobs:
+  check-issue:
+    runs-on: ubuntu-latest
+    steps:
+      - name: check-issue
+        uses: actions-cool/issues-helper@v1
+        with:
+          actions: 'check-issue'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          assignee-includes: 'x1,x2'
+          title-includes: 'x1,x2/y1,y2'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ | v1.2 |
+| token | [token 说明](#token) | string | ✔ | v1.2 |
+| issue-number | 指定的 issue | number | ✔ | v1.2 |
+| assignee-includes | 是否包含指定人 | string | ✔ | v1.2 |
+| title-includes | 标题包含校验 | string | ✔ | v1.2 |
+| body-includes | 内容包含校验 | string | ✔ | v1.2 |
+
+- `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
+- 返回 `check-result`
+
+⏫ [返回列表](#列-表)
 
 #### `close-issues`
 

@@ -1,9 +1,9 @@
 name: 'Issues Helper'
-description: 'Some operations on issue'
+description: 'A GitHub Action to help you manage issues'
 author: 'xrkffgg'
 branding:
   icon: 'message-square'
-  color: 'blue'
+  color: 'black'
 inputs:
   actions:
     description: 'Action name'
@@ -32,6 +32,8 @@ inputs:
     description: 'Find comments direction'
   comment-auth:
     description: 'Find comments query auth'
+  assignee-includes:
+    description: 'Check use'
   body-includes:
     description: 'Query use'
   title-includes:
@@ -55,6 +57,8 @@ outputs:
     description: 'Create comment ID'
   comments:
     description: 'Find comments'
+  check-result:
+    description: 'Check issue'
 runs:
   using: node12
   main: 'dist/index.js'

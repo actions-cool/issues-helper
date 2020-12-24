@@ -13,6 +13,7 @@ const {
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
+  doRemoveLabels,
   doSetLabels,
   doUnlockIssue,
   doUpdateComment,
@@ -21,6 +22,7 @@ const {
 
 const {
   doCheckInactive,
+  doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
@@ -37,6 +39,7 @@ const ALLACTIONS = [
   'lock-issue',
   'open-issue',
   'remove-assignees',
+  'remove-labels',
   'set-labels',
   'unlock-issue',
   'update-comment',
@@ -44,6 +47,7 @@ const ALLACTIONS = [
 
   // advanced
   'check-inactive',
+  'check-issue',
   'close-issues',
   'find-comments',
   'lock-issues',
@@ -117,6 +121,9 @@ async function main() {
         case 'remove-assignees':
           await doRemoveAssignees(owner, repo, issueNumber, assignees);
           break;
+        case 'remove-labels':
+          await doRemoveLabels(owner, repo, issueNumber, labels);
+          break;
         case 'set-labels':
           await doSetLabels(owner, repo, issueNumber, labels);
           break;
@@ -153,6 +160,13 @@ async function main() {
             repo,
             labels
           )
+          break;
+        case 'check-issue':
+          await doCheckIssue(
+            owner,
+            repo,
+            issueNumber
+          );
           break;
         case 'close-issues':
           await doCloseIssues(
