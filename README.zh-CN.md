@@ -751,6 +751,13 @@ jobs:
       <br/>
       <strong>ant-design-vue</strong>
     </td>
+    <td align="center">
+      <a href="https://github.com/AttoJS/vue-request">
+        <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
+      </a>
+      <br/>
+      <strong>Vue Request</strong>
+    </td>
   </tr>
 </table>
 
