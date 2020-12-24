@@ -754,6 +754,18 @@ jobs:
   </tr>
 </table>
 
+<table>
+  <tr>
+    <td align="center">
+      <a href="https://github.com/AttoJS/vue-request">
+        <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
+      </a>
+      <br/>
+      Vue Request
+    </td>
+  </tr>
+</table>
+
 ## LICENSE
 
 [MIT](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
