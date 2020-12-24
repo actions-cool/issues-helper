@@ -736,7 +736,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 You can come to the following reference template. Please leave a message at [**here** ](https://github.com/actions-cool/issues-helper/issues/6).
 
 <table>
-  <th>
+  <tr>
     <td align="center">
       <a href="https://github.com/vueComponent/ant-design-vue">
         <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
@@ -744,7 +744,7 @@ You can come to the following reference template. Please leave a message at [**h
       <br/>
       ant-design-vue
     </td>
-  </th>
+  </tr>
 </table>
 
 ## LICENSE
