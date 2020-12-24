@@ -729,7 +729,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 
 ## Actions Template
 
-[GitHub Actions workflow template](https://github.com/actions-cool/.github). After fork, you can use the template directly.
+You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template.
 
 ## 💖 Who is using?
 

@@ -729,7 +729,7 @@ jobs:
 
 ## Actions 模板
 
-[GitHub Actions workflow template](https://github.com/actions-cool/.github) Fork 后，可直接使用模板。
+可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板。
 
 ## 💖 谁在使用？
 
