@@ -12,7 +12,7 @@ A GitHub Action to help you manage issues
 2. Fully automatic.
 3. Hosted on the GitHub server, as long as GitHub is not down, it will keep running.
 
-> Private projects have a limit of 2000 times per month, [Specific view](https://github.com/settings/billing). Public are unlimited.
+> Private projects have a limit of 2000 times per month. [Specific view](https://github.com/settings/billing). Public are unlimited.
 
 ## List
 
@@ -734,6 +734,18 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 ## 💖 Who are using?
 
 You can come to the following reference template. Please leave a message at [**here** ](https://github.com/actions-cool/issues-helper/issues/6).
+
+<table>
+  <th>
+    <td align="center">
+      <a href="https://github.com/vueComponent/ant-design-vue">
+        <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
+      </a>
+      <br/>
+      ant-design-vue
+    </td>
+  </th>
+</table>
 
 ## LICENSE
 

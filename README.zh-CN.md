@@ -735,6 +735,18 @@ jobs:
 
 你可以来以下项目参考模版。欢迎在[ **这里** ](https://github.com/actions-cool/issues-helper/issues/6)留言。
 
+<table>
+  <th>
+    <td align="center">
+      <a href="https://github.com/vueComponent/ant-design-vue">
+        <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
+      </a>
+      <br/>
+      ant-design-vue
+    </td>
+  </th>
+</table>
+
 ## LICENSE
 
 [MIT](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
