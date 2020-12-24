@@ -1,11 +1,12 @@
 function dealInput (para) {
   let arr = [];
   if (para) {
-    if (typeof(para) === 'string') {
-      arr.push(para);
-    } else {
-      arr = para;
-    }
+    const paraArr = para.split(',');
+    paraArr.forEach(it => {
+      if(it.trim()){
+        arr.push(it.trim())
+      }
+    })
   }
   return arr;
 };
