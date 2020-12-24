@@ -61,12 +61,12 @@ async function doCreateComment (owner, repo, issueNumber, body) {
   core.setOutput("comment-id", data.id);
 
   if (contents) {
-    await doCreateCommentContent(owner, repo, data.id, contents);
+    await doCreateCommentContent(owner, repo, data.id, dealInput(contents));
   }
 };
 
-async function doCreateCommentContent(owner, repo, commentId) {
-  if (typeof(contents) === 'object') {
+async function doCreateCommentContent(owner, repo, commentId, contents) {
+  if (contents.length) {
     contents.forEach(async item => {
       if (testContent(item)) {
         await octokit.reactions.createForIssueComment({
@@ -78,14 +78,6 @@ async function doCreateCommentContent(owner, repo, commentId) {
         core.info(`Actions: [create-reactions][${item}] success!`);
       }
     })
-  } else if (typeof(contents) === 'string' && testContent(contents)) {
-    await octokit.reactions.createForIssueComment({
-      owner,
-      repo,
-      comment_id: commentId,
-      content: contents
-    });
-    core.info(`Actions: [create-reactions][${contents}] success!`);
   }
 };
 
@@ -104,12 +96,12 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
   core.setOutput("issue-number", data.number);
 
   if (contents) {
-    await doCreateIssueContent(owner, repo, data.number, contents);
+    await doCreateIssueContent(owner, repo, data.number, dealInput(contents));
   }
 };
 
-async function doCreateIssueContent(owner, repo, issueNumber) {
-  if (typeof(contents) === 'object') {
+async function doCreateIssueContent(owner, repo, issueNumber, contents) {
+  if (contents.length) {
     contents.forEach(async item => {
       if (testContent(item)) {
         await octokit.reactions.createForIssue({
@@ -121,14 +113,6 @@ async function doCreateIssueContent(owner, repo, issueNumber) {
         core.info(`Actions: [create-reactions][${item}] success!`);
       }
     })
-  } else if (typeof(contents) === 'string' && testContent(contents)) {
-    await octokit.reactions.createForIssue({
-      owner,
-      repo,
-      issue_number: issueNumber,
-      content: contents
-    });
-    core.info(`Actions: [create-reactions][${contents}] success!`);
   }
 };
 
@@ -221,7 +205,7 @@ async function doUpdateComment (
   } 
 
   if (contents) {
-    await doCreateCommentContent(owner, repo, commentId, contents);
+    await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
   }
 };
 
@@ -243,8 +227,20 @@ async function doUpdateIssue (
   })
   const issue_body = issue.data.body;
   const issue_title = issue.data.title;
-  const issue_labels = issue.data.labels;
-  const issue_assignees = issue.data.assignees;
+
+  let issue_labels = [];
+  if (issue.data.labels.length > 0) {
+    issue.data.labels.forEach(it =>{
+      issue_labels.push(it.name);
+    });
+  }
+
+  let issue_assignees = [];
+  if (issue.data.assignees.length > 0) {
+    issue.data.assignees.forEach(it =>{
+      issue_assignees.push(it.login);
+    });
+  }
 
   let params = {
     owner,

@@ -126,15 +126,7 @@ async function doQueryIssues (owner, repo, labels, state) {
   issueMentioned ? params.mentioned = issueMentioned : null;
 
   if (labels) {
-    if (typeof(labels) === 'string') {
-      params.labels = labels;
-    } else {
-      let temp = '';
-      labels.forEach((it,index) => {
-        index == labels.length - 1 ? temp += `${it}` : temp += `${it},`;
-      });
-      params.labels = temp;
-    }
+    params.labels = labels;
   }
 
   const res = await octokit.issues.listForRepo(params);

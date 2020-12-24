@@ -65,7 +65,7 @@ jobs:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          assignees: 'xxx' or ['xxx'] or ['xx1', 'xx2']
+          assignees: 'xxx' or 'xx1,xx2'
 ```
 
 | Param | Desc  | Type | Required | Version |
@@ -73,12 +73,13 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person. No operation when no input or empty character or empty array | string \| string\[] | ✖ | v1 |
+| assignees | Designated person. No operation when no input or empty character | string | ✖ | v1 |
 
 - `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
 - The `name` can be modified according to the actual situation
 - [on reference](#github-docs)
 - `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
+- `assignees` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
 
 ⏫ [Back to list](#List)
 
@@ -104,7 +105,7 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          labels: 'bug' or ['bug'] or ['bug1', 'bug2']
+          labels: 'bug' or 'xx1,xx2'
 ```
 
 | Param | Desc  | Type | Required | Version |
@@ -112,7 +113,9 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
-| labels | New labels. When it is not filled in or is empty character, empty array, do not add | string \| string\[] | ✖ | v1 |
+| labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ | v1 |
+
+- `labels` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
 
 ⏫ [Back to list](#List)
 
@@ -164,7 +167,7 @@ jobs:
             Hello @${{ github.event.issue.user.login }}. Add some comments.
 
             你好 @${{ github.event.issue.user.login }}。巴拉巴拉。
-          contents: '+1' or ['+1', 'heart']
+          contents: '+1' or '+1,heart'
 ```
 
 | Param | Desc  | Type | Required | Version |
@@ -173,12 +176,13 @@ jobs:
 | token | [Token explain](#token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
 | body | Add comment content | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `body` default is `Currently at ${owner}/${repo}. And this is default comment.`
   - Where `${owner}/${repo}` means the current repo
 - Return `comment-id`, which can be used for subsequent operations. [Usage reference](#outputs-use)
 - `${{ github.event.issue.user.login }}` indicates the creator of the issue
+- `contents` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
 
 ⏫ [Back to list](#List)
 
@@ -215,9 +219,9 @@ jobs:
 | token | [Token explain](#token) | string | ✔ | v1 |
 | title | The title of the new issue | string | ✖ | v1 |
 | body | The body of the new issue | string | ✖ | v1 |
-| labels | The labels for the new issue | string \| string\[] | ✖ | v1 |
-| assignees | The assignees for the new issue | string \| string\[] | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| labels | The labels for the new issue | string | ✖ | v1 |
+| assignees | The assignees for the new issue | string | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `title` default is `Default Title`
 - Return `issue-number`. [Usage reference](#outputs-use)
@@ -317,7 +321,7 @@ Remove the person designated by issue.
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person removed. When it is an empty character, empty array, do not remove | string \| string\[] | ✔ | v1 |
+| assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ | v1 |
 
 ⏫ [Back to list](#List)
 
@@ -340,7 +344,7 @@ Replace the labels of issue.
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
-| labels | labels set. When empty characters, empty array, will remove all | string \| string\[] | ✔ | v1 |
+| labels | labels set. When empty characters, will remove all | string | ✔ | v1 |
 
 ⏫ [Back to list](#List)
 
@@ -398,7 +402,7 @@ jobs:
 | comment-id | The comment ID | number | ✔ | v1 |
 | body | Update the content of comment | string | ✖ | v1 |
 | update-mode | Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) | string | ✖ | v1 |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
@@ -434,9 +438,9 @@ Update the specified issue according to the `issue-number`.
 | title | Modify the title of the issue | string | ✖ | v1 |
 | body | Modify the content of issue | string | ✖ | v1 |
 | update-mode |  Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| labels | Replace the labels of issue | string \| string\[] | ✖ | v1 |
-| assignees | Replace the assignees of issue | string \| string\[] | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| labels | Replace the labels of issue | string | ✖ | v1 |
+| assignees | Replace the assignees of issue | string | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
@@ -475,7 +479,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string \| string\[] | ✖ | v1 |
+| labels | Labels filtering | string | ✖ | v1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
 | issue-creator | Creator filtering | string | ✖ | v1 |
@@ -520,7 +524,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string \| string\[] | ✖ | v1 |
+| labels | Labels filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
 | issue-creator | Creator filtering | string | ✖ | v1 |
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
@@ -601,7 +605,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string \| string\[] | ✖ | v1 |
+| labels | Labels filtering | string | ✖ | v1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
 | issue-creator | Creator filtering | string | ✖ | v1 |
@@ -756,7 +760,7 @@ You can come to the following repositories for reference. Please leave a message
         <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       </a>
       <br/>
-      <strong>Vue Request</strong>
+      <strong>vue-request</strong>
     </td>
   </tr>
 </table>

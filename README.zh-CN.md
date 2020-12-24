@@ -65,7 +65,7 @@ jobs:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          assignees: 'xxx' or ['xxx'] or ['xx1', 'xx2']
+          assignees: 'xxx' or 'xx1,xx2'
 ```
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
@@ -73,12 +73,13 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 指定人。当不填或者为空字符、空数组时，不操作 | string \| string\[] | ✖ | v1 |
+| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ | v1 |
 
 - `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
 - [on 参考](#github-docs)
 - `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
+- `assignees` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
 ⏫ [返回列表](#列-表)
 
@@ -104,7 +105,7 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          labels: 'bug' or ['bug'] or ['bug1', 'bug2']
+          labels: 'bug' or 'bug1,bug2'
 ```
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
@@ -112,7 +113,9 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | 新增的 labels。当不填或者为空字符、空数组时，不新增 | string \| string\[] | ✖ | v1 |
+| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ | v1 |
+
+- `labels` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
 ⏫ [返回列表](#列-表)
 
@@ -164,7 +167,7 @@ jobs:
             Hello ${{ github.event.issue.user.login }}. Add some comments.
 
             你好 ${{ github.event.issue.user.login }}。巴拉巴拉。
-          contents: '+1' or ['+1', 'heart']
+          contents: '+1' or '+1,heart'
 ```
 
 | 参数 | 描述 | 类型 | 必填 | 版本 |
@@ -173,12 +176,13 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | body | 新增评论的内容  | string | ✖ | v1 |
-| contents | 为新增评论的增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `body` 默认为：`Currently at ${owner}/${repo}. And this is default comment.`
   - 其中 `${owner}/${repo}` 表示当前仓库
 - 返回 `comment-id`，可用于之后操作。[用法参考](#outputs-使用)
 - `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
+- `contents` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
 ⏫ [返回列表](#列-表)
 
@@ -215,9 +219,9 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | title | 新增 issue 的标题 | string | ✖ | v1 |
 | body | 新增 issue 的内容 | string | ✖ | v1 |
-| labels | 为新增 issue 添加 labels | string \| string\[] | ✖ | v1 |
-| assignees | 为新增 issue 添加 assignees | string \| string\[] | ✖ | v1 |
-| contents | 为新增 issue 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| labels | 为新增 issue 添加 labels | string | ✖ | v1 |
+| assignees | 为新增 issue 添加 assignees | string | ✖ | v1 |
+| contents | 为新增 issue 增加 [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `title` 默认为：`Default Title`
 - 返回 `issue-number`，[用法参考](#outputs-使用)
@@ -317,7 +321,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 移除的指定人。当为空字符、空数组时，不进行移除 | string \| string\[] | ✔ | v1 |
+| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -340,7 +344,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | labels 设置。当空字符、空数组时，会移除所有 | string \| string\[] | ✔ | v1 |
+| labels | labels 设置。当空字符时，会移除所有 | string | ✔ | v1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -398,7 +402,7 @@ jobs:
 | comment-id | 指定的 comment | number | ✔ | v1 |
 | body | 更新 comment 的内容 | string | ✖ | v1 |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| contents | 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
@@ -434,9 +438,9 @@ jobs:
 | title | 修改 issue 的标题 | string | ✖ | v1 |
 | body | 修改 issue 的内容 | string | ✖ | v1 |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| labels | 替换 issue 的 labels | string \| string\[] | ✖ | v1 |
-| assignees | 替换 issue 的 assignees | string \| string\[] | ✖ | v1 |
-| contents | 增加 [reaction](#reactions-types) | string \| string\[] | ✖ | v1 |
+| labels | 替换 issue 的 labels | string | ✖ | v1 |
+| assignees | 替换 issue 的 assignees | string | ✖ | v1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1 |
 
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
@@ -475,7 +479,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string \| string\[] | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
@@ -520,7 +524,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string \| string\[] | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
@@ -601,7 +605,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string \| string\[] | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
@@ -756,7 +760,7 @@ jobs:
         <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       </a>
       <br/>
-      <strong>Vue Request</strong>
+      <strong>vue-request</strong>
     </td>
   </tr>
 </table>
