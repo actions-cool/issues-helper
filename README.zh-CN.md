@@ -570,9 +570,9 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1.2 |
 | token | [token 说明](#token) | string | ✔ | v1.2 |
 | issue-number | 指定的 issue | number | ✔ | v1.2 |
-| assignee-includes | 是否包含指定人 | string | ✔ | v1.2 |
-| title-includes | 标题包含校验 | string | ✔ | v1.2 |
-| body-includes | 内容包含校验 | string | ✔ | v1.2 |
+| assignee-includes | 是否包含指定人 | string | ✖ | v1.2 |
+| title-includes | 标题包含校验 | string | ✖ | v1.2 |
+| body-includes | 内容包含校验 | string | ✖ | v1.2 |
 
 - `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
 - 返回 `check-result`

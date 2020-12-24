@@ -570,9 +570,9 @@ jobs:
 | actions | Action type | string | ✔ | v1.2 |
 | token | [Token explain](#token) | string | ✔ | v1.2 |
 | issue-number | The number of issue | number | ✔ | v1.2 |
-| assignee-includes | Assignees contains check | string | ✔ | v1.2 |
-| title-includes | Title contains check | string | ✔ | v1.2 |
-| body-includes | Body contains check | string | ✔ | v1.2 |
+| assignee-includes | Assignees contains check | string | ✖ | v1.2 |
+| title-includes | Title contains check | string | ✖ | v1.2 |
+| body-includes | Body contains check | string | ✖ | v1.2 |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
 - Return `check-result`
