@@ -103,7 +103,6 @@ async function doCheckIssue (owner, repo, issueNumber) {
       keyword2.length ?
         matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
         matchKeyword(issue.data.body, keyword1);
-    console.log(!!checkResult)
   }
   core.info(`Actions: [check-issue][${!!checkResult}] success!`);
   core.setOutput("check-result", !!checkResult);
