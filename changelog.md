@@ -22,6 +22,12 @@
 
 ## Change Log
 
+### v1.2
+
+`2020.12.25`
+
+- feat: add check-issue & remove labels. [#12](https://github.com/actions-cool/issues-helper/pull/12)
+
 ### v1.1
 
 `2020.12.24`

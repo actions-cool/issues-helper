@@ -532,7 +532,7 @@ jobs:
 
 下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件。条件如下：
 
-```
+```js
 x1 + y1
 x2 + y1
 x1 + y2
@@ -541,6 +541,7 @@ x2 + y2
 "x1y3y2"  true
 "1x2y"    false
 "y2 x1"   true
+"x1"      false
 ```
 
 ```yml
@@ -816,11 +817,15 @@ jobs:
 
 ## Actions 模板
 
-可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板。
+- 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
+
+- 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
 
 ## 💖 谁在使用？
 
-你可以来以下项目进行参考。欢迎在[ **这里** ](https://github.com/actions-cool/issues-helper/issues/6)留言。
+你可以来以下项目进行参考。欢迎在 [**这里**](https://github.com/actions-cool/issues-helper/issues/6) 留言。
+
+同时，如果你在使用过程中有什么疑问，也可以在 issue 或者 discussion 中进行提问和查询。
 
 <table>
   <tr>

@@ -532,7 +532,7 @@ Check whether the issue meets the conditions according to the passed parameters 
 
 The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`. If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions. The conditions are as follows:
 
-```
+```js
 x1 + y1
 x2 + y1
 x1 + y2
@@ -541,6 +541,7 @@ x2 + y2
 "x1y3y2"  true
 "1x2y"    false
 "y2 x1"   true
+"x1"      false
 ```
 
 ```yml
@@ -816,11 +817,15 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 
 ## Actions Template
 
-You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template.
+- You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
+
+- Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
 
 ## 💖 Who is using?
 
-You can come to the following repositories for reference. Please leave a message at [**here** ](https://github.com/actions-cool/issues-helper/issues/6).
+You can come to the following repositories for reference. Please leave a message at [**here**](https://github.com/actions-cool/issues-helper/issues/6).
+
+At the same time, if you have any questions during use, you can also ask and inquire in the issue or discussion.
 
 <table>
   <tr>
