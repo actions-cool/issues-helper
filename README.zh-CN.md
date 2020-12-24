@@ -1,4 +1,4 @@
-# 🤖 Issues Helper
+# 🤖 Issues 助手
 
 [English](./README.md) | 简体中文
 
@@ -733,7 +733,7 @@ jobs:
 
 ## 💖 谁在使用？
 
-你可以来以下项目参考模版。欢迎在[ **这里** ](https://github.com/actions-cool/issues-helper/issues/6)留言。
+你可以来以下项目进行参考。欢迎在[ **这里** ](https://github.com/actions-cool/issues-helper/issues/6)留言。
 
 <table>
   <tr>
@@ -742,14 +742,14 @@ jobs:
         <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       </a>
       <br/>
-      ant-design
+      <strong>ant-design</strong>
     </td>
     <td align="center">
       <a href="https://github.com/vueComponent/ant-design-vue">
         <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
       </a>
       <br/>
-      ant-design-vue
+      <strong>ant-design-vue</strong>
     </td>
   </tr>
 </table>

@@ -731,9 +731,9 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 
 [GitHub Actions workflow template](https://github.com/actions-cool/.github). After fork, you can use the template directly.
 
-## 💖 Who are using?
+## 💖 Who is using?
 
-You can come to the following reference template. Please leave a message at [**here** ](https://github.com/actions-cool/issues-helper/issues/6).
+You can come to the following repositories for reference. Please leave a message at [**here** ](https://github.com/actions-cool/issues-helper/issues/6).
 
 <table>
   <tr>
@@ -742,14 +742,14 @@ You can come to the following reference template. Please leave a message at [**h
         <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       </a>
       <br/>
-      ant-design
+      <strong>ant-design</strong>
     </td>
     <td align="center">
       <a href="https://github.com/vueComponent/ant-design-vue">
         <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
       </a>
       <br/>
-      ant-design-vue
+      <strong>ant-design-vue</strong>
     </td>
   </tr>
 </table>
