@@ -11,6 +11,11 @@ function dealInput (para) {
   return arr;
 };
 
+function matchKeyword(content, keywords) {
+  return keywords.find(item => content.toLowerCase().includes(item));
+};
+
 module.exports = {
   dealInput,
+  matchKeyword,
 };

@@ -15,6 +15,8 @@ const {
   doLockIssue
 } = require('./base.js');
 
+const { dealInput, matchKeyword } = require('./util.js');
+
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
@@ -24,6 +26,7 @@ direction = direction === 'desc' ? 'desc' : 'asc';
 const commentAuth = core.getInput("comment-auth");
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
+const assigneeIncludes = core.getInput('assignee-includes');
 
 const issueCreator = core.getInput("issue-creator");
 const issueAssignee = core.getInput('issue-assignee');
@@ -55,6 +58,55 @@ async function doCheckInactive (owner, repo, labels) {
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
+};
+
+/**
+ * 检查 issue 是否满足条件，满足返回 true
+ * 当前 issue 的指定人是否有一个满足 assigneeIncludes 里的某个
+ * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
+ */
+async function doCheckIssue (owner, repo, issueNumber) {
+  var checkResult = true;
+  const issue = await octokit.issues.get({
+    owner,
+    repo,
+    issue_number: issueNumber
+  });
+
+  if (!!checkResult && assigneeIncludes) {
+    let assigneesCheck = dealInput(assigneeIncludes);
+    let checkAssignee = false;
+    issue.data.assignees.forEach(it => {
+      if (checkResult && !checkAssignee && assigneesCheck.includes(it.login)) {
+        checkResult = true;
+        checkAssignee = true;
+      }
+    })
+    !checkAssignee ? checkResult = false : null;
+  }
+
+  if (!!checkResult && titleIncludes) {
+    const titleArr = titleIncludes.split('/');
+    const keyword1 = dealInput(titleArr[0]);
+    const keyword2 = dealInput(titleArr[1]);
+    checkResult =
+      keyword2.length ?
+        matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
+        matchKeyword(issue.data.title, keyword1);
+  }
+
+  if (!!checkResult && bodyIncludes) {
+    const bodyArr = bodyIncludes.split('/');
+    const keyword1 = dealInput(bodyArr[0]);
+    const keyword2 = dealInput(bodyArr[1]);
+    checkResult =
+      keyword2.length ?
+        matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
+        matchKeyword(issue.data.body, keyword1);
+    console.log(!!checkResult)
+  }
+  core.info(`Actions: [check-issue][${!!checkResult}] success!`);
+  core.setOutput("check-result", !!checkResult);
 };
 
 async function doCloseIssues (owner, repo, labels) {
@@ -134,7 +186,12 @@ async function doQueryIssues (owner, repo, labels, state) {
   res.data.forEach(iss => {
     const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
     const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
-    if (a && b) {
+    /**
+     * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
+     * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
+     * You can identify pull requests by the pull_request key.
+     */
+    if (a && b && iss.pull_request === undefined) {
       if (inactiveDay && typeof(inactiveDay) === 'number') {
         let lastTime = dayjs.utc().subtract(inactiveDay, 'day');
         let updateTime = dayjs.utc(iss.updated_at);
@@ -152,6 +209,7 @@ async function doQueryIssues (owner, repo, labels, state) {
 
 module.exports = {
   doCheckInactive,
+  doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,

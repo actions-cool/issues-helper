@@ -154,6 +154,28 @@ async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
   core.info(`Actions: [remove-assignees][${assignees}] success!`);
 };
 
+async function doRemoveLabels (owner, repo, issueNumber, labels) {
+  const issue = await octokit.issues.get({
+    owner,
+    repo,
+    issue_number: issueNumber
+  });
+  const dealLabels = dealInput(labels);
+  let addLables = [];
+  if (dealLabels.length) {
+    issue.data.labels.forEach(item => {
+      !dealLabels.includes(item.name) ? addLables.push(item.name) : '';
+    })
+    await octokit.issues.setLabels({
+      owner,
+      repo,
+      issue_number: issueNumber,
+      labels: addLables
+    });
+    core.info(`Actions: [remove-labels][${labels}] success!`);
+  }
+};
+
 async function doSetLabels (owner, repo, issueNumber, labels) {
   await octokit.issues.setLabels({
     owner,
@@ -202,7 +224,7 @@ async function doUpdateComment (
 
     await octokit.issues.updateComment(params);
     core.info(`Actions: [update-comment][${commentId}] success!`);
-  } 
+  }
 
   if (contents) {
     await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
@@ -297,6 +319,7 @@ module.exports = {
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
+  doRemoveLabels,
   doSetLabels,
   doUnlockIssue,
   doUpdateComment,
