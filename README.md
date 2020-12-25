@@ -532,7 +532,7 @@ Check whether the issue meets the conditions according to the passed parameters 
 
 The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`.
 
-If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions. 
+If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions.
 
 [Check rules](#check-rules)
 
@@ -854,21 +854,34 @@ At the same time, if you have any questions during use, you can also ask and inq
       <a href="https://github.com/ant-design/ant-design">
         <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       </a>
-      <br/>
-      <strong>ant-design</strong>
     </td>
     <td align="center">
       <a href="https://github.com/vueComponent/ant-design-vue">
         <img src="https://avatars2.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
       </a>
-      <br/>
-      <strong>ant-design-vue</strong>
+    </td>
+    <td align="center">
+      <a href="https://github.com/umijs/dumi">
+        <img src="https://avatars2.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      </a>
     </td>
     <td align="center">
       <a href="https://github.com/AttoJS/vue-request">
         <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       </a>
-      <br/>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <strong>ant-design</strong>
+    </td>
+    <td align="center">
+      <strong>ant-design-vue</strong>
+    </td>
+    <td align="center">
+      <strong>dumi</strong>
+    </td>
+    <td align="center">
       <strong>vue-request</strong>
     </td>
   </tr>
