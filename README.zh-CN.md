@@ -77,7 +77,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ | v1 |
+| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ | v1.1 |
 
 - `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
@@ -117,7 +117,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ | v1 |
+| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ | v1.1 |
 
 - `labels` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
@@ -180,7 +180,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
 | body | 新增评论的内容  | string | ✖ | v1 |
-| contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ | v1 |
+| contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
 - `body` 默认为：`Currently at ${owner}/${repo}. And this is default comment.`
   - 其中 `${owner}/${repo}` 表示当前仓库
@@ -223,9 +223,9 @@ jobs:
 | token | [token 说明](#token) | string | ✔ | v1 |
 | title | 新增 issue 的标题 | string | ✖ | v1 |
 | body | 新增 issue 的内容 | string | ✖ | v1 |
-| labels | 为新增 issue 添加 labels | string | ✖ | v1 |
-| assignees | 为新增 issue 添加 assignees | string | ✖ | v1 |
-| contents | 为新增 issue 增加 [reaction](#reactions-types) | string | ✖ | v1 |
+| labels | 为新增 issue 添加 labels | string | ✖ | v1.1 |
+| assignees | 为新增 issue 添加 assignees | string | ✖ | v1.1 |
+| contents | 为新增 issue 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
 - `title` 默认为：`Default Title`
 - 返回 `issue-number`，[用法参考](#outputs-使用)
@@ -325,7 +325,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ | v1 |
+| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ | v1.1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -373,7 +373,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | labels 设置。当空字符时，会移除所有 | string | ✔ | v1 |
+| labels | labels 设置。当空字符时，会移除所有 | string | ✔ | v1.1 |
 
 ⏫ [返回列表](#列-表)
 
@@ -431,7 +431,7 @@ jobs:
 | comment-id | 指定的 comment | number | ✔ | v1 |
 | body | 更新 comment 的内容 | string | ✖ | v1 |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
@@ -467,9 +467,9 @@ jobs:
 | title | 修改 issue 的标题 | string | ✖ | v1 |
 | body | 修改 issue 的内容 | string | ✖ | v1 |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| labels | 替换 issue 的 labels | string | ✖ | v1 |
-| assignees | 替换 issue 的 assignees | string | ✖ | v1 |
-| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1 |
+| labels | 替换 issue 的 labels | string | ✖ | v1.1 |
+| assignees | 替换 issue 的 assignees | string | ✖ | v1.1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
@@ -508,7 +508,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
@@ -530,19 +530,7 @@ jobs:
 
 根据传入的参数和 `issue-number` 来检查该 issue 是否满足条件，返回一个布尔值。
 
-下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件。条件如下：
-
-```js
-x1 + y1
-x2 + y1
-x1 + y2
-x2 + y2
-
-"x1y3y2"  true
-"1x2y"    false
-"y2 x1"   true
-"x1"      false
-```
+下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件，[校验规则](#校验规则)。
 
 ```yml
 name: Check Issue
@@ -608,7 +596,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
@@ -689,7 +677,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
@@ -791,6 +779,36 @@ jobs:
 
 - [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
 - [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+
+⏫ [返回列表](#列-表)
+
+### 校验规则
+
+```js
+"title-includes": 'x1,x2'
+
+x1,
+x2
+
+"x1y3y2"  true
+"y2 x1"   true
+"x2"      true
+"x3"      false
+```
+
+```js
+"title-includes": 'x1,x2/y1,y2'
+
+x1 + y1
+x2 + y1
+x1 + y2
+x2 + y2
+
+"x1y3y2"  true
+"y2 x1"   true
+"1x2y"    false
+"x1"      false
+```
 
 ⏫ [返回列表](#列-表)
 
