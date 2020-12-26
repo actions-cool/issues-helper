@@ -11,6 +11,7 @@ export default defineConfig({
   logo:
     'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
   exportStatic: {},
+  outputPath: 'docs-dist',
   hash: true,
   base: `/${name}/`,
   publicPath: `/${name}/`,
