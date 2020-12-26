@@ -7,7 +7,7 @@ hero:
   desc: 🤖 A GitHub Action that easily helps you automatically manage issues
   actions:
     - text: Quick start
-      link: /guide/how-to-use
+      link: /en-US/guide/start
 features:
   - icon: https://github.com/actions-cool/resources/blob/main/image/free.png?raw=true
     title: Completely free
@@ -55,7 +55,7 @@ jobs:
 
 ## ⚡ Feedback
 
-Your comments are very welcome, you can do the following:
+You are very welcome to try it out and put forward your comments. You can use the following methods:
 
 - Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
 - Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)

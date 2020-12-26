@@ -10,9 +10,9 @@ Online documentation | [Changelog](./changelog.md)
 
 ## 😎 Why use GitHub Action?
 
-1. Complete free.
-2. Fully automatic.
-3. Hosted on the GitHub server, as long as GitHub is not down, it is not affected.
+1. Complete free
+2. Fully automatic
+3. Hosted on the GitHub server, as long as GitHub is not down, it is not affected
 
 > Private projects have a limit of 2000 times per month. [Specific view](https://github.com/settings/billing). Public are unlimited.
 
@@ -81,7 +81,7 @@ jobs:
 
 - `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
 - The `name` can be modified according to the actual situation
-- [on reference](#github-docs)
+- [Reference to on](#github-docs)
 - `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
 - `assignees` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
 
@@ -476,7 +476,7 @@ Update the specified issue according to the `issue-number`.
 
 ⏫ [Back to list](#List)
 
-### ⭐ Advanced
+### 🌟 Advanced
 
 Advanced usage is not recommended to use multiple actions at the same time.
 
@@ -515,7 +515,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
 | inactive-label | The label name adding | string | ✖ | v1 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
@@ -606,7 +606,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -688,7 +688,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -762,7 +762,7 @@ Need to have the person token with push permission.
   - `Name` is the same as in actions
   - `Value` fill in the token just applied by the individual
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>.
+When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
 
 ⏫ [Back to list](#List)
 
@@ -779,6 +779,8 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
+[More](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs).
+
 ### GitHub Docs
 
 - [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
@@ -791,7 +793,7 @@ When the token is not filled in actions or the corresponding secrets are not add
 ```js
 "title-includes": 'x1,x2'
 
-x1,
+x1
 x2
 
 "x1y3y2"  true

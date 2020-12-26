@@ -10,9 +10,9 @@
 
 ## 😎 为什么用 GitHub Action？
 
-1. 完全免费。
-2. 全自动操作。
-3. 托管于 GitHub 服务器，只要 GitHub 不宕机，它就不受影响。
+1. 完全免费
+2. 全自动操作
+3. 托管于 GitHub 服务器，只要 GitHub 不宕机，它就不受影响
 
 > Private 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。Public 项目无限制。
 
@@ -476,7 +476,7 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
-### ⭐ 进 阶
+### 🌟 进 阶
 
 进阶用法不建议 actions 多个一次同时使用。
 
@@ -515,7 +515,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
 | inactive-label | 新增标签名称 | string | ✖ | v1 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
@@ -602,7 +602,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -684,7 +684,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -758,7 +758,7 @@ jobs:
   - `Name` 与 actions 中保持一致
   - `Value` 填写刚才个人申请的 token
 
-当 actions 不填写 token 时，或项目未添加对应 secrets 时，会默认为 github-actions <kbd>bot</kbd>。
+当 actions 不填写 token 时，或项目未添加对应 secrets 时，会默认为 github-actions <kbd>bot</kbd>。[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow)。
 
 ⏫ [返回列表](#列-表)
 
@@ -775,6 +775,8 @@ jobs:
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
+[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs)。
+
 ### GitHub Docs
 
 - [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
@@ -787,7 +789,7 @@ jobs:
 ```js
 "title-includes": 'x1,x2'
 
-x1,
+x1
 x2
 
 "x1y3y2"  true
@@ -812,7 +814,7 @@ x2 + y2
 
 ⏫ [返回列表](#列-表)
 
-### Reactions types
+### Reactions 类型
 
 | content | emoji |
 | -- | -- |

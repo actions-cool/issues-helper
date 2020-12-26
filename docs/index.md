@@ -7,7 +7,7 @@ hero:
   desc: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
   actions:
     - text: 快速开始
-      link: /guide#快速上手
+      link: /guide/start
 features:
   - icon: https://github.com/actions-cool/resources/blob/main/image/free.png?raw=true
     title: 完全免费
@@ -55,7 +55,7 @@ jobs:
 
 ## ⚡ 反馈
 
-非常欢迎你的意见，你可以通过以下方式：
+非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
 
 - 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
 - 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论

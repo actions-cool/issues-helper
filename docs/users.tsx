@@ -62,7 +62,7 @@ export default () => {
               src={user.logo}
               alt={user.name}
             />
-            <div>{user.name}</div>
+            <div style={{ marginTop: 10 }}>{user.name}</div>
           </a>
         </li>
       ))}

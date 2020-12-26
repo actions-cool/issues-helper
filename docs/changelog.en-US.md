@@ -1,7 +1,4 @@
 ---
-nav:
-  order: 2
-  title: ✨ Changelog
 toc: menu
 ---
 
@@ -12,7 +9,7 @@ toc: menu
   - v1 represents the initial version
   - The fixes and additions to the v1 version will be released to the v1.1 version
   - When the released v1.x runs stable for a certain period of time, release the advanced v2 version
-  - It is recommended to use annotations and above for the parameters in the API
+  - It is recommended to use the largest version and above for the parameters in the API
 
 - Version selection
   - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
