@@ -1,0 +1,62 @@
+---
+title: Issues 助手
+order: 1
+hero:
+  title: Issues 助手
+  image: https://avatars1.githubusercontent.com/u/73879334?s=200&v=4
+  desc: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
+  actions:
+    - text: 快速开始
+      link: /guide/start
+features:
+  - icon: https://github.com/actions-cool/resources/blob/main/image/free.png?raw=true
+    title: 完全免费
+    desc: 使用 GitHub 自带提供的 Actions 服务
+  - icon: https://github.com/actions-cool/resources/blob/main/image/snap.png?raw=true
+    title: 简单易用
+    desc: 教程详细，模版丰富
+  - icon: https://github.com/actions-cool/resources/blob/main/image/network.png?raw=true
+    title: 轻松托管
+    desc: 只要 GitHub 不宕机，它就不受影响
+footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
+---
+
+## 🍭 快速上手
+
+这里列举一个非常简单以及常用的例子。对应场景为：当一个 issue 新增 `help wanted` 标签时，系统会自动进行评论。
+
+```yml
+name: Issue Reply
+
+on:
+  issues:
+    types: [labeled]
+
+jobs:
+  reply-helper:
+    runs-on: ubuntu-latest
+    steps:
+      - name: help wanted
+        if: github.event.label.name == 'help wanted'
+        uses: actions-cool/issues-helper@v1.2
+        with:
+          actions: 'create-comment'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          body: |
+            Hello @${{ github.event.issue.user.login }}. We totally like your proposal/feedback, welcome PR。
+
+            你好 @${{ github.event.issue.user.login }}，我们完全同意你的提议/反馈，欢迎PR。
+```
+
+## 💖 谁在使用？
+
+<code src="./users.tsx" inline />
+
+## ⚡ 反馈
+
+非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
+
+- 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
+- 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论
+- 提交 [Pull Request](https://github.com/actions-cool/issues-helper/pulls) 改进 `issues-helper` 的代码

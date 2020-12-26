@@ -1,24 +1,24 @@
-# 🤖 Issues Helper
+# 🤖 Issues 助手
 
-English | [简体中文](./README.zh-CN.md)
+简体中文 | [English](./README.en-US.md) |
 
 [![](https://img.shields.io/github/workflow/status/actions-cool/issues-helper/ci?style=flat-square)](https://github.com/actions-cool/issues-helper/actions) [![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper) [![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers) [![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases) [![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions) [![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
 
-A GitHub Action to help you manage issues
+一个轻松帮你自动管理 issues 的 GitHub Action
 
-Online documentation | [Changelog](./changelog.md)
+在线文档 | [更新日志](./changelog.zh-CN.md)
 
-## 😎 Why use GitHub Action?
+## 😎 为什么用 GitHub Action？
 
-1. Complete free.
-2. Fully automatic.
-3. Hosted on the GitHub server, as long as GitHub is not down, it will keep running.
+1. 完全免费
+2. 全自动操作
+3. 托管于 GitHub 服务器，只要 GitHub 不宕机，它就不受影响
 
-> Private projects have a limit of 2000 times per month. [Specific view](https://github.com/settings/billing). Public are unlimited.
+> Private 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。Public 项目无限制。
 
-## List
+## 列 表
 
-- ⭐ Base
+- ⭐ 基 础
   - [`add-assignees`](#add-assignees)
   - [`add-labels`](#add-labels)
   - [`close-issue`](#close-issue)
@@ -33,24 +33,24 @@ Online documentation | [Changelog](./changelog.md)
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
-- ⭐ Advanced
+- ⭐ 进 阶
   - [`check-inactive`](#check-inactive)
   - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)
   - [`find-comments`](#find-comments)
   - [`lock-issues`](#lock-issues)
-- 🌰 Example
+- 🌰 例 子
   - [`find-comments + create-comment + update-comment`](#find-comments--create-comment--update-comment)
 
-## 🚀 Usage
+## 🚀 使 用
 
-### ⭐ Base
+### ⭐ 基 础
 
-In order to better display the function, the following is an example of the actual scene, please refer to it flexibly.
+为了更好的展示功能，下面以实际场景举例，请灵活参考。
 
 #### `add-assignees`
 
-When an issue is added or modified, assign this issue to one or more people.
+当一个 issue 新增或修改时，将这个 issue 指定某人或多人。
 
 ```yml
 name: Add Assigness
@@ -72,24 +72,24 @@ jobs:
           assignees: 'xxx' or 'xx1,xx2'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person. No operation when no input or empty character | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ | v1.1 |
 
-- `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
-- The `name` can be modified according to the actual situation
-- [on reference](#github-docs)
-- `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
-- `assignees` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
+- 其中的 `name` 可根据自行根据实际情况修改
+- [on 参考](#github-docs)
+- `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
+- `assignees` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `add-labels`
 
-When the content of a new issue does not contain the specified format, add labels for the issue.
+当一个新增的 issue 内容不包含指定格式时，为这个 issue 添加 labels。
 
 ```yml
 name: Add Labels
@@ -109,23 +109,23 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          labels: 'bug' or 'xx1,xx2'
+          labels: 'bug' or 'bug1,bug2'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ | v1.1 |
 
-- `labels` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `labels` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `close-issue`
 
-Close the specified issue.
+关闭指定 issue。
 
 ```yml
 - name: Close issue
@@ -137,17 +137,17 @@ Close the specified issue.
       body: 'This is auto closed.'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `create-comment`
 
-When a designated label is added, comment on the issue.
+当新增一个指定 label 时，对该 issue 进行评论。
 
 ```yml
 name: Create Comment
@@ -168,31 +168,31 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Hello @${{ github.event.issue.user.login }}. Add some comments.
+            Hello ${{ github.event.issue.user.login }}. Add some comments.
 
-            你好 @${{ github.event.issue.user.login }}。巴拉巴拉。
+            你好 ${{ github.event.issue.user.login }}。巴拉巴拉。
           contents: '+1' or '+1,heart'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| body | Add comment content | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| body | 新增评论的内容  | string | ✖ | v1 |
+| contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
-- `body` default is `Currently at ${owner}/${repo}. And this is default comment.`
-  - Where `${owner}/${repo}` means the current repo
-- Return `comment-id`, which can be used for subsequent operations. [Usage reference](#outputs-use)
-- `${{ github.event.issue.user.login }}` indicates the creator of the issue
-- `contents` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `body` 默认为：`Currently at ${owner}/${repo}. And this is default comment.`
+  - 其中 `${owner}/${repo}` 表示当前仓库
+- 返回 `comment-id`，可用于之后操作。[用法参考](#outputs-使用)
+- `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
+- `contents` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `create-issue`
 
-Here is an example, add an issue at UTC 00:00 on the 1st of every month.
+感觉新增 issue 使用场景不多。这里举例，每月 1 号 UTC 00:00 新增一个 issue。
 
 ```yml
 name: Create Issue
@@ -217,24 +217,24 @@ jobs:
           contents: '+1'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| title | The title of the new issue | string | ✖ | v1 |
-| body | The body of the new issue | string | ✖ | v1 |
-| labels | The labels for the new issue | string | ✖ | v1.1 |
-| assignees | The assignees for the new issue | string | ✖ | v1.1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| title | 新增 issue 的标题 | string | ✖ | v1 |
+| body | 新增 issue 的内容 | string | ✖ | v1 |
+| labels | 为新增 issue 添加 labels | string | ✖ | v1.1 |
+| assignees | 为新增 issue 添加 assignees | string | ✖ | v1.1 |
+| contents | 为新增 issue 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
-- `title` default is `Default Title`
-- Return `issue-number`. [Usage reference](#outputs-use)
+- `title` 默认为：`Default Title`
+- 返回 `issue-number`，[用法参考](#outputs-使用)
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `delete-comment`
 
-According to [`comment-id`](#comment-id) delete the specified comment.
+根据 [`comment-id`](#comment-id) 删除指定评论。
 
 ```yml
 - name: Delete comment
@@ -245,17 +245,17 @@ According to [`comment-id`](#comment-id) delete the specified comment.
       comment-id: xxx
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| comment-id | The comment ID | number | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| comment-id | 指定的 comment | number | ✔ | v1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `lock-issue`
 
-When the `invalid` label is added, the issue is locked.
+当新增 `invalid` label 时，对该 issue 进行锁定。
 
 ```yml
 name: Lock Issue
@@ -277,17 +277,17 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `open-issue`
 
-Open the specified issue.
+打开指定 issue。
 
 ```yml
 - name: Open issue
@@ -298,17 +298,17 @@ Open the specified issue.
       issue-number: xxx
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `remove-assignees`
 
-Remove the person designated by issue.
+移除 issue 指定人员。
 
 ```yml
 - name: Remove assignees
@@ -320,18 +320,18 @@ Remove the person designated by issue.
       assignees: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ | v1.1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `remove-labels`
 
-Remove the specified labels.
+移除指定 labels。
 
 ```yml
 - name: Remove labels
@@ -343,20 +343,20 @@ Remove the specified labels.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.2 |
-| token | [Token explain](#token) | string | ✔ | v1.2 |
-| issue-number | The number of issue | number | ✔ | v1.2 |
-| labels | The removed labels. When it is a blank character, do not remove | string | ✔ | v1.2 |
+| actions | 操作类型 | string | ✔ | v1.2 |
+| token | [token 说明](#token) | string | ✔ | v1.2 |
+| issue-number | 指定的 issue | number | ✔ | v1.2 |
+| labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ | v1.2 |
 
-- `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
+- `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `set-labels`
 
-Replace the labels of issue.
+替换 issue 的 labels。
 
 ```yml
 - name: Set labels
@@ -368,18 +368,18 @@ Replace the labels of issue.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| labels | labels set. When empty characters, will remove all | string | ✔ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| labels | labels 设置。当空字符时，会移除所有 | string | ✔ | v1.1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `unlock-issue`
 
-Unlock the specified issue.
+解锁指定 issue。
 
 ```yml
 - name: Unlock issue
@@ -390,19 +390,19 @@ Unlock the specified issue.
       issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `update-comment`
 
-Update the specified comment according to [`comment-id`](#comment-id).
+根据 [`comment-id`](#comment-id) 更新指定评论。
 
-The following example shows that 👀 is added for each new comment.
+下面的例子展示的是，为每个新增的 comment 增加 👀 。
 
 ```yml
 name: Add eyes to each comment
@@ -424,23 +424,23 @@ jobs:
             contents: 'eyes'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| comment-id | The comment ID | number | ✔ | v1 |
-| body | Update the content of comment | string | ✖ | v1 |
-| update-mode | Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| comment-id | 指定的 comment | number | ✔ | v1 |
+| body | 更新 comment 的内容 | string | ✖ | v1 |
+| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
-- When `body` is not entered, it will remain as it is
-- When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
+- `body` 不填时，会保持原有
+- `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `update-issue`
 
-Update the specified issue according to the `issue-number`.
+根据 `issue-number` 更新指定 issue。
 
 ```yml
 - name: Update issue
@@ -458,31 +458,31 @@ Update the specified issue according to the `issue-number`.
       contents: '+1'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| state | Modify the status of issue, optional value `open` `closed` | string | ✖ | v1 |
-| title | Modify the title of the issue | string | ✖ | v1 |
-| body | Modify the content of issue | string | ✖ | v1 |
-| update-mode |  Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| labels | Replace the labels of issue | string | ✖ | v1.1 |
-| assignees | Replace the assignees of issue | string | ✖ | v1.1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ | v1 |
+| title | 修改 issue 的标题 | string | ✖ | v1 |
+| body | 修改 issue 的内容 | string | ✖ | v1 |
+| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
+| labels | 替换 issue 的 labels | string | ✖ | v1.1 |
+| assignees | 替换 issue 的 assignees | string | ✖ | v1.1 |
+| contents | 增加 [reaction](#reactions-types) | string | ✖ | v1.1 |
 
-- `state` defaults to `open`
-- When the option is not filled, it will keep the original
+- `state` 默认为 `open`
+- 当可选项不填时，会保持原有
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-### ⭐ Advanced
+### 🌟 进 阶
 
-Advanced usage is not recommended to use multiple actions at the same time.
+进阶用法不建议 actions 多个一次同时使用。
 
 #### `check-inactive`
 
-At UTC 0 on the 1st of each month, add the `inactive` tag to all issues that have not been active for more than 30 days.
+每月 1 号 UTC 0 时，对所有 30 天以上未活跃的 issues 增加 `inactive` 标签。
 
 ```yml
 name: Check inactive
@@ -503,38 +503,34 @@ jobs:
           inactive-day: 30
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
-| inactive-label | The label name adding | string | ✖ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
+| issue-state | 状态筛选 | string | ✖ | v1 |
+| issue-assignee | 指定人筛选 | string | ✖ | v1 |
+| issue-creator | 创建人筛选 | string | ✖ | v1 |
+| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
+| body-includes | 包含内容筛选 | string | ✖ | v1 |
+| title-includes | 包含标题筛选 | string | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-label | 新增标签名称 | string | ✖ | v1 |
 
-- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
-- `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
-- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
-- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
-- `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
+- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
+- `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
+- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
+- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
+- `inactive-label`：默认为 `inactive`，可自定义其他。当项目未包含该 label 时，会自动新建
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `check-issue`
 
-Check whether the issue meets the conditions according to the passed parameters and `issue-number`, and return a boolean value.
+根据传入的参数和 `issue-number` 来检查该 issue 是否满足条件，返回一个布尔值。
 
-The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`.
-
-If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions.
-
-[Check rules](#check-rules)
+下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件，[校验规则](#校验规则)。
 
 ```yml
 name: Check Issue
@@ -557,23 +553,23 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.2 |
-| token | [Token explain](#token) | string | ✔ | v1.2 |
-| issue-number | The number of issue | number | ✔ | v1.2 |
-| assignee-includes | Assignees contains check | string | ✖ | v1.2 |
-| title-includes | Title contains check | string | ✖ | v1.2 |
-| body-includes | Body contains check | string | ✖ | v1.2 |
+| actions | 操作类型 | string | ✔ | v1.2 |
+| token | [token 说明](#token) | string | ✔ | v1.2 |
+| issue-number | 指定的 issue | number | ✔ | v1.2 |
+| assignee-includes | 是否包含指定人 | string | ✖ | v1.2 |
+| title-includes | 标题包含校验 | string | ✖ | v1.2 |
+| body-includes | 内容包含校验 | string | ✖ | v1.2 |
 
-- `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
-- Return `check-result`
+- `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
+- 返回 `check-result`
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `close-issues`
 
-Every 7 days at UTC 0, close the issues that have been filled with the `need info` label and have not been active for more than 7 days.
+每 7 天 UTC 0 时，关闭已填加 `need info` label 且 7 天以上未活跃的 issues。
 
 ```yml
 name: Check need info
@@ -595,28 +591,28 @@ jobs:
           inactive-day: 7
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
+| issue-assignee | 指定人筛选 | string | ✖ | v1 |
+| issue-creator | 创建人筛选 | string | ✖ | v1 |
+| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
+| body-includes | 包含内容筛选 | string | ✖ | v1 |
+| title-includes | 包含标题筛选 | string | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
 
-- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
-- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
-- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
+- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
+- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `find-comments`
 
-Find the current warehouse issue No. 1, the creator is k and the content contains the comment list of `this`.
+查找当前仓库 1 号 issue 中，创建者是 k ，内容包含 `this` 的评论列表。
 
 ```yml
 - name: Find comments
@@ -629,16 +625,16 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
       body-includes: 'this'
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| comment-auth | Comment creator, all will be queried if not filled | string | ✖ | v1 |
-| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ | v1 |
-| direction | Return `comments` sort | string | ✖ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| issue-number | 指定的 issue | number | ✔ | v1 |
+| comment-auth | 评论创建者，不填时会查询所有 | string | ✖ | v1 |
+| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ | v1 |
+| direction | 返回 `comments` 排序 | string | ✖ | v1 |
 
-- Return `comments` in the following format:
+- 返回 `comments`，格式如下：
 
 ```js
 [
@@ -647,14 +643,14 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 ]
 ```
 
-- `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
-- The `created` `updated` in the returned array, determined by the environment, will be UTC +0
+- `direction` 默认为升序，只有设置 `desc` 时，会返回降序
+- 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 #### `lock-issues`
 
-Every 3 months at UTC 0 on the 1st, lock all issues that have been filled with the `inactive` label and have not been active for more than 128 days.
+每 3 个月 1 号 UTC 0 时，锁定已填加 `inactive` label 且 128 天以上未活跃的所有 issues。
 
 ```yml
 name: Lock inactive issues
@@ -676,34 +672,34 @@ jobs:
           inactive-day: 128
 ```
 
-| Param | Desc  | Type | Required | Version |
+| 参数 | 描述 | 类型 | 必填 | 版本 |
 | -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1 |
+| actions | 操作类型 | string | ✔ | v1 |
+| token | [token 说明](#token) | string | ✔ | v1 |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| labels | 标签筛选 | string | ✖ | v1.1 |
+| issue-state | 状态筛选 | string | ✖ | v1 |
+| issue-assignee | 指定人筛选 | string | ✖ | v1 |
+| issue-creator | 创建人筛选 | string | ✖ | v1 |
+| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
+| body-includes | 包含内容筛选 | string | ✖ | v1 |
+| title-includes | 包含标题筛选 | string | ✖ | v1 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
 
-- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
-- `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
-- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
-- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
+- `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
+- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
+- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-## 🌰 Example
+## 🌰 例 子
 
-Flexible reference.
+灵活参考。
 
 ### `find-comments + create-comment + update-comment`
 
-Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment containing `error` created by k, if there is only one, update the comment, if not, add a new comment.
+假设场景：当添加了 `watch` label 的 issue 修改时，查找是否有 k 创建的包含 `error` 的评论，如果只有一个，则更新该 comment，如果没有，则新增一个 comment。
 
 ```yml
 name: Test
@@ -747,26 +743,26 @@ jobs:
           update-mode: 'append'
 ```
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-## 🎁 Reference
+## 🎁 参 考
 
 ### token
 
-Need to have the person token with push permission.
+需拥有 push 权限的人员 token。
 
-- [Personal token application](https://github.com/settings/tokens)
-  - Need to check `Full control of private repositories`
-- Project add secrets
-  - Select settings, select secrets, select `New repository secret`
-  - `Name` is the same as in actions
-  - `Value` fill in the token just applied by the individual
+- [个人 token 申请](https://github.com/settings/tokens)
+  - 需勾选 `Full control of private repositories`
+- 项目添加 secrets
+  - 选择 settings，选择 secrets，选择 `New repository secret`
+  - `Name` 与 actions 中保持一致
+  - `Value` 填写刚才个人申请的 token
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>.
+当 actions 不填写 token 时，或项目未添加对应 secrets 时，会默认为 github-actions <kbd>bot</kbd>。[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow)。
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-### `outputs` use
+### `outputs` 使用
 
 ```yml
 - name: Create issue
@@ -779,19 +775,21 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
+[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs)。
+
 ### GitHub Docs
 
-- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-### Check rules
+### 校验规则
 
 ```js
 "title-includes": 'x1,x2'
 
-x1,
+x1
 x2
 
 "x1y3y2"  true
@@ -814,8 +812,9 @@ x2 + y2
 "x1"      false
 ```
 
-⏫ [Back to list](#List)
-### Reactions types
+⏫ [返回列表](#列-表)
+
+### Reactions 类型
 
 | content | emoji |
 | -- | -- |
@@ -828,25 +827,25 @@ x2 + y2
 | `rocket` | 🚀 |
 | `eyes` | 👀 |
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
 ### `comment-id`
 
-Click the `···` icon in the upper right corner of a comment, select `Copy link`, and the number at the end of the url is `comment_id`.
+点击某个评论右上角 `···` 图标，选择 `Copy link`，url 末尾数字即是 `comment_id`。
 
-⏫ [Back to list](#List)
+⏫ [返回列表](#列-表)
 
-## Actions Template
+## Actions 模板
 
-- You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
+- 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
 
-- Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
+- 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
 
-## 💖 Who is using?
+## 💖 谁在使用？
 
-You can come to the following repositories for reference. Please leave a message at [**here**](https://github.com/actions-cool/issues-helper/issues/6).
+你可以来以下项目进行参考。欢迎在 [**这里**](https://github.com/actions-cool/issues-helper/issues/6) 留言。
 
-At the same time, if you have any questions during use, you can also ask and inquire in the issue or discussion.
+同时，如果你在使用过程中有什么疑问，也可以在 issue 或者 discussion 中进行提问和查询。
 
 <table>
   <tr>
@@ -866,22 +865,30 @@ At the same time, if you have any questions during use, you can also ask and inq
       </a>
     </td>
     <td align="center">
+      <a href="https://github.com/umijs/umi">
+        <img src="https://avatars2.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      </a>
+    </td>
+    <td align="center">
       <a href="https://github.com/AttoJS/vue-request">
         <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       </a>
     </td>
   </tr>
   <tr>
-    <td align="center">
+    <td align="center" wdith="160">
       <strong>ant-design</strong>
     </td>
-    <td align="center">
+    <td align="center" wdith="160">
       <strong>ant-design-vue</strong>
     </td>
-    <td align="center">
+    <td align="center" wdith="160">
       <strong>dumi</strong>
     </td>
-    <td align="center">
+    <td align="center" wdith="160">
+      <strong>umi</strong>
+    </td>
+    <td align="center" wdith="160">
       <strong>vue-request</strong>
     </td>
   </tr>

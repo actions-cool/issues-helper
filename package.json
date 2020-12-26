@@ -5,6 +5,11 @@
   "description": "Some operations on issue.",
   "main": "src/main.js",
   "scripts": {
+    "start": "dumi dev",
+    "docs:build": "dumi build",
+    "docs-dev:build": "UMI_ENV=dev dumi build",
+    "docs:deploy": "gh-pages -d docs-dist",
+    "deploy": "npm run docs:build && npm run docs:deploy",
     "package": "ncc build src/main.js -o dist"
   },
   "author": "xrkffgg",
@@ -27,6 +32,8 @@
   },
   "devDependencies": {
     "@vercel/ncc": "^0.25.1",
-    "dotenv": "^8.2.0"
+    "dotenv": "^8.2.0",
+    "dumi": "^1.1.0-rc.8",
+    "react": "^17.0.1"
   }
 }
