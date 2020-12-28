@@ -1461,7 +1461,7 @@ exports.Octokit = Octokit;
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 
-var isPlainObject = __webpack_require__(3287);
+var isPlainObject = __webpack_require__(558);
 var universalUserAgent = __webpack_require__(5030);
 
 function lowercaseKeys(object) {
@@ -1847,6 +1847,52 @@ const endpoint = withDefaults(null, DEFAULTS);
 
 exports.endpoint = endpoint;
 //# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
+/***/ 558:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+/*!
+ * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+function isObject(o) {
+  return Object.prototype.toString.call(o) === '[object Object]';
+}
+
+function isPlainObject(o) {
+  var ctor,prot;
+
+  if (isObject(o) === false) return false;
+
+  // If has modified constructor
+  ctor = o.constructor;
+  if (ctor === undefined) return true;
+
+  // If has modified prototype
+  prot = ctor.prototype;
+  if (isObject(prot) === false) return false;
+
+  // If constructor does not have an Object-specific method
+  if (prot.hasOwnProperty('isPrototypeOf') === false) {
+    return false;
+  }
+
+  // Most likely a plain Object
+  return true;
+}
+
+exports.isPlainObject = isPlainObject;
 
 
 /***/ }),
@@ -3361,7 +3407,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var endpoint = __webpack_require__(9440);
 var universalUserAgent = __webpack_require__(5030);
-var isPlainObject = __webpack_require__(3287);
+var isPlainObject = __webpack_require__(9062);
 var nodeFetch = _interopDefault(__webpack_require__(467));
 var requestError = __webpack_require__(537);
 
@@ -3501,6 +3547,52 @@ const request = withDefaults(endpoint.endpoint, {
 
 exports.request = request;
 //# sourceMappingURL=index.js.map
+
+
+/***/ }),
+
+/***/ 9062:
+/***/ ((__unused_webpack_module, exports) => {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", ({ value: true }));
+
+/*!
+ * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
+ *
+ * Copyright (c) 2014-2017, Jon Schlinkert.
+ * Released under the MIT License.
+ */
+
+function isObject(o) {
+  return Object.prototype.toString.call(o) === '[object Object]';
+}
+
+function isPlainObject(o) {
+  var ctor,prot;
+
+  if (isObject(o) === false) return false;
+
+  // If has modified constructor
+  ctor = o.constructor;
+  if (ctor === undefined) return true;
+
+  // If has modified prototype
+  prot = ctor.prototype;
+  if (isObject(prot) === false) return false;
+
+  // If constructor does not have an Object-specific method
+  if (prot.hasOwnProperty('isPrototypeOf') === false) {
+    return false;
+  }
+
+  // Most likely a plain Object
+  return true;
+}
+
+exports.isPlainObject = isPlainObject;
 
 
 /***/ }),
@@ -3874,52 +3966,6 @@ function config (options /*: ?DotenvConfigOptions */) /*: DotenvConfigOutput */ 
 
 module.exports.config = config
 module.exports.parse = parse
-
-
-/***/ }),
-
-/***/ 3287:
-/***/ ((__unused_webpack_module, exports) => {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", ({ value: true }));
-
-/*!
- * is-plain-object <https://github.com/jonschlinkert/is-plain-object>
- *
- * Copyright (c) 2014-2017, Jon Schlinkert.
- * Released under the MIT License.
- */
-
-function isObject(o) {
-  return Object.prototype.toString.call(o) === '[object Object]';
-}
-
-function isPlainObject(o) {
-  var ctor,prot;
-
-  if (isObject(o) === false) return false;
-
-  // If has modified constructor
-  ctor = o.constructor;
-  if (ctor === undefined) return true;
-
-  // If has modified prototype
-  prot = ctor.prototype;
-  if (isObject(prot) === false) return false;
-
-  // If constructor does not have an Object-specific method
-  if (prot.hasOwnProperty('isPrototypeOf') === false) {
-    return false;
-  }
-
-  // Most likely a plain Object
-  return true;
-}
-
-exports.isPlainObject = isPlainObject;
 
 
 /***/ }),
@@ -6146,7 +6192,7 @@ async function doLockIssues (owner, repo, labels) {
   }
 };
 
-async function doQueryIssues (owner, repo, labels, state) {
+async function doQueryIssues (owner, repo, labels, state, creator) {
   let params = {
     owner,
     repo,
@@ -6159,6 +6205,10 @@ async function doQueryIssues (owner, repo, labels, state) {
 
   if (labels) {
     params.labels = labels;
+  }
+
+  if (creator) {
+    params.creator = creator;
   }
 
   const res = await octokit.issues.listForRepo(params);
@@ -6193,6 +6243,9 @@ module.exports = {
   doCloseIssues,
   doFindComments,
   doLockIssues,
+
+  // tool
+  doQueryIssues,
 };
 
 
@@ -6203,7 +6256,10 @@ module.exports = {
 
 __webpack_require__(2437).config();
 const core = __webpack_require__(2186);
+const github = __webpack_require__(5438);
 const { Octokit } = __webpack_require__(5375);
+
+const { doQueryIssues } = __webpack_require__(9319);
 
 const ALLREACTIONS = [
   "+1",
@@ -6499,6 +6555,25 @@ async function doUpdateIssue (
   }
 };
 
+async function doWelcome (owner, repo, body) {
+  const context = github.context;
+  const isIssue = !!context.payload.issue;
+  if (!isIssue) {
+    core.setFailed("The event that triggered this action must be a issue. Error!");
+  } else {
+    const auth = context.payload.sender.login;
+    core.info(`Actions: [welcome: auth=][${auth}]`);
+    const issueNumber = context.issue.number;
+    const creator = 'zoo-js-bot';
+    const issues = await doQueryIssues(owner, repo, false, 'all', creator);
+    if (issues.length == 0 && issues.length == 1 && issues[0].number == issueNumber) {
+      await doCreateComment(owner, repo, issueNumber, body);
+    } else {
+      core.info(`Actions: [welcome][${auth}] is not first time!`);
+    }
+  }
+};
+
 // tool
 function testContent(con) {
   if (ALLREACTIONS.includes(con)) {
@@ -6527,6 +6602,7 @@ module.exports = {
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
+  doWelcome,
 };
 
 
@@ -6555,6 +6631,7 @@ const {
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
+  doWelcome,
 } = __webpack_require__(9932);
 
 const {
@@ -6581,6 +6658,7 @@ const ALLACTIONS = [
   'unlock-issue',
   'update-comment',
   'update-issue',
+  'welcome',
 
   // advanced
   'check-inactive',
@@ -6687,6 +6765,13 @@ async function main() {
             updateMode,
             assignees,
             labels
+          );
+          break;
+        case 'welcome':
+          await doWelcome(
+            owner,
+            repo,
+            body
           );
           break;
 
