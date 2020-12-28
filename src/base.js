@@ -22,6 +22,7 @@ const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
 const contents = core.getInput("contents");
+const issueContents = core.getInput("issue-contents");
 
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
   await octokit.issues.addAssignees({
@@ -299,7 +300,7 @@ async function doUpdateIssue (
   }
 };
 
-async function doWelcome (owner, repo, body) {
+async function doWelcome (owner, repo, assignees, labels, body) {
   const context = github.context;
   const isIssue = !!context.payload.issue;
   if (!isIssue) {
@@ -311,7 +312,23 @@ async function doWelcome (owner, repo, body) {
     const creator = 'zoo-js-bot';
     const issues = await doQueryIssues(owner, repo, false, 'all', creator);
     if (issues.length == 0 || (issues.length == 1 && issues[0].number == issueNumber)) {
-      await doCreateComment(owner, repo, issueNumber, body);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issueNumber, body);
+      } else {
+        core.info(`Actions: [welcome] no body!`);
+      }
+
+      if (assignees) {
+        await doAddAssignees(owner, repo, issueNumber, assignees);
+      }
+
+      if (labels) {
+        await doAddLabels(owner, repo, issueNumber, labels);
+      }
+
+      if (issueContents) {
+        await doCreateIssueContent(owner, repo, issueNumber, issueContents);
+      }
     } else {
       core.info(`Actions: [welcome][${auth}] is not first time!`);
     }

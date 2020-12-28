@@ -158,6 +158,8 @@ async function main() {
           await doWelcome(
             owner,
             repo,
+            assignees,
+            labels,
             body
           );
           break;
