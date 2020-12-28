@@ -44,6 +44,8 @@ inputs:
     description: 'Query use'
   issue-mentioned:
     description: 'Query use'
+  issue-contents:
+    description: 'For welcome'
   issue-state:
     description: 'Query use'
   inactive-day:

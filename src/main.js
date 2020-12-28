@@ -18,6 +18,7 @@ const {
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
+  doWelcome,
 } = require('./base.js');
 
 const {
@@ -44,6 +45,7 @@ const ALLACTIONS = [
   'unlock-issue',
   'update-comment',
   'update-issue',
+  'welcome',
 
   // advanced
   'check-inactive',
@@ -150,6 +152,15 @@ async function main() {
             updateMode,
             assignees,
             labels
+          );
+          break;
+        case 'welcome':
+          await doWelcome(
+            owner,
+            repo,
+            assignees,
+            labels,
+            body
           );
           break;
 

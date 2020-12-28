@@ -41,6 +41,7 @@
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
+  - [`welcome`](#welcome)
 - ⭐ 进 阶
   - [`check-inactive`](#check-inactive)
   - [`check-issue`](#check-issue)
@@ -481,6 +482,45 @@ jobs:
 
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
+
+⏫ [返回列表](#列-表)
+
+#### `welcome`
+
+当一个 issue 新建时，对首次新建 issue 的用户进行欢迎。若用户非首次新建，则无操作。
+
+```yml
+name: Issue Welcome
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome
+        uses: actions-cool/issues-helper@v1.3
+        with:
+          actions: 'welcome'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: hi @${{ github.event.issue.user.login }}, welcome!
+          labels: 'welcome1, welcome2'
+          assignees: 'xx1'
+          issue-contents: '+1, -1, eyes'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ | v1.3 |
+| token | [token 说明](#token) | string | ✔ | v1.3 |
+| body | 评论欢迎的内容，不填则不评论 | string | ✖ | v1.3 |
+| labels | 为该 issue 增加 labels | string | ✖ | v1.3 |
+| assignees | 为该 issue 增加 assignees | string | ✖ | v1.3 |
+| issue-contents | 为该 issue 增加 [reaction](#reactions-types) | string | ✖ | v1.3 |
+
+- 若这 4 个可选项都不填，则无操作
 
 ⏫ [返回列表](#列-表)
 
