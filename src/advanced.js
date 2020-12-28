@@ -165,7 +165,7 @@ async function doLockIssues (owner, repo, labels) {
   }
 };
 
-async function doQueryIssues (owner, repo, labels, state) {
+async function doQueryIssues (owner, repo, labels, state, creator) {
   let params = {
     owner,
     repo,
@@ -178,6 +178,10 @@ async function doQueryIssues (owner, repo, labels, state) {
 
   if (labels) {
     params.labels = labels;
+  }
+
+  if (creator) {
+    params.creator = creator;
   }
 
   const res = await octokit.issues.listForRepo(params);
@@ -212,4 +216,7 @@ module.exports = {
   doCloseIssues,
   doFindComments,
   doLockIssues,
+
+  // tool
+  doQueryIssues,
 };

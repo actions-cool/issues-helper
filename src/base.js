@@ -1,6 +1,9 @@
 require('dotenv').config();
 const core = require("@actions/core");
+const github = require("@actions/github");
 const { Octokit } = require('@octokit/rest');
+
+const { doQueryIssues } = require('./advanced.js');
 
 const ALLREACTIONS = [
   "+1",
@@ -296,6 +299,25 @@ async function doUpdateIssue (
   }
 };
 
+async function doWelcome (owner, repo, body) {
+  const context = github.context;
+  const isIssue = !!context.payload.issue;
+  if (!isIssue) {
+    core.setFailed("The event that triggered this action must be a issue. Error!");
+  } else {
+    const auth = context.payload.sender.login;
+    core.info(`Actions: [welcome: auth=][${auth}]`);
+    const issueNumber = context.issue.number;
+    const creator = 'zoo-js-bot';
+    const issues = await doQueryIssues(owner, repo, false, 'all', creator);
+    if (issues.length == 0 && issues.length == 1 && issues[0].number == issueNumber) {
+      await doCreateComment(owner, repo, issueNumber, body);
+    } else {
+      core.info(`Actions: [welcome][${auth}] is not first time!`);
+    }
+  }
+};
+
 // tool
 function testContent(con) {
   if (ALLREACTIONS.includes(con)) {
@@ -324,4 +346,5 @@ module.exports = {
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
+  doWelcome,
 };
