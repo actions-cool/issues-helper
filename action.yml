@@ -1,5 +1,5 @@
 name: 'Issues Helper'
-description: 'A GitHub Action to help you manage issues'
+description: 'A GitHub Action that easily helps you automatically manage issues'
 author: 'xrkffgg'
 branding:
   icon: 'message-square'

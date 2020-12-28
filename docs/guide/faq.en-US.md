@@ -14,6 +14,14 @@ Yes.
 2. Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
 3. You can also refer to the warehouse of [online users](/en-US#-who-is-using)
 
+## I want to pause Actions, is there an easy way?
+
+Yes, you can directly modify `actions`. For example: `actions:'create-comment'` is changed to `actions:'#create-comment'`. It is also convenient for recovery.
+
 ## So many versions, how to choose?
 
 You can view the detailed [changelog](/en-US/changelog). The latest releases version is recommended.
+
+## What should I do if there is no function I want here?
+
+You can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).

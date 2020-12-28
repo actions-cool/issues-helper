@@ -24,6 +24,8 @@
 
 ## 列 表
 
+当以下列表没有你想要的功能时，可以在 [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18) 中提出。
+
 - ⭐ 基 础
   - [`add-assignees`](#add-assignees)
   - [`add-labels`](#add-labels)

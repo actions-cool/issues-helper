@@ -24,6 +24,8 @@ A GitHub Action that easily helps you automatically manage issues
 
 ## List
 
+When the following list does not have the features you want, you can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
+
 - ⭐ Base
   - [`add-assignees`](#add-assignees)
   - [`add-labels`](#add-labels)
