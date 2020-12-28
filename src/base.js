@@ -310,7 +310,7 @@ async function doWelcome (owner, repo, body) {
     const issueNumber = context.issue.number;
     const creator = 'zoo-js-bot';
     const issues = await doQueryIssues(owner, repo, false, 'all', creator);
-    if (issues.length == 0 && issues.length == 1 && issues[0].number == issueNumber) {
+    if (issues.length == 0 || (issues.length == 1 && issues[0].number == issueNumber)) {
       await doCreateComment(owner, repo, issueNumber, body);
     } else {
       core.info(`Actions: [welcome][${auth}] is not first time!`);
