@@ -6583,7 +6583,7 @@ async function doWelcome (owner, repo, assignees, labels, body) {
       }
 
       if (issueContents) {
-        await doCreateIssueContent(owner, repo, issueNumber, issueContents);
+        await doCreateIssueContent(owner, repo, issueNumber, dealInput(issueContents));
       }
     } else {
       core.info(`Actions: [welcome][${auth}] is not first time!`);
