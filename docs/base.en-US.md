@@ -405,3 +405,42 @@ Update the specified issue according to the `issue-number`.
 
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
+
+## `welcome`
+
+When an issue is created, the user who created the issue for the first time is welcome.
+
+If the user is not creating for the first time, there is no operation.
+
+```yml
+name: Issue Welcome
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome
+        uses: actions-cool/issues-helper@v1.3
+        with:
+          actions: 'welcome'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: hi @${{ github.event.issue.user.login }}, welcome!
+          labels: 'welcome1, welcome2'
+          assignees: 'xx1'
+          issue-contents: '+1, -1, eyes'
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.3 |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1.3 |
+| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ | v1.3 |
+| labels | Add labels to this issue | string | ✖ | v1.3 |
+| assignees | Add assignees to this issue | string | ✖ | v1.3 |
+| issue-contents | Add [reaction](/en-US/guide/ref#-reactions-type) to this issue| string | ✖ | v1.3 |
+
+- If these 4 options are not filled, no operation
