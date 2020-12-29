@@ -1,3 +1,9 @@
+## v1.4
+
+`2020.12.29`
+
+- fix: perfect `inactive-day` check. [#22](https://github.com/actions-cool/issues-helper/pull/22)
+
 ## v1.3
 
 `2020.12.28`
