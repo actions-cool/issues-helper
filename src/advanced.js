@@ -186,26 +186,32 @@ async function doQueryIssues (owner, repo, labels, state, creator) {
 
   const res = await octokit.issues.listForRepo(params);
   let issues = [];
-  res.data.forEach(iss => {
-    const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
-    const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
-    /**
-     * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
-     * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
-     * You can identify pull requests by the pull_request key.
-     */
-    if (a && b && iss.pull_request === undefined) {
-      if (inactiveDay && typeof(inactiveDay) === 'number') {
-        let lastTime = dayjs.utc().subtract(inactiveDay, 'day');
-        let updateTime = dayjs.utc(iss.updated_at);
-        if (updateTime.isSameOrBefore(lastTime)) {
+  let issueNumbers = [];
+  if (res.data.length) {
+    res.data.forEach(iss => {
+      const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
+      const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
+      /**
+       * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
+       * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
+       * You can identify pull requests by the pull_request key.
+       */
+      if (a && b && iss.pull_request === undefined) {
+        if (inactiveDay) {
+          let lastTime = dayjs.utc().subtract(Number(inactiveDay), 'day');
+          let updateTime = dayjs.utc(iss.updated_at);
+          if (updateTime.isSameOrBefore(lastTime)) {
+            issues.push(iss);
+            issueNumbers.push(iss.number);
+          }
+        } else {
           issues.push(iss);
+          issueNumbers.push(iss.number);
         }
-      } else {
-        issues.push(iss);
       }
-    }
-  })
+    })
+    core.info(`Actions: [query-issues]: [${JSON.stringify(issueNumbers)}]!`);
+  }
 
   return issues;
 };

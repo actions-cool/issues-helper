@@ -556,6 +556,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](#reactions-types) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
@@ -563,7 +564,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 | inactive-label | 新增标签名称 | string | ✖ | v1 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
@@ -644,13 +645,14 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](#reactions-types) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -725,6 +727,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](#reactions-types) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
@@ -732,7 +735,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -883,6 +886,25 @@ x2 + y2
 
 ⏫ [返回列表](#列-表)
 
+## ✨ 版本
+
+- 版本规则
+  - 采用两级语义化版本，如v1、v1.1、v2、v2.1
+  - v1 表示初始版本
+  - 对 v1 版本的修复和新增会发布到 v1.1 版本
+  - 当发布的 v1.x 运行一定时间稳定后，发布进阶 v2 版本
+  - API 中参数需使用其中最大及以上版本
+
+- 版本选择
+  - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到
+  - 同时也可参照下面的更新日志来选择版本
+  - 也支持直接使用分支版本。如：
+
+```yml
+- name: Issues Helper
+  uses: actions-cool/issues-helper@main
+```
+
 ## Actions 模板
 
 - 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
@@ -924,19 +946,19 @@ x2 + y2
     </td>
   </tr>
   <tr>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>ant-design</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>ant-design-vue</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>dumi</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>umi</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>vue-request</strong>
     </td>
   </tr>
