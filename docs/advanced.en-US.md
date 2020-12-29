@@ -34,6 +34,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
@@ -41,7 +42,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 | inactive-label | The label name adding | string | ✖ | v1 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
@@ -122,13 +123,14 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
 | issue-creator | Creator filtering | string | ✖ | v1 |
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -199,6 +201,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
@@ -206,7 +209,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`

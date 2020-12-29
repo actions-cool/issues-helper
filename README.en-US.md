@@ -558,6 +558,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
@@ -565,7 +566,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 | inactive-label | The label name adding | string | ✖ | v1 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
@@ -650,13 +651,14 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
 | issue-creator | Creator filtering | string | ✖ | v1 |
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -731,6 +733,7 @@ jobs:
 | actions | Action type | string | ✔ | v1 |
 | token | [Token explain](#token) | string | ✔ | v1 |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
 | labels | Labels filtering | string | ✖ | v1.1 |
 | issue-state | State filtering | string | ✖ | v1 |
 | issue-assignee | Assignee filtering | string | ✖ | v1 |
@@ -738,7 +741,7 @@ jobs:
 | issue-mentioned | Mentioned filtering | string | ✖ | v1 |
 | body-includes | Body filtering | string | ✖ | v1 |
 | title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.2 |
+| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -888,6 +891,25 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 
 ⏫ [Back to list](#List)
 
+## ✨ Version
+
+- Version rules
+  - Use two-level semantic version, such as v1, v1.1, v2, v2.1
+  - v1 represents the initial version
+  - The fixes and additions to the v1 version will be released to the v1.1 version
+  - When the released v1.x runs stable for a certain period of time, release the advanced v2 version
+  - The parameters in the API must use the largest version and above
+
+- Version selection
+  - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
+  - You can also refer to the update log below to select the version
+  - It also supports the direct use of branch versions. Such as:
+
+```yml
+- name: Issues Helper
+  uses: actions-cool/issues-helper@main
+```
+
 ## Actions Template
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
@@ -929,19 +951,19 @@ At the same time, if you have any questions during use, you can also ask and inq
     </td>
   </tr>
   <tr>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>ant-design</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>ant-design-vue</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>dumi</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>umi</strong>
     </td>
-    <td align="center" wdith="160">
+    <td align="center" width="160">
       <strong>vue-request</strong>
     </td>
   </tr>

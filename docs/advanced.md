@@ -34,6 +34,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
@@ -41,7 +42,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 | inactive-label | 新增标签名称 | string | ✖ | v1 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
@@ -118,13 +119,14 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
 | issue-creator | 创建人筛选 | string | ✖ | v1 |
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -195,6 +197,7 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
 | labels | 标签筛选 | string | ✖ | v1.1 |
 | issue-state | 状态筛选 | string | ✖ | v1 |
 | issue-assignee | 指定人筛选 | string | ✖ | v1 |
@@ -202,7 +205,7 @@ jobs:
 | issue-mentioned | 提及人筛选 | string | ✖ | v1 |
 | body-includes | 包含内容筛选 | string | ✖ | v1 |
 | title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.2 |
+| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
