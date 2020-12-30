@@ -34,6 +34,7 @@
   - [`create-issue`](#create-issue)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
+  - [`mark-duplicate`](#mark-duplicate)
   - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
   - [`remove-labels`](#remove-labels)
@@ -291,6 +292,39 @@ jobs:
 | actions | 操作类型 | string | ✔ | v1 |
 | token | [token 说明](#token) | string | ✔ | v1 |
 | issue-number | 指定的 issue | number | ✔ | v1 |
+
+⏫ [返回列表](#列-表)
+
+#### `mark-duplicate`
+
+快捷标记重复问题。
+
+```yml
+name: Issue Mark Duplicate
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mark-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v1.5
+        with:
+          actions: 'mark-duplicate'
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ | v1.5 |
+| token | [token 说明](#token) | string | ✔ | v1.5 |
+| duplicate-command | 操作命令，默认为 `/d` | string | ✖ | v1.5 |
+| duplicate-labels | 为该 issue 额外增加 labels | string | ✖ | v1.5 |
+| labels | 替换该 issue 的 labels | string | ✖ | v1.5 |
+| contents | 为该评论的增加 [reaction](#reactions-types) | string | ✖ | v1.5 |
 
 ⏫ [返回列表](#列-表)
 

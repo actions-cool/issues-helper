@@ -229,6 +229,37 @@ jobs:
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
 | issue-number | The number of issue | number | ✔ | v1 |
 
+## `mark-duplicate`
+
+Quickly mark duplicate issue.
+
+```yml
+name: Issue Mark Duplicate
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mark-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v1.5
+        with:
+          actions: 'mark-duplicate'
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.5 |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1.5 |
+| duplicate-command | Operation command, default is `/d` | string | ✖ | v1.5 |
+| duplicate-labels | Add additional labels to this issue | string | ✖ | v1.5 |
+| labels | Replace the labels of the issue | string | ✖ | v1.5 |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1.5 |
+
 ## `open-issue`
 
 Open the specified issue.

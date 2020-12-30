@@ -146,6 +146,7 @@ async function doMarkDuplicate (owner, repo, labels) {
     return false;
   }
   const duplicateCommand = core.getInput("duplicate-command") || '/d';
+  const duplicateLabels = core.getInput("duplicate-labels");
   
   const commentId = context.payload.comment.id;
   const commentBody = context.payload.comment.body;
@@ -153,7 +154,10 @@ async function doMarkDuplicate (owner, repo, labels) {
 
   if (commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) {
     const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
-    await doCreateComment(owner, repo, issueNumber, nextBody, 'replace', true);
+    await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+    if (duplicateLabels) {
+      await doAddLabels(owner, repo, issueNumber, duplicateLabels);
+    }
     if (labels) {
       await doSetLabels(owner, repo, issueNumber, labels);
     }
