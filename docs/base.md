@@ -231,14 +231,14 @@ jobs:
 
 ## `mark-duplicate`
 
-快捷标记重复问题。
+快捷标记重复问题，仅作用于 issue 新增评论。
 
 ```yml
 name: Issue Mark Duplicate
 
 on:
   issue_comment:
-    types: [created, edited]
+    types: [created]
 
 jobs:
   mark-duplicate:
@@ -255,10 +255,20 @@ jobs:
 | -- | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ | v1.5 |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1.5 |
-| duplicate-command | 操作命令，默认为 `/d` | string | ✖ | v1.5 |
+| duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ | v1.6 |
 | duplicate-labels | 为该 issue 额外增加 labels | string | ✖ | v1.5 |
 | labels | 替换该 issue 的 labels | string | ✖ | v1.5 |
 | contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.5 |
+| close-issue | 是否同时关闭该 issue | string | ✖ | v1.6 |
+
+- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`
+- `close-issue`：`true` 或 `'true'` 均可生效
+
+<Alert>
+注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
+</Alert>
+
+![](../public/duplicate.png)
 
 ## `open-issue`
 

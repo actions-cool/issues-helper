@@ -297,14 +297,14 @@ jobs:
 
 #### `mark-duplicate`
 
-Quickly mark duplicate issue.
+Quickly mark duplicate questions, only for issue new comments.
 
 ```yml
 name: Issue Mark Duplicate
 
 on:
   issue_comment:
-    types: [created, edited]
+    types: [created]
 
 jobs:
   mark-duplicate:
@@ -321,12 +321,16 @@ jobs:
 | -- | -- | -- | -- | -- |
 | actions | Action type | string | ✔ | v1.5 |
 | token | [Token explain](#token) | string | ✔ | v1.5 |
-| duplicate-command | Operation command, default is `/d` | string | ✖ | v1.5 |
+| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ | v1.6 |
 | duplicate-labels | Add additional labels to this issue | string | ✖ | v1.5 |
 | labels | Replace the labels of the issue | string | ✖ | v1.5 |
 | contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1.5 |
+| close-issue | Whether to close the issue at the same time | string | ✖ | v1.6 |
 
-⏫ [返回列表](#列-表)
+- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`
+- `close-issue`: Both `true` or `'true'` can take effect
+
+⏫ [Back to list](#List)
 
 #### `open-issue`
 
