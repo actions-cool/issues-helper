@@ -12,7 +12,7 @@
 
 A GitHub Action that easily helps you automatically manage issues
 
-[Online documentation](https://actions-cool.github.io/issues-helper) | [Changelog](https://github.com/actions-cool/issues-helper/blob/main/docs/log.md)
+[Online documentation](https://actions-cool.github.io/issues-helper) | [Changelog](https://github.com/actions-cool/issues-helper/blob/main/changelog.md)
 
 ## 😎 Why use GitHub Action?
 
