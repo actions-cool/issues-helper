@@ -164,6 +164,8 @@ async function doMarkDuplicate (owner, repo, labels) {
     if (ifCommandInput) {
       const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
       await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+    } else if (contents) {
+      await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
     }
     if (duplicateLabels) {
       await doAddLabels(owner, repo, issueNumber, duplicateLabels);
