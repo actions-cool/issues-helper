@@ -1,3 +1,9 @@
+## v1.6
+
+`2020.12.30`
+
+- perf: optimize duplicate. [#24](https://github.com/actions-cool/issues-helper/pull/24)
+
 ## v1.5
 
 `2020.12.30`
