@@ -24,6 +24,8 @@ const octokit = new Octokit({ auth: `token ${token}` });
 const contents = core.getInput("contents");
 const issueContents = core.getInput("issue-contents");
 
+const context = github.context;
+
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
   await octokit.issues.addAssignees({
     owner,
@@ -136,6 +138,23 @@ async function doLockIssue (owner, repo, issueNumber) {
     issue_number: issueNumber,
   });
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
+};
+
+async function doMarkDuplicate (owner, repo, labels) {
+  if (context.eventName != 'issue_comment') {
+    core.info(`This actions only support on 'issue_comment'!`);
+    return false;
+  }
+  const issueContents = core.getInput("duplicate-command") || '/d';
+  const commentId = context.comment.id;
+  const commentBody = context.comment.body;
+  const issueNumber = context.issue.number;
+
+  const nextBody = commentBody.replace(issueContents, 'Duplicate of');
+  await doUpdateComment(owner, repo, commentId, nextBody, 'replace');
+  if (labels) {
+    await doSetLabels(owner, repo, issueNumber, labels);
+  }
 };
 
 async function doOpenIssue (owner, repo, issueNumber) {
@@ -355,6 +374,7 @@ module.exports = {
   doCreateIssue,
   doCreateIssueContent,
   doDeleteComment,
+  doMarkDuplicate,
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,

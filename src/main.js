@@ -10,6 +10,7 @@ const {
   doCreateIssue,
   doCreateIssueContent,
   doDeleteComment,
+  doMarkDuplicate,
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
@@ -38,6 +39,7 @@ const ALLACTIONS = [
   'create-issue',
   'delete-comment',
   'lock-issue',
+  'mark-duplicate',
   'open-issue',
   'remove-assignees',
   'remove-labels',
@@ -116,6 +118,9 @@ async function main() {
           break;
         case 'lock-issue':
           await doLockIssue(owner, repo, issueNumber);
+          break;
+        case 'mark-duplicate':
+          await doMarkDuplicate(owner, repo, labels);
           break;
         case 'open-issue':
           await doOpenIssue(owner, repo, issueNumber);

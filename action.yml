@@ -52,6 +52,8 @@ inputs:
     description: 'Query use'
   inactive-label:
     description: 'Issue label set use'
+  duplicate-command:
+    description: 'For mark-duplicate'
 outputs:
   issue-number:
     description: 'Create Issue Number'
