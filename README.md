@@ -12,7 +12,7 @@
 
 一个轻松帮你自动管理 issues 的 GitHub Action
 
-[在线文档](https://actions-cool.github.io/issues-helper/) | [更新日志](https://github.com/actions-cool/issues-helper/blob/main/changelog.md)
+[在线文档](https://actions-cool.github.io/issues-helper/) | [更新日志](https://github.com/actions-cool/issues-helper/blob/main/CHANGELOG.md)
 
 ## 😎 为什么用 GitHub Action？
 

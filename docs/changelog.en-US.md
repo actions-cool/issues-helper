@@ -21,4 +21,4 @@ toc: menu
   uses: actions-cool/issues-helper@main
 ```
 
-<embed src="../changelog.md"></embed>
+<embed src="../CHANGELOG.md"></embed>
