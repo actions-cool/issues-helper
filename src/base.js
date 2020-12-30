@@ -151,12 +151,14 @@ async function doMarkDuplicate (owner, repo, labels) {
   const commentBody = context.payload.comment.body;
   const issueNumber = context.payload.issue.number;
 
-  console.log(commentId, commentBody, issueNumber)
-
-  const nextBody = commentBody.replace(issueContents, 'Duplicate of');
-  await doUpdateComment(owner, repo, commentId, nextBody, 'replace');
-  if (labels) {
-    await doSetLabels(owner, repo, issueNumber, labels);
+  if (commentBody.startsWith(issueContents)) {
+    const nextBody = commentBody.replace(issueContents, 'Duplicate of');
+    await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+    if (labels) {
+      await doSetLabels(owner, repo, issueNumber, labels);
+    }
+  } else {
+    core.info(`This comment body should start whith 'duplicate-command'`);
   }
 };
 
@@ -226,7 +228,8 @@ async function doUpdateComment (
   repo,
   commentId,
   body,
-  updateMode
+  updateMode,
+  ifUpdateBody,
 ) {
   const comment = await octokit.issues.getComment({
     owner,
@@ -241,7 +244,7 @@ async function doUpdateComment (
     comment_id: commentId
   };
 
-  if (core.getInput("body")) {
+  if (core.getInput("body") || ifUpdateBody) {
     if (updateMode === 'append') {
       params.body = `${comment_body}\n${body}`;
     } else {

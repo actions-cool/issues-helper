@@ -81,7 +81,9 @@ async function main() {
       updateMode = 'replace';
     }
 
+    // actions
     const actions = core.getInput("actions", { required: true });
+
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
       testActions(item.trim());
