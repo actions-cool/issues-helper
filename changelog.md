@@ -1,3 +1,9 @@
+## v1.5
+
+`2020.12.30`
+
+- feat: add `mark-duplicate`. [#23](https://github.com/actions-cool/issues-helper/pull/23)
+
 ## v1.4
 
 `2020.12.29`

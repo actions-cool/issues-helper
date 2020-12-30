@@ -6286,6 +6286,8 @@ const octokit = new Octokit({ auth: `token ${token}` });
 const contents = core.getInput("contents");
 const issueContents = core.getInput("issue-contents");
 
+const context = github.context;
+
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
   await octokit.issues.addAssignees({
     owner,
@@ -6400,6 +6402,32 @@ async function doLockIssue (owner, repo, issueNumber) {
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 };
 
+async function doMarkDuplicate (owner, repo, labels) {
+  if (context.eventName != 'issue_comment') {
+    core.info(`This actions only support on 'issue_comment'!`);
+    return false;
+  }
+  const duplicateCommand = core.getInput("duplicate-command") || '/d';
+  const duplicateLabels = core.getInput("duplicate-labels");
+  
+  const commentId = context.payload.comment.id;
+  const commentBody = context.payload.comment.body;
+  const issueNumber = context.payload.issue.number;
+
+  if (commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) {
+    const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
+    await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+    if (duplicateLabels) {
+      await doAddLabels(owner, repo, issueNumber, duplicateLabels);
+    }
+    if (labels) {
+      await doSetLabels(owner, repo, issueNumber, labels);
+    }
+  } else {
+    core.info(`This comment body should start whith 'duplicate-command'`);
+  }
+};
+
 async function doOpenIssue (owner, repo, issueNumber) {
   await octokit.issues.update({
     owner,
@@ -6466,7 +6494,8 @@ async function doUpdateComment (
   repo,
   commentId,
   body,
-  updateMode
+  updateMode,
+  ifUpdateBody,
 ) {
   const comment = await octokit.issues.getComment({
     owner,
@@ -6481,7 +6510,7 @@ async function doUpdateComment (
     comment_id: commentId
   };
 
-  if (core.getInput("body")) {
+  if (core.getInput("body") || ifUpdateBody) {
     if (updateMode === 'append') {
       params.body = `${comment_body}\n${body}`;
     } else {
@@ -6617,6 +6646,7 @@ module.exports = {
   doCreateIssue,
   doCreateIssueContent,
   doDeleteComment,
+  doMarkDuplicate,
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
@@ -6646,6 +6676,7 @@ const {
   doCreateIssue,
   doCreateIssueContent,
   doDeleteComment,
+  doMarkDuplicate,
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
@@ -6674,6 +6705,7 @@ const ALLACTIONS = [
   'create-issue',
   'delete-comment',
   'lock-issue',
+  'mark-duplicate',
   'open-issue',
   'remove-assignees',
   'remove-labels',
@@ -6715,7 +6747,9 @@ async function main() {
       updateMode = 'replace';
     }
 
+    // actions
     const actions = core.getInput("actions", { required: true });
+
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
       testActions(item.trim());
@@ -6752,6 +6786,9 @@ async function main() {
           break;
         case 'lock-issue':
           await doLockIssue(owner, repo, issueNumber);
+          break;
+        case 'mark-duplicate':
+          await doMarkDuplicate(owner, repo, labels);
           break;
         case 'open-issue':
           await doOpenIssue(owner, repo, issueNumber);

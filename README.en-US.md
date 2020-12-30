@@ -12,7 +12,7 @@
 
 A GitHub Action that easily helps you automatically manage issues
 
-[Online documentation](https://actions-cool.github.io/issues-helper) | [Changelog](https://github.com/actions-cool/issues-helper/blob/main/docs/log.md)
+[Online documentation](https://actions-cool.github.io/issues-helper) | [Changelog](https://github.com/actions-cool/issues-helper/blob/main/changelog.md)
 
 ## 😎 Why use GitHub Action?
 
@@ -34,6 +34,7 @@ When the following list does not have the features you want, you can submit it i
   - [`create-issue`](#create-issue)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
+  - [`mark-duplicate`](#mark-duplicate)
   - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
   - [`remove-labels`](#remove-labels)
@@ -293,6 +294,39 @@ jobs:
 | issue-number | The number of issue | number | ✔ | v1 |
 
 ⏫ [Back to list](#List)
+
+#### `mark-duplicate`
+
+Quickly mark duplicate issue.
+
+```yml
+name: Issue Mark Duplicate
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mark-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v1.5
+        with:
+          actions: 'mark-duplicate'
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.5 |
+| token | [Token explain](#token) | string | ✔ | v1.5 |
+| duplicate-command | Operation command, default is `/d` | string | ✖ | v1.5 |
+| duplicate-labels | Add additional labels to this issue | string | ✖ | v1.5 |
+| labels | Replace the labels of the issue | string | ✖ | v1.5 |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1.5 |
+
+⏫ [返回列表](#列-表)
 
 #### `open-issue`
 
