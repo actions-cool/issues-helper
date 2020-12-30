@@ -173,7 +173,7 @@ async function doMarkDuplicate (owner, repo, labels) {
     if (labels) {
       await doSetLabels(owner, repo, issueNumber, labels);
     }
-    if (closeIssue == true) {
+    if (closeIssue == 'true') {
       await doCloseIssue(owner, repo, issueNumber);
     }
   } else {
