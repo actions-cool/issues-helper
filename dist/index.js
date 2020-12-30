@@ -6407,15 +6407,15 @@ async function doMarkDuplicate (owner, repo, labels) {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
   }
-  const issueContents = core.getInput("duplicate-command") || '/d';
+  const duplicateCommand = core.getInput("duplicate-command") || '/d';
   
   const commentId = context.payload.comment.id;
   const commentBody = context.payload.comment.body;
   const issueNumber = context.payload.issue.number;
 
-  if (commentBody.startsWith(issueContents)) {
-    const nextBody = commentBody.replace(issueContents, 'Duplicate of');
-    await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+  if (commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) {
+    const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
+    await doCreateComment(owner, repo, issueNumber, nextBody, 'replace', true);
     if (labels) {
       await doSetLabels(owner, repo, issueNumber, labels);
     }
