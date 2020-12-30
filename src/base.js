@@ -146,6 +146,7 @@ async function doMarkDuplicate (owner, repo, labels) {
     return false;
   }
   const issueContents = core.getInput("duplicate-command") || '/d';
+  console.log(JSON.stringify(context))
   const commentId = context.comment.id;
   const commentBody = context.comment.body;
   const issueNumber = context.issue.number;
