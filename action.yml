@@ -56,6 +56,8 @@ inputs:
     description: 'For mark-duplicate'
   duplicate-labels:
     description: 'For mark-duplicate add labels'
+  close-issue:
+    description: 'For mark-duplicate'
 outputs:
   issue-number:
     description: 'Create Issue Number'
