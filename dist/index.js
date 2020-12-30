@@ -6278,7 +6278,7 @@ const ALLREACTIONS = [
   "eyes",
 ];
 
-const { dealInput } = __webpack_require__(6254);
+const { dealInput, testDuplicate } = __webpack_require__(6254);
 
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
@@ -6422,7 +6422,7 @@ async function doMarkDuplicate (owner, repo, labels) {
 
   const ifCommandInput = !!duplicateCommand;
 
-  if ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || commentBody.startsWith('Duplicate of')) {
+  if ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody)) {
     if (ifCommandInput) {
       const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
       await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
@@ -6920,13 +6920,27 @@ function dealInput (para) {
   return arr;
 };
 
-function matchKeyword(content, keywords) {
+function matchKeyword (content, keywords) {
   return keywords.find(item => content.toLowerCase().includes(item));
+};
+
+function testDuplicate(body) {
+  if (!body || !body.startsWith('Duplicate of')) {
+    return false
+  }
+
+  let arr = body.split(' ');
+  if (arr[0] == 'Duplicate' && arr[1] == 'of') {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 module.exports = {
   dealInput,
   matchKeyword,
+  testDuplicate,
 };
 
 

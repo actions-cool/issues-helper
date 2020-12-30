@@ -16,7 +16,7 @@ const ALLREACTIONS = [
   "eyes",
 ];
 
-const { dealInput } = require('./util.js');
+const { dealInput, testDuplicate } = require('./util.js');
 
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
@@ -160,7 +160,7 @@ async function doMarkDuplicate (owner, repo, labels) {
 
   const ifCommandInput = !!duplicateCommand;
 
-  if ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || commentBody.startsWith('Duplicate of')) {
+  if ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody)) {
     if (ifCommandInput) {
       const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
       await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
