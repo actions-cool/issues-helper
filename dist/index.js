@@ -6278,7 +6278,7 @@ const ALLREACTIONS = [
   "eyes",
 ];
 
-const { dealInput } = __webpack_require__(6254);
+const { dealInput, testDuplicate } = __webpack_require__(6254);
 
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
@@ -6407,21 +6407,36 @@ async function doMarkDuplicate (owner, repo, labels) {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
   }
-  const duplicateCommand = core.getInput("duplicate-command") || '/d';
+  if (context.payload.action != 'created') {
+    core.info(`This actions only support on 'issue_comment' created!`);
+    return false;
+  }
+
+  const duplicateCommand = core.getInput("duplicate-command");
   const duplicateLabels = core.getInput("duplicate-labels");
+  const closeIssue = core.getInput("close-issue");
   
   const commentId = context.payload.comment.id;
   const commentBody = context.payload.comment.body;
   const issueNumber = context.payload.issue.number;
 
-  if (commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) {
-    const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
-    await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+  const ifCommandInput = !!duplicateCommand;
+
+  if ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody)) {
+    if (ifCommandInput) {
+      const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
+      await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+    } else if (contents) {
+      await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
+    }
     if (duplicateLabels) {
       await doAddLabels(owner, repo, issueNumber, duplicateLabels);
     }
     if (labels) {
       await doSetLabels(owner, repo, issueNumber, labels);
+    }
+    if (closeIssue == 'true') {
+      await doCloseIssue(owner, repo, issueNumber);
     }
   } else {
     core.info(`This comment body should start whith 'duplicate-command'`);
@@ -6905,13 +6920,27 @@ function dealInput (para) {
   return arr;
 };
 
-function matchKeyword(content, keywords) {
+function matchKeyword (content, keywords) {
   return keywords.find(item => content.toLowerCase().includes(item));
+};
+
+function testDuplicate(body) {
+  if (!body || !body.startsWith('Duplicate of')) {
+    return false
+  }
+
+  let arr = body.split(' ');
+  if (arr[0] == 'Duplicate' && arr[1] == 'of') {
+    return true;
+  } else {
+    return false;
+  }
 };
 
 module.exports = {
   dealInput,
   matchKeyword,
+  testDuplicate,
 };
 
 
