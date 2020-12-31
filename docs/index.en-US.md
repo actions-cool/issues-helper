@@ -51,7 +51,7 @@ jobs:
 
 ## 💖 Who is using?
 
-<embed src="../README.md#L958-L1003"></embed>
+<embed src="../README.md#L958-L986"></embed>
 
 ## ⚡ Feedback
 
