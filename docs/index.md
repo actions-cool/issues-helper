@@ -51,7 +51,7 @@ jobs:
 
 ## 💖 谁在使用？
 
-<code src="./users.tsx" inline />
+<embed src="../README.md#L958-L1003"></embed>
 
 ## ⚡ 反馈
 

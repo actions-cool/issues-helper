@@ -11,6 +11,7 @@ export default defineConfig({
   logo:
     'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
   exportStatic: {},
+  ssr: {},
   outputPath: 'docs-dist',
   hash: true,
   base: `/${name}/`,
@@ -72,10 +73,6 @@ export default defineConfig({
     `
       .markdown table {
         width: auto !important;
-      }
-
-      .__dumi-default-code-block + table {
-        margin-top: 16px;
       }
     `,
   ]
