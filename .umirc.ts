@@ -29,6 +29,7 @@ export default defineConfig({
       { title: '基 础', path: '/base' },
       { title: '进 阶', path: '/advanced' },
       { title: '更新日志', path: '/changelog' },
+      { title: '国内镜像', path: 'https://issues-helper.gitee.io' },
       { title: 'GitHub', path: 'https://github.com/actions-cool/issues-helper' },
     ],
     'en-US': [
