@@ -41,7 +41,7 @@ jobs:
 - The `name` can be modified according to the actual situation
 - [Reference to on](/en-US/guide/ref#-github-docs)
 - `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
-- `assignees` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `assignees` support multiple and separated by comma
 
 ## `add-labels`
 
@@ -75,7 +75,7 @@ jobs:
 | issue-number | The number of issue | number | ✔ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
-- `labels` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `labels` support multiple and separated by comma
 
 ## `close-issue`
 
@@ -138,7 +138,7 @@ jobs:
   - Where `${owner}/${repo}` means the current repo
 - Return `comment-id`, which can be used for subsequent operations. [Usage reference](/en-US/guide/ref#-outputs-use)
 - `${{ github.event.issue.user.login }}` indicates the creator of the issue
-- `contents` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `contents` support multiple and separated by comma
 
 ## `create-issue`
 

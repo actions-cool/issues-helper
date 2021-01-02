@@ -94,7 +94,7 @@ jobs:
 - The `name` can be modified according to the actual situation
 - [Reference to on](#github-docs)
 - `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
-- `assignees` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `assignees` support multiple and separated by comma 
 
 ⏫ [Back to list](#List)
 
@@ -130,7 +130,7 @@ jobs:
 | issue-number | The number of issue | number | ✔ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
-- `labels` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `labels` support multiple and separated by comma
 
 ⏫ [Back to list](#List)
 
@@ -197,7 +197,7 @@ jobs:
   - Where `${owner}/${repo}` means the current repo
 - Return `comment-id`, which can be used for subsequent operations. [Usage reference](#outputs-use)
 - `${{ github.event.issue.user.login }}` indicates the creator of the issue
-- `contents` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
+- `contents` support multiple and separated by comma
 
 ⏫ [Back to list](#List)
 
@@ -975,7 +975,6 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
   - v1 represents the initial version
   - The fixes and additions to the v1 version will be released to the v1.1 version
   - When the released v1.x runs stable for a certain period of time, release the advanced v2 version
-  - The parameters in the API must use the largest version and above
 
 - Version selection
   - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
