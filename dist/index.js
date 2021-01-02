@@ -6650,7 +6650,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 </tr>`
     let labelsBody = '';
     labelsArr.forEach(it => {
-      labelsBody += `<tr><td>${labelNameShow}</td><td>${it.number}</td></tr>`
+      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
     })
     body = body + labelsTitle + labelsBody + '</table>';
   }
