@@ -244,6 +244,6 @@ jobs:
 | count-lables | 新增 issue 是否统计 labels | string | ✖ | v1.7 |
 | count-comments | 新增 issue 是否统计 comments | string | ✖ | v1.7 |
 
-- 新增的 issue 标题默认为`[当前仓库] Month Statistics: 年-月`
+- 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
 - `count-lables`：可设置 `'true'`，增加 labels 统计
 - `count-comments`：可设置 `'true'`，增加 comments 统计

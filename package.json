@@ -8,6 +8,7 @@
     "start": "dumi dev",
     "docs:build": "dumi build",
     "docs-dev:build": "UMI_ENV=dev dumi build",
+    "docs-gitee:build": "UMI_ENV=gitee dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "package": "ncc build src/main.js -o dist",
