@@ -22,28 +22,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
           inactive-day: 30
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
-| inactive-label | The label name adding | string | ✖ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| inactive-label | The label name adding | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,14 +82,14 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.2 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1.2 |
-| issue-number | The number of issue | number | ✔ | v1.2 |
-| assignee-includes | Assignees contains check | string | ✖ | v1.2 |
-| title-includes | Title contains check | string | ✖ | v1.2 |
-| body-includes | Body contains check | string | ✖ | v1.2 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| assignee-includes | Assignees contains check | string | ✖ |
+| title-includes | Title contains check | string | ✖ |
+| body-includes | Body contains check | string | ✖ |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
 - Return `check-result`
@@ -110,7 +110,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -118,19 +118,19 @@ jobs:
           inactive-day: 7
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -142,7 +142,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -151,14 +151,14 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
       body-includes: 'this'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| comment-auth | Comment creator, all will be queried if not filled | string | ✖ | v1 |
-| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ | v1 |
-| direction | Return `comments` sort | string | ✖ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
+| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
+| direction | Return `comments` sort | string | ✖ |
 
 - Return `comments` in the following format:
 
@@ -188,7 +188,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -196,20 +196,20 @@ jobs:
           inactive-day: 128
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -239,14 +239,14 @@ jobs:
           count-lables: 'true'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.7 |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1.7 |
-| labels | The labels for the new issue | string | ✖ | v1.7 |
-| assignees | The assignees for the new issue | string | ✖ | v1.7 |
-| count-lables | Whether the new issue count labels | string | ✖ | v1.7 |
-| count-comments | Whether the new issue count comments | string | ✖ | v1.7 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| labels | The labels for the new issue | string | ✖ |
+| assignees | The assignees for the new issue | string | ✖ |
+| count-lables | Whether the new issue count labels | string | ✖ |
+| count-comments | Whether the new issue count comments | string | ✖ |
 
 - The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
 - `count-lables`: You can set `'true'` to add labels statistics

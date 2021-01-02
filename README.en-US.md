@@ -75,7 +75,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -83,12 +83,12 @@ jobs:
           assignees: 'xxx' or 'xx1,xx2'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person. No operation when no input or empty character | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| assignees | Designated person. No operation when no input or empty character | string | ✖ |
 
 - `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
 - The `name` can be modified according to the actual situation
@@ -115,7 +115,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -123,12 +123,12 @@ jobs:
           labels: 'bug' or 'xx1,xx2'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
 - `labels` support multiple and separated by comma. Pay attention to multiple settings, you need to use the version above v1.1
 
@@ -140,7 +140,7 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -148,11 +148,11 @@ Close the specified issue.
       body: 'This is auto closed.'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -173,7 +173,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -185,13 +185,13 @@ jobs:
           contents: '+1' or '+1,heart'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| body | Add comment content | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| body | Add comment content | string | ✖ |
+| contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - `body` default is `Currently at ${owner}/${repo}. And this is default comment.`
   - Where `${owner}/${repo}` means the current repo
@@ -217,7 +217,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -228,15 +228,15 @@ jobs:
           contents: '+1'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| title | The title of the new issue | string | ✖ | v1 |
-| body | The body of the new issue | string | ✖ | v1 |
-| labels | The labels for the new issue | string | ✖ | v1.1 |
-| assignees | The assignees for the new issue | string | ✖ | v1.1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| title | The title of the new issue | string | ✖ |
+| body | The body of the new issue | string | ✖ |
+| labels | The labels for the new issue | string | ✖ |
+| assignees | The assignees for the new issue | string | ✖ |
+| contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - `title` default is `Default Title`
 - Return `issue-number`. [Usage reference](#outputs-use)
@@ -249,18 +249,18 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
       comment-id: xxx
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| comment-id | The comment ID | number | ✔ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| comment-id | The comment ID | number | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -281,18 +281,18 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -312,21 +312,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v1.5
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.5 |
-| token | [Token explain](#token) | string | ✔ | v1.5 |
-| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ | v1.6 |
-| duplicate-labels | Add additional labels to this issue | string | ✖ | v1.5 |
-| labels | Replace the labels of the issue | string | ✖ | v1.5 |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1.5 |
-| close-issue | Whether to close the issue at the same time | string | ✖ | v1.6 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ |
+| duplicate-labels | Add additional labels to this issue | string | ✖ |
+| labels | Replace the labels of the issue | string | ✖ |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| close-issue | Whether to close the issue at the same time | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`
 - `close-issue`: Both `true` or `'true'` can take effect
@@ -339,18 +339,18 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -360,7 +360,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -368,12 +368,12 @@ Remove the person designated by issue.
       assignees: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -383,7 +383,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v1.2
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -391,12 +391,12 @@ Remove the specified labels.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.2 |
-| token | [Token explain](#token) | string | ✔ | v1.2 |
-| issue-number | The number of issue | number | ✔ | v1.2 |
-| labels | The removed labels. When it is a blank character, do not remove | string | ✔ | v1.2 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
 - `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
 
@@ -408,7 +408,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -416,12 +416,12 @@ Replace the labels of issue.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| labels | labels set. When empty characters, will remove all | string | ✔ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| labels | labels set. When empty characters, will remove all | string | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -431,18 +431,18 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
 
 ⏫ [Back to list](#List)
 
@@ -464,7 +464,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v1
+          uses: actions-cool/issues-helper@v1.7
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -472,14 +472,14 @@ jobs:
             contents: 'eyes'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| comment-id | The comment ID | number | ✔ | v1 |
-| body | Update the content of comment | string | ✖ | v1 |
-| update-mode | Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| comment-id | The comment ID | number | ✔ |
+| body | Update the content of comment | string | ✖ |
+| update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
+| contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
@@ -492,7 +492,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -506,18 +506,18 @@ Update the specified issue according to the `issue-number`.
       contents: '+1'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| state | Modify the status of issue, optional value `open` `closed` | string | ✖ | v1 |
-| title | Modify the title of the issue | string | ✖ | v1 |
-| body | Modify the content of issue | string | ✖ | v1 |
-| update-mode |  Update mode. Default `replace`, another `append` | string | ✖ | v1 |
-| labels | Replace the labels of issue | string | ✖ | v1.1 |
-| assignees | Replace the assignees of issue | string | ✖ | v1.1 |
-| contents | Add [reaction](#reactions-types) | string | ✖ | v1.1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
+| title | Modify the title of the issue | string | ✖ |
+| body | Modify the content of issue | string | ✖ |
+| update-mode |  Update mode. Default `replace`, another `append` | string | ✖ |
+| labels | Replace the labels of issue | string | ✖ |
+| assignees | Replace the assignees of issue | string | ✖ |
+| contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
@@ -542,7 +542,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v1.3
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -552,14 +552,14 @@ jobs:
           issue-contents: '+1, -1, eyes'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.3 |
-| token | [Token explain](#token) | string | ✔ | v1.3 |
-| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ | v1.3 |
-| labels | Add labels to this issue | string | ✖ | v1.3 |
-| assignees | Add assignees to this issue | string | ✖ | v1.3 |
-| issue-contents | Add [reaction](#reactions-types) to this issue| string | ✖ | v1.3 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ |
+| labels | Add labels to this issue | string | ✖ |
+| assignees | Add assignees to this issue | string | ✖ |
+| issue-contents | Add [reaction](#reactions-types) to this issue| string | ✖ |
 
 - If these 4 options are not filled, no operation
 
@@ -585,28 +585,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
           inactive-day: 30
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
-| inactive-label | The label name adding | string | ✖ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| inactive-label | The label name adding | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -638,7 +638,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -647,14 +647,14 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.2 |
-| token | [Token explain](#token) | string | ✔ | v1.2 |
-| issue-number | The number of issue | number | ✔ | v1.2 |
-| assignee-includes | Assignees contains check | string | ✖ | v1.2 |
-| title-includes | Title contains check | string | ✖ | v1.2 |
-| body-includes | Body contains check | string | ✖ | v1.2 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| assignee-includes | Assignees contains check | string | ✖ |
+| title-includes | Title contains check | string | ✖ |
+| body-includes | Body contains check | string | ✖ |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
 - Return `check-result`
@@ -677,7 +677,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -685,19 +685,19 @@ jobs:
           inactive-day: 7
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -711,7 +711,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -720,14 +720,14 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
       body-includes: 'this'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| issue-number | The number of issue | number | ✔ | v1 |
-| comment-auth | Comment creator, all will be queried if not filled | string | ✖ | v1 |
-| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ | v1 |
-| direction | Return `comments` sort | string | ✖ | v1 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| issue-number | The number of issue | number | ✔ |
+| comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
+| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
+| direction | Return `comments` sort | string | ✖ |
 
 - Return `comments` in the following format:
 
@@ -759,7 +759,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -767,20 +767,20 @@ jobs:
           inactive-day: 128
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1 |
-| token | [Token explain](#token) | string | ✔ | v1 |
-| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ | v1 |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ | v1 |
-| labels | Labels filtering | string | ✖ | v1.1 |
-| issue-state | State filtering | string | ✖ | v1 |
-| issue-assignee | Assignee filtering | string | ✖ | v1 |
-| issue-creator | Creator filtering | string | ✖ | v1 |
-| issue-mentioned | Mentioned filtering | string | ✖ | v1 |
-| body-includes | Body filtering | string | ✖ | v1 |
-| title-includes | Title filtering | string | ✖ | v1 |
-| inactive-day | Inactive days filtering | number | ✖ | v1.4 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -812,14 +812,14 @@ jobs:
           count-lables: 'true'
 ```
 
-| Param | Desc  | Type | Required | Version |
-| -- | -- | -- | -- | -- |
-| actions | Action type | string | ✔ | v1.7 |
-| token | [Token explain](#token) | string | ✔ | v1.7 |
-| labels | The labels for the new issue | string | ✖ | v1.7 |
-| assignees | The assignees for the new issue | string | ✖ | v1.7 |
-| count-lables | Whether the new issue count labels | string | ✖ | v1.7 |
-| count-comments | Whether the new issue count comments | string | ✖ | v1.7 |
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| labels | The labels for the new issue | string | ✖ |
+| assignees | The assignees for the new issue | string | ✖ |
+| count-lables | Whether the new issue count labels | string | ✖ |
+| count-comments | Whether the new issue count comments | string | ✖ |
 
 - The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
 - `count-lables`: You can set `'true'` to add labels statistics
@@ -848,7 +848,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         id: fcid
         with:
           actions: 'find-comments'
@@ -859,7 +859,7 @@ jobs:
 
       - name: create comment
         if: ${{ steps.fcid.outputs.comments.length == 0 }}
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -868,7 +868,7 @@ jobs:
 
       - name: update comment
         if: ${{ steps.fcid.outputs.comments.length == 1 }}
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -900,7 +900,7 @@ When the token is not filled in actions or the corresponding secrets are not add
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v1
+  uses: actions-cool/issues-helper@v1.7
   id: createissue
   with:
     actions: 'create-issue'

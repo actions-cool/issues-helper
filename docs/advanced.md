@@ -22,28 +22,28 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
           inactive-day: 30
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1.1 |
-| issue-state | 状态筛选 | string | ✖ | v1 |
-| issue-assignee | 指定人筛选 | string | ✖ | v1 |
-| issue-creator | 创建人筛选 | string | ✖ | v1 |
-| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
-| body-includes | 包含内容筛选 | string | ✖ | v1 |
-| title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
-| inactive-label | 新增标签名称 | string | ✖ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| labels | 标签筛选 | string | ✖ |
+| issue-state | 状态筛选 | string | ✖ |
+| issue-assignee | 指定人筛选 | string | ✖ |
+| issue-creator | 创建人筛选 | string | ✖ |
+| issue-mentioned | 提及人筛选 | string | ✖ |
+| body-includes | 包含内容筛选 | string | ✖ |
+| title-includes | 包含标题筛选 | string | ✖ |
+| inactive-day | 非活跃天数筛选 | number | ✖ |
+| inactive-label | 新增标签名称 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -78,14 +78,14 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1.2 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1.2 |
-| issue-number | 指定的 issue | number | ✔ | v1.2 |
-| assignee-includes | 是否包含指定人 | string | ✖ | v1.2 |
-| title-includes | 标题包含校验 | string | ✖ | v1.2 |
-| body-includes | 内容包含校验 | string | ✖ | v1.2 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| assignee-includes | 是否包含指定人 | string | ✖ |
+| title-includes | 标题包含校验 | string | ✖ |
+| body-includes | 内容包含校验 | string | ✖ |
 
 - `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
 - 返回 `check-result`
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -114,19 +114,19 @@ jobs:
           inactive-day: 7
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1.1 |
-| issue-assignee | 指定人筛选 | string | ✖ | v1 |
-| issue-creator | 创建人筛选 | string | ✖ | v1 |
-| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
-| body-includes | 包含内容筛选 | string | ✖ | v1 |
-| title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| labels | 标签筛选 | string | ✖ |
+| issue-assignee | 指定人筛选 | string | ✖ |
+| issue-creator | 创建人筛选 | string | ✖ |
+| issue-mentioned | 提及人筛选 | string | ✖ |
+| body-includes | 包含内容筛选 | string | ✖ |
+| title-includes | 包含标题筛选 | string | ✖ |
+| inactive-day | 非活跃天数筛选 | number | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -138,7 +138,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -147,14 +147,14 @@ jobs:
       body-includes: 'this'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| comment-auth | 评论创建者，不填时会查询所有 | string | ✖ | v1 |
-| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ | v1 |
-| direction | 返回 `comments` 排序 | string | ✖ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
+| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
+| direction | 返回 `comments` 排序 | string | ✖ |
 
 - 返回 `comments`，格式如下：
 
@@ -184,7 +184,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -192,20 +192,20 @@ jobs:
           inactive-day: 128
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ | v1 |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1 |
-| labels | 标签筛选 | string | ✖ | v1.1 |
-| issue-state | 状态筛选 | string | ✖ | v1 |
-| issue-assignee | 指定人筛选 | string | ✖ | v1 |
-| issue-creator | 创建人筛选 | string | ✖ | v1 |
-| issue-mentioned | 提及人筛选 | string | ✖ | v1 |
-| body-includes | 包含内容筛选 | string | ✖ | v1 |
-| title-includes | 包含标题筛选 | string | ✖ | v1 |
-| inactive-day | 非活跃天数筛选 | number | ✖ | v1.4 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
+| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| labels | 标签筛选 | string | ✖ |
+| issue-state | 状态筛选 | string | ✖ |
+| issue-assignee | 指定人筛选 | string | ✖ |
+| issue-creator | 创建人筛选 | string | ✖ |
+| issue-mentioned | 提及人筛选 | string | ✖ |
+| body-includes | 包含内容筛选 | string | ✖ |
+| title-includes | 包含标题筛选 | string | ✖ |
+| inactive-day | 非活跃天数筛选 | number | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -235,14 +235,14 @@ jobs:
           count-lables: 'true'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1.7 |
-| token | [token 说明](/guide/ref#-token-说明)) | string | ✔ | v1.7 |
-| labels | 为新增 issue 添加 labels | string | ✖ | v1.7 |
-| assignees | 为新增 issue 添加 assignees | string | ✖ | v1.7 |
-| count-lables | 新增 issue 是否统计 labels | string | ✖ | v1.7 |
-| count-comments | 新增 issue 是否统计 comments | string | ✖ | v1.7 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明)) | string | ✔ |
+| labels | 为新增 issue 添加 labels | string | ✖ |
+| assignees | 为新增 issue 添加 assignees | string | ✖ |
+| count-lables | 新增 issue 是否统计 labels | string | ✖ |
+| count-comments | 新增 issue 是否统计 comments | string | ✖ |
 
 - 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
 - `count-lables`：可设置 `'true'`，增加 labels 统计
