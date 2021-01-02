@@ -387,8 +387,7 @@ async function doWelcome (owner, repo, assignees, labels, body) {
     const auth = context.payload.sender.login;
     core.info(`Actions: [welcome: auth=][${auth}]`);
     const issueNumber = context.issue.number;
-    const creator = 'zoo-js-bot';
-    const issues = await doQueryIssues(owner, repo, false, 'all', creator);
+    const issues = await doQueryIssues(owner, repo, false, 'all', auth);
     if (issues.length == 0 || (issues.length == 1 && issues[0].number == issueNumber)) {
       if (core.getInput("body")) {
         await doCreateComment(owner, repo, issueNumber, body);

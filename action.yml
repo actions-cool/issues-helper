@@ -58,6 +58,10 @@ inputs:
     description: 'For mark-duplicate add labels'
   close-issue:
     description: 'For mark-duplicate'
+  count-lables:
+    description: 'For month-statistics'
+  count-comments:
+    description: 'For month-statistics'
 outputs:
   issue-number:
     description: 'Create Issue Number'
