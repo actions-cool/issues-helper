@@ -6575,12 +6575,9 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   const month = getPreMonth(thisMonth);
   const showMonth = month < 10 ? `0${month}` : month;
 
-  const owner2 = 'mui-org';
-  const repo2 = 'material-ui'
-
   let issues = await getIssuesInMonth(
-    owner2,
-    repo2,
+    owner,
+    repo,
     thisMonth
   );
   if (issues.length == 0) {
@@ -6597,7 +6594,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   let closeTotal = 0;
   let closeIssuesNumber = [];
   let labelsTotals = [];
-  const title = `[${owner2}/${repo2}] Month Statistics: ${year}-${showMonth}`;
+  const title = `[${owner}/${repo}] Month Statistics: ${year}-${showMonth}`;
   for (let i = 0; i < issues.length; i++) {
     if (issues[i].state == 'closed') {
       closeTotal += 1;
