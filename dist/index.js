@@ -6643,32 +6643,44 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     let labelsTitle = `
 ### Labels statistics
 
-| Name | Number |
-| -- | -- |`
+<table>
+<tr>
+<td>Name</td>
+<td>Number</td>
+</tr>`
     let labelsBody = '';
     labelsArr.forEach(it => {
-      let labelNameShow = it.labelName.replace(/|/g, '\|');
-      labelsBody += `
-| ${labelNameShow} | ${it.number} |`
+      labelsBody += `<tr><td>${labelNameShow}</td><td>${it.number}</td></tr>`
     })
-    body = body + labelsTitle + labelsBody;
+    body = body + labelsTitle + labelsBody + '</table>';
   }
 
   if (countComments) {
     totalIssues.sort((a, b) => b.comments - a.comments);
     const maxComments = totalIssues.slice(0, 3);
-    let commentsShow = `
+    let commentTitle = `
 ### Most commented
 
-| # | Issue | Title | Number | State |
-| -- | -- | -- | -- | -- |
-| 1 | [${maxComments[0].number}](${maxComments[0].html_url}) | ${maxComments[0].title} | ${maxComments[0].comments} | ${maxComments[0].state} |
-| 2 | [${maxComments[1].number}](${maxComments[1].html_url}) | ${maxComments[1].title} | ${maxComments[1].comments} | ${maxComments[1].state} |
-| 3 | [${maxComments[2].number}](${maxComments[2].html_url}) | ${maxComments[2].title} | ${maxComments[2].comments} | ${maxComments[2].state} |
-
+<table>
+<tr>
+<td>#</td>
+<td>Issue</td>
+<td>Title</td>
+<td>Number</td>
+<td>State</td>
+</tr>
 `
-    body += commentsShow;
+    let commentBody = '';
+    maxComments.forEach(it => {
+      commentBody += `<tr>
+<td>[${it.number}](${it.html_url})</td>
+<td>${it.title}</td>
+<td>${it.comments}</td>
+<td>${it.state}</td></tr>`
+    })
+    body = body + commentTitle + commentBody + '</table>';
   }
+
   await doCreateIssue(owner, repo, title, body, labels, assignees);
 };
 
