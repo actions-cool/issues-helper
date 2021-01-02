@@ -1,3 +1,12 @@
+## v1.7
+
+`2021.01.02`
+
+- [#27](https://github.com/actions-cool/issues-helper/pull/27)
+  - feat: add `month-statistics`
+  - fix: query issues less because pages max 100
+  - fix: js nested `require`
+
 ## v1.6
 
 `2020.12.30`
