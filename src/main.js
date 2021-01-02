@@ -28,6 +28,7 @@ const {
   doCloseIssues,
   doFindComments,
   doLockIssues,
+  doMonthStatistics,
 } = require('./advanced.js');
 
 const ALLACTIONS = [
@@ -55,12 +56,15 @@ const ALLACTIONS = [
   'close-issues',
   'find-comments',
   'lock-issues',
+  'month-statistics',
 ];
 
 async function main() {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
+    // const owner = 'xrkffgg'
+    // const repo = 'test-ci'
 
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
@@ -83,6 +87,7 @@ async function main() {
 
     // actions
     const actions = core.getInput("actions", { required: true });
+    // const actions = 'month-statistics';
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
@@ -205,6 +210,14 @@ async function main() {
             owner,
             repo,
             labels
+          );
+          break;
+        case 'month-statistics':
+          await doMonthStatistics(
+            owner,
+            repo,
+            labels,
+            assignees
           );
           break;
         // default

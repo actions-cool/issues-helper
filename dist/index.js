@@ -6039,10 +6039,11 @@ const {
   doAddLabels,
   doCloseIssue,
   doCreateComment,
+  doCreateIssue,
   doLockIssue
 } = __webpack_require__(9932);
 
-const { dealInput, matchKeyword } = __webpack_require__(6254);
+const { dealInput, getPreMonth, matchKeyword } = __webpack_require__(6254);
 
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
@@ -6059,14 +6060,16 @@ const issueCreator = core.getInput("issue-creator");
 const issueAssignee = core.getInput('issue-assignee');
 const issueMentioned = core.getInput('issue-mentioned');
 
-let issueState = core.getInput("issue-state") || 'all';
+let issueState = core.getInput("issue-state") || 'open';
 
-if (issueState != 'open' && issueState != 'closed') {
-  issueState = 'all';
+if (issueState != 'all' && issueState != 'closed') {
+  issueState = 'open';
 }
 
 const inactiveDay = core.getInput("inactive-day");
 const inactiveLabel = core.getInput("inactive-label") || 'inactive';
+
+const perPage = 100;
 
 async function doCheckInactive (owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, issueState);
@@ -6192,6 +6195,91 @@ async function doLockIssues (owner, repo, labels) {
   }
 };
 
+async function doMonthStatistics (owner, repo, labels, assignees) {
+  const countLables = core.getInput("count-lables");
+  const countComments = core.getInput("count-comments");
+
+  const thisMonth = dayjs.utc().month() + 1;
+  const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
+
+  const month = getPreMonth(thisMonth);
+  const showMonth = month < 10 ? `0${month}` : month;
+
+  let issues = await getIssuesInMonth(
+    'ant-design',
+    'ant-design',
+    thisMonth
+  );
+  if (issues.length == 0) {
+    core.info(`Actions: [query-issues-${month}] empty!`);
+    return false;
+  }
+  issues = issues.filter(i => {
+    return getCreatedMontn(i.created_at) == month
+  });
+  let total = issues.length;
+  let totalIssues = [...issues];
+  let openTotal = 0;
+  let openIssuesNumber = [];
+  let closeTotal = 0;
+  let closeIssuesNumber = [];
+  let labelsTotals = [];
+  const title = core.getInput("title") ? core.getInput("title") : `[${owner}/${repo}] Month Statistics: ${year}-${showMonth}`;
+  for (let i = 0; i < issues.length; i++) {
+    if (issues[i].state == 'closed') {
+      closeTotal += 1;
+      closeIssuesNumber.push(issues[i].number);
+    } else if (issues[i].state == 'open') {
+      openTotal += 1;
+      openIssuesNumber.push(issues[i].number);
+    }
+    if (countLables && issues[i].labels) {
+      issues[i].labels.forEach(l => {
+        if (l.name in labelsTotals) {
+          labelsTotals[l.name] += 1;
+        } else {
+          labelsTotals[l.name] = 1;
+        }
+      })
+    }
+  }
+
+  console.log(total, openTotal, closeTotal);
+  // console.log(openIssuesNumber);
+  if (countComments) {
+    totalIssues.sort((a, b) => b.comments - a.comments);
+    const maxComments = totalIssues.slice(0, 3);
+    console.log(maxComments);
+  }
+
+  if (countLables) {
+    let labelsArr = [];
+    for (var lab in labelsTotals) {
+      labelsArr.push({
+        labelName: lab,
+        number: labelsTotals[lab]
+      })
+    }
+    labelsArr.sort((a, b) => b.number - a.number);
+    console.log(labelsArr);
+  }
+
+  let body = '';
+  let totalShow = `
+| Total | Open | Closed |
+| -- | -- | -- |
+| ${total} | ${openTotal} | ${closeTotal} |
+`;
+
+  body += totalShow;
+
+  console.log(title)
+  console.log(body)
+  await doCreateIssue(owner, repo, title, body, labels, assignees);
+};
+
+
+// Tool
 async function doQueryIssues (owner, repo, labels, state, creator) {
   let params = {
     owner,
@@ -6211,11 +6299,11 @@ async function doQueryIssues (owner, repo, labels, state, creator) {
     params.creator = creator;
   }
 
-  const res = await octokit.issues.listForRepo(params);
+  const res = await getIssues(params);
   let issues = [];
   let issueNumbers = [];
-  if (res.data.length) {
-    res.data.forEach(iss => {
+  if (res.length) {
+    res.forEach(iss => {
       const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
       const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
       /**
@@ -6243,12 +6331,47 @@ async function doQueryIssues (owner, repo, labels, state, creator) {
   return issues;
 };
 
+async function getIssues (params, page = 1) {
+  let { data: issues } = await octokit.issues.listForRepo({
+    ...params,
+    per_page: perPage,
+    page
+  });
+  if (issues.length >= perPage) {
+    issues = issues.concat(await getIssues(params, page + 1));
+  }
+  return issues;
+};
+
+async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
+  const month = getPreMonth(thisMonth);
+  let { data: issues } = await octokit.issues.listForRepo({
+    owner,
+    repo,
+    state: 'all',
+    per_page: perPage,
+    page
+  });
+  issues = issues.filter(i => {
+    return i.pull_request === undefined
+  });
+  if (issues.length && getCreatedMontn(issues[issues.length - 1].created_at) >= month) {
+    issues = issues.concat(await getIssuesInMonth(owner, repo, month, page + 1));
+  }
+  return issues;
+};
+
+function getCreatedMontn (d) {
+  return dayjs(d).utc().month() + 1;
+};
+
 module.exports = {
   doCheckInactive,
   doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
+  doMonthStatistics,
 
   // tool
   doQueryIssues,
@@ -6709,6 +6832,7 @@ const {
   doCloseIssues,
   doFindComments,
   doLockIssues,
+  doMonthStatistics,
 } = __webpack_require__(9319);
 
 const ALLACTIONS = [
@@ -6736,12 +6860,15 @@ const ALLACTIONS = [
   'close-issues',
   'find-comments',
   'lock-issues',
+  'month-statistics',
 ];
 
 async function main() {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
+    // const owner = 'xrkffgg'
+    // const repo = 'test-ci'
 
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
@@ -6764,6 +6891,7 @@ async function main() {
 
     // actions
     const actions = core.getInput("actions", { required: true });
+    // const actions = 'month-statistics';
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
@@ -6888,6 +7016,14 @@ async function main() {
             labels
           );
           break;
+        case 'month-statistics':
+          await doMonthStatistics(
+            owner,
+            repo,
+            labels,
+            assignees
+          );
+          break;
         // default
         default:
           break;
@@ -6937,8 +7073,13 @@ function testDuplicate(body) {
   }
 };
 
+function getPreMonth (m) {
+  return m == 1 ? 12 : m -1;
+};
+
 module.exports = {
   dealInput,
+  getPreMonth,
   matchKeyword,
   testDuplicate,
 };

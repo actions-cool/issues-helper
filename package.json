@@ -11,7 +11,8 @@
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "package": "ncc build src/main.js -o dist",
-    "update": "node ./script/update-user.js"
+    "update": "node ./script/update-user.js",
+    "main": "node ./src/main.js"
   },
   "author": "xrkffgg",
   "license": "MIT",
