@@ -620,6 +620,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 | -- | -- |`
     let labelsBody = '';
     labelsArr.forEach(it => {
+      it.replace('|', '\|')
       labelsBody += `
 | ${it.labelName} | ${it.number} |`
     })
@@ -632,11 +633,11 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     let commentsShow = `
 ### Most commented
 
-| # | Issue | Title | Number | State | Link |
-| -- | -- | -- | -- | -- | -- |
-| 1 | ${maxComments[0].number} | ${maxComments[0].title} | ${maxComments[0].comments} | ${maxComments[0].state} | [Link](${maxComments[0].html_url}) |
-| 2 | ${maxComments[1].number} | ${maxComments[1].title} | ${maxComments[1].comments} | ${maxComments[1].state} | [Link](${maxComments[1].html_url}) |
-| 3 | ${maxComments[2].number} | ${maxComments[2].title} | ${maxComments[2].comments} | ${maxComments[2].state} | [Link](${maxComments[2].html_url}) |
+| # | Issue | Title | Number | State |
+| -- | -- | -- | -- | -- |
+| 1 | [${maxComments[0].number}](${maxComments[0].html_url}) | ${maxComments[0].title} | ${maxComments[0].comments} | ${maxComments[0].state} |
+| 2 | [${maxComments[1].number}](${maxComments[1].html_url}) | ${maxComments[1].title} | ${maxComments[1].comments} | ${maxComments[1].state} |
+| 3 | [${maxComments[2].number}](${maxComments[2].html_url}) | ${maxComments[2].title} | ${maxComments[2].comments} | ${maxComments[2].state} |
 
 `
     body += commentsShow;
