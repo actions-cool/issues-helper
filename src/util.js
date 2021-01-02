@@ -28,8 +28,13 @@ function testDuplicate(body) {
   }
 };
 
+function getPreMonth (m) {
+  return m == 1 ? 12 : m -1;
+};
+
 module.exports = {
   dealInput,
+  getPreMonth,
   matchKeyword,
   testDuplicate,
 };

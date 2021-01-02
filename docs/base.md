@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -30,18 +30,18 @@ jobs:
           assignees: 'xxx' or 'xx1,xx2'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
 
 - `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
 - [on 参考](/guide/ref#-github-相关文档)
 - `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
-- `assignees` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
+- `assignees` 支持多个，需用逗号隔开
 
 ## `add-labels`
 
@@ -60,7 +60,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -68,14 +68,14 @@ jobs:
           labels: 'bug' or 'bug1,bug2'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ |
 
-- `labels` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
+- `labels` 支持多个，需用逗号隔开
 
 ## `close-issue`
 
@@ -83,7 +83,7 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -91,11 +91,11 @@ jobs:
       body: 'This is auto closed.'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
 
 ## `create-comment`
 
@@ -114,7 +114,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -126,19 +126,19 @@ jobs:
           contents: '+1' or '+1,heart'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| body | 新增评论的内容  | string | ✖ | v1 |
-| contents | 为新增评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| body | 新增评论的内容  | string | ✖ |
+| contents | 为新增评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `body` 默认为：`Currently at ${owner}/${repo}. And this is default comment.`
   - 其中 `${owner}/${repo}` 表示当前仓库
 - 返回 `comment-id`，可用于之后操作。[用法参考](/guide/ref#-outputs-使用)
 - `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
-- `contents` 支持多个，需用逗号隔开。注意设置多个，需使用v1.1以上版本
+- `contents` 支持多个，需用逗号隔开
 
 ## `create-issue`
 
@@ -156,7 +156,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -167,15 +167,15 @@ jobs:
           contents: '+1'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| title | 新增 issue 的标题 | string | ✖ | v1 |
-| body | 新增 issue 的内容 | string | ✖ | v1 |
-| labels | 为新增 issue 添加 labels | string | ✖ | v1.1 |
-| assignees | 为新增 issue 添加 assignees | string | ✖ | v1.1 |
-| contents | 为新增 issue 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| title | 新增 issue 的标题 | string | ✖ |
+| body | 新增 issue 的内容 | string | ✖ |
+| labels | 为新增 issue 添加 labels | string | ✖ |
+| assignees | 为新增 issue 添加 assignees | string | ✖ |
+| contents | 为新增 issue 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `title` 默认为：`Default Title`
 - 返回 `issue-number`，[用法参考](/guide/ref#-outputs-使用)
@@ -186,18 +186,18 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
       comment-id: xxx
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| comment-id | 指定的 comment | number | ✔ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| comment-id | 指定的 comment | number | ✔ |
 
 ## `lock-issue`
 
@@ -216,18 +216,18 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v1
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
 
 ## `mark-duplicate`
 
@@ -245,21 +245,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v1.5
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1.5 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1.5 |
-| duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ | v1.6 |
-| duplicate-labels | 为该 issue 额外增加 labels | string | ✖ | v1.5 |
-| labels | 替换该 issue 的 labels | string | ✖ | v1.5 |
-| contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.5 |
-| close-issue | 是否同时关闭该 issue | string | ✖ | v1.6 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ |
+| duplicate-labels | 为该 issue 额外增加 labels | string | ✖ |
+| labels | 替换该 issue 的 labels | string | ✖ |
+| contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| close-issue | 是否同时关闭该 issue | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`
 - `close-issue`：`true` 或 `'true'` 均可生效
@@ -276,18 +276,18 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
 
 ## `remove-assignees`
 
@@ -295,7 +295,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -303,12 +303,12 @@ jobs:
       assignees: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ |
 
 ## `remove-labels`
 
@@ -316,7 +316,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v1.2
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -324,12 +324,12 @@ jobs:
       labels: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1.2 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1.2 |
-| issue-number | 指定的 issue | number | ✔ | v1.2 |
-| labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ | v1.2 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ |
 
 - `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
 
@@ -339,7 +339,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -347,12 +347,12 @@ jobs:
       labels: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| labels | labels 设置。当空字符时，会移除所有 | string | ✔ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| labels | labels 设置。当空字符时，会移除所有 | string | ✔ |
 
 ## `unlock-issue`
 
@@ -360,18 +360,18 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: ${{ github.event.issue.number }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
 
 ## `update-comment`
 
@@ -391,7 +391,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v1
+          uses: actions-cool/issues-helper@v1.7
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -399,14 +399,14 @@ jobs:
             contents: 'eyes'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| comment-id | 指定的 comment | number | ✔ | v1 |
-| body | 更新 comment 的内容 | string | ✖ | v1 |
-| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| comment-id | 指定的 comment | number | ✔ |
+| body | 更新 comment 的内容 | string | ✖ |
+| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
+| contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
@@ -417,7 +417,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v1
+    uses: actions-cool/issues-helper@v1.7
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -431,18 +431,18 @@ jobs:
       contents: '+1'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1 |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ | v1 |
-| issue-number | 指定的 issue | number | ✔ | v1 |
-| state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ | v1 |
-| title | 修改 issue 的标题 | string | ✖ | v1 |
-| body | 修改 issue 的内容 | string | ✖ | v1 |
-| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ | v1 |
-| labels | 替换 issue 的 labels | string | ✖ | v1.1 |
-| assignees | 替换 issue 的 assignees | string | ✖ | v1.1 |
-| contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.1 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| issue-number | 指定的 issue | number | ✔ |
+| state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ |
+| title | 修改 issue 的标题 | string | ✖ |
+| body | 修改 issue 的内容 | string | ✖ |
+| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
+| labels | 替换 issue 的 labels | string | ✖ |
+| assignees | 替换 issue 的 assignees | string | ✖ |
+| contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
@@ -464,7 +464,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v1.3
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -474,13 +474,13 @@ jobs:
           issue-contents: '+1, -1, eyes'
 ```
 
-| 参数 | 描述 | 类型 | 必填 | 版本 |
-| -- | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ | v1.3 |
-| token | [token 说明](/guide/ref#-token-说明)  | string | ✔ | v1.3 |
-| body | 评论欢迎的内容，不填则不评论 | string | ✖ | v1.3 |
-| labels | 为该 issue 增加 labels | string | ✖ | v1.3 |
-| assignees | 为该 issue 增加 assignees | string | ✖ | v1.3 |
-| issue-contents | 为该 issue 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ | v1.3 |
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明)  | string | ✔ |
+| body | 评论欢迎的内容，不填则不评论 | string | ✖ |
+| labels | 为该 issue 增加 labels | string | ✖ |
+| assignees | 为该 issue 增加 assignees | string | ✖ |
+| issue-contents | 为该 issue 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - 若这 4 个可选项都不填，则无操作

@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 
 const {
+  // base
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
@@ -20,15 +21,15 @@ const {
   doUpdateComment,
   doUpdateIssue,
   doWelcome,
-} = require('./base.js');
 
-const {
+  // advanced
   doCheckInactive,
   doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
-} = require('./advanced.js');
+  doMonthStatistics,
+} = require('./do.js');
 
 const ALLACTIONS = [
   // base
@@ -55,6 +56,7 @@ const ALLACTIONS = [
   'close-issues',
   'find-comments',
   'lock-issues',
+  'month-statistics',
 ];
 
 async function main() {
@@ -205,6 +207,14 @@ async function main() {
             owner,
             repo,
             labels
+          );
+          break;
+        case 'month-statistics':
+          await doMonthStatistics(
+            owner,
+            repo,
+            labels,
+            assignees
           );
           break;
         // default
