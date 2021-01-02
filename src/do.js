@@ -28,7 +28,6 @@ const {
 } = require('./util.js');
 
 const token = core.getInput('token');
-// const token = core.getInput('token') || process.env.GH;
 
 const octokit = new Octokit({ auth: `token ${token}` });
 
@@ -57,7 +56,7 @@ const inactiveDay = core.getInput("inactive-day");
 const inactiveLabel = core.getInput("inactive-label") || 'inactive';
 const perPage = 100;
 
-// 
+// context
 const context = github.context;
 
 // base
@@ -540,8 +539,8 @@ async function doLockIssues (owner, repo, labels) {
 };
 
 async function doMonthStatistics (owner, repo, labels, assignees) {
-  const countLables = core.getInput("count-lables") || true;
-  const countComments = core.getInput("count-comments")|| true;
+  const countLables = core.getInput("count-lables");
+  const countComments = core.getInput("count-comments");
 
   const thisMonth = dayjs.utc().month() + 1;
   const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
@@ -549,9 +548,12 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   const month = getPreMonth(thisMonth);
   const showMonth = month < 10 ? `0${month}` : month;
 
+  const owner2 = 'mui-org';
+  const repo2 = 'material-ui'
+
   let issues = await getIssuesInMonth(
-    'mui-org',
-    'material-ui',
+    owner2,
+    repo2,
     thisMonth
   );
   if (issues.length == 0) {
@@ -568,7 +570,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   let closeTotal = 0;
   let closeIssuesNumber = [];
   let labelsTotals = [];
-  const title = core.getInput("title") ? core.getInput("title") : `[mui-org/material-ui] Month Statistics: ${year}-${showMonth}`;
+  const title = `[${owner2}/${repo2}] Month Statistics: ${year}-${showMonth}`;
   for (let i = 0; i < issues.length; i++) {
     if (issues[i].state == 'closed') {
       closeTotal += 1;
@@ -604,7 +606,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 
   body += totalShow;
 
-  if (countLables) {
+  if (countLables == 'true') {
     let labelsArr = [];
     for (var lab in labelsTotals) {
       labelsArr.push({
@@ -630,7 +632,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 `;
   }
 
-  if (countComments) {
+  if (countComments == 'true') {
     totalIssues.sort((a, b) => b.comments - a.comments);
     const maxComments = totalIssues.slice(0, 3);
     let commentTitle = `
@@ -738,7 +740,7 @@ async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
     return i.pull_request === undefined
   });
   if (issues.length && getCreatedMontn(issues[issues.length - 1].created_at) >= month) {
-    issues = issues.concat(await getIssuesInMonth(owner, repo, month, page + 1));
+    issues = issues.concat(await getIssuesInMonth(owner, repo, thisMonth, page + 1));
   }
   return issues;
 };

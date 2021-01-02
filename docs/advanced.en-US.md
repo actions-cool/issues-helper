@@ -215,3 +215,39 @@ jobs:
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+
+## `month-statistics`
+
+At 1 o'clock on the 1st of each month, an issue is generated for the statistics of the previous month.
+
+```
+name: Issue Month Statistics
+
+on:
+  schedule:
+    - cron: "0 1 1 * *"
+
+jobs:
+  month-statistics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: month-statistics
+        uses: actions-cool/issues-helper@v1.7
+        with:
+          actions: 'month-statistics'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          count-lables: 'true'
+```
+
+| Param | Desc  | Type | Required | Version |
+| -- | -- | -- | -- | -- |
+| actions | Action type | string | ✔ | v1.7 |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ | v1.7 |
+| labels | The labels for the new issue | string | ✖ | v1.7 |
+| assignees | The assignees for the new issue | string | ✖ | v1.7 |
+| count-lables | Whether the new issue count labels | string | ✖ | v1.7 |
+| count-comments | Whether the new issue count comments | string | ✖ | v1.7 |
+
+- The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
+- `count-lables`: You can set `'true'` to add labels statistics
+- `count-comments`: You can set `'true'` to add comments statistics

@@ -211,3 +211,39 @@ jobs:
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
+
+## `month-statistics`
+
+每月 1 号 1 时，生成一个 issue 上月统计。
+
+```
+name: Issue Month Statistics
+
+on:
+  schedule:
+    - cron: "0 1 1 * *"
+
+jobs:
+  month-statistics:
+    runs-on: ubuntu-latest
+    steps:
+      - name: month-statistics
+        uses: actions-cool/issues-helper@v1.7
+        with:
+          actions: 'month-statistics'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          count-lables: 'true'
+```
+
+| 参数 | 描述 | 类型 | 必填 | 版本 |
+| -- | -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ | v1.7 |
+| token | [token 说明](/guide/ref#-token-说明)) | string | ✔ | v1.7 |
+| labels | 为新增 issue 添加 labels | string | ✖ | v1.7 |
+| assignees | 为新增 issue 添加 assignees | string | ✖ | v1.7 |
+| count-lables | 新增 issue 是否统计 labels | string | ✖ | v1.7 |
+| count-comments | 新增 issue 是否统计 comments | string | ✖ | v1.7 |
+
+- 新增的 issue 标题默认为`[当前仓库] Month Statistics: 年-月`
+- `count-lables`：可设置 `'true'`，增加 labels 统计
+- `count-comments`：可设置 `'true'`，增加 comments 统计
