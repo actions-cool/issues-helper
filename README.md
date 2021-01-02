@@ -799,7 +799,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v1.7.7
+        uses: actions-cool/issues-helper@v1.7
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
