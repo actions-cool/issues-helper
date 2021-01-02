@@ -632,7 +632,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     totalIssues.sort((a, b) => b.comments - a.comments);
     const maxComments = totalIssues.slice(0, 3);
     let commentTitle = `
-### Most commente
+### Most comments
 
 <table>
 <tr>
