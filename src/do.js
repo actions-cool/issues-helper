@@ -625,7 +625,9 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     labelsArr.forEach(it => {
       labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
     })
-    body = body + labelsTitle + labelsBody + '</table>';
+    body = body + labelsTitle + labelsBody + `</table>
+
+`;
   }
 
   if (countComments) {
@@ -644,9 +646,10 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 </tr>
 `
     let commentBody = '';
-    maxComments.forEach(it => {
+    maxComments.forEach((it,ind) => {
       commentBody += `<tr>
-<td>[${it.number}](${it.html_url})</td>
+<td>${ind + 1}</td>
+<td><a href="${it.html_url}">#${it.number}</a></td>
 <td>${it.title}</td>
 <td>${it.comments}</td>
 <td>${it.state}</td></tr>`
