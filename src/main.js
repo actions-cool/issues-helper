@@ -2,6 +2,7 @@ const core = require("@actions/core");
 const github = require("@actions/github");
 
 const {
+  // base
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
@@ -20,16 +21,15 @@ const {
   doUpdateComment,
   doUpdateIssue,
   doWelcome,
-} = require('./base.js');
 
-const {
+  // advanced
   doCheckInactive,
   doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
   doMonthStatistics,
-} = require('./advanced.js');
+} = require('./do.js');
 
 const ALLACTIONS = [
   // base
