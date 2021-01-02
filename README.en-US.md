@@ -43,7 +43,7 @@ When the following list does not have the features you want, you can submit it i
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
   - [`welcome`](#welcome)
-- ⭐ Advanced
+- 🌟 Advanced
   - [`check-inactive`](#check-inactive)
   - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)

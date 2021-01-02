@@ -43,7 +43,7 @@
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
   - [`welcome`](#welcome)
-- ⭐ 进 阶
+- 🌟 进 阶
   - [`check-inactive`](#check-inactive)
   - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)
