@@ -550,8 +550,8 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   const showMonth = month < 10 ? `0${month}` : month;
 
   let issues = await getIssuesInMonth(
-    'ant-design',
-    'ant-design',
+    'mui-org',
+    'material-ui',
     thisMonth
   );
   if (issues.length == 0) {
@@ -568,7 +568,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   let closeTotal = 0;
   let closeIssuesNumber = [];
   let labelsTotals = [];
-  const title = core.getInput("title") ? core.getInput("title") : `[ant-design/ant-design] Month Statistics: ${year}-${showMonth}`;
+  const title = core.getInput("title") ? core.getInput("title") : `[mui-org/material-ui] Month Statistics: ${year}-${showMonth}`;
   for (let i = 0; i < issues.length; i++) {
     if (issues[i].state == 'closed') {
       closeTotal += 1;
@@ -618,8 +618,8 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 
 <table>
 <tr>
-<td>Name</td>
-<td>Number</td>
+<th>Name</th>
+<th>Number</th>
 </tr>`
     let labelsBody = '';
     labelsArr.forEach(it => {
@@ -634,15 +634,15 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     totalIssues.sort((a, b) => b.comments - a.comments);
     const maxComments = totalIssues.slice(0, 3);
     let commentTitle = `
-### Most commented
+### Most commente
 
 <table>
 <tr>
-<td>#</td>
-<td>Issue</td>
-<td>Title</td>
-<td>Number</td>
-<td>State</td>
+<th>#</th>
+<th>Issue</th>
+<th>Title</th>
+<th>Number</th>
+<th>State</th>
 </tr>
 `
     let commentBody = '';
