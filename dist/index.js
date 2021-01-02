@@ -6676,7 +6676,7 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     maxComments.forEach((it,ind) => {
       commentBody += `<tr>
 <td>${ind + 1}</td>
-<td><a href="${it.html_url}">#${it.number}</a></td>
+<td>${it.number}</td>
 <td>${it.title}</td>
 <td>${it.comments}</td>
 <td>${it.state}</td></tr>`
