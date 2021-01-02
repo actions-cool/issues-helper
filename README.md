@@ -417,7 +417,7 @@ jobs:
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
-| -- | -- | -- | -- | -- |
+| -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
@@ -815,7 +815,7 @@ jobs:
 | count-lables | 新增 issue 是否统计 labels | string | ✖ |
 | count-comments | 新增 issue 是否统计 comments | string | ✖ |
 
-- 新增 `issue` 的标题默认为`[当前仓库] Month Statistics: 年-月`
+- 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
 - `count-lables`：可设置 `'true'`，增加 labels 统计
 - `count-comments`：可设置 `'true'`，增加 comments 统计
 
