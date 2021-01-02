@@ -620,8 +620,9 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 | -- | -- |`
     let labelsBody = '';
     labelsArr.forEach(it => {
+      let labelNameShow = it.labelName.replace(/|/g, '\|');
       labelsBody += `
-| ${it.labelName.replace('|', '\|')} | ${it.number} |`
+| ${labelNameShow} | ${it.number} |`
     })
     body = body + labelsTitle + labelsBody;
   }
