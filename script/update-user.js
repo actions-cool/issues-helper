@@ -1,5 +1,4 @@
 const { readFileSync, writeFileSync } = require('fs');
-const { format } = require('prettier');
 const { stripIndent } = require('common-tags');
 
 // **************************************************************************
