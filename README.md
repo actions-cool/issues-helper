@@ -995,35 +995,35 @@ x2 + y2
 
 <table>
 <tr>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/ant-design/ant-design">
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       <br />
       ant-design
     </a>
   </td>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/vueComponent/ant-design-vue">
       <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
       <br />
       ant-design-vue
     </a>
   </td>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/umijs/dumi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
       <br />
       dumi
     </a>
   </td>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/mui-org/material-ui">
       <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
       <br />
       material-ui
     </a>
   </td>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
       <br />
@@ -1031,23 +1031,23 @@ x2 + y2
     </a>
   </td>
 </tr><tr>
-  <td align="center">
+  <td align="center" width="160">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       <br />
       vue-request
     </a>
   </td>
-  <td align="center">
+  <td align="center" width="160">
     
   </td>
-  <td align="center">
+  <td align="center" width="160">
     
   </td>
-  <td align="center">
+  <td align="center" width="160">
     
   </td>
-  <td align="center">
+  <td align="center" width="160">
     
   </td>
 </tr>

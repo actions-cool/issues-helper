@@ -42,19 +42,19 @@ for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
 <tr>
-  <td align="center">
+  <td align="center" width="160">
     ${getImg(users[(j-1)*5])}
   </td>
-  <td align="center">
+  <td align="center" width="160">
     ${getImg(users[(j-1)*5+1])}
   </td>
-  <td align="center">
+  <td align="center" width="160">
     ${getImg(users[(j-1)*5+2])}
   </td>
-  <td align="center">
+  <td align="center" width="160">
     ${getImg(users[(j-1)*5+3])}
   </td>
-  <td align="center">
+  <td align="center" width="160">
     ${getImg(users[(j-1)*5+4])}
   </td>
 </tr>`;
