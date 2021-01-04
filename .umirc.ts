@@ -72,8 +72,14 @@ export default defineConfig({
   },
   styles: [
     `
+      html {
+        scroll-behavior: smooth;
+      }
       .markdown table {
         width: auto !important;
+      }
+      .markdown table td:first-child {
+        font-weight: normal !important;
       }
     `,
   ]

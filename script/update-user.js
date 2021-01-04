@@ -41,21 +41,23 @@ if (lastNo != 0) row += 1;
 for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
-    <tr>
-      <td align="center">${getImg(users[(j-1)*5])}</td>
-      <td align="center">${getImg(users[(j-1)*5+1])}</td>
-      <td align="center">${getImg(users[(j-1)*5+2])}</td>
-      <td align="center">${getImg(users[(j-1)*5+3])}</td>
-      <td align="center">${getImg(users[(j-1)*5+4])}</td>
-    </tr>
-    <tr>
-      <td width="160" align="center">${getName(users[(j-1)*5])}</td>
-      <td width="160" align="center">${getName(users[(j-1)*5+1])}</td>
-      <td width="160" align="center">${getName(users[(j-1)*5+2])}</td>
-      <td width="160" align="center">${getName(users[(j-1)*5+3])}</td>
-      <td width="160" align="center">${getName(users[(j-1)*5+4])}</td>
-    </tr>
-  `;
+<tr>
+  <td align="center" width="160">
+    ${getImg(users[(j-1)*5])}
+  </td>
+  <td align="center" width="160">
+    ${getImg(users[(j-1)*5+1])}
+  </td>
+  <td align="center" width="160">
+    ${getImg(users[(j-1)*5+2])}
+  </td>
+  <td align="center" width="160">
+    ${getImg(users[(j-1)*5+3])}
+  </td>
+  <td align="center" width="160">
+    ${getImg(users[(j-1)*5+4])}
+  </td>
+</tr>`;
   table += data
 };
 
@@ -95,7 +97,11 @@ console.log(`🎉 Done en`);
 
 function getImg (o) {
   if (o) {
-    return `<a href="${o.url}"><img src="${o.logo}" width="46" /></a>`
+    return `<a href="${o.url}">
+      <img src="${o.logo}" width="46" />
+      <br />
+      ${getName(o)}
+    </a>`
   }
   return ``
 };
