@@ -17,18 +17,10 @@ for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
 <tr>
-  <td align="center" width="180">
-    ${getImg(users[(j-1)*4])}
-  </td>
-  <td align="center" width="180">
-    ${getImg(users[(j-1)*4+1])}
-  </td>
-  <td align="center" width="180">
-    ${getImg(users[(j-1)*4+2])}
-  </td>
-  <td align="center" width="180">
-    ${getImg(users[(j-1)*4+3])}
-  </td>
+  <td align="center" width="180">${getImg(users[(j-1)*4])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+1])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+2])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+3])}</td>
 </tr>`;
   table += data
 };
@@ -69,7 +61,8 @@ console.log(`🎉 Done en`);
 
 function getImg (o) {
   if (o) {
-    return `<a href="${o.url}">
+    return `
+    <a href="${o.url}">
       <img src="${o.logo}" width="46" />
       <br />
       ${getName(o)}
