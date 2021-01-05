@@ -10,27 +10,24 @@ users.sort((a, b) => getName(a).localeCompare(getName(b)));
 // **************************************************************************
 
 let table = '';
-let row = users.length / 5;
-let lastNo = users.length % 5;
+let row = users.length / 4;
+let lastNo = users.length % 4;
 if (lastNo != 0) row += 1;
 for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
 <tr>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5])}
+  <td align="center" width="180">
+    ${getImg(users[(j-1)*4])}
   </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+1])}
+  <td align="center" width="180">
+    ${getImg(users[(j-1)*4+1])}
   </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+2])}
+  <td align="center" width="180">
+    ${getImg(users[(j-1)*4+2])}
   </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+3])}
-  </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+4])}
+  <td align="center" width="180">
+    ${getImg(users[(j-1)*4+3])}
   </td>
 </tr>`;
   table += data
