@@ -1024,22 +1024,26 @@ x2 + y2
     </a>
   </td>
   <td align="center" width="160">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
+      <br />
+      react-music-player
+    </a>
+  </td>
+</tr><tr>
+  <td align="center" width="160">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
       <br />
       umi
     </a>
   </td>
-</tr><tr>
   <td align="center" width="160">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       <br />
       vue-request
     </a>
-  </td>
-  <td align="center" width="160">
-    
   </td>
   <td align="center" width="160">
     
