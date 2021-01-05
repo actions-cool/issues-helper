@@ -3,60 +3,24 @@ const { stripIndent } = require('common-tags');
 
 // **************************************************************************
 
-let users = [
-  {
-    url: 'https://github.com/ant-design/ant-design',
-    logo: 'https://avatars1.githubusercontent.com/u/12101536?s=200&v=4'
-  },
-  {
-    url: 'https://github.com/vueComponent/ant-design-vue',
-    logo: 'https://avatars1.githubusercontent.com/u/32120805?s=200&v=4'
-  },
-  {
-    url: 'https://github.com/umijs/dumi',
-    logo: 'https://avatars1.githubusercontent.com/u/33895495?s=200&v=4'
-  },
-  {
-    url: 'https://github.com/umijs/umi',
-    logo: 'https://avatars1.githubusercontent.com/u/33895495?s=200&v=4'
-  },
-  {
-    url: 'https://github.com/AttoJS/vue-request',
-    logo: 'https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png'
-  },
-  {
-    url: 'https://github.com/mui-org/material-ui',
-    logo: 'https://avatars2.githubusercontent.com/u/33663932?s=200&v=4'
-  },
-];
+let { users } = require('../USERS.js');
 
 users.sort((a, b) => getName(a).localeCompare(getName(b)));
 
 // **************************************************************************
 
 let table = '';
-let row = users.length / 5;
-let lastNo = users.length % 5;
+let row = users.length / 4;
+let lastNo = users.length % 4;
 if (lastNo != 0) row += 1;
 for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
 <tr>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5])}
-  </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+1])}
-  </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+2])}
-  </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+3])}
-  </td>
-  <td align="center" width="160">
-    ${getImg(users[(j-1)*5+4])}
-  </td>
+  <td align="center" width="180">${getImg(users[(j-1)*4])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+1])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+2])}</td>
+  <td align="center" width="180">${getImg(users[(j-1)*4+3])}</td>
 </tr>`;
   table += data
 };
@@ -97,7 +61,8 @@ console.log(`🎉 Done en`);
 
 function getImg (o) {
   if (o) {
-    return `<a href="${o.url}">
+    return `
+    <a href="${o.url}">
       <img src="${o.logo}" width="46" />
       <br />
       ${getName(o)}
