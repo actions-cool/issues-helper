@@ -1,15 +1,13 @@
 const core = require("@actions/core");
 const github = require("@actions/github");
 
+// **************************************************************************
 const {
-  // base
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
   doCreateComment,
-  doCreateCommentContent,
   doCreateIssue,
-  doCreateIssueContent,
   doDeleteComment,
   doMarkDuplicate,
   doLockIssue,
@@ -21,16 +19,18 @@ const {
   doUpdateComment,
   doUpdateIssue,
   doWelcome,
+} = require('./base.js');
 
-  // advanced
+const {
   doCheckInactive,
   doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
   doMonthStatistics,
-} = require('./do.js');
+} = require('./advanced.js');
 
+// **************************************************************************
 const ALLACTIONS = [
   // base
   'add-assignees',
@@ -59,6 +59,7 @@ const ALLACTIONS = [
   'month-statistics',
 ];
 
+// **************************************************************************
 async function main() {
   try {
     const owner = github.context.repo.owner;
@@ -228,4 +229,5 @@ async function main() {
   }
 }
 
+// **************************************************************************
 main();

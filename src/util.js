@@ -1,4 +1,8 @@
 function dealInput (para) {
+  /**
+   * in  'x1,x2,x3'
+   * out ['x1','x2','x3']
+   */
   let arr = [];
   if (para) {
     const paraArr = para.split(',');
