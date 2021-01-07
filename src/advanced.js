@@ -7,6 +7,7 @@ const {
   doCreateComment,
   doCloseIssue,
   doLockIssue,
+  doCreateIssue,
 } = require('./base.js');
 
 const {

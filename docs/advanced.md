@@ -238,7 +238,7 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明)) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | labels | 为新增 issue 添加 labels | string | ✖ |
 | assignees | 为新增 issue 添加 assignees | string | ✖ |
 | count-lables | 新增 issue 是否统计 labels | string | ✖ |

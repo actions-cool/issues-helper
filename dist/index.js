@@ -6034,6 +6034,7 @@ const {
   doCreateComment,
   doCloseIssue,
   doLockIssue,
+  doCreateIssue,
 } = __webpack_require__(9932);
 
 const {
