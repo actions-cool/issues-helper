@@ -1,3 +1,12 @@
+## v1.8
+
+`2021.01.07`
+
+- [#31](https://github.com/actions-cool/issues-helper/pull/31)
+  - refactor: split content
+  - feat: add `remove-labels` for duplicate
+  - docs: optimize website
+
 ## v1.7
 
 `2021.01.02`
