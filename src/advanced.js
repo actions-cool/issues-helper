@@ -52,7 +52,11 @@ async function doCheckInactive (owner, repo, labels) {
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
-      if (!JSON.stringify(issues[i].labels).includes(inactiveLabel)) {
+      let arr = [];
+      issues[i].labels.forEach(it => {
+        arr.push(it.name);
+      });
+      if (!arr.includes(inactiveLabel)) {
         await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
         if (core.getInput("body")) {
           await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
