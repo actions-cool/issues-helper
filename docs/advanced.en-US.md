@@ -92,7 +92,7 @@ jobs:
 | body-includes | Body contains check | string | ✖ |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
-- Return `check-result`
+- Return `check-result`, due to yml reasons, the judgment condition is `if: steps.xxid.outputs.check-result =='true'`
 
 ## `close-issues`
 

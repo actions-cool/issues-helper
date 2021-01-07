@@ -88,7 +88,7 @@ jobs:
 | body-includes | 内容包含校验 | string | ✖ |
 
 - `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
-- 返回 `check-result`
+- 返回 `check-result`，由于 yml 原因，判断条件为 `if: steps.xxid.outputs.check-result == 'true'`
 
 ## `close-issues`
 
