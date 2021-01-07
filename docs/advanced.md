@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v1.7
+        uses: actions-cool/issues-helper@v1.8
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v1.7
+        uses: actions-cool/issues-helper@v1.8
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -106,7 +106,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v1.7
+        uses: actions-cool/issues-helper@v1.8
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -138,7 +138,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v1.7
+    uses: actions-cool/issues-helper@v1.8
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -184,7 +184,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v1.7
+        uses: actions-cool/issues-helper@v1.8
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -228,7 +228,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v1.7
+        uses: actions-cool/issues-helper@v1.8
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -238,7 +238,7 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明)) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | labels | 为新增 issue 添加 labels | string | ✖ |
 | assignees | 为新增 issue 添加 assignees | string | ✖ |
 | count-lables | 新增 issue 是否统计 labels | string | ✖ |
@@ -247,3 +247,7 @@ jobs:
 - 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
 - `count-lables`：可设置 `'true'`，增加 labels 统计
 - `count-comments`：可设置 `'true'`，增加 comments 统计
+
+如下所示：
+
+![](../public/month.png)

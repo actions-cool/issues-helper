@@ -47,8 +47,12 @@ export default defineConfig({
         children: ['/guide/index', '/guide/start'],
       },
       {
-        title: '🎁  参 考',
+        title: '🎁 参 考',
         path: '/guide/ref',
+      },
+      {
+        title: '🎗 记 录',
+        path: '/guide/note',
       },
       {
         title: '💬 FAQ',
@@ -61,8 +65,12 @@ export default defineConfig({
         children: ['/guide/index', '/guide/start'],
       },
       {
-        title: '🎁  Reference',
+        title: '🎁 Reference',
         path: '/guide/ref',
+      },
+      {
+        title: '🎗 Note',
+        path: '/guide/note',
       },
       {
         title: '💬 FAQ',
@@ -70,17 +78,4 @@ export default defineConfig({
       },
     ],
   },
-  styles: [
-    `
-      html {
-        scroll-behavior: smooth;
-      }
-      .markdown table {
-        width: auto !important;
-      }
-      .markdown table td:first-child {
-        font-weight: normal !important;
-      }
-    `,
-  ]
 });

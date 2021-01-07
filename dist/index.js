@@ -3801,7 +3801,7 @@ function removeHook (state, name, method) {
 /***/ 7401:
 /***/ (function(module) {
 
-!function(t,e){ true?module.exports=e():0}(this,function(){"use strict";var t="millisecond",e="second",n="minute",r="hour",i="day",s="week",u="month",a="quarter",o="year",f="date",h=/^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[^0-9]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?\.?(\d+)?$/,c=/\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,d={name:"en",weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_")},$=function(t,e,n){var r=String(t);return!r||r.length>=e?t:""+Array(e+1-r.length).join(n)+t},l={s:$,z:function(t){var e=-t.utcOffset(),n=Math.abs(e),r=Math.floor(n/60),i=n%60;return(e<=0?"+":"-")+$(r,2,"0")+":"+$(i,2,"0")},m:function t(e,n){if(e.date()<n.date())return-t(n,e);var r=12*(n.year()-e.year())+(n.month()-e.month()),i=e.clone().add(r,u),s=n-i<0,a=e.clone().add(r+(s?-1:1),u);return+(-(r+(n-i)/(s?i-a:a-i))||0)},a:function(t){return t<0?Math.ceil(t)||0:Math.floor(t)},p:function(h){return{M:u,y:o,w:s,d:i,D:f,h:r,m:n,s:e,ms:t,Q:a}[h]||String(h||"").toLowerCase().replace(/s$/,"")},u:function(t){return void 0===t}},y="en",M={};M[y]=d;var m=function(t){return t instanceof S},D=function(t,e,n){var r;if(!t)return y;if("string"==typeof t)M[t]&&(r=t),e&&(M[t]=e,r=t);else{var i=t.name;M[i]=t,r=i}return!n&&r&&(y=r),r||!n&&y},v=function(t,e){if(m(t))return t.clone();var n="object"==typeof e?e:{};return n.date=t,n.args=arguments,new S(n)},g=l;g.l=D,g.i=m,g.w=function(t,e){return v(t,{locale:e.$L,utc:e.$u,x:e.$x,$offset:e.$offset})};var S=function(){function d(t){this.$L=D(t.locale,null,!0),this.parse(t)}var $=d.prototype;return $.parse=function(t){this.$d=function(t){var e=t.date,n=t.utc;if(null===e)return new Date(NaN);if(g.u(e))return new Date;if(e instanceof Date)return new Date(e);if("string"==typeof e&&!/Z$/i.test(e)){var r=e.match(h);if(r){var i=r[2]-1||0,s=(r[7]||"0").substring(0,3);return n?new Date(Date.UTC(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)):new Date(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)}}return new Date(e)}(t),this.$x=t.x||{},this.init()},$.init=function(){var t=this.$d;this.$y=t.getFullYear(),this.$M=t.getMonth(),this.$D=t.getDate(),this.$W=t.getDay(),this.$H=t.getHours(),this.$m=t.getMinutes(),this.$s=t.getSeconds(),this.$ms=t.getMilliseconds()},$.$utils=function(){return g},$.isValid=function(){return!("Invalid Date"===this.$d.toString())},$.isSame=function(t,e){var n=v(t);return this.startOf(e)<=n&&n<=this.endOf(e)},$.isAfter=function(t,e){return v(t)<this.startOf(e)},$.isBefore=function(t,e){return this.endOf(e)<v(t)},$.$g=function(t,e,n){return g.u(t)?this[e]:this.set(n,t)},$.unix=function(){return Math.floor(this.valueOf()/1e3)},$.valueOf=function(){return this.$d.getTime()},$.startOf=function(t,a){var h=this,c=!!g.u(a)||a,d=g.p(t),$=function(t,e){var n=g.w(h.$u?Date.UTC(h.$y,e,t):new Date(h.$y,e,t),h);return c?n:n.endOf(i)},l=function(t,e){return g.w(h.toDate()[t].apply(h.toDate("s"),(c?[0,0,0,0]:[23,59,59,999]).slice(e)),h)},y=this.$W,M=this.$M,m=this.$D,D="set"+(this.$u?"UTC":"");switch(d){case o:return c?$(1,0):$(31,11);case u:return c?$(1,M):$(0,M+1);case s:var v=this.$locale().weekStart||0,S=(y<v?y+7:y)-v;return $(c?m-S:m+(6-S),M);case i:case f:return l(D+"Hours",0);case r:return l(D+"Minutes",1);case n:return l(D+"Seconds",2);case e:return l(D+"Milliseconds",3);default:return this.clone()}},$.endOf=function(t){return this.startOf(t,!1)},$.$set=function(s,a){var h,c=g.p(s),d="set"+(this.$u?"UTC":""),$=(h={},h[i]=d+"Date",h[f]=d+"Date",h[u]=d+"Month",h[o]=d+"FullYear",h[r]=d+"Hours",h[n]=d+"Minutes",h[e]=d+"Seconds",h[t]=d+"Milliseconds",h)[c],l=c===i?this.$D+(a-this.$W):a;if(c===u||c===o){var y=this.clone().set(f,1);y.$d[$](l),y.init(),this.$d=y.set(f,Math.min(this.$D,y.daysInMonth())).$d}else $&&this.$d[$](l);return this.init(),this},$.set=function(t,e){return this.clone().$set(t,e)},$.get=function(t){return this[g.p(t)]()},$.add=function(t,a){var f,h=this;t=Number(t);var c=g.p(a),d=function(e){var n=v(h);return g.w(n.date(n.date()+Math.round(e*t)),h)};if(c===u)return this.set(u,this.$M+t);if(c===o)return this.set(o,this.$y+t);if(c===i)return d(1);if(c===s)return d(7);var $=(f={},f[n]=6e4,f[r]=36e5,f[e]=1e3,f)[c]||1,l=this.$d.getTime()+t*$;return g.w(l,this)},$.subtract=function(t,e){return this.add(-1*t,e)},$.format=function(t){var e=this;if(!this.isValid())return"Invalid Date";var n=t||"YYYY-MM-DDTHH:mm:ssZ",r=g.z(this),i=this.$locale(),s=this.$H,u=this.$m,a=this.$M,o=i.weekdays,f=i.months,h=function(t,r,i,s){return t&&(t[r]||t(e,n))||i[r].substr(0,s)},d=function(t){return g.s(s%12||12,t,"0")},$=i.meridiem||function(t,e,n){var r=t<12?"AM":"PM";return n?r.toLowerCase():r},l={YY:String(this.$y).slice(-2),YYYY:this.$y,M:a+1,MM:g.s(a+1,2,"0"),MMM:h(i.monthsShort,a,f,3),MMMM:h(f,a),D:this.$D,DD:g.s(this.$D,2,"0"),d:String(this.$W),dd:h(i.weekdaysMin,this.$W,o,2),ddd:h(i.weekdaysShort,this.$W,o,3),dddd:o[this.$W],H:String(s),HH:g.s(s,2,"0"),h:d(1),hh:d(2),a:$(s,u,!0),A:$(s,u,!1),m:String(u),mm:g.s(u,2,"0"),s:String(this.$s),ss:g.s(this.$s,2,"0"),SSS:g.s(this.$ms,3,"0"),Z:r};return n.replace(c,function(t,e){return e||l[t]||r.replace(":","")})},$.utcOffset=function(){return 15*-Math.round(this.$d.getTimezoneOffset()/15)},$.diff=function(t,f,h){var c,d=g.p(f),$=v(t),l=6e4*($.utcOffset()-this.utcOffset()),y=this-$,M=g.m(this,$);return M=(c={},c[o]=M/12,c[u]=M,c[a]=M/3,c[s]=(y-l)/6048e5,c[i]=(y-l)/864e5,c[r]=y/36e5,c[n]=y/6e4,c[e]=y/1e3,c)[d]||y,h?M:g.a(M)},$.daysInMonth=function(){return this.endOf(u).$D},$.$locale=function(){return M[this.$L]},$.locale=function(t,e){if(!t)return this.$L;var n=this.clone(),r=D(t,e,!0);return r&&(n.$L=r),n},$.clone=function(){return g.w(this.$d,this)},$.toDate=function(){return new Date(this.valueOf())},$.toJSON=function(){return this.isValid()?this.toISOString():null},$.toISOString=function(){return this.$d.toISOString()},$.toString=function(){return this.$d.toUTCString()},d}(),p=S.prototype;return v.prototype=p,[["$ms",t],["$s",e],["$m",n],["$H",r],["$W",i],["$M",u],["$y",o],["$D",f]].forEach(function(t){p[t[1]]=function(e){return this.$g(e,t[0],t[1])}}),v.extend=function(t,e){return t.$i||(t(e,S,v),t.$i=!0),v},v.locale=D,v.isDayjs=m,v.unix=function(t){return v(1e3*t)},v.en=M[y],v.Ls=M,v.p={},v});
+!function(t,e){ true?module.exports=e():0}(this,function(){"use strict";var t="millisecond",e="second",n="minute",r="hour",i="day",s="week",u="month",a="quarter",o="year",f="date",h=/^(\d{4})[-/]?(\d{1,2})?[-/]?(\d{0,2})[^0-9]*(\d{1,2})?:?(\d{1,2})?:?(\d{1,2})?.?(\d+)?$/,c=/\[([^\]]+)]|Y{1,4}|M{1,4}|D{1,2}|d{1,4}|H{1,2}|h{1,2}|a|A|m{1,2}|s{1,2}|Z{1,2}|SSS/g,d={name:"en",weekdays:"Sunday_Monday_Tuesday_Wednesday_Thursday_Friday_Saturday".split("_"),months:"January_February_March_April_May_June_July_August_September_October_November_December".split("_")},$=function(t,e,n){var r=String(t);return!r||r.length>=e?t:""+Array(e+1-r.length).join(n)+t},l={s:$,z:function(t){var e=-t.utcOffset(),n=Math.abs(e),r=Math.floor(n/60),i=n%60;return(e<=0?"+":"-")+$(r,2,"0")+":"+$(i,2,"0")},m:function t(e,n){if(e.date()<n.date())return-t(n,e);var r=12*(n.year()-e.year())+(n.month()-e.month()),i=e.clone().add(r,u),s=n-i<0,a=e.clone().add(r+(s?-1:1),u);return+(-(r+(n-i)/(s?i-a:a-i))||0)},a:function(t){return t<0?Math.ceil(t)||0:Math.floor(t)},p:function(h){return{M:u,y:o,w:s,d:i,D:f,h:r,m:n,s:e,ms:t,Q:a}[h]||String(h||"").toLowerCase().replace(/s$/,"")},u:function(t){return void 0===t}},y="en",M={};M[y]=d;var m=function(t){return t instanceof S},D=function(t,e,n){var r;if(!t)return y;if("string"==typeof t)M[t]&&(r=t),e&&(M[t]=e,r=t);else{var i=t.name;M[i]=t,r=i}return!n&&r&&(y=r),r||!n&&y},v=function(t,e){if(m(t))return t.clone();var n="object"==typeof e?e:{};return n.date=t,n.args=arguments,new S(n)},g=l;g.l=D,g.i=m,g.w=function(t,e){return v(t,{locale:e.$L,utc:e.$u,x:e.$x,$offset:e.$offset})};var S=function(){function d(t){this.$L=D(t.locale,null,!0),this.parse(t)}var $=d.prototype;return $.parse=function(t){this.$d=function(t){var e=t.date,n=t.utc;if(null===e)return new Date(NaN);if(g.u(e))return new Date;if(e instanceof Date)return new Date(e);if("string"==typeof e&&!/Z$/i.test(e)){var r=e.match(h);if(r){var i=r[2]-1||0,s=(r[7]||"0").substring(0,3);return n?new Date(Date.UTC(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)):new Date(r[1],i,r[3]||1,r[4]||0,r[5]||0,r[6]||0,s)}}return new Date(e)}(t),this.$x=t.x||{},this.init()},$.init=function(){var t=this.$d;this.$y=t.getFullYear(),this.$M=t.getMonth(),this.$D=t.getDate(),this.$W=t.getDay(),this.$H=t.getHours(),this.$m=t.getMinutes(),this.$s=t.getSeconds(),this.$ms=t.getMilliseconds()},$.$utils=function(){return g},$.isValid=function(){return!("Invalid Date"===this.$d.toString())},$.isSame=function(t,e){var n=v(t);return this.startOf(e)<=n&&n<=this.endOf(e)},$.isAfter=function(t,e){return v(t)<this.startOf(e)},$.isBefore=function(t,e){return this.endOf(e)<v(t)},$.$g=function(t,e,n){return g.u(t)?this[e]:this.set(n,t)},$.unix=function(){return Math.floor(this.valueOf()/1e3)},$.valueOf=function(){return this.$d.getTime()},$.startOf=function(t,a){var h=this,c=!!g.u(a)||a,d=g.p(t),$=function(t,e){var n=g.w(h.$u?Date.UTC(h.$y,e,t):new Date(h.$y,e,t),h);return c?n:n.endOf(i)},l=function(t,e){return g.w(h.toDate()[t].apply(h.toDate("s"),(c?[0,0,0,0]:[23,59,59,999]).slice(e)),h)},y=this.$W,M=this.$M,m=this.$D,D="set"+(this.$u?"UTC":"");switch(d){case o:return c?$(1,0):$(31,11);case u:return c?$(1,M):$(0,M+1);case s:var v=this.$locale().weekStart||0,S=(y<v?y+7:y)-v;return $(c?m-S:m+(6-S),M);case i:case f:return l(D+"Hours",0);case r:return l(D+"Minutes",1);case n:return l(D+"Seconds",2);case e:return l(D+"Milliseconds",3);default:return this.clone()}},$.endOf=function(t){return this.startOf(t,!1)},$.$set=function(s,a){var h,c=g.p(s),d="set"+(this.$u?"UTC":""),$=(h={},h[i]=d+"Date",h[f]=d+"Date",h[u]=d+"Month",h[o]=d+"FullYear",h[r]=d+"Hours",h[n]=d+"Minutes",h[e]=d+"Seconds",h[t]=d+"Milliseconds",h)[c],l=c===i?this.$D+(a-this.$W):a;if(c===u||c===o){var y=this.clone().set(f,1);y.$d[$](l),y.init(),this.$d=y.set(f,Math.min(this.$D,y.daysInMonth())).$d}else $&&this.$d[$](l);return this.init(),this},$.set=function(t,e){return this.clone().$set(t,e)},$.get=function(t){return this[g.p(t)]()},$.add=function(t,a){var f,h=this;t=Number(t);var c=g.p(a),d=function(e){var n=v(h);return g.w(n.date(n.date()+Math.round(e*t)),h)};if(c===u)return this.set(u,this.$M+t);if(c===o)return this.set(o,this.$y+t);if(c===i)return d(1);if(c===s)return d(7);var $=(f={},f[n]=6e4,f[r]=36e5,f[e]=1e3,f)[c]||1,l=this.$d.getTime()+t*$;return g.w(l,this)},$.subtract=function(t,e){return this.add(-1*t,e)},$.format=function(t){var e=this;if(!this.isValid())return"Invalid Date";var n=t||"YYYY-MM-DDTHH:mm:ssZ",r=g.z(this),i=this.$locale(),s=this.$H,u=this.$m,a=this.$M,o=i.weekdays,f=i.months,h=function(t,r,i,s){return t&&(t[r]||t(e,n))||i[r].substr(0,s)},d=function(t){return g.s(s%12||12,t,"0")},$=i.meridiem||function(t,e,n){var r=t<12?"AM":"PM";return n?r.toLowerCase():r},l={YY:String(this.$y).slice(-2),YYYY:this.$y,M:a+1,MM:g.s(a+1,2,"0"),MMM:h(i.monthsShort,a,f,3),MMMM:h(f,a),D:this.$D,DD:g.s(this.$D,2,"0"),d:String(this.$W),dd:h(i.weekdaysMin,this.$W,o,2),ddd:h(i.weekdaysShort,this.$W,o,3),dddd:o[this.$W],H:String(s),HH:g.s(s,2,"0"),h:d(1),hh:d(2),a:$(s,u,!0),A:$(s,u,!1),m:String(u),mm:g.s(u,2,"0"),s:String(this.$s),ss:g.s(this.$s,2,"0"),SSS:g.s(this.$ms,3,"0"),Z:r};return n.replace(c,function(t,e){return e||l[t]||r.replace(":","")})},$.utcOffset=function(){return 15*-Math.round(this.$d.getTimezoneOffset()/15)},$.diff=function(t,f,h){var c,d=g.p(f),$=v(t),l=6e4*($.utcOffset()-this.utcOffset()),y=this-$,M=g.m(this,$);return M=(c={},c[o]=M/12,c[u]=M,c[a]=M/3,c[s]=(y-l)/6048e5,c[i]=(y-l)/864e5,c[r]=y/36e5,c[n]=y/6e4,c[e]=y/1e3,c)[d]||y,h?M:g.a(M)},$.daysInMonth=function(){return this.endOf(u).$D},$.$locale=function(){return M[this.$L]},$.locale=function(t,e){if(!t)return this.$L;var n=this.clone(),r=D(t,e,!0);return r&&(n.$L=r),n},$.clone=function(){return g.w(this.$d,this)},$.toDate=function(){return new Date(this.valueOf())},$.toJSON=function(){return this.isValid()?this.toISOString():null},$.toISOString=function(){return this.$d.toISOString()},$.toString=function(){return this.$d.toUTCString()},d}(),p=S.prototype;return v.prototype=p,[["$ms",t],["$s",e],["$m",n],["$H",r],["$W",i],["$M",u],["$y",o],["$D",f]].forEach(function(t){p[t[1]]=function(e){return this.$g(e,t[0],t[1])}}),v.extend=function(t,e){return t.$i||(t(e,S,v),t.$i=!0),v},v.locale=D,v.isDayjs=m,v.unix=function(t){return v(1e3*t)},v.en=M[y],v.Ls=M,v.p={},v});
 
 
 /***/ }),
@@ -6022,7 +6022,320 @@ function wrappy (fn, cb) {
 
 /***/ }),
 
-/***/ 9075:
+/***/ 9319:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(2437).config();
+const core = __webpack_require__(2186);
+const { Octokit } = __webpack_require__(5375);
+
+const {
+  doAddLabels,
+  doCreateComment,
+  doCloseIssue,
+  doLockIssue,
+  doCreateIssue,
+} = __webpack_require__(9932);
+
+const {
+  doQueryIssues,
+  getIssuesInMonth,
+  getCreatedMonth,
+} = __webpack_require__(197);
+
+const {
+  dealInput,
+  matchKeyword,
+  getPreMonth
+} = __webpack_require__(6254);
+
+// **************************************************************************
+var dayjs = __webpack_require__(7401);
+var utc = __webpack_require__(4359);
+dayjs.extend(utc);
+
+// **************************************************************************
+const token = core.getInput('token');
+const octokit = new Octokit({ auth: `token ${token}` });
+
+let direction = core.getInput("direction");
+direction = direction === 'desc' ? 'desc' : 'asc';
+const commentAuth = core.getInput("comment-auth");
+const bodyIncludes = core.getInput('body-includes');
+const titleIncludes = core.getInput('title-includes');
+const assigneeIncludes = core.getInput('assignee-includes');
+
+let issueState = core.getInput("issue-state") || 'open';
+if (issueState != 'all' && issueState != 'closed') {
+  issueState = 'open';
+}
+
+const inactiveLabel = core.getInput("inactive-label") || 'inactive';
+
+// **************************************************************************
+async function doCheckInactive (owner, repo, labels) {
+  const issues = await doQueryIssues(owner, repo, labels, issueState);
+
+  if (issues.length) {
+    for (let i = 0; i < issues.length; i++) {
+      let arr = [];
+      issues[i].labels.forEach(it => {
+        arr.push(it.name);
+      });
+      if (!arr.includes(inactiveLabel)) {
+        await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
+        if (core.getInput("body")) {
+          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+        }
+      } else {
+        core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
+      }
+    }
+  } else {
+    core.info(`Actions: [query-issues] empty!`);
+  }
+};
+
+/**
+ * 检查 issue 是否满足条件，满足返回 true
+ * 当前 issue 的指定人是否有一个满足 assigneeIncludes 里的某个
+ * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
+ */
+async function doCheckIssue (owner, repo, issueNumber) {
+  var checkResult = true;
+  const issue = await octokit.issues.get({
+    owner,
+    repo,
+    issue_number: issueNumber
+  });
+
+  if (!!checkResult && assigneeIncludes) {
+    let assigneesCheck = dealInput(assigneeIncludes);
+    let checkAssignee = false;
+    issue.data.assignees.forEach(it => {
+      if (checkResult && !checkAssignee && assigneesCheck.includes(it.login)) {
+        checkResult = true;
+        checkAssignee = true;
+      }
+    })
+    !checkAssignee ? checkResult = false : null;
+  }
+
+  if (!!checkResult && titleIncludes) {
+    const titleArr = titleIncludes.split('/');
+    const keyword1 = dealInput(titleArr[0]);
+    const keyword2 = dealInput(titleArr[1]);
+    checkResult =
+      keyword2.length ?
+        matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
+        matchKeyword(issue.data.title, keyword1);
+  }
+
+  if (!!checkResult && bodyIncludes) {
+    const bodyArr = bodyIncludes.split('/');
+    const keyword1 = dealInput(bodyArr[0]);
+    const keyword2 = dealInput(bodyArr[1]);
+    checkResult =
+      keyword2.length ?
+        matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
+        matchKeyword(issue.data.body, keyword1);
+  }
+  core.info(`Actions: [check-issue][${!!checkResult}] success!`);
+  core.setOutput("check-result", !!checkResult);
+};
+
+async function doCloseIssues (owner, repo, labels) {
+  const issues = await doQueryIssues(owner, repo, labels, 'open');
+
+  if (issues.length) {
+    for (let i = 0; i < issues.length; i++) {
+      await doCloseIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
+    }
+  } else {
+    core.info(`Actions: [query-issues] empty!`);
+  }
+};
+
+async function doFindComments (owner, repo, issueNumber) {
+  const res = await octokit.issues.listComments({
+    owner,
+    repo,
+    issue_number: issueNumber
+  });
+  core.info(`Actions: [find-comments][${issueNumber}] success!`);
+  let comments = [];
+  res.data.forEach(item => {
+    const a = commentAuth ? item.user.login === commentAuth : true;
+    const b = bodyIncludes ? item.body.includes(bodyIncludes) : true;
+    if (a && b) {
+      comments.push({
+        id: item.id,
+        auth: item.user.login,
+        body: item.body,
+        created: item.created_at,
+        updated: item.updated_at
+      })
+      if (direction === 'desc') {
+        comments.reverse();
+      }
+    }
+  })
+  core.setOutput("comments", comments);
+};
+
+async function doLockIssues (owner, repo, labels) {
+  const issues = await doQueryIssues(owner, repo, labels, issueState);
+
+  if (issues.length) {
+    for (let i = 0; i < issues.length; i++) {
+      await doLockIssue(owner, repo, issues[i].number);
+      if (core.getInput("body")) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      }
+    }
+  } else {
+    core.info(`Actions: [query-issues] empty!`);
+  }
+};
+
+async function doMonthStatistics (owner, repo, labels, assignees) {
+  const countLables = core.getInput("count-lables");
+  const countComments = core.getInput("count-comments");
+
+  const thisMonth = dayjs.utc().month() + 1;
+  const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
+
+  const month = getPreMonth(thisMonth);
+  const showMonth = month < 10 ? `0${month}` : month;
+
+  let issues = await getIssuesInMonth(
+    owner,
+    repo,
+    thisMonth
+  );
+  if (issues.length == 0) {
+    core.info(`Actions: [query-issues-${month}] empty!`);
+    return false;
+  }
+  issues = issues.filter(i => {
+    return getCreatedMonth(i.created_at) == month
+  });
+  let total = issues.length;
+  let totalIssues = [...issues];
+  let openTotal = 0;
+  let openIssuesNumber = [];
+  let closeTotal = 0;
+  let closeIssuesNumber = [];
+  let labelsTotals = [];
+  const title = `[${owner}/${repo}] Month Statistics: ${year}-${showMonth}`;
+  for (let i = 0; i < issues.length; i++) {
+    if (issues[i].state == 'closed') {
+      closeTotal += 1;
+      closeIssuesNumber.push(issues[i].number);
+    } else if (issues[i].state == 'open') {
+      openTotal += 1;
+      openIssuesNumber.push(issues[i].number);
+    }
+    if (countLables && issues[i].labels) {
+      issues[i].labels.forEach(l => {
+        if (l.name in labelsTotals) {
+          labelsTotals[l.name] += 1;
+        } else {
+          labelsTotals[l.name] = 1;
+        }
+      })
+    }
+  }
+  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
+  let body = `
+- Created time: ${now}
+
+- Time base: UTC +0
+`;
+  let totalShow = `
+### Count
+
+| Total | Open | Closed |
+| -- | -- | -- |
+| ${total} | ${openTotal} | ${closeTotal} |
+
+`;
+
+  body += totalShow;
+
+  if (countLables == 'true') {
+    let labelsArr = [];
+    for (var lab in labelsTotals) {
+      labelsArr.push({
+        labelName: lab,
+        number: labelsTotals[lab]
+      })
+    }
+    labelsArr.sort((a, b) => b.number - a.number);
+    let labelsTitle = `
+### Labels statistics
+
+<table>
+<tr>
+<th>Name</th>
+<th>Number</th>
+</tr>`
+    let labelsBody = '';
+    labelsArr.forEach(it => {
+      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
+    })
+    body = body + labelsTitle + labelsBody + `</table>
+
+`;
+  }
+
+  if (countComments == 'true') {
+    totalIssues.sort((a, b) => b.comments - a.comments);
+    const maxComments = totalIssues.slice(0, 3);
+    let commentTitle = `
+### Most comments
+
+<table>
+<tr>
+<th>#</th>
+<th>Issue</th>
+<th>Title</th>
+<th>Number</th>
+<th>State</th>
+</tr>
+`
+    let commentBody = '';
+    maxComments.forEach((it,ind) => {
+      commentBody += `<tr>
+<td>${ind + 1}</td>
+<td>${it.number}</td>
+<td>${it.title}</td>
+<td>${it.comments}</td>
+<td>${it.state}</td></tr>`
+    })
+    body = body + commentTitle + commentBody + '</table>';
+  }
+
+  await doCreateIssue(owner, repo, title, body, labels, assignees);
+};
+
+// **************************************************************************
+module.exports = {
+  doCheckInactive,
+  doCheckIssue,
+  doCloseIssues,
+  doFindComments,
+  doLockIssues,
+  doMonthStatistics,
+};
+
+
+/***/ }),
+
+/***/ 9932:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 __webpack_require__(2437).config();
@@ -6030,12 +6343,7 @@ const core = __webpack_require__(2186);
 const github = __webpack_require__(5438);
 const { Octokit } = __webpack_require__(5375);
 
-var dayjs = __webpack_require__(7401);
-var utc = __webpack_require__(4359);
-dayjs.extend(utc);
-var isSameOrBefore = __webpack_require__(9517);
-dayjs.extend(isSameOrBefore);
-
+// **************************************************************************
 const ALLREACTIONS = [
   "+1",
   "-1",
@@ -6048,45 +6356,22 @@ const ALLREACTIONS = [
 ];
 
 const {
+  doQueryIssues
+} = __webpack_require__(197);
+
+const {
   dealInput,
-  matchKeyword,
   testDuplicate,
-  getPreMonth
 } = __webpack_require__(6254);
 
+// **************************************************************************
 const token = core.getInput('token');
-
 const octokit = new Octokit({ auth: `token ${token}` });
-
-const contents = core.getInput("contents");
-const issueContents = core.getInput("issue-contents");
-
-// advanced
-let direction = core.getInput("direction");
-direction = direction === 'desc' ? 'desc' : 'asc';
-const commentAuth = core.getInput("comment-auth");
-const bodyIncludes = core.getInput('body-includes');
-const titleIncludes = core.getInput('title-includes');
-const assigneeIncludes = core.getInput('assignee-includes');
-
-const issueCreator = core.getInput("issue-creator");
-const issueAssignee = core.getInput('issue-assignee');
-const issueMentioned = core.getInput('issue-mentioned');
-
-let issueState = core.getInput("issue-state") || 'open';
-
-if (issueState != 'all' && issueState != 'closed') {
-  issueState = 'open';
-}
-
-const inactiveDay = core.getInput("inactive-day");
-const inactiveLabel = core.getInput("inactive-label") || 'inactive';
-const perPage = 100;
-
-// context
 const context = github.context;
 
-// base
+const contents = core.getInput("contents");
+
+// **************************************************************************
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
   await octokit.issues.addAssignees({
     owner,
@@ -6213,6 +6498,7 @@ async function doMarkDuplicate (owner, repo, labels) {
 
   const duplicateCommand = core.getInput("duplicate-command");
   const duplicateLabels = core.getInput("duplicate-labels");
+  const removeLables = core.getInput("remove-labels");
   const closeIssue = core.getInput("close-issue");
   
   const commentId = context.payload.comment.id;
@@ -6230,6 +6516,9 @@ async function doMarkDuplicate (owner, repo, labels) {
     }
     if (duplicateLabels) {
       await doAddLabels(owner, repo, issueNumber, duplicateLabels);
+    }
+    if (removeLables) {
+      await doRemoveLabels(owner, repo, issueNumber, removeLables);
     }
     if (labels) {
       await doSetLabels(owner, repo, issueNumber, labels);
@@ -6408,6 +6697,7 @@ async function doUpdateIssue (
 async function doWelcome (owner, repo, assignees, labels, body) {
   const context = github.context;
   const isIssue = !!context.payload.issue;
+  const issueContents = core.getInput("issue-contents");
   if (!isIssue) {
     core.setFailed("The event that triggered this action must be a issue. Error!");
   } else {
@@ -6439,336 +6729,7 @@ async function doWelcome (owner, repo, assignees, labels, body) {
   }
 };
 
-// advanced
-async function doCheckInactive (owner, repo, labels) {
-  const issues = await doQueryIssues(owner, repo, labels, issueState);
-
-  if (issues.length) {
-    for (let i = 0; i < issues.length; i++) {
-      if (!JSON.stringify(issues[i].labels).includes(inactiveLabel)) {
-        await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
-        if (core.getInput("body")) {
-          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
-        }
-      } else {
-        core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
-      }
-    }
-  } else {
-    core.info(`Actions: [query-issues] empty!`);
-  }
-};
-
-/**
- * 检查 issue 是否满足条件，满足返回 true
- * 当前 issue 的指定人是否有一个满足 assigneeIncludes 里的某个
- * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
- */
-async function doCheckIssue (owner, repo, issueNumber) {
-  var checkResult = true;
-  const issue = await octokit.issues.get({
-    owner,
-    repo,
-    issue_number: issueNumber
-  });
-
-  if (!!checkResult && assigneeIncludes) {
-    let assigneesCheck = dealInput(assigneeIncludes);
-    let checkAssignee = false;
-    issue.data.assignees.forEach(it => {
-      if (checkResult && !checkAssignee && assigneesCheck.includes(it.login)) {
-        checkResult = true;
-        checkAssignee = true;
-      }
-    })
-    !checkAssignee ? checkResult = false : null;
-  }
-
-  if (!!checkResult && titleIncludes) {
-    const titleArr = titleIncludes.split('/');
-    const keyword1 = dealInput(titleArr[0]);
-    const keyword2 = dealInput(titleArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
-        matchKeyword(issue.data.title, keyword1);
-  }
-
-  if (!!checkResult && bodyIncludes) {
-    const bodyArr = bodyIncludes.split('/');
-    const keyword1 = dealInput(bodyArr[0]);
-    const keyword2 = dealInput(bodyArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
-        matchKeyword(issue.data.body, keyword1);
-  }
-  core.info(`Actions: [check-issue][${!!checkResult}] success!`);
-  core.setOutput("check-result", !!checkResult);
-};
-
-async function doCloseIssues (owner, repo, labels) {
-  const issues = await doQueryIssues(owner, repo, labels, 'open');
-
-  if (issues.length) {
-    for (let i = 0; i < issues.length; i++) {
-      await doCloseIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
-      }
-    }
-  } else {
-    core.info(`Actions: [query-issues] empty!`);
-  }
-};
-
-async function doFindComments (owner, repo, issueNumber) {
-  const res = await octokit.issues.listComments({
-    owner,
-    repo,
-    issue_number: issueNumber
-  });
-  core.info(`Actions: [find-comments][${issueNumber}] success!`);
-  let comments = [];
-  res.data.forEach(item => {
-    const a = commentAuth ? item.user.login === commentAuth : true;
-    const b = bodyIncludes ? item.body.includes(bodyIncludes) : true;
-    if (a && b) {
-      comments.push({
-        id: item.id,
-        auth: item.user.login,
-        body: item.body,
-        created: item.created_at,
-        updated: item.updated_at
-      })
-      if (direction === 'desc') {
-        comments.reverse();
-      }
-    }
-  })
-  core.setOutput("comments", comments);
-};
-
-async function doLockIssues (owner, repo, labels) {
-  const issues = await doQueryIssues(owner, repo, labels, issueState);
-
-  if (issues.length) {
-    for (let i = 0; i < issues.length; i++) {
-      await doLockIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
-      }
-    }
-  } else {
-    core.info(`Actions: [query-issues] empty!`);
-  }
-};
-
-async function doMonthStatistics (owner, repo, labels, assignees) {
-  const countLables = core.getInput("count-lables");
-  const countComments = core.getInput("count-comments");
-
-  const thisMonth = dayjs.utc().month() + 1;
-  const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
-
-  const month = getPreMonth(thisMonth);
-  const showMonth = month < 10 ? `0${month}` : month;
-
-  let issues = await getIssuesInMonth(
-    owner,
-    repo,
-    thisMonth
-  );
-  if (issues.length == 0) {
-    core.info(`Actions: [query-issues-${month}] empty!`);
-    return false;
-  }
-  issues = issues.filter(i => {
-    return getCreatedMontn(i.created_at) == month
-  });
-  let total = issues.length;
-  let totalIssues = [...issues];
-  let openTotal = 0;
-  let openIssuesNumber = [];
-  let closeTotal = 0;
-  let closeIssuesNumber = [];
-  let labelsTotals = [];
-  const title = `[${owner}/${repo}] Month Statistics: ${year}-${showMonth}`;
-  for (let i = 0; i < issues.length; i++) {
-    if (issues[i].state == 'closed') {
-      closeTotal += 1;
-      closeIssuesNumber.push(issues[i].number);
-    } else if (issues[i].state == 'open') {
-      openTotal += 1;
-      openIssuesNumber.push(issues[i].number);
-    }
-    if (countLables && issues[i].labels) {
-      issues[i].labels.forEach(l => {
-        if (l.name in labelsTotals) {
-          labelsTotals[l.name] += 1;
-        } else {
-          labelsTotals[l.name] = 1;
-        }
-      })
-    }
-  }
-  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
-  let body = `
-- Created time: ${now}
-
-- Time base: UTC +0
-`;
-  let totalShow = `
-### Count
-
-| Total | Open | Closed |
-| -- | -- | -- |
-| ${total} | ${openTotal} | ${closeTotal} |
-
-`;
-
-  body += totalShow;
-
-  if (countLables == 'true') {
-    let labelsArr = [];
-    for (var lab in labelsTotals) {
-      labelsArr.push({
-        labelName: lab,
-        number: labelsTotals[lab]
-      })
-    }
-    labelsArr.sort((a, b) => b.number - a.number);
-    let labelsTitle = `
-### Labels statistics
-
-<table>
-<tr>
-<th>Name</th>
-<th>Number</th>
-</tr>`
-    let labelsBody = '';
-    labelsArr.forEach(it => {
-      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
-    })
-    body = body + labelsTitle + labelsBody + `</table>
-
-`;
-  }
-
-  if (countComments == 'true') {
-    totalIssues.sort((a, b) => b.comments - a.comments);
-    const maxComments = totalIssues.slice(0, 3);
-    let commentTitle = `
-### Most comments
-
-<table>
-<tr>
-<th>#</th>
-<th>Issue</th>
-<th>Title</th>
-<th>Number</th>
-<th>State</th>
-</tr>
-`
-    let commentBody = '';
-    maxComments.forEach((it,ind) => {
-      commentBody += `<tr>
-<td>${ind + 1}</td>
-<td>${it.number}</td>
-<td>${it.title}</td>
-<td>${it.comments}</td>
-<td>${it.state}</td></tr>`
-    })
-    body = body + commentTitle + commentBody + '</table>';
-  }
-
-  await doCreateIssue(owner, repo, title, body, labels, assignees);
-};
-
-
-// Tool
-async function doQueryIssues (owner, repo, labels, state, creator) {
-  let params = {
-    owner,
-    repo,
-    state,
-  };
-
-  issueCreator ? params.creator = issueCreator : null;
-  issueAssignee ? params.assignee = issueAssignee : null;
-  issueMentioned ? params.mentioned = issueMentioned : null;
-
-  if (labels) {
-    params.labels = labels;
-  }
-
-  if (creator) {
-    params.creator = creator;
-  }
-
-  const res = await getIssues(params);
-  let issues = [];
-  let issueNumbers = [];
-  if (res.length) {
-    res.forEach(iss => {
-      const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
-      const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
-      /**
-       * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
-       * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
-       * You can identify pull requests by the pull_request key.
-       */
-      if (a && b && iss.pull_request === undefined) {
-        if (inactiveDay) {
-          let lastTime = dayjs.utc().subtract(Number(inactiveDay), 'day');
-          let updateTime = dayjs.utc(iss.updated_at);
-          if (updateTime.isSameOrBefore(lastTime)) {
-            issues.push(iss);
-            issueNumbers.push(iss.number);
-          }
-        } else {
-          issues.push(iss);
-          issueNumbers.push(iss.number);
-        }
-      }
-    })
-    core.info(`Actions: [query-issues]: [${JSON.stringify(issueNumbers)}]!`);
-  }
-
-  return issues;
-};
-
-async function getIssues (params, page = 1) {
-  let { data: issues } = await octokit.issues.listForRepo({
-    ...params,
-    per_page: perPage,
-    page
-  });
-  if (issues.length >= perPage) {
-    issues = issues.concat(await getIssues(params, page + 1));
-  }
-  return issues;
-};
-
-async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
-  const month = getPreMonth(thisMonth);
-  let { data: issues } = await octokit.issues.listForRepo({
-    owner,
-    repo,
-    state: 'all',
-    per_page: perPage,
-    page
-  });
-  issues = issues.filter(i => {
-    return i.pull_request === undefined
-  });
-  if (issues.length && getCreatedMontn(issues[issues.length - 1].created_at) >= month) {
-    issues = issues.concat(await getIssuesInMonth(owner, repo, thisMonth, page + 1));
-  }
-  return issues;
-};
-
-// tool
+// **************************************************************************
 function testContent(con) {
   if (ALLREACTIONS.includes(con)) {
     return true;
@@ -6778,13 +6739,8 @@ function testContent(con) {
   }
 };
 
-function getCreatedMontn (d) {
-  return dayjs(d).utc().month() + 1;
-};
-
-// exports
+// **************************************************************************
 module.exports = {
-  // base
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
@@ -6803,14 +6759,6 @@ module.exports = {
   doUpdateComment,
   doUpdateIssue,
   doWelcome,
-
-  // advanced
-  doCheckInactive,
-  doCheckIssue,
-  doCloseIssues,
-  doFindComments,
-  doLockIssues,
-  doMonthStatistics,
 };
 
 
@@ -6822,15 +6770,13 @@ module.exports = {
 const core = __webpack_require__(2186);
 const github = __webpack_require__(5438);
 
+// **************************************************************************
 const {
-  // base
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
   doCreateComment,
-  doCreateCommentContent,
   doCreateIssue,
-  doCreateIssueContent,
   doDeleteComment,
   doMarkDuplicate,
   doLockIssue,
@@ -6842,16 +6788,18 @@ const {
   doUpdateComment,
   doUpdateIssue,
   doWelcome,
+} = __webpack_require__(9932);
 
-  // advanced
+const {
   doCheckInactive,
   doCheckIssue,
   doCloseIssues,
   doFindComments,
   doLockIssues,
   doMonthStatistics,
-} = __webpack_require__(9075);
+} = __webpack_require__(9319);
 
+// **************************************************************************
 const ALLACTIONS = [
   // base
   'add-assignees',
@@ -6880,6 +6828,7 @@ const ALLACTIONS = [
   'month-statistics',
 ];
 
+// **************************************************************************
 async function main() {
   try {
     const owner = github.context.repo.owner;
@@ -7049,7 +6998,139 @@ async function main() {
   }
 }
 
+// **************************************************************************
 main();
+
+
+/***/ }),
+
+/***/ 197:
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+__webpack_require__(2437).config();
+const core = __webpack_require__(2186);
+const { Octokit } = __webpack_require__(5375);
+
+const {
+  getPreMonth
+} = __webpack_require__(6254);
+
+// **************************************************************************
+var dayjs = __webpack_require__(7401);
+var utc = __webpack_require__(4359);
+dayjs.extend(utc);
+var isSameOrBefore = __webpack_require__(9517);
+dayjs.extend(isSameOrBefore);
+
+// **************************************************************************
+const token = core.getInput('token');
+const octokit = new Octokit({ auth: `token ${token}` });
+
+const perPage = 100;
+
+const issueCreator = core.getInput("issue-creator");
+const issueAssignee = core.getInput('issue-assignee');
+const issueMentioned = core.getInput('issue-mentioned');
+
+const bodyIncludes = core.getInput('body-includes');
+const titleIncludes = core.getInput('title-includes');
+
+const inactiveDay = core.getInput("inactive-day");
+
+// **************************************************************************
+async function doQueryIssues (owner, repo, labels, state, creator) {
+  let params = {
+    owner,
+    repo,
+    state,
+  };
+
+  issueCreator ? params.creator = issueCreator : null;
+  issueAssignee ? params.assignee = issueAssignee : null;
+  issueMentioned ? params.mentioned = issueMentioned : null;
+
+  if (labels) {
+    params.labels = labels;
+  }
+
+  if (creator) {
+    params.creator = creator;
+  }
+
+  const res = await getIssues(params);
+  let issues = [];
+  let issueNumbers = [];
+  if (res.length) {
+    res.forEach(iss => {
+      const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
+      const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
+      /**
+       * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
+       * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
+       * You can identify pull requests by the pull_request key.
+       */
+      if (a && b && iss.pull_request === undefined) {
+        if (inactiveDay) {
+          let lastTime = dayjs.utc().subtract(Number(inactiveDay), 'day');
+          let updateTime = dayjs.utc(iss.updated_at);
+          if (updateTime.isSameOrBefore(lastTime)) {
+            issues.push(iss);
+            issueNumbers.push(iss.number);
+          }
+        } else {
+          issues.push(iss);
+          issueNumbers.push(iss.number);
+        }
+      }
+    })
+    core.info(`Actions: [query-issues]: [${JSON.stringify(issueNumbers)}]!`);
+  }
+
+  return issues;
+};
+
+async function getIssues (params, page = 1) {
+  let { data: issues } = await octokit.issues.listForRepo({
+    ...params,
+    per_page: perPage,
+    page
+  });
+  if (issues.length >= perPage) {
+    issues = issues.concat(await getIssues(params, page + 1));
+  }
+  return issues;
+};
+
+async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
+  const month = getPreMonth(thisMonth);
+  let { data: issues } = await octokit.issues.listForRepo({
+    owner,
+    repo,
+    state: 'all',
+    per_page: perPage,
+    page
+  });
+  issues = issues.filter(i => {
+    return i.pull_request === undefined
+  });
+  if (issues.length && getCreatedMonth(issues[issues.length - 1].created_at) >= month) {
+    issues = issues.concat(await getIssuesInMonth(owner, repo, thisMonth, page + 1));
+  }
+  return issues;
+};
+
+// **************************************************************************
+function getCreatedMonth (d) {
+  return dayjs(d).utc().month() + 1;
+};
+
+// **************************************************************************
+module.exports = {
+  doQueryIssues,
+  getIssues,
+  getIssuesInMonth,
+  getCreatedMonth,
+};
 
 
 /***/ }),
@@ -7058,6 +7139,10 @@ main();
 /***/ ((module) => {
 
 function dealInput (para) {
+  /**
+   * in  'x1,x2,x3'
+   * out ['x1','x2','x3']
+   */
   let arr = [];
   if (para) {
     const paraArr = para.split(',');
