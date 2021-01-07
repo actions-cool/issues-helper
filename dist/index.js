@@ -6066,7 +6066,6 @@ const titleIncludes = core.getInput('title-includes');
 const assigneeIncludes = core.getInput('assignee-includes');
 
 let issueState = core.getInput("issue-state") || 'open';
-
 if (issueState != 'all' && issueState != 'closed') {
   issueState = 'open';
 }

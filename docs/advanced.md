@@ -247,3 +247,7 @@ jobs:
 - 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
 - `count-lables`：可设置 `'true'`，增加 labels 统计
 - `count-comments`：可设置 `'true'`，增加 comments 统计
+
+如下所示：
+
+![](../public/month.png)

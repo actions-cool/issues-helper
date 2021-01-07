@@ -251,3 +251,7 @@ jobs:
 - The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
 - `count-lables`: You can set `'true'` to add labels statistics
 - `count-comments`: You can set `'true'` to add comments statistics
+
+As follows:
+
+![](../public/month.png)
