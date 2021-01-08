@@ -1004,45 +1004,38 @@ At the same time, if you have any questions during use, you can also ask and inq
   <td align="center" width="180">
     <a href="https://github.com/ant-design/ant-design">
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <br />
-      ant-design
+      <div>ant-design</div>
     </a></td>
   <td align="center" width="180">
     <a href="https://github.com/vueComponent/ant-design-vue">
       <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
-      <br />
-      ant-design-vue
+      <div>ant-design-vue</div>
     </a></td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/dumi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <br />
-      dumi
+      <div>dumi</div>
     </a></td>
   <td align="center" width="180">
     <a href="https://github.com/mui-org/material-ui">
       <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
-      <br />
-      material-ui
+      <div>material-ui</div>
     </a></td>
 </tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
       <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
-      <br />
-      react-music-player
+      <div>react-music-player</div>
     </a></td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <br />
-      umi
+      <div>umi</div>
     </a></td>
   <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
-      <br />
-      vue-request
+      <div>vue-request</div>
     </a></td>
   <td align="center" width="180"></td>
 </tr>

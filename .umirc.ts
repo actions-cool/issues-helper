@@ -21,7 +21,7 @@ export default defineConfig({
     ['en-US', 'English'],
   ],
   theme: {
-    '@c-primary': '#42a5f5',
+    '@c-primary': '#1890ff',
   },
   navs: {
     'zh-CN': [
