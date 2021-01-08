@@ -17,6 +17,21 @@ if: contains(github.event.issue.body, 'ie') == false
 
 [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/context-and-expression-syntax-for-github-actions#functions).
 
+## Pass value and output in `yml`
+
+```
+with:
+  actions: 'month-statistics'
+  token: ${{ secrets.GITHUB_TOKEN }}
+  count-lables: 'true'
+```
+
+- `count-lables`: Regardless of setting `true` or `'ture'`, all received in the program is in string format
+
+At the same time, the output is also in string format
+
+- `check-result`: The judgment condition is `if: steps.xxid.outputs.check-result =='true'`
+
 ## `GitHub Actions bot` trigger
 
 When an action is set, such as adding a label `x1` to an issue, Actions will automatically add a label `x2` to the issue.
