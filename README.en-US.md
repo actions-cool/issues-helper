@@ -22,7 +22,7 @@ A GitHub Action that easily helps you automatically manage issues
 
 > Private projects have a limit of 2000 times per month. [Specific view](https://github.com/settings/billing). Public are unlimited.
 
-## 💖 Who is using?
+## Who is using?
 
 Please leave a message at [**here**](https://github.com/actions-cool/issues-helper/issues/6).
 
@@ -1037,7 +1037,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
 - Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
-- Can also refer to the warehouse of [online users](#💖-who-is-using)
+- Can also refer to the warehouse of [online users](#who-is-using)
 
 ## ⚡ Feedback
 

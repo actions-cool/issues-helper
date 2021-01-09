@@ -22,7 +22,7 @@
 
 > Private 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。Public 项目无限制。
 
-## 💖 谁在使用？
+## 谁在使用？
 
 欢迎在 [**这里**](https://github.com/actions-cool/issues-helper/issues/6) 留言。
 
@@ -1032,7 +1032,7 @@ x2 + y2
 
 - 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
 - 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
-- 也可以来 [线上使用者](#💖-谁在使用) 的仓库参照
+- 也可以来 [线上使用者](#谁在使用) 的仓库参照
 
 ## ⚡ 反馈
 
