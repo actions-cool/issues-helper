@@ -69,6 +69,15 @@
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       <div>vue-request</div>
     </a></td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/zoo-js/zoo">
+      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
+      <div>zoo</div>
+    </a></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
 </tr>
 </table>
 
