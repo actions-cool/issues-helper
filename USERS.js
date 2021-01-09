@@ -31,6 +31,10 @@ const users = [
     url: 'https://github.com/lijinke666/react-music-player',
     logo: 'https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true'
   },
+  {
+    url: 'https://github.com/ant-design-blazor/ant-design-blazor',
+    logo: 'https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg'
+  },
 ];
 
 // **************************************************************************

@@ -22,6 +22,56 @@
 
 > Private 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。Public 项目无限制。
 
+## 谁在使用？
+
+欢迎在 [**这里**](https://github.com/actions-cool/issues-helper/issues/6) 留言。
+
+<table>
+<tr>
+  <td align="center" width="180">
+    <a href="https://github.com/ant-design/ant-design">
+      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
+      <div>ant-design</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/ant-design-blazor/ant-design-blazor">
+      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46" />
+      <div>ant-design-blazor</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/vueComponent/ant-design-vue">
+      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
+      <div>ant-design-vue</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/umijs/dumi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      <div>dumi</div>
+    </a></td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/mui-org/material-ui">
+      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
+      <div>material-ui</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
+      <div>react-music-player</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/umijs/umi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      <div>umi</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/AttoJS/vue-request">
+      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
+      <div>vue-request</div>
+    </a></td>
+</tr>
+</table>
+
 ## 列 表
 
 当以下列表没有你想要的功能时，可以在 [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18) 中提出。
@@ -985,56 +1035,16 @@ x2 + y2
 ## Actions 模板
 
 - 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
-
 - 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
+- 也可以来 [线上使用者](#谁在使用) 的仓库参照
 
-## 💖 谁在使用？
+## ⚡ 反馈
 
-你可以来以下项目进行参考。欢迎在 [**这里**](https://github.com/actions-cool/issues-helper/issues/6) 留言。
+非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
 
-同时，如果你在使用过程中有什么疑问，也可以在 issue 或者 discussion 中进行提问和查询。
-
-<table>
-<tr>
-  <td align="center" width="180">
-    <a href="https://github.com/ant-design/ant-design">
-      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <div>ant-design</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/vueComponent/ant-design-vue">
-      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
-      <div>ant-design-vue</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/dumi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>dumi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/mui-org/material-ui">
-      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
-      <div>material-ui</div>
-    </a></td>
-</tr><tr>
-  <td align="center" width="180">
-    <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
-      <div>react-music-player</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/umi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>umi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
-      <div>vue-request</div>
-    </a></td>
-  <td align="center" width="180"></td>
-</tr>
-</table>
+- 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
+- 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论
+- 提交 [Pull Request](https://github.com/actions-cool/issues-helper/pulls) 改进 `issues-helper` 的代码
 
 ## LICENSE
 
