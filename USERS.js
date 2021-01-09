@@ -35,6 +35,10 @@ const users = [
     url: 'https://github.com/ant-design-blazor/ant-design-blazor',
     logo: 'https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg'
   },
+  {
+    url: 'https://github.com/zoo-js/zoo',
+    logo: 'https://avatars1.githubusercontent.com/u/70757173?s=200&v=4'
+  },
 ];
 
 // **************************************************************************

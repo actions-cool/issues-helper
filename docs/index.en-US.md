@@ -51,7 +51,7 @@ jobs:
 
 ## 💖 Who is using?
 
-<embed src="../README.md#L29-L73"></embed>
+<embed src="../README.md#L29-L82"></embed>
 
 ## ⚡ Feedback
 
