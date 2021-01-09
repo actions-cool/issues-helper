@@ -28,23 +28,23 @@ for (let j = 1; j <= row; j++) {
 table = `<table>
 ${table}
 </table>
+
 `;
 
 // **************************************************************************
 
 const point = '<table>';
-const last = `
-## LICENSE
-
-[MIT](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
-`;
+const cnPoint= `## 列 表`;
+const enPoint = `## List`;
 
 // **************************************************************************
 
 const cn = readFileSync('./README.md', 'utf8');
 const cnIn = cn.indexOf(point);
+const cnAfterIn = cn.indexOf(cnPoint);
 const cnBefore = cn.substring(0, cnIn);
-const newcn = cnBefore + table + last;
+const cnAfter = cn.substring(cnAfterIn, cn.length);
+const newcn = cnBefore + table + cnAfter;
 writeFileSync('./README.md', newcn);
 console.log(`🎉 Done cn`);
 
@@ -52,8 +52,10 @@ console.log(`🎉 Done cn`);
 
 const en = readFileSync('./README.en-US.md', 'utf8');
 const enIn = en.indexOf(point);
+const enAfterIn = en.indexOf(enPoint);
 const enBefore = en.substring(0, enIn);
-const newen = enBefore + table + last;
+const enAfter = en.substring(enAfterIn, en.length);
+const newen = enBefore + table + enAfter;
 writeFileSync('./README.en-US.md', newen);
 console.log(`🎉 Done en`);
 
