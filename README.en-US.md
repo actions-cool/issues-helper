@@ -22,6 +22,52 @@ A GitHub Action that easily helps you automatically manage issues
 
 > Private projects have a limit of 2000 times per month. [Specific view](https://github.com/settings/billing). Public are unlimited.
 
+## 💖 Who is using?
+
+Please leave a message at [**here**](https://github.com/actions-cool/issues-helper/issues/6).
+
+<table>
+<tr>
+  <td align="center" width="180">
+    <a href="https://github.com/ant-design/ant-design">
+      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
+      <div>ant-design</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/vueComponent/ant-design-vue">
+      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
+      <div>ant-design-vue</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/umijs/dumi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      <div>dumi</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/mui-org/material-ui">
+      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
+      <div>material-ui</div>
+    </a></td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
+      <div>react-music-player</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/umijs/umi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      <div>umi</div>
+    </a></td>
+  <td align="center" width="180">
+    <a href="https://github.com/AttoJS/vue-request">
+      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
+      <div>vue-request</div>
+    </a></td>
+  <td align="center" width="180"></td>
+</tr>
+</table>
+
 ## List
 
 When the following list does not have the features you want, you can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
@@ -990,56 +1036,16 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 ## Actions Template
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
-
 - Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
+- Can also refer to the warehouse of [online users](#💖-who-is-using)
 
-## 💖 Who is using?
+## ⚡ Feedback
 
-You can come to the following repositories for reference. Please leave a message at [**here**](https://github.com/actions-cool/issues-helper/issues/6).
+You are very welcome to try it out and put forward your comments. You can use the following methods:
 
-At the same time, if you have any questions during use, you can also ask and inquire in the issue or discussion.
-
-<table>
-<tr>
-  <td align="center" width="180">
-    <a href="https://github.com/ant-design/ant-design">
-      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <div>ant-design</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/vueComponent/ant-design-vue">
-      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
-      <div>ant-design-vue</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/dumi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>dumi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/mui-org/material-ui">
-      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
-      <div>material-ui</div>
-    </a></td>
-</tr><tr>
-  <td align="center" width="180">
-    <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
-      <div>react-music-player</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/umi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>umi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
-      <div>vue-request</div>
-    </a></td>
-  <td align="center" width="180"></td>
-</tr>
-</table>
+- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
+- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
+- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`
 
 ## LICENSE
 
