@@ -20,7 +20,8 @@ const {
 } = require('./public.js');
 
 const {
-  dealInput,
+  dealStringToArr,
+  dealRandomAssignees,
   testDuplicate,
 } = require('./util.js');
 
@@ -31,13 +32,15 @@ const context = github.context;
 
 const contents = core.getInput("contents");
 
+const randomTo = core.getInput("random-to");
+
 // **************************************************************************
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
   await octokit.issues.addAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees: dealInput(assignees)
+    assignees: dealRandomAssignees(assignees, randomTo)
   });
   core.info(`Actions: [add-assignees][${assignees}] success!`);
 };
@@ -47,7 +50,7 @@ async function doAddLabels (owner, repo, issueNumber, labels) {
     owner,
     repo,
     issue_number: issueNumber,
-    labels: dealInput(labels)
+    labels: dealStringToArr(labels)
   });
   core.info(`Actions: [add-labels][${labels}] success!`);
 };
@@ -73,7 +76,7 @@ async function doCreateComment (owner, repo, issueNumber, body) {
   core.setOutput("comment-id", data.id);
 
   if (contents) {
-    await doCreateCommentContent(owner, repo, data.id, dealInput(contents));
+    await doCreateCommentContent(owner, repo, data.id, dealStringToArr(contents));
   }
 };
 
@@ -99,8 +102,8 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
     repo,
     title,
     body,
-    labels: dealInput(labels),
-    assignees: dealInput(assignees),
+    labels: dealStringToArr(labels),
+    assignees: dealRandomAssignees(assignees, randomTo),
   };
 
   const { data } = await octokit.issues.create(params);
@@ -108,7 +111,7 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
   core.setOutput("issue-number", data.number);
 
   if (contents) {
-    await doCreateIssueContent(owner, repo, data.number, dealInput(contents));
+    await doCreateIssueContent(owner, repo, data.number, dealStringToArr(contents));
   }
 };
 
@@ -160,7 +163,7 @@ async function doMarkDuplicate (owner, repo, labels) {
   const duplicateLabels = core.getInput("duplicate-labels");
   const removeLables = core.getInput("remove-labels");
   const closeIssue = core.getInput("close-issue");
-  
+
   const commentId = context.payload.comment.id;
   const commentBody = context.payload.comment.body;
   const issueNumber = context.payload.issue.number;
@@ -172,7 +175,7 @@ async function doMarkDuplicate (owner, repo, labels) {
       const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
       await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
     } else if (contents) {
-      await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
+      await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
     }
     if (duplicateLabels) {
       await doAddLabels(owner, repo, issueNumber, duplicateLabels);
@@ -206,7 +209,7 @@ async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
     owner,
     repo,
     issue_number: issueNumber,
-    assignees: dealInput(assignees),
+    assignees: dealStringToArr(assignees)
   });
   core.info(`Actions: [remove-assignees][${assignees}] success!`);
 };
@@ -217,7 +220,7 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
     repo,
     issue_number: issueNumber
   });
-  const dealLabels = dealInput(labels);
+  const dealLabels = dealStringToArr(labels);
   let addLables = [];
   if (dealLabels.length) {
     issue.data.labels.forEach(item => {
@@ -238,7 +241,7 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
     owner,
     repo,
     issue_number: issueNumber,
-    labels: dealInput(labels)
+    labels: dealStringToArr(labels)
   });
   core.info(`Actions: [set-labels][${labels}] success!`);
 };
@@ -285,7 +288,7 @@ async function doUpdateComment (
   }
 
   if (contents) {
-    await doCreateCommentContent(owner, repo, commentId, dealInput(contents));
+    await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
   }
 };
 
@@ -343,8 +346,8 @@ async function doUpdateIssue (
   }
   params.body = next_body;
 
-  params.labels = labels ? dealInput(labels) : issue_labels;
-  params.assignees = assignees ? dealInput(assignees) : issue_assignees;
+  params.labels = labels ? dealStringToArr(labels) : issue_labels;
+  params.assignees = assignees ? dealStringToArr(assignees) : issue_assignees;
 
   await octokit.issues.update(params);
   core.info(`Actions: [update-issue][${issueNumber}] success!`);
@@ -381,7 +384,7 @@ async function doWelcome (owner, repo, assignees, labels, body) {
       }
 
       if (issueContents) {
-        await doCreateIssueContent(owner, repo, issueNumber, dealInput(issueContents));
+        await doCreateIssueContent(owner, repo, issueNumber, dealStringToArr(issueContents));
       }
     } else {
       core.info(`Actions: [welcome][${auth}] is not first time!`);

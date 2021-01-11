@@ -140,6 +140,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           assignees: 'xxx' or 'xx1,xx2'
+          random-to: 1
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
@@ -148,6 +149,7 @@ jobs:
 | token | [token 说明](#token) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
 | assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
+| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 
 - `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
@@ -295,6 +297,7 @@ jobs:
 | body | 新增 issue 的内容 | string | ✖ |
 | labels | 为新增 issue 添加 labels | string | ✖ |
 | assignees | 为新增 issue 添加 assignees | string | ✖ |
+| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 | contents | 为新增 issue 增加 [reaction](#reactions-types) | string | ✖ |
 
 - `title` 默认为：`Default Title`

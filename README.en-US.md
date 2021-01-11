@@ -140,6 +140,7 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           assignees: 'xxx' or 'xx1,xx2'
+          random-to: 1
 ```
 
 | Param | Desc  | Type | Required |
@@ -148,6 +149,7 @@ jobs:
 | token | [Token explain](#token) | string | ✔ |
 | issue-number | The number of issue | number | ✔ |
 | assignees | Designated person. No operation when no input or empty character | string | ✖ |
+| random-to | When set, it will be randomly selected in assignees | number | ✖ |
 
 - `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
 - The `name` can be modified according to the actual situation
@@ -295,6 +297,7 @@ jobs:
 | body | The body of the new issue | string | ✖ |
 | labels | The labels for the new issue | string | ✖ |
 | assignees | The assignees for the new issue | string | ✖ |
+| random-to | When set, it will be randomly selected in assignees | number | ✖ |
 | contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - `title` default is `Default Title`

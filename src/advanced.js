@@ -17,7 +17,7 @@ const {
 } = require('./public.js');
 
 const {
-  dealInput,
+  dealStringToArr,
   matchKeyword,
   getPreMonth
 } = require('./util.js');
@@ -83,7 +83,7 @@ async function doCheckIssue (owner, repo, issueNumber) {
   });
 
   if (!!checkResult && assigneeIncludes) {
-    let assigneesCheck = dealInput(assigneeIncludes);
+    let assigneesCheck = dealStringToArr(assigneeIncludes);
     let checkAssignee = false;
     issue.data.assignees.forEach(it => {
       if (checkResult && !checkAssignee && assigneesCheck.includes(it.login)) {
@@ -96,8 +96,8 @@ async function doCheckIssue (owner, repo, issueNumber) {
 
   if (!!checkResult && titleIncludes) {
     const titleArr = titleIncludes.split('/');
-    const keyword1 = dealInput(titleArr[0]);
-    const keyword2 = dealInput(titleArr[1]);
+    const keyword1 = dealStringToArr(titleArr[0]);
+    const keyword2 = dealStringToArr(titleArr[1]);
     checkResult =
       keyword2.length ?
         matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
@@ -106,8 +106,8 @@ async function doCheckIssue (owner, repo, issueNumber) {
 
   if (!!checkResult && bodyIncludes) {
     const bodyArr = bodyIncludes.split('/');
-    const keyword1 = dealInput(bodyArr[0]);
-    const keyword2 = dealInput(bodyArr[1]);
+    const keyword1 = dealStringToArr(bodyArr[0]);
+    const keyword2 = dealStringToArr(bodyArr[1]);
     checkResult =
       keyword2.length ?
         matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :

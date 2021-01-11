@@ -1,4 +1,6 @@
-function dealInput (para) {
+const sampleSize  = require('lodash/sampleSize');
+
+function dealStringToArr (para) {
   /**
    * in  'x1,x2,x3'
    * out ['x1','x2','x3']
@@ -11,6 +13,14 @@ function dealInput (para) {
         arr.push(it.trim())
       }
     })
+  }
+  return arr;
+};
+
+function dealRandomAssignees (assignees, randomTo) {
+  let arr = dealStringToArr(assignees);
+  if (randomTo && Number(randomTo) > 0 && Number(randomTo) < arr.length) {
+    arr = sampleSize(arr, randomTo);
   }
   return arr;
 };
@@ -37,7 +47,8 @@ function getPreMonth (m) {
 };
 
 module.exports = {
-  dealInput,
+  dealStringToArr,
+  dealRandomAssignees,
   getPreMonth,
   matchKeyword,
   testDuplicate,
