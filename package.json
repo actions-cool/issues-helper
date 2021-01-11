@@ -1,6 +1,6 @@
 {
   "name": "issue-helper",
-  "version": "1.7.0",
+  "version": "1.9.0",
   "private": true,
   "description": "Some operations on issue.",
   "main": "src/main.js",
@@ -13,7 +13,7 @@
     "package": "ncc build src/main.js -o dist",
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
-    "version": "node ./script/update-version.js"
+    "ver": "node ./script/update-version.js"
   },
   "author": "xrkffgg",
   "license": "MIT",

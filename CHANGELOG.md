@@ -1,3 +1,9 @@
+## v1.9
+
+`2021.01.11`
+
+- feat: add random to. [#35](https://github.com/actions-cool/issues-helper/pull/35)
+
 ## v1.8
 
 `2021.01.07`
