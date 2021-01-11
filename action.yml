@@ -20,6 +20,8 @@ inputs:
     description: 'Issue title'
   assignees:
     description: 'Issue assignees'
+  random-to:
+    description: 'Issue assignees random to'
   labels:
     description: 'Issue labels'
   state:
