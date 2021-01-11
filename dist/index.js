@@ -7907,13 +7907,14 @@ const randomTo = core.getInput("random-to");
 
 // **************************************************************************
 async function doAddAssignees (owner, repo, issueNumber, assignees) {
+  const arr = dealRandomAssignees(assignees, randomTo);
   await octokit.issues.addAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees: dealRandomAssignees(assignees, randomTo)
+    assignees: arr
   });
-  core.info(`Actions: [add-assignees][${assignees}] success!`);
+  core.info(`Actions: [add-assignees][${arr}] success!`);
 };
 
 async function doAddLabels (owner, repo, issueNumber, labels) {
