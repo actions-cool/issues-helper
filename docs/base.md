@@ -22,12 +22,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           assignees: 'xxx' or 'xx1,xx2'
+          random-to: 1
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
@@ -36,6 +37,7 @@ jobs:
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
 | assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
+| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 
 - `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
 - 其中的 `name` 可根据自行根据实际情况修改
@@ -60,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -83,7 +85,7 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -114,7 +116,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -156,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -175,6 +177,7 @@ jobs:
 | body | 新增 issue 的内容 | string | ✖ |
 | labels | 为新增 issue 添加 labels | string | ✖ |
 | assignees | 为新增 issue 添加 assignees | string | ✖ |
+| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 | contents | 为新增 issue 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `title` 默认为：`Default Title`
@@ -186,7 +189,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -216,7 +219,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -245,7 +248,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -277,7 +280,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -296,7 +299,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -317,7 +320,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -340,7 +343,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -361,7 +364,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -392,7 +395,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v1.8
+          uses: actions-cool/issues-helper@v1.9
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -418,7 +421,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v1.8
+    uses: actions-cool/issues-helper@v1.9
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -465,7 +468,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v1.8
+        uses: actions-cool/issues-helper@v1.9
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
