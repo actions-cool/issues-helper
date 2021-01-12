@@ -8066,12 +8066,7 @@ async function doMarkDuplicate (owner, repo, labels) {
       newLabels = dealStringToArr(labels);
     }
     if (newLabels.length > 0) {
-      await octokit.issues.setLabels({
-        owner,
-        repo,
-        issue_number: issueNumber,
-        labels: newLabels
-      });
+      await doSetLabels(owner, repo, issueNumber, newLabels.toString());
       core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
     }
 
