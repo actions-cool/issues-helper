@@ -8056,7 +8056,7 @@ async function doMarkDuplicate (owner, repo, labels) {
       issue_number: issueNumber
     });
     let newLabels = [];
-    if (issue.data.labels.length > 0){
+    if (issue.data.labels.length > 0) {
       issue.data.labels.forEach(it => {
         if (removeLables) {
           if (!dealStringToArr(removeLables).includes(it.name)) {
