@@ -8136,13 +8136,13 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
     const addLabels = dealStringToArr(labels).filter(name => !baseLabels.includes(name));
 
     if (removeLabels.length > 0) {
-      core.info(`Actions: [set-labels-remove][${removeLabels}] success!`);
       await doRemoveLabels(owner, repo, issueNumber, removeLabels.toString());
+      core.info(`Actions: [set-labels-remove][${removeLabels}] success!`);
     }
 
     if (addLabels.length > 0) {
-      core.info(`Actions: [set-labels-add][${addLabels}] success!`);
       await doAddLabels(owner, repo, issueNumber, addLabels.toString());
+      core.info(`Actions: [set-labels-add][${addLabels}] success!`);
     }
 
     core.info(`Actions: [set-labels][${labels}] success!`);
