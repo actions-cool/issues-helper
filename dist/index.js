@@ -8062,7 +8062,7 @@ async function doMarkDuplicate (owner, repo, labels) {
     if (duplicateLabels) {
       newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
     }
-    if (typeof(labels) !== undefined) {
+    if (labels) {
       newLabels = dealStringToArr(labels);
     }
     if (newLabels.length > 0) {
@@ -8119,7 +8119,7 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
   // 概率性出现问题：https://github.com/octokit/rest.js/issues/1982，规避 setLabels
-  if (typeof(labels) !== undefined) {
+  if (labels) {
     // await octokit.issues.setLabels({
     //   owner,
     //   repo,
