@@ -261,10 +261,12 @@ jobs:
 | duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ |
 | duplicate-labels | 为该 issue 额外增加 labels | string | ✖ |
 | remove-labels | 设置可移除的 labels | string | ✖ |
+| labels | 替换该 issue 的 labels | string | ✖ |
 | contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`
+- `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
 
 <Alert>

@@ -8021,7 +8021,7 @@ async function doLockIssue (owner, repo, issueNumber) {
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 };
 
-async function doMarkDuplicate (owner, repo) {
+async function doMarkDuplicate (owner, repo, labels) {
   if (context.eventName != 'issue_comment') {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
@@ -8050,12 +8050,29 @@ async function doMarkDuplicate (owner, repo) {
       await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
     }
 
-    if (duplicateLabels) {
-      await doAddLabels(owner, repo, issueNumber, duplicateLabels);
+    const issue = await octokit.issues.get({
+      owner,
+      repo,
+      issue_number: issueNumber
+    });
+    let newLabels = [];
+    if (issue.data.labels.length > 0) {
+      newLabels = issue.data.labels.map(({ name }) => name).filter(name => !dealStringToArr(removeLables).includes(name));
     }
-
-    if (removeLables) {
-      await doRemoveLabels(owner, repo, issueNumber, removeLables);
+    if (duplicateLabels) {
+      newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
+    }
+    if (typeof(labels) !== undefined) {
+      newLabels = dealStringToArr(labels);
+    }
+    if (newLabels.length > 0) {
+      await octokit.issues.setLabels({
+        owner,
+        repo,
+        issue_number: issueNumber,
+        labels: newLabels
+      });
+      core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
     }
 
     if (closeIssue == 'true') {
@@ -8101,14 +8118,33 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
-  // 概率性出现问题：https://github.com/octokit/rest.js/issues/1982
-  if (labels) {
-    await octokit.issues.setLabels({
+  // 概率性出现问题：https://github.com/octokit/rest.js/issues/1982，规避 setLabels
+  if (typeof(labels) !== undefined) {
+    // await octokit.issues.setLabels({
+    //   owner,
+    //   repo,
+    //   issue_number: issueNumber,
+    //   labels: dealStringToArr(labels)
+    // });
+    const issue = await octokit.issues.get({
       owner,
       repo,
-      issue_number: issueNumber,
-      labels: dealStringToArr(labels)
+      issue_number: issueNumber
     });
+    const baseLabels = issue.data.labels.map(({ name }) => name);
+    const removeLabels = baseLabels.filter(name => !dealStringToArr(labels).includes(name));
+    const addLabels = labels.filter(name => !baseLabels.includes(name));
+
+    if (removeLabels.length > 0) {
+      core.info(`Actions: [set-labels-remove][${removeLabels}] success!`);
+      await doRemoveLabels(owner, repo, issueNumber, removeLabels.toString());
+    }
+
+    if (addLabels.length > 0) {
+      core.info(`Actions: [set-labels-add][${addLabels}] success!`);
+      await doAddLabels(owner, repo, issueNumber, addLabels.toString());
+    }
+
     core.info(`Actions: [set-labels][${labels}] success!`);
   }
 };
@@ -8424,7 +8460,7 @@ async function main() {
           await doLockIssue(owner, repo, issueNumber);
           break;
         case 'mark-duplicate':
-          await doMarkDuplicate(owner, repo);
+          await doMarkDuplicate(owner, repo, labels);
           break;
         case 'open-issue':
           await doOpenIssue(owner, repo, issueNumber);
