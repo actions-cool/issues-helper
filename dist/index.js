@@ -8057,15 +8057,7 @@ async function doMarkDuplicate (owner, repo, labels) {
     });
     let newLabels = [];
     if (issue.data.labels.length > 0) {
-      issue.data.labels.forEach(it => {
-        if (removeLables) {
-          if (!dealStringToArr(removeLables).includes(it.name)) {
-            newLabels.push(it.name);
-          }
-        } else {
-          newLabels.push(it.name);
-        }
-      })
+      newLabels = issue.data.labels.map(({ name }) => name).filter(name => !dealStringToArr(removeLables).includes(name));
     }
     if (duplicateLabels) {
       newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
