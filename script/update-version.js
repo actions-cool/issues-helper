@@ -1,7 +1,7 @@
 const { readFileSync, writeFileSync } = require('fs');
 
-const last = /v1\.8/g;
-const now = 'v1.9';
+const last = /v1\.9/g;
+const now = 'v1.10';
 
 let readme = readFileSync('./README.md', 'utf-8');
 readme = readme.replace(last, now);
