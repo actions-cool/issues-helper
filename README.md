@@ -387,7 +387,6 @@ jobs:
 | duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ |
 | duplicate-labels | 为该 issue 额外增加 labels | string | ✖ |
 | remove-labels | 设置可移除的 labels | string | ✖ |
-| labels | 替换该 issue 的 labels | string | ✖ |
 | contents | 为该评论的增加 [reaction](#reactions-types) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
 

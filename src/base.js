@@ -150,7 +150,7 @@ async function doLockIssue (owner, repo, issueNumber) {
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 };
 
-async function doMarkDuplicate (owner, repo, labels) {
+async function doMarkDuplicate (owner, repo) {
   if (context.eventName != 'issue_comment') {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
@@ -178,15 +178,36 @@ async function doMarkDuplicate (owner, repo, labels) {
     } else if (contents) {
       await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
     }
+
+    const issue = await octokit.issues.get({
+      owner,
+      repo,
+      issue_number: issueNumber
+    });
+    let newLabels = [];
+    if (issue.data.labels.length > 0){
+      issue.data.labels.forEach(it => {
+        if (removeLables) {
+          if (!dealStringToArr(removeLables).includes(it.name)) {
+            newLabels.push(it.name);
+          }
+        } else {
+          newLabels.push(it.name);
+        }
+      })
+    }
     if (duplicateLabels) {
-      await doAddLabels(owner, repo, issueNumber, duplicateLabels);
+      newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
     }
-    if (removeLables) {
-      await doRemoveLabels(owner, repo, issueNumber, removeLables);
+    if (newLabels.length > 0) {
+      await octokit.issues.setLabels({
+        owner,
+        repo,
+        issue_number: issueNumber,
+        labels: newLabels
+      });
     }
-    if (labels) {
-      await doSetLabels(owner, repo, issueNumber, labels);
-    }
+
     if (closeIssue == 'true') {
       await doCloseIssue(owner, repo, issueNumber);
     }
@@ -222,16 +243,16 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
     issue_number: issueNumber
   });
   const dealLabels = dealStringToArr(labels);
-  let addLables = [];
+  let newLabels = [];
   if (dealLabels.length) {
     issue.data.labels.forEach(item => {
-      !dealLabels.includes(item.name) ? addLables.push(item.name) : '';
+      !dealLabels.includes(item.name) ? newLabels.push(item.name) : '';
     })
     await octokit.issues.setLabels({
       owner,
       repo,
       issue_number: issueNumber,
-      labels: addLables
+      labels: newLabels
     });
     core.info(`Actions: [remove-labels][${labels}] success!`);
   }

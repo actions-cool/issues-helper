@@ -387,7 +387,6 @@ jobs:
 | duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ |
 | duplicate-labels | Add additional labels to this issue | string | ✖ |
 | remove-labels | Set removable labels | string | ✖ |
-| labels | Replace the labels of the issue | string | ✖ |
 | contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
 
