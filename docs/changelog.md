@@ -13,11 +13,17 @@ toc: menu
 - 版本选择
   - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到
   - 同时也可参照下面的更新日志来选择版本
+  - 最新的 v1.x release 代码会合并到 1.x 分支中
   - 也支持直接使用分支版本。如：
 
 ```yml
 - name: Issues Helper
   uses: actions-cool/issues-helper@main
+
+# or
+
+- name: Issues Helper
+  uses: actions-cool/issues-helper@1.x
 ```
 
 <embed src="../CHANGELOG.md"></embed>
