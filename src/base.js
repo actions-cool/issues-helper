@@ -254,13 +254,15 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
 };
 
 async function doSetLabels (owner, repo, issueNumber, labels) {
-  await octokit.issues.setLabels({
-    owner,
-    repo,
-    issue_number: issueNumber,
-    labels: dealStringToArr(labels)
-  });
-  core.info(`Actions: [set-labels][${labels}] success!`);
+  if (labels) {
+    await octokit.issues.setLabels({
+      owner,
+      repo,
+      issue_number: issueNumber,
+      labels: dealStringToArr(labels)
+    });
+    core.info(`Actions: [set-labels][${labels}] success!`);
+  }
 };
 
 async function doUnlockIssue (owner, repo, issueNumber) {
