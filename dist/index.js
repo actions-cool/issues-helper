@@ -8072,6 +8072,7 @@ async function doMarkDuplicate (owner, repo, labels) {
         issue_number: issueNumber,
         labels: newLabels
       });
+      core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
     }
 
     if (closeIssue == 'true') {
