@@ -125,7 +125,7 @@ async function main() {
           await doLockIssue(owner, repo, issueNumber);
           break;
         case 'mark-duplicate':
-          await doMarkDuplicate(owner, repo, labels);
+          await doMarkDuplicate(owner, repo);
           break;
         case 'open-issue':
           await doOpenIssue(owner, repo, issueNumber);
