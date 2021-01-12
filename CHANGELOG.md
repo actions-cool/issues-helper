@@ -1,3 +1,9 @@
+## v1.10
+
+`2021.01.12`
+
+- fix: duplicate labels set. [#36](https://github.com/actions-cool/issues-helper/pull/36)
+
 ## v1.9
 
 `2021.01.11`
