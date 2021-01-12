@@ -150,7 +150,7 @@ async function doLockIssue (owner, repo, issueNumber) {
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 };
 
-async function doMarkDuplicate (owner, repo) {
+async function doMarkDuplicate (owner, repo, labels) {
   if (context.eventName != 'issue_comment') {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
@@ -198,6 +198,9 @@ async function doMarkDuplicate (owner, repo) {
     }
     if (duplicateLabels) {
       newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
+    }
+    if (labels) {
+      newLabels = dealStringToArr(labels);
     }
     if (newLabels.length > 0) {
       await octokit.issues.setLabels({
