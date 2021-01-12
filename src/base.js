@@ -262,7 +262,7 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
     });
     const baseLabels = issue.data.labels.map(({ name }) => name);
     const removeLabels = baseLabels.filter(name => !dealStringToArr(labels).includes(name));
-    const addLabels = labels.filter(name => !baseLabels.includes(name));
+    const addLabels = dealStringToArr(labels).filter(name => !baseLabels.includes(name));
 
     if (removeLabels.length > 0) {
       core.info(`Actions: [set-labels-remove][${removeLabels}] success!`);
