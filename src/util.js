@@ -30,7 +30,7 @@ function matchKeyword (content, keywords) {
 };
 
 function testDuplicate(body) {
-  if (!body || !body.startsWith('Duplicate of') || body.includes('?')) {
+  if (!body || !body.startsWith('Duplicate of')) {
     return false;
   }
 
