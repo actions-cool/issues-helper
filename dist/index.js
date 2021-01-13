@@ -8042,7 +8042,7 @@ async function doMarkDuplicate (owner, repo, labels) {
 
   const ifCommandInput = !!duplicateCommand;
 
-  if (!commentBody.includes('?') && (ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody)) {
+  if (!commentBody.includes('?') && ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody))) {
     if (ifCommandInput) {
       const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
       await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
