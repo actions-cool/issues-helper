@@ -155,55 +155,55 @@ async function doMarkDuplicate (owner, repo, labels) {
     core.info(`This actions only support on 'issue_comment'!`);
     return false;
   }
-  if (context.payload.action != 'created') {
-    core.info(`This actions only support on 'issue_comment' created!`);
-    return false;
-  }
 
-  const duplicateCommand = core.getInput("duplicate-command");
-  const duplicateLabels = core.getInput("duplicate-labels");
-  const removeLables = core.getInput("remove-labels");
-  const closeIssue = core.getInput("close-issue");
+  if (context.payload.action == 'created' || context.payload.action == 'edited') {
+    const duplicateCommand = core.getInput("duplicate-command");
+    const duplicateLabels = core.getInput("duplicate-labels");
+    const removeLables = core.getInput("remove-labels");
+    const closeIssue = core.getInput("close-issue");
 
-  const commentId = context.payload.comment.id;
-  const commentBody = context.payload.comment.body;
-  const issueNumber = context.payload.issue.number;
+    const commentId = context.payload.comment.id;
+    const commentBody = context.payload.comment.body;
+    const issueNumber = context.payload.issue.number;
 
-  const ifCommandInput = !!duplicateCommand;
+    const ifCommandInput = !!duplicateCommand;
 
-  if (!commentBody.includes('?') && ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody))) {
-    if (ifCommandInput) {
-      const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
-      await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
-    } else if (contents) {
-      await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
-    }
+    if (!commentBody.includes('?') && ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody))) {
+      if (ifCommandInput) {
+        const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
+        await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+      } else if (contents) {
+        await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
+      }
 
-    const issue = await octokit.issues.get({
-      owner,
-      repo,
-      issue_number: issueNumber
-    });
-    let newLabels = [];
-    if (issue.data.labels.length > 0) {
-      newLabels = issue.data.labels.map(({ name }) => name).filter(name => !dealStringToArr(removeLables).includes(name));
-    }
-    if (duplicateLabels) {
-      newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
-    }
-    if (labels) {
-      newLabels = dealStringToArr(labels);
-    }
-    if (newLabels.length > 0) {
-      await doSetLabels(owner, repo, issueNumber, newLabels.toString());
-      core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
-    }
+      const issue = await octokit.issues.get({
+        owner,
+        repo,
+        issue_number: issueNumber
+      });
+      let newLabels = [];
+      if (issue.data.labels.length > 0) {
+        newLabels = issue.data.labels.map(({ name }) => name).filter(name => !dealStringToArr(removeLables).includes(name));
+      }
+      if (duplicateLabels) {
+        newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
+      }
+      if (labels) {
+        newLabels = dealStringToArr(labels);
+      }
+      if (newLabels.length > 0) {
+        await doSetLabels(owner, repo, issueNumber, newLabels.toString());
+        core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
+      }
 
-    if (closeIssue == 'true') {
-      await doCloseIssue(owner, repo, issueNumber);
+      if (closeIssue == 'true') {
+        await doCloseIssue(owner, repo, issueNumber);
+      }
+    } else {
+      core.info(`This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`);
     }
   } else {
-    core.info(`This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`);
+    core.info(`This actions only support on 'issue_comment' created or edited!`);
   }
 };
 
