@@ -391,7 +391,7 @@ jobs:
 | contents | 为该评论的增加 [reaction](#reactions-types) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
 
-- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`
+- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
 
@@ -1038,11 +1038,17 @@ x2 + y2
 - 版本选择
   - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到
   - 同时也可参照下面的更新日志来选择版本
+  - 最新的 v1.x release 代码会合并到 1.x 分支中
   - 也支持直接使用分支版本。如：
 
 ```yml
 - name: Issues Helper
   uses: actions-cool/issues-helper@main
+
+# or
+
+- name: Issues Helper
+  uses: actions-cool/issues-helper@1.x
 ```
 
 ## Actions 模板

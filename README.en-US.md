@@ -391,7 +391,7 @@ jobs:
 | contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
 
-- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`
+- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority
 - `close-issue`: Both `true` or `'true'` can take effect
 
@@ -1043,11 +1043,17 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 - Version selection
   - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
   - You can also refer to the update log below to select the version
+  - The latest v1.x release code will be merged into the 1.x branch
   - It also supports the direct use of branch versions. Such as:
 
 ```yml
 - name: Issues Helper
   uses: actions-cool/issues-helper@main
+
+# or
+
+- name: Issues Helper
+  uses: actions-cool/issues-helper@1.x
 ```
 
 ## Actions Template

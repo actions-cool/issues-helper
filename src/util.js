@@ -31,7 +31,7 @@ function matchKeyword (content, keywords) {
 
 function testDuplicate(body) {
   if (!body || !body.startsWith('Duplicate of')) {
-    return false
+    return false;
   }
 
   let arr = body.split(' ');

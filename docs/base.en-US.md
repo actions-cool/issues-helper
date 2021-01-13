@@ -265,7 +265,7 @@ jobs:
 | contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
 
-- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`
+- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority
 - `close-issue`: Both `true` or `'true'` can take effect
 

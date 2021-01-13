@@ -13,11 +13,17 @@ toc: menu
 - Version selection
   - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
   - You can also refer to the update log below to select the version
+  - The latest v1.x release code will be merged into the 1.x branch
   - It also supports the direct use of branch versions. Such as:
 
 ```yml
 - name: Issues Helper
   uses: actions-cool/issues-helper@main
+
+# or
+
+- name: Issues Helper
+  uses: actions-cool/issues-helper@1.x
 ```
 
 <embed src="../CHANGELOG.md"></embed>
