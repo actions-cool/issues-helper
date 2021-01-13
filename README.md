@@ -391,7 +391,7 @@ jobs:
 | contents | 为该评论的增加 [reaction](#reactions-types) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
 
-- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`
+- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
 

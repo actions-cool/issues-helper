@@ -8074,7 +8074,7 @@ async function doMarkDuplicate (owner, repo, labels) {
       await doCloseIssue(owner, repo, issueNumber);
     }
   } else {
-    core.info(`This comment body should start whith 'duplicate-command'`);
+    core.info(`This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`);
   }
 };
 
