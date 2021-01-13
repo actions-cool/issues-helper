@@ -360,14 +360,14 @@ jobs:
 
 #### `mark-duplicate`
 
-Quickly mark duplicate questions, only for issue new comments.
+Quickly mark duplicate questions, only for issue new comments or edit comments.
 
 ```yml
 name: Issue Mark Duplicate
 
 on:
   issue_comment:
-    types: [created]
+    types: [created, edited]
 
 jobs:
   mark-duplicate:

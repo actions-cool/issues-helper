@@ -360,14 +360,14 @@ jobs:
 
 #### `mark-duplicate`
 
-快捷标记重复问题，仅作用于 issue 新增评论。
+快捷标记重复问题，仅作用于 issue 新增编辑评论。
 
 ```yml
 name: Issue Mark Duplicate
 
 on:
   issue_comment:
-    types: [created]
+    types: [created, edited]
 
 jobs:
   mark-duplicate:
