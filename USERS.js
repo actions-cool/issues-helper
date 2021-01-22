@@ -41,6 +41,10 @@ const users = [
     url: 'https://github.com/react-component',
     logo: 'https://avatars3.githubusercontent.com/u/9441414?s=200&v=4'
   },
+  {
+    url: 'https://github.com/ant-design/pro-components',
+    logo: 'https://avatars1.githubusercontent.com/u/12101536?s=200&v=4'
+  },
 ];
 
 // **************************************************************************
