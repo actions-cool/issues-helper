@@ -264,15 +264,16 @@ jobs:
 | labels | 替换该 issue 的 labels | string | ✖ |
 | contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
-| allow-permissions | 允许操作的权限 | string | ✖ |
+| require-permission | 要求权限 | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
-- `allow-permissions`：当不输时，即无限制。任何人评论都会触发。可选值有 `admin`，`write`，`read`，`none`
-  - 团队成员若设置 read 权限，则为 read
-  - 外部 Collaborator 若设置 read 权限，则为 read
-  - 普通用户为 read 权限
+- `require-permission`：当不输时，即无限制，任何人评论都会触发。可选值有 `admin`，`write`，`read`，`none`
+  - 团队成员若设置 `read` 权限，则为 `read`
+  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
+  - 普通用户为 `read` 权限
+  - 当设置 `write` 后，`admin` 和 `write` 满足条件
 
 <Alert>
 注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
