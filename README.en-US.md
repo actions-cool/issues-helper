@@ -403,12 +403,12 @@ jobs:
 | labels | Replace the labels of the issue | string | ✖ |
 | contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
-| require-permission | Permission required | string | ✖ |
+| require-permission | Permission required, default is `write` | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority
 - `close-issue`: Both `true` or `'true'` can take effect
-- `require-permission`: When you do not input, there is no limit. Anyone comment will trigger. Optional values are `admin`, `write`, `read`, `none`
+- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
   - If the team member sets the `read` permission, it is `read`
   - If the external Collaborator is set to `read` permission, it is `read`
   - Ordinary users have `read` permission
