@@ -1,10 +1,8 @@
 require('dotenv').config();
-const core = require("@actions/core");
+const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 
-const {
-  getPreMonth
-} = require('./util.js');
+const { getPreMonth } = require('./util.js');
 
 // **************************************************************************
 var dayjs = require('dayjs');
@@ -19,26 +17,26 @@ const octokit = new Octokit({ auth: `token ${token}` });
 
 const perPage = 100;
 
-const issueCreator = core.getInput("issue-creator");
+const issueCreator = core.getInput('issue-creator');
 const issueAssignee = core.getInput('issue-assignee');
 const issueMentioned = core.getInput('issue-mentioned');
 
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
 
-const inactiveDay = core.getInput("inactive-day");
+const inactiveDay = core.getInput('inactive-day');
 
 // **************************************************************************
-async function doQueryIssues (owner, repo, labels, state, creator) {
+async function doQueryIssues(owner, repo, labels, state, creator) {
   let params = {
     owner,
     repo,
     state,
   };
 
-  issueCreator ? params.creator = issueCreator : null;
-  issueAssignee ? params.assignee = issueAssignee : null;
-  issueMentioned ? params.mentioned = issueMentioned : null;
+  issueCreator ? (params.creator = issueCreator) : null;
+  issueAssignee ? (params.assignee = issueAssignee) : null;
+  issueMentioned ? (params.mentioned = issueMentioned) : null;
 
   if (labels) {
     params.labels = labels;
@@ -73,47 +71,51 @@ async function doQueryIssues (owner, repo, labels, state, creator) {
           issueNumbers.push(iss.number);
         }
       }
-    })
+    });
     core.info(`Actions: [query-issues]: [${JSON.stringify(issueNumbers)}]!`);
   }
 
   return issues;
-};
+}
 
-async function getIssues (params, page = 1) {
+async function getIssues(params, page = 1) {
   let { data: issues } = await octokit.issues.listForRepo({
     ...params,
     per_page: perPage,
-    page
+    page,
   });
   if (issues.length >= perPage) {
     issues = issues.concat(await getIssues(params, page + 1));
   }
   return issues;
-};
+}
 
-async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
+async function getIssuesInMonth(owner, repo, thisMonth, page = 1) {
   const month = getPreMonth(thisMonth);
   let { data: issues } = await octokit.issues.listForRepo({
     owner,
     repo,
     state: 'all',
     per_page: perPage,
-    page
+    page,
   });
   issues = issues.filter(i => {
-    return i.pull_request === undefined
+    return i.pull_request === undefined;
   });
   if (issues.length && getCreatedMonth(issues[issues.length - 1].created_at) >= month) {
     issues = issues.concat(await getIssuesInMonth(owner, repo, thisMonth, page + 1));
   }
   return issues;
-};
+}
 
 // **************************************************************************
-function getCreatedMonth (d) {
-  return dayjs(d).utc().month() + 1;
-};
+function getCreatedMonth(d) {
+  return (
+    dayjs(d)
+      .utc()
+      .month() + 1
+  );
+}
 
 // **************************************************************************
 module.exports = {

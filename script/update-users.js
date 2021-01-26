@@ -17,13 +17,13 @@ for (let j = 1; j <= row; j++) {
   let data = '';
   data = stripIndent`
 <tr>
-  <td align="center" width="180">${getImg(users[(j-1)*4])}</td>
-  <td align="center" width="180">${getImg(users[(j-1)*4+1])}</td>
-  <td align="center" width="180">${getImg(users[(j-1)*4+2])}</td>
-  <td align="center" width="180">${getImg(users[(j-1)*4+3])}</td>
+  <td align="center" width="180">${getImg(users[(j - 1) * 4])}</td>
+  <td align="center" width="180">${getImg(users[(j - 1) * 4 + 1])}</td>
+  <td align="center" width="180">${getImg(users[(j - 1) * 4 + 2])}</td>
+  <td align="center" width="180">${getImg(users[(j - 1) * 4 + 3])}</td>
 </tr>`;
-  table += data
-};
+  table += data;
+}
 
 table = `<table>
 ${table}
@@ -34,7 +34,7 @@ ${table}
 // **************************************************************************
 
 const point = '<table>';
-const cnPoint= `## 列 表`;
+const cnPoint = `## 列 表`;
 const enPoint = `## List`;
 
 // **************************************************************************
@@ -61,22 +61,22 @@ console.log(`🎉 Done en`);
 
 // **************************************************************************
 
-function getImg (o) {
+function getImg(o) {
   if (o) {
     return `
     <a href="${o.url}">
       <img src="${o.logo}" width="46" />
       <div>${getName(o)}</div>
-    </a>`
+    </a>`;
   }
-  return ``
-};
+  return ``;
+}
 
-function getName (o) {
+function getName(o) {
   if (o) {
-    return o.url.split('/').slice(-1)[0]
+    return o.url.split('/').slice(-1)[0];
   }
-  return ``
-};
+  return ``;
+}
 
 // **************************************************************************
