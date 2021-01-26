@@ -365,6 +365,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
+| lock-reason | 锁定 issue 的原因 | string | ✖ |
+
+- `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
 
 ⏫ [返回列表](#列-表)
 
@@ -400,15 +403,16 @@ jobs:
 | labels | 替换该 issue 的 labels | string | ✖ |
 | contents | 为该评论的增加 [reaction](#reactions-types) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
-| allow-permissions | 允许操作的权限 | string | ✖ |
+| require-permission | 要求权限 | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
-- `allow-permissions`：当不输时，即无限制。任何人评论都会触发。可选值有 `admin`，`write`，`read`，`none`
-  - 团队成员若设置 read 权限，则为 read
-  - 外部 Collaborator 若设置 read 权限，则为 read
-  - 普通用户为 read 权限
+- `require-permission`：当不输时，即无限制，任何人评论都会触发。可选值有 `admin`，`write`，`read`，`none`
+  - 团队成员若设置 `read` 权限，则为 `read`
+  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
+  - 普通用户为 `read` 权限
+  - 当设置 `write` 后，`admin` 和 `write` 满足条件
 
 ⏫ [返回列表](#列-表)
 
@@ -854,6 +858,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
+| lock-reason | 锁定 issue 的原因 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `open`。可选值 `all` `closed`，非这 2 项时，均为 `open`

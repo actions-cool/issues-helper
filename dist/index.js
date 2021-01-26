@@ -7871,7 +7871,12 @@ const ALLREACTIONS = ['+1', '-1', 'laugh', 'confused', 'heart', 'hooray', 'rocke
 
 const { doQueryIssues } = __webpack_require__(197);
 
-const { dealStringToArr, dealRandomAssignees, testDuplicate } = __webpack_require__(6254);
+const {
+  dealStringToArr,
+  dealRandomAssignees,
+  testDuplicate,
+  checkPermission,
+} = __webpack_require__(6254);
 
 // **************************************************************************
 const token = core.getInput('token');
@@ -7990,11 +7995,17 @@ async function doDeleteComment(owner, repo, commentId) {
 }
 
 async function doLockIssue(owner, repo, issueNumber) {
-  await octokit.issues.lock({
+  const lockReason = core.getInput('lock-reason');
+  let params = {
     owner,
     repo,
     issue_number: issueNumber,
-  });
+  };
+  const reasons = ['off-topic', 'too heated', 'resolved', 'spam'];
+  if (lockReason && reasons.includes(lockReason)) {
+    params.lock_reason = lockReason;
+  }
+  await octokit.issues.lock(params);
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 }
 
@@ -8009,7 +8020,7 @@ async function doMarkDuplicate(owner, repo, labels) {
     const duplicateLabels = core.getInput('duplicate-labels');
     const removeLables = core.getInput('remove-labels');
     const closeIssue = core.getInput('close-issue');
-    const allowPermissions = core.getInput('allow-permissions');
+    const requirePermission = core.getInput('require-permission');
 
     const commentId = context.payload.comment.id;
     const commentBody = context.payload.comment.body;
@@ -8018,14 +8029,14 @@ async function doMarkDuplicate(owner, repo, labels) {
 
     const ifCommandInput = !!duplicateCommand;
 
-    if (allowPermissions) {
+    if (requirePermission) {
       const res = await octokit.repos.getCollaboratorPermissionLevel({
         owner,
         repo,
         username: commentUser,
       });
       const { permission } = res.data;
-      if (!allowPermissions.includes(permission)) {
+      if (!checkPermission(requirePermission, permission)) {
         core.info(`The user ${commentUser} is not allow!`);
         return false;
       }
@@ -8706,12 +8717,25 @@ function getPreMonth(m) {
   return m == 1 ? 12 : m - 1;
 }
 
+function checkPermission(require, permission) {
+  /**
+   * 有权限返回 true
+   */
+  const permissions = ['none', 'read', 'write', 'admin'];
+  const requireNo = permissions.indexOf(require);
+  const permissionNo = permissions.indexOf(permission);
+
+  return requireNo <= permissionNo;
+}
+
+// **********************************************************
 module.exports = {
   dealStringToArr,
   dealRandomAssignees,
   getPreMonth,
   matchKeyword,
   testDuplicate,
+  checkPermission,
 };
 
 

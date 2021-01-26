@@ -46,10 +46,23 @@ function getPreMonth(m) {
   return m == 1 ? 12 : m - 1;
 }
 
+function checkPermission(require, permission) {
+  /**
+   * 有权限返回 true
+   */
+  const permissions = ['none', 'read', 'write', 'admin'];
+  const requireNo = permissions.indexOf(require);
+  const permissionNo = permissions.indexOf(permission);
+
+  return requireNo <= permissionNo;
+}
+
+// **********************************************************
 module.exports = {
   dealStringToArr,
   dealRandomAssignees,
   getPreMonth,
   matchKeyword,
   testDuplicate,
+  checkPermission,
 };

@@ -365,6 +365,9 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | issue-number | The number of issue | number | ✔ |
+| lock-reason | Reason for locking issue | string | ✖ |
+
+- `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
 
 ⏫ [Back to list](#List)
 
@@ -400,15 +403,16 @@ jobs:
 | labels | Replace the labels of the issue | string | ✖ |
 | contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
-| allow-permissions | Permission to operate | string | ✖ |
+| require-permission | Permission required | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority
 - `close-issue`: Both `true` or `'true'` can take effect
-- `allow-permissions`: When you do not input, there is no limit. Anyone comment will trigger. Optional values are `admin`, `write`, `read`, `none`
-  - If the team member sets the read permission, it is read
-  - If the external Collaborator is set to read permission, it is read
-  - Ordinary users have read permission
+- `require-permission`: When you do not input, there is no limit. Anyone comment will trigger. Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the `read` permission, it is `read`
+  - If the external Collaborator is set to `read` permission, it is `read`
+  - Ordinary users have `read` permission
+  - When set `write`, `admin` and `write` meet the conditions
 
 ⏫ [Back to list](#List)
 
@@ -860,6 +864,7 @@ jobs:
 | body-includes | Body filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
+| lock-reason | Reason for locking issue | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`

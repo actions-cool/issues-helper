@@ -1,3 +1,12 @@
+## v1.12
+
+> It will be the last version of 1.x
+
+`2021.01.26`
+
+- feat: add require-permission. [#46](https://github.com/actions-cool/issues-helper/pull/46) [#48](https://github.com/actions-cool/issues-helper/pull/48)
+- feat: add lock-reason. [#49](https://github.com/actions-cool/issues-helper/pull/49)
+
 ## v1.11
 
 `2021.01.14`
