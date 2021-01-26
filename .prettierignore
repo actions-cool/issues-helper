@@ -1,0 +1,4 @@
+dist/
+lib/
+docs-dist/
+node_modules/
