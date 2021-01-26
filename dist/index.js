@@ -7875,7 +7875,6 @@ const { dealStringToArr, dealRandomAssignees, testDuplicate } = __webpack_requir
 
 // **************************************************************************
 const token = core.getInput('token');
-// const token = github.token;
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
 
@@ -8000,34 +7999,36 @@ async function doLockIssue(owner, repo, issueNumber) {
 }
 
 async function doMarkDuplicate(owner, repo, labels) {
-  // if (context.eventName != 'issue_comment') {
-  //   core.info(`This actions only support on 'issue_comment'!`);
-  //   return false;
-  // }
+  if (context.eventName != 'issue_comment') {
+    core.info(`This actions only support on 'issue_comment'!`);
+    return false;
+  }
 
-  if (true) {
+  if (context.payload.action == 'created' || context.payload.action == 'edited') {
     const duplicateCommand = core.getInput('duplicate-command');
     const duplicateLabels = core.getInput('duplicate-labels');
     const removeLables = core.getInput('remove-labels');
     const closeIssue = core.getInput('close-issue');
+    const allowPermissions = core.getInput('allow-permissions');
 
-    const strictRequire = core.getInput('strict-require') || 'true';
-
-    // const commentId = context.payload.comment.id;
-    // const commentBody = context.payload.comment.body;
+    const commentId = context.payload.comment.id;
+    const commentBody = context.payload.comment.body;
     const commentUser = context.payload.comment.user.login;
-    // const issueNumber = context.payload.issue.number;
+    const issueNumber = context.payload.issue.number;
 
     const ifCommandInput = !!duplicateCommand;
 
-    if (strictRequire == 'true') {
+    if (allowPermissions) {
       const res = await octokit.repos.getCollaboratorPermissionLevel({
         owner,
         repo,
         username: commentUser,
       });
-      console.log(res)
-      return false;
+      const { permission } = res.data;
+      if (!allowPermissions.includes(permission)) {
+        core.info(`The user ${commentUser} is not allow!`);
+        return false;
+      }
     }
 
     if (
@@ -8074,7 +8075,9 @@ async function doMarkDuplicate(owner, repo, labels) {
         `This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`,
       );
     }
-  } else {}
+  } else {
+    core.info(`This actions only support on 'issue_comment' created or edited!`);
+  }
 }
 
 async function doOpenIssue(owner, repo, issueNumber) {
@@ -8386,8 +8389,6 @@ async function main() {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
-    // const owner = 'actions-cool'
-    // const repo = 'test-ci'
 
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
@@ -8409,8 +8410,7 @@ async function main() {
     }
 
     // actions
-    // const actions = core.getInput('actions', { required: true });
-    const actions = 'mark-duplicate';
+    const actions = core.getInput('actions', { required: true });
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
