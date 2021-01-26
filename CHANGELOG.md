@@ -1,3 +1,9 @@
+## v2
+
+`2021.01.26`
+
+- refactor: add require-permission default. [#51](https://github.com/actions-cool/issues-helper/pull/51)
+
 ## v1.12
 
 > It will be the last version of 1.x

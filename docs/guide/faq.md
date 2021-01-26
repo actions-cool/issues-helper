@@ -22,6 +22,10 @@ GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 
 
 你可以查看详细的 [更新日志](/changelog)。推荐采用最新 releases 版本。
 
+## 从 v1.x 升级到 v2，有什么注意的地方吗？
+
+v1.x 和 v2 版本的差别只有一处。即 `mark-duplicate` 中的 `require-permission` 增加了默认值 `write`。
+
 ## 如果这里没有我想要的功能，该怎么办？
 
 你可以在 [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18) 中提出。
