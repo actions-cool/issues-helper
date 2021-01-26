@@ -8,7 +8,12 @@ const ALLREACTIONS = ['+1', '-1', 'laugh', 'confused', 'heart', 'hooray', 'rocke
 
 const { doQueryIssues } = require('./public.js');
 
-const { dealStringToArr, dealRandomAssignees, testDuplicate, checkPermission } = require('./util.js');
+const {
+  dealStringToArr,
+  dealRandomAssignees,
+  testDuplicate,
+  checkPermission,
+} = require('./util.js');
 
 // **************************************************************************
 const token = core.getInput('token');

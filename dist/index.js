@@ -7871,7 +7871,12 @@ const ALLREACTIONS = ['+1', '-1', 'laugh', 'confused', 'heart', 'hooray', 'rocke
 
 const { doQueryIssues } = __webpack_require__(197);
 
-const { dealStringToArr, dealRandomAssignees, testDuplicate, checkPermission } = __webpack_require__(6254);
+const {
+  dealStringToArr,
+  dealRandomAssignees,
+  testDuplicate,
+  checkPermission,
+} = __webpack_require__(6254);
 
 // **************************************************************************
 const token = core.getInput('token');
