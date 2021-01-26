@@ -8015,16 +8015,16 @@ async function doMarkDuplicate(owner, repo, labels) {
 
     // const commentId = context.payload.comment.id;
     // const commentBody = context.payload.comment.body;
-    // const commentUser = context.payload.comment.user.login;
+    const commentUser = context.payload.comment.user.login;
     // const issueNumber = context.payload.issue.number;
 
     const ifCommandInput = !!duplicateCommand;
 
     if (strictRequire == 'true') {
-      const res = await octokit.repos.checkCollaborator({
-        owner: 'actions-cool',
-        repo: 'test-ci',
-        username: 'zoo-js-bot',
+      const res = await octokit.repos.getCollaboratorPermissionLevel({
+        owner,
+        repo,
+        username: commentUser,
       });
       console.log(res)
       return false;
