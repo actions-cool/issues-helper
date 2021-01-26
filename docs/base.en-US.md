@@ -231,6 +231,9 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
 | issue-number | The number of issue | number | ✔ |
+| lock-reason | Reason for locking issue | string | ✖ |
+
+- `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
 
 ## `mark-duplicate`
 
