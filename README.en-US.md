@@ -365,6 +365,9 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | issue-number | The number of issue | number | ✔ |
+| lock-reason | Reason for locking issue | string | ✖ |
+
+- `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
 
 ⏫ [Back to list](#List)
 
@@ -861,6 +864,7 @@ jobs:
 | body-includes | Body filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
+| lock-reason | Reason for locking issue | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`

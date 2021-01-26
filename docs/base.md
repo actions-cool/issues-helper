@@ -231,6 +231,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
+| lock-reason | 锁定 issue 的原因 | string | ✖ |
+
+- `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
 
 ## `mark-duplicate`
 

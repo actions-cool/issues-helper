@@ -365,6 +365,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
 | issue-number | 指定的 issue | number | ✔ |
+| lock-reason | 锁定 issue 的原因 | string | ✖ |
+
+- `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
 
 ⏫ [返回列表](#列-表)
 
@@ -855,6 +858,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
+| lock-reason | 锁定 issue 的原因 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `open`。可选值 `all` `closed`，非这 2 项时，均为 `open`

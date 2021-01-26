@@ -132,11 +132,17 @@ async function doDeleteComment(owner, repo, commentId) {
 }
 
 async function doLockIssue(owner, repo, issueNumber) {
-  await octokit.issues.lock({
+  const lockReason = core.getInput('lock-reason');
+  let params = {
     owner,
     repo,
     issue_number: issueNumber,
-  });
+  };
+  const reasons = ['off-topic', 'too heated', 'resolved', 'spam'];
+  if (lockReason && reasons.includes(lockReason)) {
+    params.lock_reason = lockReason;
+  }
+  await octokit.issues.lock(params);
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
 }
 
