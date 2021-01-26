@@ -7568,17 +7568,9 @@ const {
   doCreateIssue,
 } = __webpack_require__(9932);
 
-const {
-  doQueryIssues,
-  getIssuesInMonth,
-  getCreatedMonth,
-} = __webpack_require__(197);
+const { doQueryIssues, getIssuesInMonth, getCreatedMonth } = __webpack_require__(197);
 
-const {
-  dealStringToArr,
-  matchKeyword,
-  getPreMonth
-} = __webpack_require__(6254);
+const { dealStringToArr, matchKeyword, getPreMonth } = __webpack_require__(6254);
 
 // **************************************************************************
 var dayjs = __webpack_require__(7401);
@@ -7589,22 +7581,22 @@ dayjs.extend(utc);
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
-let direction = core.getInput("direction");
+let direction = core.getInput('direction');
 direction = direction === 'desc' ? 'desc' : 'asc';
-const commentAuth = core.getInput("comment-auth");
+const commentAuth = core.getInput('comment-auth');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
 const assigneeIncludes = core.getInput('assignee-includes');
 
-let issueState = core.getInput("issue-state") || 'open';
+let issueState = core.getInput('issue-state') || 'open';
 if (issueState != 'all' && issueState != 'closed') {
   issueState = 'open';
 }
 
-const inactiveLabel = core.getInput("inactive-label") || 'inactive';
+const inactiveLabel = core.getInput('inactive-label') || 'inactive';
 
 // **************************************************************************
-async function doCheckInactive (owner, repo, labels) {
+async function doCheckInactive(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, issueState);
 
   if (issues.length) {
@@ -7615,8 +7607,8 @@ async function doCheckInactive (owner, repo, labels) {
       });
       if (!arr.includes(inactiveLabel)) {
         await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
-        if (core.getInput("body")) {
-          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+        if (core.getInput('body')) {
+          await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
         }
       } else {
         core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
@@ -7625,19 +7617,19 @@ async function doCheckInactive (owner, repo, labels) {
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
 /**
  * 检查 issue 是否满足条件，满足返回 true
  * 当前 issue 的指定人是否有一个满足 assigneeIncludes 里的某个
  * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
  */
-async function doCheckIssue (owner, repo, issueNumber) {
+async function doCheckIssue(owner, repo, issueNumber) {
   var checkResult = true;
   const issue = await octokit.issues.get({
     owner,
     repo,
-    issue_number: issueNumber
+    issue_number: issueNumber,
   });
 
   if (!!checkResult && assigneeIncludes) {
@@ -7648,53 +7640,51 @@ async function doCheckIssue (owner, repo, issueNumber) {
         checkResult = true;
         checkAssignee = true;
       }
-    })
-    !checkAssignee ? checkResult = false : null;
+    });
+    !checkAssignee ? (checkResult = false) : null;
   }
 
   if (!!checkResult && titleIncludes) {
     const titleArr = titleIncludes.split('/');
     const keyword1 = dealStringToArr(titleArr[0]);
     const keyword2 = dealStringToArr(titleArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
-        matchKeyword(issue.data.title, keyword1);
+    checkResult = keyword2.length
+      ? matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2)
+      : matchKeyword(issue.data.title, keyword1);
   }
 
   if (!!checkResult && bodyIncludes) {
     const bodyArr = bodyIncludes.split('/');
     const keyword1 = dealStringToArr(bodyArr[0]);
     const keyword2 = dealStringToArr(bodyArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
-        matchKeyword(issue.data.body, keyword1);
+    checkResult = keyword2.length
+      ? matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2)
+      : matchKeyword(issue.data.body, keyword1);
   }
   core.info(`Actions: [check-issue][${!!checkResult}] success!`);
-  core.setOutput("check-result", !!checkResult);
-};
+  core.setOutput('check-result', !!checkResult);
+}
 
-async function doCloseIssues (owner, repo, labels) {
+async function doCloseIssues(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, 'open');
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doCloseIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      if (core.getInput('body')) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
       }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
-async function doFindComments (owner, repo, issueNumber) {
+async function doFindComments(owner, repo, issueNumber) {
   const res = await octokit.issues.listComments({
     owner,
     repo,
-    issue_number: issueNumber
+    issue_number: issueNumber,
   });
   core.info(`Actions: [find-comments][${issueNumber}] success!`);
   let comments = [];
@@ -7707,34 +7697,34 @@ async function doFindComments (owner, repo, issueNumber) {
         auth: item.user.login,
         body: item.body,
         created: item.created_at,
-        updated: item.updated_at
-      })
+        updated: item.updated_at,
+      });
       if (direction === 'desc') {
         comments.reverse();
       }
     }
-  })
-  core.setOutput("comments", comments);
-};
+  });
+  core.setOutput('comments', comments);
+}
 
-async function doLockIssues (owner, repo, labels) {
+async function doLockIssues(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, issueState);
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doLockIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      if (core.getInput('body')) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
       }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
-async function doMonthStatistics (owner, repo, labels, assignees) {
-  const countLables = core.getInput("count-lables");
-  const countComments = core.getInput("count-comments");
+async function doMonthStatistics(owner, repo, labels, assignees) {
+  const countLables = core.getInput('count-lables');
+  const countComments = core.getInput('count-comments');
 
   const thisMonth = dayjs.utc().month() + 1;
   const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
@@ -7742,17 +7732,13 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   const month = getPreMonth(thisMonth);
   const showMonth = month < 10 ? `0${month}` : month;
 
-  let issues = await getIssuesInMonth(
-    owner,
-    repo,
-    thisMonth
-  );
+  let issues = await getIssuesInMonth(owner, repo, thisMonth);
   if (issues.length == 0) {
     core.info(`Actions: [query-issues-${month}] empty!`);
     return false;
   }
   issues = issues.filter(i => {
-    return getCreatedMonth(i.created_at) == month
+    return getCreatedMonth(i.created_at) == month;
   });
   let total = issues.length;
   let totalIssues = [...issues];
@@ -7777,10 +7763,12 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
         } else {
           labelsTotals[l.name] = 1;
         }
-      })
+      });
     }
   }
-  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
+  let now = dayjs()
+    .utc()
+    .format('YYYY-MM-DD HH:mm:ss');
   let body = `
 - Created time: ${now}
 
@@ -7802,8 +7790,8 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     for (var lab in labelsTotals) {
       labelsArr.push({
         labelName: lab,
-        number: labelsTotals[lab]
-      })
+        number: labelsTotals[lab],
+      });
     }
     labelsArr.sort((a, b) => b.number - a.number);
     let labelsTitle = `
@@ -7813,12 +7801,16 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 <tr>
 <th>Name</th>
 <th>Number</th>
-</tr>`
+</tr>`;
     let labelsBody = '';
     labelsArr.forEach(it => {
-      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
-    })
-    body = body + labelsTitle + labelsBody + `</table>
+      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`;
+    });
+    body =
+      body +
+      labelsTitle +
+      labelsBody +
+      `</table>
 
 `;
   }
@@ -7837,21 +7829,21 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 <th>Number</th>
 <th>State</th>
 </tr>
-`
+`;
     let commentBody = '';
-    maxComments.forEach((it,ind) => {
+    maxComments.forEach((it, ind) => {
       commentBody += `<tr>
 <td>${ind + 1}</td>
 <td>${it.number}</td>
 <td>${it.title}</td>
 <td>${it.comments}</td>
-<td>${it.state}</td></tr>`
-    })
+<td>${it.state}</td></tr>`;
+    });
     body = body + commentTitle + commentBody + '</table>';
   }
 
   await doCreateIssue(owner, repo, title, body, labels, assignees);
-};
+}
 
 // **************************************************************************
 module.exports = {
@@ -7875,82 +7867,68 @@ const github = __webpack_require__(5438);
 const { Octokit } = __webpack_require__(5375);
 
 // **************************************************************************
-const ALLREACTIONS = [
-  "+1",
-  "-1",
-  "laugh",
-  "confused",
-  "heart",
-  "hooray",
-  "rocket",
-  "eyes",
-];
+const ALLREACTIONS = ['+1', '-1', 'laugh', 'confused', 'heart', 'hooray', 'rocket', 'eyes'];
 
-const {
-  doQueryIssues
-} = __webpack_require__(197);
+const { doQueryIssues } = __webpack_require__(197);
 
-const {
-  dealStringToArr,
-  dealRandomAssignees,
-  testDuplicate,
-} = __webpack_require__(6254);
+const { dealStringToArr, dealRandomAssignees, testDuplicate } = __webpack_require__(6254);
 
 // **************************************************************************
 const token = core.getInput('token');
+// const token = github.token;
 const octokit = new Octokit({ auth: `token ${token}` });
 const context = github.context;
 
-const contents = core.getInput("contents");
+const contents = core.getInput('contents');
 
-const randomTo = core.getInput("random-to");
+const randomTo = core.getInput('random-to');
 
 // **************************************************************************
-async function doAddAssignees (owner, repo, issueNumber, assignees) {
+async function doAddAssignees(owner, repo, issueNumber, assignees) {
   const arr = dealRandomAssignees(assignees, randomTo);
   await octokit.issues.addAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees: arr
+    assignees: arr,
   });
   core.info(`Actions: [add-assignees][${arr}] success!`);
-};
+}
 
-async function doAddLabels (owner, repo, issueNumber, labels) {
+async function doAddLabels(owner, repo, issueNumber, labels) {
   await octokit.issues.addLabels({
     owner,
     repo,
     issue_number: issueNumber,
-    labels: dealStringToArr(labels)
+    labels: dealStringToArr(labels),
   });
   core.info(`Actions: [add-labels][${labels}] success!`);
-};
+}
 
-async function doCloseIssue (owner, repo, issueNumber) {
+async function doCloseIssue(owner, repo, issueNumber) {
   await octokit.issues.update({
     owner,
     repo,
     issue_number: issueNumber,
-    state: 'closed'
+    state: 'closed',
   });
   core.info(`Actions: [close-issue][${issueNumber}] success!`);
-};
+}
 
-async function doCreateComment (owner, repo, issueNumber, body) {
+async function doCreateComment(owner, repo, issueNumber, body) {
   const { data } = await octokit.issues.createComment({
     owner,
     repo,
     issue_number: issueNumber,
-    body
+    body,
   });
   core.info(`Actions: [create-comment][${body}] success!`);
-  core.setOutput("comment-id", data.id);
+  core.setOutput('comment-id', data.id);
 
   if (contents) {
     await doCreateCommentContent(owner, repo, data.id, dealStringToArr(contents));
   }
-};
+}
 
 async function doCreateCommentContent(owner, repo, commentId, contents) {
   if (contents.length) {
@@ -7960,15 +7938,15 @@ async function doCreateCommentContent(owner, repo, commentId, contents) {
           owner,
           repo,
           comment_id: commentId,
-          content: item
+          content: item,
         });
         core.info(`Actions: [create-reactions][${item}] success!`);
       }
-    })
+    });
   }
-};
+}
 
-async function doCreateIssue (owner, repo, title, body, labels, assignees) {
+async function doCreateIssue(owner, repo, title, body, labels, assignees) {
   let params = {
     owner,
     repo,
@@ -7980,12 +7958,12 @@ async function doCreateIssue (owner, repo, title, body, labels, assignees) {
 
   const { data } = await octokit.issues.create(params);
   core.info(`Actions: [create-issue][${title}] success!`);
-  core.setOutput("issue-number", data.number);
+  core.setOutput('issue-number', data.number);
 
   if (contents) {
     await doCreateIssueContent(owner, repo, data.number, dealStringToArr(contents));
   }
-};
+}
 
 async function doCreateIssueContent(owner, repo, issueNumber, contents) {
   if (contents.length) {
@@ -7995,51 +7973,70 @@ async function doCreateIssueContent(owner, repo, issueNumber, contents) {
           owner,
           repo,
           issue_number: issueNumber,
-          content: item
+          content: item,
         });
         core.info(`Actions: [create-reactions][${item}] success!`);
       }
-    })
+    });
   }
-};
+}
 
-async function doDeleteComment (owner, repo, commentId) {
+async function doDeleteComment(owner, repo, commentId) {
   await octokit.issues.deleteComment({
     owner,
     repo,
-    comment_id: commentId
+    comment_id: commentId,
   });
   core.info(`Actions: [delete-comment][${commentId}] success!`);
-};
+}
 
-async function doLockIssue (owner, repo, issueNumber) {
+async function doLockIssue(owner, repo, issueNumber) {
   await octokit.issues.lock({
     owner,
     repo,
     issue_number: issueNumber,
   });
   core.info(`Actions: [lock-issue][${issueNumber}] success!`);
-};
+}
 
-async function doMarkDuplicate (owner, repo, labels) {
-  if (context.eventName != 'issue_comment') {
-    core.info(`This actions only support on 'issue_comment'!`);
-    return false;
-  }
+async function doMarkDuplicate(owner, repo, labels) {
+  // if (context.eventName != 'issue_comment') {
+  //   core.info(`This actions only support on 'issue_comment'!`);
+  //   return false;
+  // }
 
-  if (context.payload.action == 'created' || context.payload.action == 'edited') {
-    const duplicateCommand = core.getInput("duplicate-command");
-    const duplicateLabels = core.getInput("duplicate-labels");
-    const removeLables = core.getInput("remove-labels");
-    const closeIssue = core.getInput("close-issue");
+  if (true) {
+    const duplicateCommand = core.getInput('duplicate-command');
+    const duplicateLabels = core.getInput('duplicate-labels');
+    const removeLables = core.getInput('remove-labels');
+    const closeIssue = core.getInput('close-issue');
 
-    const commentId = context.payload.comment.id;
-    const commentBody = context.payload.comment.body;
-    const issueNumber = context.payload.issue.number;
+    const strictRequire = core.getInput('strict-require') || 'true';
+
+    // const commentId = context.payload.comment.id;
+    // const commentBody = context.payload.comment.body;
+    // const commentUser = context.payload.comment.user.login;
+    // const issueNumber = context.payload.issue.number;
 
     const ifCommandInput = !!duplicateCommand;
 
-    if (!commentBody.includes('?') && ((ifCommandInput && commentBody.startsWith(duplicateCommand) && commentBody.split(' ')[0] == duplicateCommand) || testDuplicate(commentBody))) {
+    if (strictRequire == 'true') {
+      const res = await octokit.repos.checkCollaborator({
+        owner: 'actions-cool',
+        repo: 'test-ci',
+        username: 'zoo-js-bot',
+      });
+      console.log(res)
+      return false;
+    }
+
+    if (
+      !commentBody.includes('?') &&
+      ((ifCommandInput &&
+        commentBody.startsWith(duplicateCommand) &&
+        commentBody.split(' ')[0] == duplicateCommand) ||
+        testDuplicate(commentBody))
+    ) {
       if (ifCommandInput) {
         const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
         await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
@@ -8050,11 +8047,13 @@ async function doMarkDuplicate (owner, repo, labels) {
       const issue = await octokit.issues.get({
         owner,
         repo,
-        issue_number: issueNumber
+        issue_number: issueNumber,
       });
       let newLabels = [];
       if (issue.data.labels.length > 0) {
-        newLabels = issue.data.labels.map(({ name }) => name).filter(name => !dealStringToArr(removeLables).includes(name));
+        newLabels = issue.data.labels
+          .map(({ name }) => name)
+          .filter(name => !dealStringToArr(removeLables).includes(name));
       }
       if (duplicateLabels) {
         newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
@@ -8071,34 +8070,34 @@ async function doMarkDuplicate (owner, repo, labels) {
         await doCloseIssue(owner, repo, issueNumber);
       }
     } else {
-      core.info(`This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`);
+      core.info(
+        `This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`,
+      );
     }
-  } else {
-    core.info(`This actions only support on 'issue_comment' created or edited!`);
-  }
-};
+  } else {}
+}
 
-async function doOpenIssue (owner, repo, issueNumber) {
+async function doOpenIssue(owner, repo, issueNumber) {
   await octokit.issues.update({
     owner,
     repo,
     issue_number: issueNumber,
-    state: 'open'
+    state: 'open',
   });
   core.info(`Actions: [open-issue][${issueNumber}] success!`);
-};
+}
 
-async function doRemoveAssignees (owner, repo, issueNumber, assignees) {
+async function doRemoveAssignees(owner, repo, issueNumber, assignees) {
   await octokit.issues.removeAssignees({
     owner,
     repo,
     issue_number: issueNumber,
-    assignees: dealStringToArr(assignees)
+    assignees: dealStringToArr(assignees),
   });
   core.info(`Actions: [remove-assignees][${assignees}] success!`);
-};
+}
 
-async function doRemoveLabels (owner, repo, issueNumber, labels) {
+async function doRemoveLabels(owner, repo, issueNumber, labels) {
   const dealLabels = dealStringToArr(labels);
   for (label of dealLabels) {
     await octokit.issues.removeLabel({
@@ -8110,9 +8109,9 @@ async function doRemoveLabels (owner, repo, issueNumber, labels) {
     core.info(`Actions: [remove-labels-foreach][${label}] success!`);
   }
   core.info(`Actions: [remove-labels][${labels}] success!`);
-};
+}
 
-async function doSetLabels (owner, repo, issueNumber, labels) {
+async function doSetLabels(owner, repo, issueNumber, labels) {
   // 概率性出现问题：https://github.com/octokit/rest.js/issues/1982，规避 setLabels
   if (labels) {
     // await octokit.issues.setLabels({
@@ -8124,7 +8123,7 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
     const issue = await octokit.issues.get({
       owner,
       repo,
-      issue_number: issueNumber
+      issue_number: issueNumber,
     });
     const baseLabels = issue.data.labels.map(({ name }) => name);
     const removeLabels = baseLabels.filter(name => !dealStringToArr(labels).includes(name));
@@ -8142,39 +8141,32 @@ async function doSetLabels (owner, repo, issueNumber, labels) {
 
     core.info(`Actions: [set-labels][${labels}] success!`);
   }
-};
+}
 
-async function doUnlockIssue (owner, repo, issueNumber) {
+async function doUnlockIssue(owner, repo, issueNumber) {
   await octokit.issues.unlock({
     owner,
     repo,
     issue_number: issueNumber,
   });
   core.info(`Actions: [unlock-issue][${issueNumber}] success!`);
-};
+}
 
-async function doUpdateComment (
-  owner,
-  repo,
-  commentId,
-  body,
-  updateMode,
-  ifUpdateBody,
-) {
+async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdateBody) {
   const comment = await octokit.issues.getComment({
     owner,
     repo,
-    comment_id: commentId
-  })
+    comment_id: commentId,
+  });
   const comment_body = comment.data.body;
 
   let params = {
     owner,
     repo,
-    comment_id: commentId
+    comment_id: commentId,
   };
 
-  if (core.getInput("body") || ifUpdateBody) {
+  if (core.getInput('body') || ifUpdateBody) {
     if (updateMode === 'append') {
       params.body = `${comment_body}\n${body}`;
     } else {
@@ -8188,9 +8180,9 @@ async function doUpdateComment (
   if (contents) {
     await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
   }
-};
+}
 
-async function doUpdateIssue (
+async function doUpdateIssue(
   owner,
   repo,
   issueNumber,
@@ -8199,26 +8191,26 @@ async function doUpdateIssue (
   body,
   updateMode,
   assignees,
-  labels
+  labels,
 ) {
   const issue = await octokit.issues.get({
     owner,
     repo,
-    issue_number: issueNumber
-  })
+    issue_number: issueNumber,
+  });
   const issue_body = issue.data.body;
   const issue_title = issue.data.title;
 
   let issue_labels = [];
   if (issue.data.labels.length > 0) {
-    issue.data.labels.forEach(it =>{
+    issue.data.labels.forEach(it => {
       issue_labels.push(it.name);
     });
   }
 
   let issue_assignees = [];
   if (issue.data.assignees.length > 0) {
-    issue.data.assignees.forEach(it =>{
+    issue.data.assignees.forEach(it => {
       issue_assignees.push(it.login);
     });
   }
@@ -8227,13 +8219,13 @@ async function doUpdateIssue (
     owner,
     repo,
     issue_number: issueNumber,
-    state
+    state,
   };
 
-  params.title = core.getInput("title") ? title : issue_title;
+  params.title = core.getInput('title') ? title : issue_title;
 
   let next_body;
-  if (core.getInput("body")) {
+  if (core.getInput('body')) {
     if (updateMode === 'append') {
       next_body = `${issue_body}\n${body}`;
     } else {
@@ -8253,21 +8245,21 @@ async function doUpdateIssue (
   if (contents) {
     await doCreateIssueContent(owner, repo, issueNumber, contents);
   }
-};
+}
 
-async function doWelcome (owner, repo, assignees, labels, body) {
+async function doWelcome(owner, repo, assignees, labels, body) {
   const context = github.context;
   const isIssue = !!context.payload.issue;
-  const issueContents = core.getInput("issue-contents");
+  const issueContents = core.getInput('issue-contents');
   if (!isIssue) {
-    core.setFailed("The event that triggered this action must be a issue. Error!");
+    core.setFailed('The event that triggered this action must be a issue. Error!');
   } else {
     const auth = context.payload.sender.login;
     core.info(`Actions: [welcome: auth=][${auth}]`);
     const issueNumber = context.issue.number;
     const issues = await doQueryIssues(owner, repo, false, 'all', auth);
     if (issues.length == 0 || (issues.length == 1 && issues[0].number == issueNumber)) {
-      if (core.getInput("body")) {
+      if (core.getInput('body')) {
         await doCreateComment(owner, repo, issueNumber, body);
       } else {
         core.info(`Actions: [welcome] no body!`);
@@ -8288,17 +8280,17 @@ async function doWelcome (owner, repo, assignees, labels, body) {
       core.info(`Actions: [welcome][${auth}] is not first time!`);
     }
   }
-};
+}
 
 // **************************************************************************
 function testContent(con) {
   if (ALLREACTIONS.includes(con)) {
     return true;
   } else {
-    core.setFailed("This actions not supported!");
+    core.setFailed('This actions not supported!');
     return false;
   }
-};
+}
 
 // **************************************************************************
 module.exports = {
@@ -8394,28 +8386,31 @@ async function main() {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
+    // const owner = 'actions-cool'
+    // const repo = 'test-ci'
 
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
 
-    const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`
-    const body = core.getInput("body") || defaultBody;
+    const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`;
+    const body = core.getInput('body') || defaultBody;
 
     const defaultTitle = `Default Title`;
-    const title = core.getInput("title") || defaultTitle;
+    const title = core.getInput('title') || defaultTitle;
 
-    const assignees = core.getInput("assignees");
+    const assignees = core.getInput('assignees');
 
-    const labels = core.getInput("labels");
-    const state = core.getInput("state") || 'open';
+    const labels = core.getInput('labels');
+    const state = core.getInput('state') || 'open';
 
-    let updateMode = core.getInput("update-mode");
+    let updateMode = core.getInput('update-mode');
     if (updateMode !== 'append') {
       updateMode = 'replace';
     }
 
     // actions
-    const actions = core.getInput("actions", { required: true });
+    // const actions = core.getInput('actions', { required: true });
+    const actions = 'mark-duplicate';
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
@@ -8426,9 +8421,9 @@ async function main() {
       if (ALLACTIONS.includes(action)) {
         choseActions(action);
       } else {
-        core.setFailed("This actions not supported!");
+        core.setFailed('This actions not supported!');
       }
-    };
+    }
 
     async function choseActions(action) {
       switch (action) {
@@ -8473,13 +8468,7 @@ async function main() {
           await doUnlockIssue(owner, repo, issueNumber);
           break;
         case 'update-comment':
-          await doUpdateComment(
-            owner,
-            repo,
-            commentId,
-            body,
-            updateMode
-          );
+          await doUpdateComment(owner, repo, commentId, body, updateMode);
           break;
         case 'update-issue':
           await doUpdateIssue(
@@ -8491,70 +8480,38 @@ async function main() {
             body,
             updateMode,
             assignees,
-            labels
+            labels,
           );
           break;
         case 'welcome':
-          await doWelcome(
-            owner,
-            repo,
-            assignees,
-            labels,
-            body
-          );
+          await doWelcome(owner, repo, assignees, labels, body);
           break;
 
         // advanced
         case 'check-inactive':
-          await doCheckInactive(
-            owner,
-            repo,
-            labels
-          )
+          await doCheckInactive(owner, repo, labels);
           break;
         case 'check-issue':
-          await doCheckIssue(
-            owner,
-            repo,
-            issueNumber
-          );
+          await doCheckIssue(owner, repo, issueNumber);
           break;
         case 'close-issues':
-          await doCloseIssues(
-            owner,
-            repo,
-            labels
-          )
+          await doCloseIssues(owner, repo, labels);
           break;
         case 'find-comments':
-          await doFindComments(
-            owner,
-            repo,
-            issueNumber
-          );
+          await doFindComments(owner, repo, issueNumber);
           break;
         case 'lock-issues':
-          await doLockIssues(
-            owner,
-            repo,
-            labels
-          );
+          await doLockIssues(owner, repo, labels);
           break;
         case 'month-statistics':
-          await doMonthStatistics(
-            owner,
-            repo,
-            labels,
-            assignees
-          );
+          await doMonthStatistics(owner, repo, labels, assignees);
           break;
         // default
         default:
           break;
       }
-    };
-  }
-  catch (error) {
+    }
+  } catch (error) {
     core.setFailed(error.message);
   }
 }
@@ -8572,9 +8529,7 @@ __webpack_require__(2437).config();
 const core = __webpack_require__(2186);
 const { Octokit } = __webpack_require__(5375);
 
-const {
-  getPreMonth
-} = __webpack_require__(6254);
+const { getPreMonth } = __webpack_require__(6254);
 
 // **************************************************************************
 var dayjs = __webpack_require__(7401);
@@ -8589,26 +8544,26 @@ const octokit = new Octokit({ auth: `token ${token}` });
 
 const perPage = 100;
 
-const issueCreator = core.getInput("issue-creator");
+const issueCreator = core.getInput('issue-creator');
 const issueAssignee = core.getInput('issue-assignee');
 const issueMentioned = core.getInput('issue-mentioned');
 
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
 
-const inactiveDay = core.getInput("inactive-day");
+const inactiveDay = core.getInput('inactive-day');
 
 // **************************************************************************
-async function doQueryIssues (owner, repo, labels, state, creator) {
+async function doQueryIssues(owner, repo, labels, state, creator) {
   let params = {
     owner,
     repo,
     state,
   };
 
-  issueCreator ? params.creator = issueCreator : null;
-  issueAssignee ? params.assignee = issueAssignee : null;
-  issueMentioned ? params.mentioned = issueMentioned : null;
+  issueCreator ? (params.creator = issueCreator) : null;
+  issueAssignee ? (params.assignee = issueAssignee) : null;
+  issueMentioned ? (params.mentioned = issueMentioned) : null;
 
   if (labels) {
     params.labels = labels;
@@ -8643,47 +8598,51 @@ async function doQueryIssues (owner, repo, labels, state, creator) {
           issueNumbers.push(iss.number);
         }
       }
-    })
+    });
     core.info(`Actions: [query-issues]: [${JSON.stringify(issueNumbers)}]!`);
   }
 
   return issues;
-};
+}
 
-async function getIssues (params, page = 1) {
+async function getIssues(params, page = 1) {
   let { data: issues } = await octokit.issues.listForRepo({
     ...params,
     per_page: perPage,
-    page
+    page,
   });
   if (issues.length >= perPage) {
     issues = issues.concat(await getIssues(params, page + 1));
   }
   return issues;
-};
+}
 
-async function getIssuesInMonth (owner, repo, thisMonth, page = 1) {
+async function getIssuesInMonth(owner, repo, thisMonth, page = 1) {
   const month = getPreMonth(thisMonth);
   let { data: issues } = await octokit.issues.listForRepo({
     owner,
     repo,
     state: 'all',
     per_page: perPage,
-    page
+    page,
   });
   issues = issues.filter(i => {
-    return i.pull_request === undefined
+    return i.pull_request === undefined;
   });
   if (issues.length && getCreatedMonth(issues[issues.length - 1].created_at) >= month) {
     issues = issues.concat(await getIssuesInMonth(owner, repo, thisMonth, page + 1));
   }
   return issues;
-};
+}
 
 // **************************************************************************
-function getCreatedMonth (d) {
-  return dayjs(d).utc().month() + 1;
-};
+function getCreatedMonth(d) {
+  return (
+    dayjs(d)
+      .utc()
+      .month() + 1
+  );
+}
 
 // **************************************************************************
 module.exports = {
@@ -8699,9 +8658,9 @@ module.exports = {
 /***/ 6254:
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-const sampleSize  = __webpack_require__(2199);
+const sampleSize = __webpack_require__(2199);
 
-function dealStringToArr (para) {
+function dealStringToArr(para) {
   /**
    * in  'x1,x2,x3'
    * out ['x1','x2','x3']
@@ -8710,25 +8669,25 @@ function dealStringToArr (para) {
   if (para) {
     const paraArr = para.split(',');
     paraArr.forEach(it => {
-      if(it.trim()){
-        arr.push(it.trim())
+      if (it.trim()) {
+        arr.push(it.trim());
       }
-    })
+    });
   }
   return arr;
-};
+}
 
-function dealRandomAssignees (assignees, randomTo) {
+function dealRandomAssignees(assignees, randomTo) {
   let arr = dealStringToArr(assignees);
   if (randomTo && Number(randomTo) > 0 && Number(randomTo) < arr.length) {
     arr = sampleSize(arr, randomTo);
   }
   return arr;
-};
+}
 
-function matchKeyword (content, keywords) {
+function matchKeyword(content, keywords) {
   return keywords.find(item => content.toLowerCase().includes(item));
-};
+}
 
 function testDuplicate(body) {
   if (!body || !body.startsWith('Duplicate of')) {
@@ -8741,11 +8700,11 @@ function testDuplicate(body) {
   } else {
     return false;
   }
-};
+}
 
-function getPreMonth (m) {
-  return m == 1 ? 12 : m -1;
-};
+function getPreMonth(m) {
+  return m == 1 ? 12 : m - 1;
+}
 
 module.exports = {
   dealStringToArr,

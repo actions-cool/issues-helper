@@ -64,6 +64,8 @@ async function main() {
   try {
     const owner = github.context.repo.owner;
     const repo = github.context.repo.repo;
+    // const owner = 'actions-cool'
+    // const repo = 'test-ci'
 
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
@@ -85,7 +87,8 @@ async function main() {
     }
 
     // actions
-    const actions = core.getInput('actions', { required: true });
+    // const actions = core.getInput('actions', { required: true });
+    const actions = 'mark-duplicate';
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
