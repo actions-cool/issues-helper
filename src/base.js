@@ -157,7 +157,7 @@ async function doMarkDuplicate(owner, repo, labels) {
     const duplicateLabels = core.getInput('duplicate-labels');
     const removeLables = core.getInput('remove-labels');
     const closeIssue = core.getInput('close-issue');
-    const requirePermission = core.getInput('require-permission');
+    const requirePermission = core.getInput('require-permission') || 'write';
 
     const commentId = context.payload.comment.id;
     const commentBody = context.payload.comment.body;
@@ -166,17 +166,15 @@ async function doMarkDuplicate(owner, repo, labels) {
 
     const ifCommandInput = !!duplicateCommand;
 
-    if (requirePermission) {
-      const res = await octokit.repos.getCollaboratorPermissionLevel({
-        owner,
-        repo,
-        username: commentUser,
-      });
-      const { permission } = res.data;
-      if (!checkPermission(requirePermission, permission)) {
-        core.info(`The user ${commentUser} is not allow!`);
-        return false;
-      }
+    const res = await octokit.repos.getCollaboratorPermissionLevel({
+      owner,
+      repo,
+      username: commentUser,
+    });
+    const { permission } = res.data;
+    if (!checkPermission(requirePermission, permission)) {
+      core.info(`The user ${commentUser} is not allow!`);
+      return false;
     }
 
     if (
