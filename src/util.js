@@ -1,6 +1,6 @@
-const sampleSize  = require('lodash/sampleSize');
+const sampleSize = require('lodash/sampleSize');
 
-function dealStringToArr (para) {
+function dealStringToArr(para) {
   /**
    * in  'x1,x2,x3'
    * out ['x1','x2','x3']
@@ -9,25 +9,25 @@ function dealStringToArr (para) {
   if (para) {
     const paraArr = para.split(',');
     paraArr.forEach(it => {
-      if(it.trim()){
-        arr.push(it.trim())
+      if (it.trim()) {
+        arr.push(it.trim());
       }
-    })
+    });
   }
   return arr;
-};
+}
 
-function dealRandomAssignees (assignees, randomTo) {
+function dealRandomAssignees(assignees, randomTo) {
   let arr = dealStringToArr(assignees);
   if (randomTo && Number(randomTo) > 0 && Number(randomTo) < arr.length) {
     arr = sampleSize(arr, randomTo);
   }
   return arr;
-};
+}
 
-function matchKeyword (content, keywords) {
+function matchKeyword(content, keywords) {
   return keywords.find(item => content.toLowerCase().includes(item));
-};
+}
 
 function testDuplicate(body) {
   if (!body || !body.startsWith('Duplicate of')) {
@@ -40,11 +40,11 @@ function testDuplicate(body) {
   } else {
     return false;
   }
-};
+}
 
-function getPreMonth (m) {
-  return m == 1 ? 12 : m -1;
-};
+function getPreMonth(m) {
+  return m == 1 ? 12 : m - 1;
+}
 
 module.exports = {
   dealStringToArr,

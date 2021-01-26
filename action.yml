@@ -58,6 +58,8 @@ inputs:
     description: 'For mark-duplicate'
   duplicate-labels:
     description: 'For mark-duplicate add labels'
+  allow-permissions:
+    description: 'Only the allow can do. Possible admin, write, read, and none.'
   remove-labels:
     description: 'For remove labels'
   close-issue:

@@ -8,13 +8,13 @@ toc: menu
   - 采用两级语义化版本，如v1、v1.1、v2、v2.1
   - v1 表示初始版本
   - 对 v1 版本的修复和新增会发布到 v1.1 版本
-  - 当发布的 v1.x 运行一定时间稳定后，发布进阶 v2 版本
+  - 当发布的 v1.x 运行一定时间稳定或进行重构时，发布进阶 v2 版本
 
 - 版本选择
   - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到
   - 同时也可参照下面的更新日志来选择版本
   - 最新的 v1.x release 代码会合并到 1.x 分支中
-  - 也支持直接使用分支版本。如：
+  - 支持直接使用分支版本。如：
 
 ```yml
 - name: Issues Helper

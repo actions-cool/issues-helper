@@ -1,3 +1,10 @@
+## v1.11
+
+`2021.01.14`
+
+- feat: add question mark duplicate. [#38](https://github.com/actions-cool/issues-helper/pull/38)
+- perf: expand duplicate action. [#40](https://github.com/actions-cool/issues-helper/pull/40)
+
 ## v1.10
 
 `2021.01.12`

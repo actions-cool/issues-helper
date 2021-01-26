@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +85,7 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -116,7 +116,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +189,7 @@ According to [`comment-id`](/en-US/guide/ref#-comment-id) delete the specified c
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -219,7 +219,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,7 +248,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -264,10 +264,15 @@ jobs:
 | labels | Replace the labels of the issue | string | ✖ |
 | contents | Add [reaction](/en-US/guide/ref#-reactions-type) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
+| allow-permissions | Permission to operate | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority
 - `close-issue`: Both `true` or `'true'` can take effect
+- `allow-permissions`: When you do not input, there is no limit. Anyone comment will trigger. Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the read permission, it is read
+  - If the external Collaborator is set to read permission, it is read
+  - Ordinary users have read permission
 
 <Alert>
 Note: Duplicate created with the concise command does not display the content of the red box in the figure below. But in fact this has no effect.
@@ -281,7 +286,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -300,7 +305,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -321,7 +326,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -344,7 +349,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -365,7 +370,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -396,7 +401,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v1.10
+          uses: actions-cool/issues-helper@v1.11
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -422,7 +427,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -470,7 +475,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}

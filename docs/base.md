@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +85,7 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -116,7 +116,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +189,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -219,7 +219,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,7 +248,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -264,10 +264,15 @@ jobs:
 | labels | 替换该 issue 的 labels | string | ✖ |
 | contents | 为该评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
+| allow-permissions | 允许操作的权限 | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高
 - `close-issue`：`true` 或 `'true'` 均可生效
+- `allow-permissions`：当不输时，即无限制。任何人评论都会触发。可选值有 `admin`，`write`，`read`，`none`
+  - 团队成员若设置 read 权限，则为 read
+  - 外部 Collaborator 若设置 read 权限，则为 read
+  - 普通用户为 read 权限
 
 <Alert>
 注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
@@ -281,7 +286,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -300,7 +305,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -321,7 +326,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -344,7 +349,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -365,7 +370,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -396,7 +401,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v1.10
+          uses: actions-cool/issues-helper@v1.11
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -422,7 +427,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v1.10
+    uses: actions-cool/issues-helper@v1.11
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -469,7 +474,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v1.10
+        uses: actions-cool/issues-helper@v1.11
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}

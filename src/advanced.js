@@ -1,5 +1,5 @@
 require('dotenv').config();
-const core = require("@actions/core");
+const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 
 const {
@@ -10,17 +10,9 @@ const {
   doCreateIssue,
 } = require('./base.js');
 
-const {
-  doQueryIssues,
-  getIssuesInMonth,
-  getCreatedMonth,
-} = require('./public.js');
+const { doQueryIssues, getIssuesInMonth, getCreatedMonth } = require('./public.js');
 
-const {
-  dealStringToArr,
-  matchKeyword,
-  getPreMonth
-} = require('./util.js');
+const { dealStringToArr, matchKeyword, getPreMonth } = require('./util.js');
 
 // **************************************************************************
 var dayjs = require('dayjs');
@@ -31,22 +23,22 @@ dayjs.extend(utc);
 const token = core.getInput('token');
 const octokit = new Octokit({ auth: `token ${token}` });
 
-let direction = core.getInput("direction");
+let direction = core.getInput('direction');
 direction = direction === 'desc' ? 'desc' : 'asc';
-const commentAuth = core.getInput("comment-auth");
+const commentAuth = core.getInput('comment-auth');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
 const assigneeIncludes = core.getInput('assignee-includes');
 
-let issueState = core.getInput("issue-state") || 'open';
+let issueState = core.getInput('issue-state') || 'open';
 if (issueState != 'all' && issueState != 'closed') {
   issueState = 'open';
 }
 
-const inactiveLabel = core.getInput("inactive-label") || 'inactive';
+const inactiveLabel = core.getInput('inactive-label') || 'inactive';
 
 // **************************************************************************
-async function doCheckInactive (owner, repo, labels) {
+async function doCheckInactive(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, issueState);
 
   if (issues.length) {
@@ -57,8 +49,8 @@ async function doCheckInactive (owner, repo, labels) {
       });
       if (!arr.includes(inactiveLabel)) {
         await doAddLabels(owner, repo, issues[i].number, inactiveLabel);
-        if (core.getInput("body")) {
-          await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+        if (core.getInput('body')) {
+          await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
         }
       } else {
         core.info(`Actions: [add-inactive] issue ${issues[i].number} has label!`);
@@ -67,19 +59,19 @@ async function doCheckInactive (owner, repo, labels) {
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
 /**
  * 检查 issue 是否满足条件，满足返回 true
  * 当前 issue 的指定人是否有一个满足 assigneeIncludes 里的某个
  * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
  */
-async function doCheckIssue (owner, repo, issueNumber) {
+async function doCheckIssue(owner, repo, issueNumber) {
   var checkResult = true;
   const issue = await octokit.issues.get({
     owner,
     repo,
-    issue_number: issueNumber
+    issue_number: issueNumber,
   });
 
   if (!!checkResult && assigneeIncludes) {
@@ -90,53 +82,51 @@ async function doCheckIssue (owner, repo, issueNumber) {
         checkResult = true;
         checkAssignee = true;
       }
-    })
-    !checkAssignee ? checkResult = false : null;
+    });
+    !checkAssignee ? (checkResult = false) : null;
   }
 
   if (!!checkResult && titleIncludes) {
     const titleArr = titleIncludes.split('/');
     const keyword1 = dealStringToArr(titleArr[0]);
     const keyword2 = dealStringToArr(titleArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2) :
-        matchKeyword(issue.data.title, keyword1);
+    checkResult = keyword2.length
+      ? matchKeyword(issue.data.title, keyword1) && matchKeyword(issue.data.title, keyword2)
+      : matchKeyword(issue.data.title, keyword1);
   }
 
   if (!!checkResult && bodyIncludes) {
     const bodyArr = bodyIncludes.split('/');
     const keyword1 = dealStringToArr(bodyArr[0]);
     const keyword2 = dealStringToArr(bodyArr[1]);
-    checkResult =
-      keyword2.length ?
-        matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2) :
-        matchKeyword(issue.data.body, keyword1);
+    checkResult = keyword2.length
+      ? matchKeyword(issue.data.body, keyword1) && matchKeyword(issue.data.body, keyword2)
+      : matchKeyword(issue.data.body, keyword1);
   }
   core.info(`Actions: [check-issue][${!!checkResult}] success!`);
-  core.setOutput("check-result", !!checkResult);
-};
+  core.setOutput('check-result', !!checkResult);
+}
 
-async function doCloseIssues (owner, repo, labels) {
+async function doCloseIssues(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, 'open');
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doCloseIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      if (core.getInput('body')) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
       }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
-async function doFindComments (owner, repo, issueNumber) {
+async function doFindComments(owner, repo, issueNumber) {
   const res = await octokit.issues.listComments({
     owner,
     repo,
-    issue_number: issueNumber
+    issue_number: issueNumber,
   });
   core.info(`Actions: [find-comments][${issueNumber}] success!`);
   let comments = [];
@@ -149,34 +139,34 @@ async function doFindComments (owner, repo, issueNumber) {
         auth: item.user.login,
         body: item.body,
         created: item.created_at,
-        updated: item.updated_at
-      })
+        updated: item.updated_at,
+      });
       if (direction === 'desc') {
         comments.reverse();
       }
     }
-  })
-  core.setOutput("comments", comments);
-};
+  });
+  core.setOutput('comments', comments);
+}
 
-async function doLockIssues (owner, repo, labels) {
+async function doLockIssues(owner, repo, labels) {
   const issues = await doQueryIssues(owner, repo, labels, issueState);
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
       await doLockIssue(owner, repo, issues[i].number);
-      if (core.getInput("body")) {
-        await doCreateComment(owner, repo, issues[i].number, core.getInput("body"));
+      if (core.getInput('body')) {
+        await doCreateComment(owner, repo, issues[i].number, core.getInput('body'));
       }
     }
   } else {
     core.info(`Actions: [query-issues] empty!`);
   }
-};
+}
 
-async function doMonthStatistics (owner, repo, labels, assignees) {
-  const countLables = core.getInput("count-lables");
-  const countComments = core.getInput("count-comments");
+async function doMonthStatistics(owner, repo, labels, assignees) {
+  const countLables = core.getInput('count-lables');
+  const countComments = core.getInput('count-comments');
 
   const thisMonth = dayjs.utc().month() + 1;
   const year = thisMonth == 1 ? dayjs.utc().year() - 1 : dayjs.utc().year();
@@ -184,17 +174,13 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
   const month = getPreMonth(thisMonth);
   const showMonth = month < 10 ? `0${month}` : month;
 
-  let issues = await getIssuesInMonth(
-    owner,
-    repo,
-    thisMonth
-  );
+  let issues = await getIssuesInMonth(owner, repo, thisMonth);
   if (issues.length == 0) {
     core.info(`Actions: [query-issues-${month}] empty!`);
     return false;
   }
   issues = issues.filter(i => {
-    return getCreatedMonth(i.created_at) == month
+    return getCreatedMonth(i.created_at) == month;
   });
   let total = issues.length;
   let totalIssues = [...issues];
@@ -219,10 +205,12 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
         } else {
           labelsTotals[l.name] = 1;
         }
-      })
+      });
     }
   }
-  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
+  let now = dayjs()
+    .utc()
+    .format('YYYY-MM-DD HH:mm:ss');
   let body = `
 - Created time: ${now}
 
@@ -244,8 +232,8 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
     for (var lab in labelsTotals) {
       labelsArr.push({
         labelName: lab,
-        number: labelsTotals[lab]
-      })
+        number: labelsTotals[lab],
+      });
     }
     labelsArr.sort((a, b) => b.number - a.number);
     let labelsTitle = `
@@ -255,12 +243,16 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 <tr>
 <th>Name</th>
 <th>Number</th>
-</tr>`
+</tr>`;
     let labelsBody = '';
     labelsArr.forEach(it => {
-      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`
-    })
-    body = body + labelsTitle + labelsBody + `</table>
+      labelsBody += `<tr><td>${it.labelName}</td><td>${it.number}</td></tr>`;
+    });
+    body =
+      body +
+      labelsTitle +
+      labelsBody +
+      `</table>
 
 `;
   }
@@ -279,21 +271,21 @@ async function doMonthStatistics (owner, repo, labels, assignees) {
 <th>Number</th>
 <th>State</th>
 </tr>
-`
+`;
     let commentBody = '';
-    maxComments.forEach((it,ind) => {
+    maxComments.forEach((it, ind) => {
       commentBody += `<tr>
 <td>${ind + 1}</td>
 <td>${it.number}</td>
 <td>${it.title}</td>
 <td>${it.comments}</td>
-<td>${it.state}</td></tr>`
-    })
+<td>${it.state}</td></tr>`;
+    });
     body = body + commentTitle + commentBody + '</table>';
   }
 
   await doCreateIssue(owner, repo, title, body, labels, assignees);
-};
+}
 
 // **************************************************************************
 module.exports = {

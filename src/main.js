@@ -1,5 +1,5 @@
-const core = require("@actions/core");
-const github = require("@actions/github");
+const core = require('@actions/core');
+const github = require('@actions/github');
 
 // **************************************************************************
 const {
@@ -68,24 +68,24 @@ async function main() {
     const issueNumber = core.getInput('issue-number');
     const commentId = core.getInput('comment-id');
 
-    const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`
-    const body = core.getInput("body") || defaultBody;
+    const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`;
+    const body = core.getInput('body') || defaultBody;
 
     const defaultTitle = `Default Title`;
-    const title = core.getInput("title") || defaultTitle;
+    const title = core.getInput('title') || defaultTitle;
 
-    const assignees = core.getInput("assignees");
+    const assignees = core.getInput('assignees');
 
-    const labels = core.getInput("labels");
-    const state = core.getInput("state") || 'open';
+    const labels = core.getInput('labels');
+    const state = core.getInput('state') || 'open';
 
-    let updateMode = core.getInput("update-mode");
+    let updateMode = core.getInput('update-mode');
     if (updateMode !== 'append') {
       updateMode = 'replace';
     }
 
     // actions
-    const actions = core.getInput("actions", { required: true });
+    const actions = core.getInput('actions', { required: true });
 
     const actionsArr = actions.split(',');
     actionsArr.forEach(item => {
@@ -96,9 +96,9 @@ async function main() {
       if (ALLACTIONS.includes(action)) {
         choseActions(action);
       } else {
-        core.setFailed("This actions not supported!");
+        core.setFailed('This actions not supported!');
       }
-    };
+    }
 
     async function choseActions(action) {
       switch (action) {
@@ -143,13 +143,7 @@ async function main() {
           await doUnlockIssue(owner, repo, issueNumber);
           break;
         case 'update-comment':
-          await doUpdateComment(
-            owner,
-            repo,
-            commentId,
-            body,
-            updateMode
-          );
+          await doUpdateComment(owner, repo, commentId, body, updateMode);
           break;
         case 'update-issue':
           await doUpdateIssue(
@@ -161,70 +155,38 @@ async function main() {
             body,
             updateMode,
             assignees,
-            labels
+            labels,
           );
           break;
         case 'welcome':
-          await doWelcome(
-            owner,
-            repo,
-            assignees,
-            labels,
-            body
-          );
+          await doWelcome(owner, repo, assignees, labels, body);
           break;
 
         // advanced
         case 'check-inactive':
-          await doCheckInactive(
-            owner,
-            repo,
-            labels
-          )
+          await doCheckInactive(owner, repo, labels);
           break;
         case 'check-issue':
-          await doCheckIssue(
-            owner,
-            repo,
-            issueNumber
-          );
+          await doCheckIssue(owner, repo, issueNumber);
           break;
         case 'close-issues':
-          await doCloseIssues(
-            owner,
-            repo,
-            labels
-          )
+          await doCloseIssues(owner, repo, labels);
           break;
         case 'find-comments':
-          await doFindComments(
-            owner,
-            repo,
-            issueNumber
-          );
+          await doFindComments(owner, repo, issueNumber);
           break;
         case 'lock-issues':
-          await doLockIssues(
-            owner,
-            repo,
-            labels
-          );
+          await doLockIssues(owner, repo, labels);
           break;
         case 'month-statistics':
-          await doMonthStatistics(
-            owner,
-            repo,
-            labels,
-            assignees
-          );
+          await doMonthStatistics(owner, repo, labels, assignees);
           break;
         // default
         default:
           break;
       }
-    };
-  }
-  catch (error) {
+    }
+  } catch (error) {
     core.setFailed(error.message);
   }
 }
