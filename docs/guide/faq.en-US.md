@@ -22,6 +22,10 @@ Yes, you can directly modify `actions`. For example: `actions:'create-comment'` 
 
 You can view the detailed [changelog](/en-US/changelog). The latest releases version is recommended.
 
+## What should I pay attention to when upgrading from v1.x to v2?
+
+There is only one difference between v1.x and v2. That is, `require-permission` in `mark-duplicate` has added the default value `write`.
+
 ## What should I do if there is no function I want here?
 
 You can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
