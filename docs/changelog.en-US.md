@@ -9,6 +9,7 @@ toc: menu
   - v1 represents the initial version
   - The fixes and additions to the v1 version will be released to the v1.1 version
   - When the released v1.x runs stable for a certain period of time or undergoes refactoring, release the advanced v2 version
+  - After the v2 version, the version will be released strictly according to the three-level semantics, such as v2.0.0, v2.1.0
 
 - Version selection
   - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)

@@ -9,6 +9,7 @@ toc: menu
   - v1 表示初始版本
   - 对 v1 版本的修复和新增会发布到 v1.1 版本
   - 当发布的 v1.x 运行一定时间稳定或进行重构时，发布进阶 v2 版本
+  - v2 版本后会严格按照三级语义来发布版本，如 v2.0.0、v2.1.0
 
 - 版本选择
   - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到

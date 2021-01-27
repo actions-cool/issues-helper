@@ -57,6 +57,11 @@
       <div>material-ui</div>
     </a></td>
   <td align="center" width="180">
+    <a href="https://github.com/prettier/prettier">
+      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46" />
+      <div>prettier</div>
+    </a></td>
+  <td align="center" width="180">
     <a href="https://github.com/ant-design/pro-components">
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       <div>pro-components</div>
@@ -66,12 +71,12 @@
       <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
       <div>react-component</div>
     </a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
       <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
       <div>react-music-player</div>
     </a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
@@ -87,7 +92,6 @@
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
       <div>zoo</div>
     </a></td>
-  <td align="center" width="180"></td>
 </tr>
 </table>
 
@@ -144,7 +148,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -186,7 +190,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -211,7 +215,7 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -244,7 +248,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -288,7 +292,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -321,7 +325,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -353,7 +357,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -387,7 +391,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -422,7 +426,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -443,7 +447,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -466,7 +470,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -491,7 +495,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -514,7 +518,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -547,7 +551,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2
+          uses: actions-cool/issues-helper@v2.0.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -575,7 +579,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -623,7 +627,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -666,7 +670,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -715,7 +719,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -754,7 +758,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -788,7 +792,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v2.0.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -836,7 +840,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -883,7 +887,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -926,7 +930,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         id: fcid
         with:
           actions: 'find-comments'
@@ -937,7 +941,7 @@ jobs:
 
       - name: create comment
         if: ${{ steps.fcid.outputs.comments.length == 0 }}
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -946,7 +950,7 @@ jobs:
 
       - name: update comment
         if: ${{ steps.fcid.outputs.comments.length == 1 }}
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -978,7 +982,7 @@ jobs:
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2
+  uses: actions-cool/issues-helper@v2.0.0
   id: createissue
   with:
     actions: 'create-issue'
@@ -1054,6 +1058,7 @@ x2 + y2
   - v1 表示初始版本
   - 对 v1 版本的修复和新增会发布到 v1.1 版本
   - 当发布的 v1.x 运行一定时间稳定或进行重构时，发布进阶 v2 版本
+  - v2 版本后会严格按照三级语义来发布版本，如 v2.0.0、v2.1.0
 
 - 版本选择
   - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到

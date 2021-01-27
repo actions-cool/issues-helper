@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -50,7 +50,7 @@ jobs:
 - `on`: The action trigger condition
   - Reference [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 - `uses`: Use actions name
-  - `uses: actions-cool/issues-helper@v2`。Please [refer](/en-US/changelog) to version selection
+  - `uses: actions-cool/issues-helper@v2.0.0`。Please [refer](/en-US/changelog) to version selection
 - `issues-hepler` parameter
   - `actions`: The name of the function used, **required**. Support multiple, separated by commas, such as `create-comment,close-issue` means comment and close issue
   - `token`: A person who needs to have push permission token

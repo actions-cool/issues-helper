@@ -33,7 +33,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v2.0.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -50,7 +50,7 @@ jobs:
 - `on`：action 触发条件
   - 参考 [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 - `uses`：使用 actions 名称
-  - `uses: actions-cool/issues-helper@v2`。版本选择请 [参考](/changelog)
+  - `uses: actions-cool/issues-helper@v2.0.0`。版本选择请 [参考](/changelog)
 - `issues-hepler` 参数
   - `actions`：使用功能的名称，**必填**。支持多个，需用逗号隔开，如 `create-comment,close-issue` 表示评论和关闭 issue
   - `token`：需拥有 push 权限的人员 token

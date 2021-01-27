@@ -45,6 +45,10 @@ const users = [
     url: 'https://github.com/ant-design/pro-components',
     logo: 'https://avatars1.githubusercontent.com/u/12101536?s=200&v=4'
   },
+  {
+    url: 'https://github.com/prettier/prettier',
+    logo: 'https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true'
+  },
 ];
 
 // **************************************************************************
