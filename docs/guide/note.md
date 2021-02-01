@@ -39,6 +39,8 @@ with:
 
 但如果这个是由 `GitHub Actions bot` 完成的（即 actions 中 token 不传，或使用默认 `token: ${{ secrets.GITHUB_TOKEN }}`），则不会触发 label `x2` 的 Actions。
 
+ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token)
+
 ## `assignees` 范围
 
 - 仓库的所有者或协作者，若有组织，包括成员

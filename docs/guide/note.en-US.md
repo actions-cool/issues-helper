@@ -38,6 +38,8 @@ When an action is set, such as adding a label `x1` to an issue, Actions will aut
 
 But if this is done by `GitHub Actions bot` (that is, the token in the actions is not passed, or the default `token: ${{ secrets.GITHUB_TOKEN }}` is used), the actions of label `x2` will not be triggered.
 
+ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trigger-workflows#triggering-new-workflows-using-a-personal-access-token)
+
 ## `assignees` scope
 
 - The owner or collaborator of the warehouse, if there is an organization, including members
