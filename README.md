@@ -6,8 +6,8 @@
 [![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
 [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 
+[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 [![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers)
 [![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions)
 [![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
@@ -105,6 +105,7 @@
   - [`close-issue`](#close-issue)
   - [`create-comment`](#create-comment)
   - [`create-issue`](#create-issue)
+  - [`create-label`](#create-label)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
   - [`mark-duplicate`](#mark-duplicate)
@@ -316,6 +317,34 @@ jobs:
 
 - `title` 默认为：`Default Title`
 - 返回 `issue-number`，[用法参考](#outputs-使用)
+
+⏫ [返回列表](#列-表)
+
+#### `create-label`
+
+新增 label。若想根据目录生成多个 labels，[可查看](https://github.com/actions-cool/create-labels)。
+
+```yml
+- name: Create label
+  uses: actions-cool/issues-helper@v2.0.0
+  with:
+    actions: 'create-label'
+    token: ${{ secrets.GITHUB_TOKEN }}
+    label-name: 'xx'
+    label-color: '0095b3'
+    label-desc: 'xx'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](#token) | string | ✔ |
+| label-name | 标签名称，支持 emoji | string | ✔ |
+| label-color | 标签颜色，格式为 16 进制色码，不加 `#` | string | ✖ |
+| label-desc | 标签描述 | string | ✖ |
+
+- `label-name`：若已存在，则无操作
+- `label-color`：默认为 `ededed`
 
 ⏫ [返回列表](#列-表)
 

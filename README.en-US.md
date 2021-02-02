@@ -6,8 +6,8 @@
 [![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
 [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 
+[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 [![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers)
 [![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions)
 [![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
@@ -105,6 +105,7 @@ When the following list does not have the features you want, you can submit it i
   - [`close-issue`](#close-issue)
   - [`create-comment`](#create-comment)
   - [`create-issue`](#create-issue)
+  - [`create-label`](#create-label)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
   - [`mark-duplicate`](#mark-duplicate)
@@ -316,6 +317,34 @@ jobs:
 
 - `title` default is `Default Title`
 - Return `issue-number`. [Usage reference](#outputs-use)
+
+⏫ [Back to list](#List)
+
+#### `create-label`
+
+Create label。If you want to create multiple labels base on repository path. [See](https://github.com/actions-cool/create-labels).
+
+```yml
+- name: Create label
+  uses: actions-cool/issues-helper@v2.0.0
+  with:
+    actions: 'create-label'
+    token: ${{ secrets.GITHUB_TOKEN }}
+    label-name: 'xx'
+    label-color: '0095b3'
+    label-desc: 'xx'
+```
+
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| label-name | Label name, emoji support | string | ✔ |
+| label-color | Label color, the format is hexadecimal color code, without `#` | string | ✖ |
+| label-desc | Label description | string | ✖ |
+
+- `label-name`: If it already exists, no operation
+- `label-color`: Default is `ededed`
 
 ⏫ [Back to list](#List)
 
