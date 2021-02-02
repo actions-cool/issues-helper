@@ -1,3 +1,9 @@
+## v2.1.1
+
+`2021.02.03`
+
+- fix: api request limit. [#57](https://github.com/actions-cool/issues-helper/pull/57)
+
 ## v2.1.0
 
 `2021.02.02`
