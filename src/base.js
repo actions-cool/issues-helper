@@ -122,6 +122,26 @@ async function doCreateIssueContent(owner, repo, issueNumber, contents) {
   }
 }
 
+async function doCreateLabel(owner, repo) {
+  const name = core.getInput('label-name');
+  const color = core.getInput('label-color') || 'ededed';
+  const description = core.getInput('label-desc') || '';
+
+  if (!name) {
+    core.setFailed(`This actions should input 'label-name'!`);
+    return false;
+  }
+
+  await octokit.issues.createLabel({
+    owner,
+    repo,
+    name,
+    color,
+    description,
+  });
+  core.info(`Actions: [create-label][${name}] success!`);
+}
+
 async function doDeleteComment(owner, repo, commentId) {
   await octokit.issues.deleteComment({
     owner,
@@ -450,6 +470,7 @@ module.exports = {
   doCreateCommentContent,
   doCreateIssue,
   doCreateIssueContent,
+  doCreateLabel,
   doDeleteComment,
   doMarkDuplicate,
   doLockIssue,

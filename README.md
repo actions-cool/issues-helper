@@ -319,6 +319,34 @@ jobs:
 
 ⏫ [返回列表](#列-表)
 
+#### `create-label`
+
+新增 label。若想根据目录生成多个 labels，[可查看](https://github.com/actions-cool/create-labels)。
+
+```yml
+- name: Create label
+  uses: actions-cool/issues-helper@v2.0.0
+  with:
+    actions: 'create-label'
+    token: ${{ secrets.GITHUB_TOKEN }}
+    label-name: 'xx'
+    label-color: '0095b3'
+    label-desc: 'xx'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](#token) | string | ✔ |
+| label-name | 标签名称，支持 emoji | string | ✔ |
+| label-color | 标签颜色，格式为 16 进制色码，不加 `#` | string | ✖ |
+| label-desc | 标签描述 | string | ✖ |
+
+- `label-name`：若已存在，则无操作
+- `label-color`：默认为 `ededed`
+
+⏫ [返回列表](#列-表)
+
 #### `delete-comment`
 
 根据 [`comment-id`](#comment-id) 删除指定评论。
