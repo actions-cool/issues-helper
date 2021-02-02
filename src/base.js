@@ -132,14 +132,18 @@ async function doCreateLabel(owner, repo) {
     return false;
   }
 
-  await octokit.issues.createLabel({
-    owner,
-    repo,
-    name,
-    color,
-    description,
-  });
-  core.info(`Actions: [create-label][${name}] success!`);
+  try {
+    await octokit.issues.createLabel({
+      owner,
+      repo,
+      name,
+      color,
+      description,
+    });
+    core.info(`Actions: [create-label][${name}] success!`);
+  } catch (err) {
+    console.log(err.message)
+  }
 }
 
 async function doDeleteComment(owner, repo, commentId) {

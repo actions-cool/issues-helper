@@ -183,6 +183,32 @@ jobs:
 - `title` default is `Default Title`
 - Return `issue-number`. [Usage reference](/en-US/guide/ref#-outputs-use)
 
+## `create-label`
+
+Create label。If you want to create multiple labels base on repository path. [See](https://github.com/actions-cool/create-labels).
+
+```yml
+- name: Create label
+  uses: actions-cool/issues-helper@v2.0.0
+  with:
+    actions: 'create-label'
+    token: ${{ secrets.GITHUB_TOKEN }}
+    label-name: 'xx'
+    label-color: '0095b3'
+    label-desc: 'xx'
+```
+
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
+| label-name | Label name, emoji support | string | ✔ |
+| label-color | Label color, the format is hexadecimal color code, without `#` | string | ✖ |
+| label-desc | Label description | string | ✖ |
+
+- `label-name`: If it already exists, no operation
+- `label-color`: Default is `ededed`
+
 ## `delete-comment`
 
 According to [`comment-id`](/en-US/guide/ref#-comment-id) delete the specified comment.
