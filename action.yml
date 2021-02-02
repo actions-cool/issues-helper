@@ -22,8 +22,16 @@ inputs:
     description: 'Issue assignees'
   random-to:
     description: 'Issue assignees random to'
+  # label
   labels:
     description: 'Issue labels'
+  label-name:
+    description: 'Create label name'
+  label-color:
+    description: 'Create label color, default #ededed'
+  label-desc:
+    description: 'Create label description'
+
   state:
     description: 'Issue state'
   update-mode:

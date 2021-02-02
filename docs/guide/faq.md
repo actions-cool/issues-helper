@@ -24,7 +24,7 @@ GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 
 
 ## 从 v1.x 升级到 v2，有什么注意的地方吗？
 
-v1.x 和 v2 版本的差别只有一处。即 `mark-duplicate` 中的 `require-permission` 增加了默认值 `write`。
+v1.12 和 v2.0.0 版本的差别只有一处。即 `mark-duplicate` 中的 `require-permission` 增加了默认值 `write`。
 
 ## 如果这里没有我想要的功能，该怎么办？
 

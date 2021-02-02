@@ -1,3 +1,9 @@
+## v2.1.0
+
+`2021.02.02`
+
+- feat: add create-label. [#54](https://github.com/actions-cool/issues-helper/pull/54)
+
 ## v2.0.0
 
 `2021.01.26`

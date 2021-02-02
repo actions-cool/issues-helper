@@ -6,8 +6,8 @@
 [![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
 [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
 [![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 
+[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
 [![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers)
 [![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions)
 [![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
@@ -105,6 +105,7 @@ When the following list does not have the features you want, you can submit it i
   - [`close-issue`](#close-issue)
   - [`create-comment`](#create-comment)
   - [`create-issue`](#create-issue)
+  - [`create-label`](#create-label)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
   - [`mark-duplicate`](#mark-duplicate)
@@ -148,7 +149,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -190,7 +191,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -215,7 +216,7 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,7 +249,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -292,7 +293,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -319,13 +320,41 @@ jobs:
 
 ⏫ [Back to list](#List)
 
+#### `create-label`
+
+Create label。If you want to create multiple labels base on repository path. [See](https://github.com/actions-cool/create-labels).
+
+```yml
+- name: Create label
+  uses: actions-cool/issues-helper@v2.1.0
+  with:
+    actions: 'create-label'
+    token: ${{ secrets.GITHUB_TOKEN }}
+    label-name: 'xx'
+    label-color: '0095b3'
+    label-desc: 'xx'
+```
+
+| Param | Desc  | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✔ |
+| label-name | Label name, emoji support | string | ✔ |
+| label-color | Label color, the format is hexadecimal color code, without `#` | string | ✖ |
+| label-desc | Label description | string | ✖ |
+
+- `label-name`: If it already exists, no operation
+- `label-color`: Default is `ededed`
+
+⏫ [Back to list](#List)
+
 #### `delete-comment`
 
 According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -357,7 +386,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -391,7 +420,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -426,7 +455,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -447,7 +476,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -470,7 +499,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -495,7 +524,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -518,7 +547,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -551,7 +580,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.0.0
+          uses: actions-cool/issues-helper@v2.1.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -579,7 +608,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -629,7 +658,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -672,7 +701,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -725,7 +754,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -764,7 +793,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -798,7 +827,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.0.0
+    uses: actions-cool/issues-helper@v2.1.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -846,7 +875,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -893,7 +922,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -936,7 +965,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         id: fcid
         with:
           actions: 'find-comments'
@@ -947,7 +976,7 @@ jobs:
 
       - name: create comment
         if: ${{ steps.fcid.outputs.comments.length == 0 }}
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -956,7 +985,7 @@ jobs:
 
       - name: update comment
         if: ${{ steps.fcid.outputs.comments.length == 1 }}
-        uses: actions-cool/issues-helper@v2.0.0
+        uses: actions-cool/issues-helper@v2.1.0
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -988,7 +1017,7 @@ When the token is not filled in actions or the corresponding secrets are not add
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2.0.0
+  uses: actions-cool/issues-helper@v2.1.0
   id: createissue
   with:
     actions: 'create-issue'
