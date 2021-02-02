@@ -142,7 +142,7 @@ async function doCreateLabel(owner, repo) {
     });
     core.info(`Actions: [create-label][${name}] success!`);
   } catch (err) {
-    console.log(err.message)
+    console.log(err.message);
   }
 }
 
