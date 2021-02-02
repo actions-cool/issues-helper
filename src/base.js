@@ -190,17 +190,6 @@ async function doMarkDuplicate(owner, repo, labels) {
 
     const ifCommandInput = !!duplicateCommand;
 
-    const res = await octokit.repos.getCollaboratorPermissionLevel({
-      owner,
-      repo,
-      username: commentUser,
-    });
-    const { permission } = res.data;
-    if (!checkPermission(requirePermission, permission)) {
-      core.info(`The user ${commentUser} is not allow!`);
-      return false;
-    }
-
     if (
       !commentBody.includes('?') &&
       ((ifCommandInput &&
@@ -208,6 +197,17 @@ async function doMarkDuplicate(owner, repo, labels) {
         commentBody.split(' ')[0] == duplicateCommand) ||
         testDuplicate(commentBody))
     ) {
+      const res = await octokit.repos.getCollaboratorPermissionLevel({
+        owner,
+        repo,
+        username: commentUser,
+      });
+      const { permission } = res.data;
+      if (!checkPermission(requirePermission, permission)) {
+        core.info(`The user ${commentUser} is not allow!`);
+        return false;
+      }
+
       if (ifCommandInput) {
         const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
         await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
