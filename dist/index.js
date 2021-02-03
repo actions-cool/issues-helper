@@ -8078,7 +8078,7 @@ async function doMarkDuplicate(owner, repo, labels) {
         } else if (contents) {
           await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
         }
-  
+
         const issue = await octokit.issues.get({
           owner,
           repo,
@@ -8100,7 +8100,7 @@ async function doMarkDuplicate(owner, repo, labels) {
           await doSetLabels(owner, repo, issueNumber, newLabels.toString());
           core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
         }
-  
+
         if (closeIssue == 'true') {
           await doCloseIssue(owner, repo, issueNumber);
         }
