@@ -6,6 +6,10 @@ toc: menu
 
 GitHub Actions is provided free of charge by GitHub. Among them, the `Private` project has a monthly limit of 2000 times, [see details](https://github.com/settings/billing). The `Public` project is unlimited.
 
+### Is there a rate limit?
+
+Yes. The bottom layer of Action uses GitHub REST API. The general situation is 5000 times per hour. It is basically sufficient in principle, and it is also required to avoid invalid requests when defining Action. [Detailed view](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
+
 ## Are there any ready-made templates for reference?
 
 Yes.

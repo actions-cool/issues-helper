@@ -190,17 +190,6 @@ async function doMarkDuplicate(owner, repo, labels) {
 
     const ifCommandInput = !!duplicateCommand;
 
-    const res = await octokit.repos.getCollaboratorPermissionLevel({
-      owner,
-      repo,
-      username: commentUser,
-    });
-    const { permission } = res.data;
-    if (!checkPermission(requirePermission, permission)) {
-      core.info(`The user ${commentUser} is not allow!`);
-      return false;
-    }
-
     if (
       !commentBody.includes('?') &&
       ((ifCommandInput &&
@@ -208,37 +197,52 @@ async function doMarkDuplicate(owner, repo, labels) {
         commentBody.split(' ')[0] == duplicateCommand) ||
         testDuplicate(commentBody))
     ) {
-      if (ifCommandInput) {
-        const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
-        await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
-      } else if (contents) {
-        await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
-      }
+      try {
+        const res = await octokit.repos.getCollaboratorPermissionLevel({
+          owner,
+          repo,
+          username: commentUser,
+        });
+        const { permission } = res.data;
+        if (!checkPermission(requirePermission, permission)) {
+          core.info(`The user ${commentUser} is not allow!`);
+          return false;
+        }
 
-      const issue = await octokit.issues.get({
-        owner,
-        repo,
-        issue_number: issueNumber,
-      });
-      let newLabels = [];
-      if (issue.data.labels.length > 0) {
-        newLabels = issue.data.labels
-          .map(({ name }) => name)
-          .filter(name => !dealStringToArr(removeLables).includes(name));
-      }
-      if (duplicateLabels) {
-        newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
-      }
-      if (labels) {
-        newLabels = dealStringToArr(labels);
-      }
-      if (newLabels.length > 0) {
-        await doSetLabels(owner, repo, issueNumber, newLabels.toString());
-        core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
-      }
+        if (ifCommandInput) {
+          const nextBody = commentBody.replace(duplicateCommand, 'Duplicate of');
+          await doUpdateComment(owner, repo, commentId, nextBody, 'replace', true);
+        } else if (contents) {
+          await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
+        }
 
-      if (closeIssue == 'true') {
-        await doCloseIssue(owner, repo, issueNumber);
+        const issue = await octokit.issues.get({
+          owner,
+          repo,
+          issue_number: issueNumber,
+        });
+        let newLabels = [];
+        if (issue.data.labels.length > 0) {
+          newLabels = issue.data.labels
+            .map(({ name }) => name)
+            .filter(name => !dealStringToArr(removeLables).includes(name));
+        }
+        if (duplicateLabels) {
+          newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
+        }
+        if (labels) {
+          newLabels = dealStringToArr(labels);
+        }
+        if (newLabels.length > 0) {
+          await doSetLabels(owner, repo, issueNumber, newLabels.toString());
+          core.info(`Actions: [mark-duplicate-labels][${newLabels}] success!`);
+        }
+
+        if (closeIssue == 'true') {
+          await doCloseIssue(owner, repo, issueNumber);
+        }
+      } catch (error) {
+        core.info(error.message);
       }
     } else {
       core.info(
