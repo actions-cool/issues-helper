@@ -6,6 +6,10 @@ toc: menu
 
 GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。`Public` 项目无限制。
 
+### 有没有速率的限制？
+
+有的。Action 底层使用的是 GitHub REST API。一般情况是每小时 5000 次。原则上基本是够用的，同时也要求在 Action 定义时，尽量避免无效的请求。[具体查看](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)。
+
 ## 有没有现成的模板可以参考？
 
 有的。
