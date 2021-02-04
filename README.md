@@ -322,7 +322,7 @@ jobs:
 
 #### `create-label`
 
-新增 label。若想根据目录生成多个 labels，[可查看](https://github.com/actions-cool/create-labels)。
+新增 label。若想批量维护 labels，[可查看](https://github.com/actions-cool/labels-helper)。
 
 ```yml
 - name: Create label

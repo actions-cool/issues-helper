@@ -185,7 +185,7 @@ jobs:
 
 ## `create-label`
 
-Create label。If you want to create multiple labels base on repository path. [See](https://github.com/actions-cool/create-labels).
+Create label. If you want to maintain labels in batches, [see](https://github.com/actions-cool/labels-helper).
 
 ```yml
 - name: Create label
