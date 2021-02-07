@@ -7,7 +7,6 @@
   "scripts": {
     "start": "dumi dev",
     "docs:build": "dumi build",
-    "docs-dev:build": "UMI_ENV=dev dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "deploy": "npm run docs:build && npm run docs:deploy",
     "format": "prettier --write **/*.ts **/*.js",
