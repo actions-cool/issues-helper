@@ -49,6 +49,10 @@ const users = [
     url: 'https://github.com/prettier/prettier',
     logo: 'https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true'
   },
+  {
+    url: 'https://github.com/vuejs/jsx-next',
+    logo: 'https://avatars.githubusercontent.com/u/6128107?s=200&v=4'
+  },
 ];
 
 // **************************************************************************
