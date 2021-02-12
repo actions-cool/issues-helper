@@ -53,6 +53,10 @@ const users = [
     url: 'https://github.com/vuejs/jsx-next',
     logo: 'https://avatars.githubusercontent.com/u/6128107?s=200&v=4'
   },
+  {
+    url: 'https://github.com/vitejs/vite',
+    logo: 'https://avatars.githubusercontent.com/u/65625612?s=200&v=4'
+  },
 ];
 
 // **************************************************************************
