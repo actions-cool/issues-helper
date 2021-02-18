@@ -227,6 +227,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
+
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ## `lock-issue`
 
@@ -444,12 +447,14 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
 | body | 更新 comment 的内容 | string | ✖ |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
 | contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ## `update-issue`
 

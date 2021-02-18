@@ -8011,12 +8011,26 @@ async function doCreateLabel(owner, repo) {
 }
 
 async function doDeleteComment(owner, repo, commentId) {
-  await octokit.issues.deleteComment({
-    owner,
-    repo,
-    comment_id: commentId,
-  });
-  core.info(`Actions: [delete-comment][${commentId}] success!`);
+  let id = commentId;
+
+  const outComments = core.getInput('out-comments');
+  if (outComments) {
+    const outCommentsArr = JSON.parse(outComments);
+    outCommentsArr.forEach(async item => {
+      await doDelet(item.id);
+    })
+  } else {
+    await doDelet(id);
+  }
+
+  async function doDelet(id) {
+    await octokit.issues.deleteComment({
+      owner,
+      repo,
+      comment_id: id,
+    });
+    core.info(`Actions: [delete-comment][${id}] success!`);
+  }
 }
 
 async function doLockIssue(owner, repo, issueNumber) {
@@ -8199,35 +8213,41 @@ async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdat
   const outComments = core.getInput('out-comments');
   if (outComments) {
     const outCommentsArr = JSON.parse(outComments);
-    id = outCommentsArr[0].id;
+    outCommentsArr.forEach(async item => {
+      await doComment(item.id);
+    })
+  } else {
+    await doComment(id);
   }
 
-  const comment = await octokit.issues.getComment({
-    owner,
-    repo,
-    comment_id: id,
-  });
-  const comment_body = comment.data.body;
-
-  let params = {
-    owner,
-    repo,
-    comment_id: id,
-  };
-
-  if (core.getInput('body') || ifUpdateBody) {
-    if (updateMode === 'append') {
-      params.body = `${comment_body}\n${body}`;
-    } else {
-      params.body = body;
+  async function doComment(id) {
+    const comment = await octokit.issues.getComment({
+      owner,
+      repo,
+      comment_id: id,
+    });
+    const comment_body = comment.data.body;
+  
+    let params = {
+      owner,
+      repo,
+      comment_id: id,
+    };
+  
+    if (core.getInput('body') || ifUpdateBody) {
+      if (updateMode === 'append') {
+        params.body = `${comment_body}\n${body}`;
+      } else {
+        params.body = body;
+      }
+  
+      await octokit.issues.updateComment(params);
+      core.info(`Actions: [update-comment][${id}] success!`);
     }
-
-    await octokit.issues.updateComment(params);
-    core.info(`Actions: [update-comment][${id}] success!`);
-  }
-
-  if (contents) {
-    await doCreateCommentContent(owner, repo, id, dealStringToArr(contents));
+  
+    if (contents) {
+      await doCreateCommentContent(owner, repo, id, dealStringToArr(contents));
+    }
   }
 }
 
