@@ -1121,7 +1121,7 @@ x2 + y2
 ## Actions 模板
 
 - 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
-- 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
+- 个人练习和测试 [Actions](https://github.com/actions-cool/test-issues-helper) 的仓库
 - 也可以来 [线上使用者](#谁在使用) 的仓库参照
 
 ## ⚡ 反馈

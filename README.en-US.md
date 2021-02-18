@@ -1126,7 +1126,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 ## Actions Template
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
-- Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
+- Personal exercises and tests [Actions](https://github.com/actions-cool/test-issues-helper) repository
 - Can also refer to the warehouse of [online users](#who-is-using)
 
 ## ⚡ Feedback
