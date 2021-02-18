@@ -27,4 +27,6 @@ toc: menu
   uses: actions-cool/issues-helper@1.x
 ```
 
+- v2 [升级参考](/guide/faq)
+
 <embed src="../CHANGELOG.md"></embed>

@@ -970,7 +970,7 @@ Flexible reference.
 
 Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment created by k that contains `<!-- Created by actions-cool/issues-helper -->`, if so, update the comment, If not, add a comment.
 
-Of course, if you need such a scene, you can directly use [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment)
+Of course, if you need such a scene, you can directly use [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment).
 
 ```yml
 name: Test
@@ -1037,7 +1037,14 @@ Need to have the person token with push permission.
   - `Name` is the same as in actions
   - `Value` fill in the token just applied by the individual
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+
+⏫ [Back to list](#List)
+
+### GitHub Docs
+
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 ⏫ [Back to list](#List)
 
@@ -1054,12 +1061,10 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-[More](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs).
+More:
 
-### GitHub Docs
-
-- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
+2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
 ⏫ [Back to list](#List)
 
@@ -1137,6 +1142,8 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 - name: Issues Helper
   uses: actions-cool/issues-helper@1.x
 ```
+
+- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.md#%E4%BB%8E-v1x-%E5%8D%87%E7%BA%A7%E5%88%B0-v2%E6%9C%89%E4%BB%80%E4%B9%88%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9%E5%90%97)
 
 ## Actions Template
 

@@ -8016,6 +8016,7 @@ async function doDeleteComment(owner, repo, commentId) {
   const outComments = core.getInput('out-comments');
   if (outComments) {
     const outCommentsArr = JSON.parse(outComments);
+    core.info(`Actions: [out-comments-length][${outCommentsArr.length}] success!`);
     outCommentsArr.forEach(async item => {
       await doDelet(item.id);
     })

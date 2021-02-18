@@ -28,7 +28,7 @@ with:
 
 - `count-lables`: Regardless of setting `true` or `'ture'`, all received in the program is in string format
 
-At the same time, the output is also in string format
+At the same time, the output is also in string format. [See](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs).
 
 - `check-result`: The judgment condition is `if: steps.xxid.outputs.check-result =='true'`
 
