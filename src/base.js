@@ -349,6 +349,7 @@ async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdat
   const outComments = core.getInput('out-comments');
   if (outComments) {
     const outCommentsArr = JSON.parse(outComments);
+    core.info(`Actions: [out-comments-length][${outCommentsArr.length}] success!`);
     outCommentsArr.forEach(async item => {
       await doComment(item.id);
     })
