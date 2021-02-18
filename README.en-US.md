@@ -1143,7 +1143,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
   uses: actions-cool/issues-helper@1.x
 ```
 
-- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.md#%E4%BB%8E-v1x-%E5%8D%87%E7%BA%A7%E5%88%B0-v2%E6%9C%89%E4%BB%80%E4%B9%88%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9%E5%90%97)
+- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.en-US.md#what-should-i-pay-attention-to-when-upgrading-from-v1x-to-v2)
 
 ## Actions Template
 
