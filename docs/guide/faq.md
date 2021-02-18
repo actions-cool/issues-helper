@@ -15,7 +15,7 @@ GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 
 有的。
 
 1. 你可以使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
-2. 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
+2. 个人练习和测试 [Actions](https://github.com/actions-cool/test-issues-helper) 的仓库
 3. 也可以来 [线上使用者](/#-谁在使用？) 的仓库参照
 
 ## 我想暂停 Actions，有没有简单的办法？

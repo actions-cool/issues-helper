@@ -17,6 +17,3 @@ jobs:
 
       - name: package
         run: yarn package
-      
-      - name: package
-        run: yarn docs:build

@@ -52,6 +52,11 @@
     </a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/vuejs/jsx-next">
+      <img src="https://avatars.githubusercontent.com/u/6128107?s=200&v=4" width="46" />
+      <div>jsx-next</div>
+    </a></td>
+  <td align="center" width="180">
     <a href="https://github.com/mui-org/material-ui">
       <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
       <div>material-ui</div>
@@ -66,12 +71,12 @@
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       <div>pro-components</div>
     </a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/react-component">
       <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
       <div>react-component</div>
     </a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
       <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
@@ -83,6 +88,12 @@
       <div>umi</div>
     </a></td>
   <td align="center" width="180">
+    <a href="https://github.com/vitejs/vite">
+      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46" />
+      <div>vite</div>
+    </a></td>
+</tr><tr>
+  <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       <div>vue-request</div>
@@ -92,6 +103,8 @@
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
       <div>zoo</div>
     </a></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
 </tr>
 </table>
 
@@ -322,7 +335,7 @@ jobs:
 
 #### `create-label`
 
-新增 label。若想根据目录生成多个 labels，[可查看](https://github.com/actions-cool/create-labels)。
+新增 label。若想批量维护 labels，[可查看](https://github.com/actions-cool/labels-helper)。
 
 ```yml
 - name: Create label
@@ -1108,7 +1121,7 @@ x2 + y2
 ## Actions 模板
 
 - 可直接使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
-- 个人练习和测试 [Actions](https://github.com/xrkffgg/test-ci) 的仓库
+- 个人练习和测试 [Actions](https://github.com/actions-cool/test-issues-helper) 的仓库
 - 也可以来 [线上使用者](#谁在使用) 的仓库参照
 
 ## ⚡ 反馈

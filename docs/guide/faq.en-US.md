@@ -15,7 +15,7 @@ Yes. The bottom layer of Action uses GitHub REST API. The general situation is 5
 Yes.
 
 1. You can use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repository template
-2. Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
+2. Personal exercises and tests [Actions](https://github.com/actions-cool/test-issues-helper) repository
 3. You can also refer to the warehouse of [online users](/en-US#-who-is-using)
 
 ## I want to pause Actions, is there an easy way?

@@ -52,6 +52,11 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     </a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/vuejs/jsx-next">
+      <img src="https://avatars.githubusercontent.com/u/6128107?s=200&v=4" width="46" />
+      <div>jsx-next</div>
+    </a></td>
+  <td align="center" width="180">
     <a href="https://github.com/mui-org/material-ui">
       <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
       <div>material-ui</div>
@@ -66,12 +71,12 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       <div>pro-components</div>
     </a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/react-component">
       <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
       <div>react-component</div>
     </a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
       <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
@@ -83,6 +88,12 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
       <div>umi</div>
     </a></td>
   <td align="center" width="180">
+    <a href="https://github.com/vitejs/vite">
+      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46" />
+      <div>vite</div>
+    </a></td>
+</tr><tr>
+  <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
       <div>vue-request</div>
@@ -92,6 +103,8 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
       <div>zoo</div>
     </a></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
 </tr>
 </table>
 
@@ -322,7 +335,7 @@ jobs:
 
 #### `create-label`
 
-Create label。If you want to create multiple labels base on repository path. [See](https://github.com/actions-cool/create-labels).
+Create label. If you want to maintain labels in batches, [see](https://github.com/actions-cool/labels-helper).
 
 ```yml
 - name: Create label
@@ -1113,7 +1126,7 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 ## Actions Template
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
-- Personal exercises and tests [Actions](https://github.com/xrkffgg/test-ci) repository
+- Personal exercises and tests [Actions](https://github.com/actions-cool/test-issues-helper) repository
 - Can also refer to the warehouse of [online users](#who-is-using)
 
 ## ⚡ Feedback
