@@ -330,17 +330,25 @@ async function doUnlockIssue(owner, repo, issueNumber) {
 }
 
 async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdateBody) {
+  let id = commentId;
+
+  const outComments = core.getInput('out-comments');
+  if (outComments) {
+    const outCommentsArr = JSON.parse(outComments);
+    id = outCommentsArr[0].id;
+  }
+
   const comment = await octokit.issues.getComment({
     owner,
     repo,
-    comment_id: commentId,
+    comment_id: id,
   });
   const comment_body = comment.data.body;
 
   let params = {
     owner,
     repo,
-    comment_id: commentId,
+    comment_id: id,
   };
 
   if (core.getInput('body') || ifUpdateBody) {
@@ -351,11 +359,11 @@ async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdat
     }
 
     await octokit.issues.updateComment(params);
-    core.info(`Actions: [update-comment][${commentId}] success!`);
+    core.info(`Actions: [update-comment][${id}] success!`);
   }
 
   if (contents) {
-    await doCreateCommentContent(owner, repo, commentId, dealStringToArr(contents));
+    await doCreateCommentContent(owner, repo, id, dealStringToArr(contents));
   }
 }
 

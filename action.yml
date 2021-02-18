@@ -40,8 +40,12 @@ inputs:
     description: 'Issue reactions emoji'
   direction:
     description: 'Find comments direction'
+
+  # comments
   comment-auth:
     description: 'Find comments query auth'
+  out-comments:
+    description: 'Find comments out comments'
   assignee-includes:
     description: 'Check use'
   body-includes:
