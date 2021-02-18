@@ -8019,7 +8019,7 @@ async function doDeleteComment(owner, repo, commentId) {
     core.info(`Actions: [out-comments-length][${outCommentsArr.length}] success!`);
     outCommentsArr.forEach(async item => {
       await doDelet(item.id);
-    })
+    });
   } else {
     await doDelet(id);
   }
@@ -8217,7 +8217,7 @@ async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdat
     core.info(`Actions: [out-comments-length][${outCommentsArr.length}] success!`);
     outCommentsArr.forEach(async item => {
       await doComment(item.id);
-    })
+    });
   } else {
     await doComment(id);
   }
@@ -8229,24 +8229,24 @@ async function doUpdateComment(owner, repo, commentId, body, updateMode, ifUpdat
       comment_id: id,
     });
     const comment_body = comment.data.body;
-  
+
     let params = {
       owner,
       repo,
       comment_id: id,
     };
-  
+
     if (core.getInput('body') || ifUpdateBody) {
       if (updateMode === 'append') {
         params.body = `${comment_body}\n${body}`;
       } else {
         params.body = body;
       }
-  
+
       await octokit.issues.updateComment(params);
       core.info(`Actions: [update-comment][${id}] success!`);
     }
-  
+
     if (contents) {
       await doCreateCommentContent(owner, repo, id, dealStringToArr(contents));
     }
