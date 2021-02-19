@@ -1,3 +1,11 @@
+# Changelog
+
+## v2.1.2
+
+`2021.02.19`
+
+- feat: update/delete comment support find-comments out. [#63](https://github.com/actions-cool/issues-helper/pull/63)
+
 ## v2.1.1
 
 `2021.02.03`

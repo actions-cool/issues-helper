@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.1.2
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
