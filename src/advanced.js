@@ -147,6 +147,7 @@ async function doFindComments(owner, repo, issueNumber) {
     }
   });
   core.setOutput('comments', comments);
+  core.info(`out-comments: ${JSON.stringify(comments)}`);
 }
 
 async function doLockIssues(owner, repo, labels) {

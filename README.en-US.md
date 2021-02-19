@@ -379,6 +379,9 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
+
+- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -606,12 +609,14 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
 | body | Update the content of comment | string | ✖ |
 | update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
 | contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
+- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -963,13 +968,15 @@ Flexible reference.
 
 ### `find-comments + create-comment + update-comment`
 
-Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment containing `error` created by k, if there is only one, update the comment, if not, add a new comment.
+Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment created by k that contains `<!-- Created by actions-cool/issues-helper -->`, if so, update the comment, If not, add a comment.
+
+Of course, if you need such a scene, you can directly use [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment).
 
 ```yml
 name: Test
 
 on:
-  isssue:
+  issues:
     types: [edited]
 
 jobs:
@@ -985,25 +992,33 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           comment-auth: k
-          body-includes: 'error'
+          body-includes: '<!-- Created by actions-cool/issues-helper -->'
+
+      # Output view found content. GitHub default outputs are strings
+      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
+        shell: bash
 
       - name: create comment
-        if: ${{ steps.fcid.outputs.comments.length == 0 }}
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
         uses: actions-cool/issues-helper@v2.1.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          body: 'Some error!'
+          body: |
+            Error
+            <!-- Created by actions-cool/issues-helper -->
 
       - name: update comment
-        if: ${{ steps.fcid.outputs.comments.length == 1 }}
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
         uses: actions-cool/issues-helper@v2.1.1
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
-          comment-id: ${{ steps.fcid.outputs.comments[0].id }}
-          body: 'Some error again!'
+          out-comments: ${{ steps.fcid.outputs.comments }}
+          body: |
+            Error Again
+            <!-- Created by actions-cool/issues-helper -->
           update-mode: 'append'
 ```
 
@@ -1022,7 +1037,14 @@ Need to have the person token with push permission.
   - `Name` is the same as in actions
   - `Value` fill in the token just applied by the individual
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+
+⏫ [Back to list](#List)
+
+### GitHub Docs
+
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 ⏫ [Back to list](#List)
 
@@ -1039,12 +1061,10 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-[More](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs).
+More:
 
-### GitHub Docs
-
-- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
+2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
 ⏫ [Back to list](#List)
 
@@ -1122,6 +1142,8 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
 - name: Issues Helper
   uses: actions-cool/issues-helper@1.x
 ```
+
+- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.en-US.md#what-should-i-pay-attention-to-when-upgrading-from-v1x-to-v2)
 
 ## Actions Template
 

@@ -227,6 +227,9 @@ According to [`comment-id`](/en-US/guide/ref#-comment-id) delete the specified c
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
+
+- When `out-comments` is entered, `comment-id` does not work
 
 ## `lock-issue`
 
@@ -444,12 +447,14 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
 | body | Update the content of comment | string | ✖ |
 | update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
 | contents | Add [reaction](/en-US/guide/ref#-reactions-type) | string | ✖ |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
+- When `out-comments` is entered, `comment-id` does not work
 
 ## `update-issue`
 

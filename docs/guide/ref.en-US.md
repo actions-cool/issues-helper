@@ -13,7 +13,7 @@ Need to have the person token with push permission.
   - `Name` is the same as in actions
   - `Value` fill in the token just applied by the individual
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
 
 ## 📍 GitHub Docs
 
@@ -33,7 +33,10 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-[More](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs).
+More:
+
+1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
+2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
 ## 📍 `includes` check rules
 

@@ -379,6 +379,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
+
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ⏫ [返回列表](#列-表)
 
@@ -606,12 +609,14 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
 | body | 更新 comment 的内容 | string | ✖ |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
 | contents | 增加 [reaction](#reactions-types) | string | ✖ |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ⏫ [返回列表](#列-表)
 
@@ -957,13 +962,15 @@ jobs:
 
 ### `find-comments + create-comment + update-comment`
 
-假设场景：当添加了 `watch` label 的 issue 修改时，查找是否有 k 创建的包含 `error` 的评论，如果只有一个，则更新该 comment，如果没有，则新增一个 comment。
+假设场景：当添加了 `watch` label 的 issue 修改时，查找是否有 k 创建的包含 `<!-- Created by actions-cool/issues-helper -->` 的评论，如果有，则更新 comment，如果没有，则新增一个 comment。
+
+当然，如果你需要这样的场景，可以直接使用 [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment)。
 
 ```yml
 name: Test
 
 on:
-  isssue:
+  issues:
     types: [edited]
 
 jobs:
@@ -979,25 +986,33 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           comment-auth: k
-          body-includes: 'error'
+          body-includes: '<!-- Created by actions-cool/issues-helper -->'
+
+      # 输出查看找到的内容。GitHub 默认 outputs 为字符串
+      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
+        shell: bash
 
       - name: create comment
-        if: ${{ steps.fcid.outputs.comments.length == 0 }}
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
         uses: actions-cool/issues-helper@v2.1.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          body: 'Some error!'
+          body: |
+            Error
+            <!-- Created by actions-cool/issues-helper -->
 
       - name: update comment
-        if: ${{ steps.fcid.outputs.comments.length == 1 }}
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
         uses: actions-cool/issues-helper@v2.1.1
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
-          comment-id: ${{ steps.fcid.outputs.comments[0].id }}
-          body: 'Some error again!'
+          out-comments: ${{ steps.fcid.outputs.comments }}
+          body: |
+            Error Again
+            <!-- Created by actions-cool/issues-helper -->
           update-mode: 'append'
 ```
 
@@ -1016,7 +1031,14 @@ jobs:
   - `Name` 与 actions 中保持一致
   - `Value` 填写刚才个人申请的 token
 
-当 actions 不填写 token 时，或项目未添加对应 secrets 时，会默认为 github-actions <kbd>bot</kbd>。[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow)。
+当 actions 不填写 token 时，或填写 `${{ secrets.GITHUB_TOKEN }}`，会默认为 `github-actions-bot`。[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow)。
+
+⏫ [返回列表](#列-表)
+
+### GitHub Docs
+
+- [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 ⏫ [返回列表](#列-表)
 
@@ -1033,12 +1055,10 @@ jobs:
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs)。
+更多查看：
 
-### GitHub Docs
-
-- [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
+2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
 ⏫ [返回列表](#列-表)
 
@@ -1117,6 +1137,8 @@ x2 + y2
 - name: Issues Helper
   uses: actions-cool/issues-helper@1.x
 ```
+
+- v2 [升级参考](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.md#%E4%BB%8E-v1x-%E5%8D%87%E7%BA%A7%E5%88%B0-v2%E6%9C%89%E4%BB%80%E4%B9%88%E6%B3%A8%E6%84%8F%E7%9A%84%E5%9C%B0%E6%96%B9%E5%90%97)
 
 ## Actions 模板
 
