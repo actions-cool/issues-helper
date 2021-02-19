@@ -1,4 +1,4 @@
-name: github pages2
+name: github pages
 on:
   push:
     branches:
