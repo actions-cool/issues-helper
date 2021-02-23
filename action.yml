@@ -1,6 +1,7 @@
 name: 'Issues Helper'
 description: 'A GitHub Action that easily helps you automatically manage issues'
 author: 'xrkffgg'
+# https://actions-cool.github.io/github-action-branding/
 branding:
   icon: 'message-square'
   color: 'black'
