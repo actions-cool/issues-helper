@@ -1,5 +1,11 @@
 # Changelog
 
+## v2.2.0
+
+`2021.03.21`
+
+- feat: Added `title-remove` parameter to `check-issue`. [#65](https://github.com/actions-cool/issues-helper/pull/65)
+
 ## v2.1.2
 
 `2021.02.19`
