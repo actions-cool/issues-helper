@@ -135,14 +135,10 @@ async function doCloseIssues(owner, repo, labels) {
 }
 
 async function doFindComments(owner, repo, issueNumber) {
-  const res = await octokit.issues.listComments({
-    owner,
-    repo,
-    issue_number: issueNumber,
-  });
+  const commentList = await listComments(owner, repo, issueNumber);
   core.info(`Actions: [find-comments][${issueNumber}] success!`);
   let comments = [];
-  res.data.forEach(item => {
+  commentList.forEach(item => {
     const a = commentAuth ? item.user.login === commentAuth : true;
     const b = bodyIncludes ? item.body.includes(bodyIncludes) : true;
     if (a && b) {
@@ -160,6 +156,20 @@ async function doFindComments(owner, repo, issueNumber) {
   });
   core.setOutput('comments', comments);
   core.info(`out-comments: ${JSON.stringify(comments)}`);
+}
+
+async function listComments(owner, repo, issueNumber, page = 1) {
+  let { data: comments } = await octokit.issues.listComments({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    per_page: 100,
+    page,
+  });
+  if (comments.length >= 100) {
+    comments = comments.concat(await listComments(page + 1));
+  }
+  return comments;
 }
 
 async function doLockIssues(owner, repo, labels) {
