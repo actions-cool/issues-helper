@@ -2,7 +2,7 @@
   "name": "issues-helper",
   "version": "2.1.2",
   "private": true,
-  "description": "Some operations on issue.",
+  "description": "A GitHub Action easily helps you automatically manage issues.",
   "main": "src/main.js",
   "scripts": {
     "start": "dumi dev",

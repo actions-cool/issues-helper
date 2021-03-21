@@ -51,6 +51,9 @@ inputs:
     description: 'Check use'
   body-includes:
     description: 'Query use'
+  # check
+  title-remove:
+    description: 'Remove some to check title whether empty.'
   title-includes:
     description: 'Query use'
   issue-creator:
