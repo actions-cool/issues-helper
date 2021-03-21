@@ -4,7 +4,7 @@
 
 `2021.03.21`
 
-- feat: Added `title-remove` parameter to `check-issue`. [#65](https://github.com/actions-cool/issues-helper/pull/65)
+- feat: Added `title-excludes` parameter to `check-issue`. [#65](https://github.com/actions-cool/issues-helper/pull/65)
 
 ## v2.1.2
 

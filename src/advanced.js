@@ -28,7 +28,7 @@ direction = direction === 'desc' ? 'desc' : 'asc';
 const commentAuth = core.getInput('comment-auth');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
-const titleRemove = core.getInput('title-remove');
+const titleRemove = core.getInput('title-excludes');
 const assigneeIncludes = core.getInput('assignee-includes');
 
 let issueState = core.getInput('issue-state') || 'open';
@@ -221,9 +221,7 @@ async function doMonthStatistics(owner, repo, labels, assignees) {
       });
     }
   }
-  let now = dayjs()
-    .utc()
-    .format('YYYY-MM-DD HH:mm:ss');
+  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
   let body = `
 - Created time: ${now}
 

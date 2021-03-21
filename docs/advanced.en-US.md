@@ -89,7 +89,7 @@ jobs:
 | issue-number | The number of issue | number | ✔ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
-| title-remove | Check whether the title is empty after removing the default title | string | ✖ |
+| title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
 | body-includes | Body contains check | string | ✖ |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels

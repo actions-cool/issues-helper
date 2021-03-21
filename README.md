@@ -794,7 +794,7 @@ jobs:
 | issue-number | 指定的 issue | number | ✔ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
-| title-remove | 检测标题移除默认 title 后是否为空 | string | ✖ |
+| title-excludes | 检测标题移除默认 title 后是否为空 | string | ✖ |
 | body-includes | 内容包含校验 | string | ✖ |
 
 - `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级

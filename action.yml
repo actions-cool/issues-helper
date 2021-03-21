@@ -54,7 +54,7 @@ inputs:
   body-includes:
     description: 'Query use'
   # check
-  title-remove:
+  title-excludes:
     description: 'Remove some to check title whether empty.'
   title-includes:
     description: 'Query use'
