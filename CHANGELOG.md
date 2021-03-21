@@ -1,3 +1,23 @@
+# Changelog
+
+## v2.2.1
+
+`2021.03.21`
+
+- fix: list comment page lost in `find-comments`. [#66](https://github.com/actions-cool/issues-helper/pull/66)
+
+## v2.2.0
+
+`2021.03.21`
+
+- feat: Added `title-excludes` parameter to `check-issue`. [#65](https://github.com/actions-cool/issues-helper/pull/65)
+
+## v2.1.2
+
+`2021.02.19`
+
+- feat: update/delete comment support find-comments out. [#63](https://github.com/actions-cool/issues-helper/pull/63)
+
 ## v2.1.1
 
 `2021.02.03`

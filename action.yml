@@ -1,9 +1,12 @@
 name: 'Issues Helper'
 description: 'A GitHub Action that easily helps you automatically manage issues'
 author: 'xrkffgg'
+
+# https://actions-cool.github.io/github-action-branding/
 branding:
   icon: 'message-square'
   color: 'black'
+
 inputs:
   actions:
     description: 'Action name'
@@ -40,12 +43,19 @@ inputs:
     description: 'Issue reactions emoji'
   direction:
     description: 'Find comments direction'
+
+  # comments
   comment-auth:
     description: 'Find comments query auth'
+  out-comments:
+    description: 'Find comments out comments'
   assignee-includes:
     description: 'Check use'
   body-includes:
     description: 'Query use'
+  # check
+  title-excludes:
+    description: 'Remove some to check title whether empty.'
   title-includes:
     description: 'Query use'
   issue-creator:
@@ -78,6 +88,7 @@ inputs:
     description: 'For month-statistics'
   count-comments:
     description: 'For month-statistics'
+
 outputs:
   issue-number:
     description: 'Create Issue Number'
@@ -87,6 +98,7 @@ outputs:
     description: 'Find comments'
   check-result:
     description: 'Check issue'
+
 runs:
   using: node12
   main: 'dist/index.js'

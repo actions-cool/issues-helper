@@ -29,7 +29,7 @@ with:
 
 - `count-lables`：不管设置 `true` 还是 `'ture'`，在程序里接收到的都是字符串格式
 
-同时输出的也是字符串格式
+同时输出的也是字符串格式。[参看](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs)。
 
 - `check-result`：判断条件为 `if: steps.xxid.outputs.check-result == 'true'`
 

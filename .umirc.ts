@@ -4,7 +4,7 @@ import { defineConfig } from 'dumi';
 const name = 'issues-helper';
 
 export default defineConfig({
-  title: 'Issue Helper',
+  title: 'Issues Helper',
   mode: 'site',
   favicon: 'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
   logo: 'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',

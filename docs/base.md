@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -62,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,7 +85,7 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -116,7 +116,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -158,7 +158,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +189,7 @@ jobs:
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.1.1
+  uses: actions-cool/issues-helper@v2.2.1
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -215,7 +215,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -227,6 +227,9 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
+
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ## `lock-issue`
 
@@ -245,7 +248,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -277,7 +280,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -316,7 +319,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -335,7 +338,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -356,7 +359,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -379,7 +382,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -400,7 +403,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -431,7 +434,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.1.1
+          uses: actions-cool/issues-helper@v2.2.1
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -444,12 +447,14 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
 | comment-id | 指定的 comment | number | ✔ |
+| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
 | body | 更新 comment 的内容 | string | ✖ |
 | update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
 | contents | 增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
 - `body` 不填时，会保持原有
 - `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
+- 当 `out-comments` 输入时，`comment-id` 不起作用
 
 ## `update-issue`
 
@@ -457,7 +462,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -504,7 +509,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}

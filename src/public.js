@@ -110,11 +110,7 @@ async function getIssuesInMonth(owner, repo, thisMonth, page = 1) {
 
 // **************************************************************************
 function getCreatedMonth(d) {
-  return (
-    dayjs(d)
-      .utc()
-      .month() + 1
-  );
+  return dayjs(d).utc().month() + 1;
 }
 
 // **************************************************************************

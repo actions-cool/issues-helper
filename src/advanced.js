@@ -28,6 +28,7 @@ direction = direction === 'desc' ? 'desc' : 'asc';
 const commentAuth = core.getInput('comment-auth');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
+const titleRemove = core.getInput('title-excludes');
 const assigneeIncludes = core.getInput('assignee-includes');
 
 let issueState = core.getInput('issue-state') || 'open';
@@ -67,7 +68,7 @@ async function doCheckInactive(owner, repo, labels) {
  * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
  */
 async function doCheckIssue(owner, repo, issueNumber) {
-  var checkResult = true;
+  let checkResult = true;
   const issue = await octokit.issues.get({
     owner,
     repo,
@@ -84,6 +85,17 @@ async function doCheckIssue(owner, repo, issueNumber) {
       }
     });
     !checkAssignee ? (checkResult = false) : null;
+  }
+
+  if (!!checkResult && titleRemove) {
+    const removes = dealStringToArr(titleRemove);
+    let t = issue.data.title;
+    removes.forEach(re => {
+      t = t.replace(re, '');
+    });
+    if (t.trim().length == 0) {
+      checkResult = false;
+    }
   }
 
   if (!!checkResult && titleIncludes) {
@@ -123,14 +135,10 @@ async function doCloseIssues(owner, repo, labels) {
 }
 
 async function doFindComments(owner, repo, issueNumber) {
-  const res = await octokit.issues.listComments({
-    owner,
-    repo,
-    issue_number: issueNumber,
-  });
+  const commentList = await listComments(owner, repo, issueNumber);
   core.info(`Actions: [find-comments][${issueNumber}] success!`);
   let comments = [];
-  res.data.forEach(item => {
+  commentList.forEach(item => {
     const a = commentAuth ? item.user.login === commentAuth : true;
     const b = bodyIncludes ? item.body.includes(bodyIncludes) : true;
     if (a && b) {
@@ -147,6 +155,21 @@ async function doFindComments(owner, repo, issueNumber) {
     }
   });
   core.setOutput('comments', comments);
+  core.info(`out-comments: ${JSON.stringify(comments)}`);
+}
+
+async function listComments(owner, repo, issueNumber, page = 1) {
+  let { data: comments } = await octokit.issues.listComments({
+    owner,
+    repo,
+    issue_number: issueNumber,
+    per_page: 100,
+    page,
+  });
+  if (comments.length >= 100) {
+    comments = comments.concat(await listComments(page + 1));
+  }
+  return comments;
 }
 
 async function doLockIssues(owner, repo, labels) {
@@ -208,9 +231,7 @@ async function doMonthStatistics(owner, repo, labels, assignees) {
       });
     }
   }
-  let now = dayjs()
-    .utc()
-    .format('YYYY-MM-DD HH:mm:ss');
+  let now = dayjs().utc().format('YYYY-MM-DD HH:mm:ss');
   let body = `
 - Created time: ${now}
 

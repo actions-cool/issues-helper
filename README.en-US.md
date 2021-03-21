@@ -108,6 +108,14 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 </tr>
 </table>
 
+## ⚡ Feedback
+
+You are very welcome to try it out and put forward your comments. You can use the following methods:
+
+- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
+- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
+- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`
+
 ## List
 
 When the following list does not have the features you want, you can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
@@ -162,7 +170,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -204,7 +212,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -229,7 +237,7 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -262,7 +270,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -306,7 +314,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -339,7 +347,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.1.1
+  uses: actions-cool/issues-helper@v2.2.1
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -367,7 +375,7 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -379,6 +387,9 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
+
+- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -399,7 +410,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -433,7 +444,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -468,7 +479,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -489,7 +500,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -512,7 +523,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -537,7 +548,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -560,7 +571,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -593,7 +604,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.1.1
+          uses: actions-cool/issues-helper@v2.2.1
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -606,12 +617,14 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
 | comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
 | body | Update the content of comment | string | ✖ |
 | update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
 | contents | Add [reaction](#reactions-types) | string | ✖ |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
+- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -621,7 +634,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -671,7 +684,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -714,7 +727,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -767,7 +780,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -783,6 +796,7 @@ jobs:
 | issue-number | The number of issue | number | ✔ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
+| title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
 | body-includes | Body contains check | string | ✖ |
 
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
@@ -806,7 +820,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -840,7 +854,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.1.1
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -888,7 +902,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -935,7 +949,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -963,13 +977,15 @@ Flexible reference.
 
 ### `find-comments + create-comment + update-comment`
 
-Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment containing `error` created by k, if there is only one, update the comment, if not, add a new comment.
+Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment created by k that contains `<!-- Created by actions-cool/issues-helper -->`, if so, update the comment, If not, add a comment.
+
+Of course, if you need such a scene, you can directly use [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment).
 
 ```yml
 name: Test
 
 on:
-  isssue:
+  issues:
     types: [edited]
 
 jobs:
@@ -978,32 +994,40 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         id: fcid
         with:
           actions: 'find-comments'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           comment-auth: k
-          body-includes: 'error'
+          body-includes: '<!-- Created by actions-cool/issues-helper -->'
+
+      # Output view found content. GitHub default outputs are strings
+      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
+        shell: bash
 
       - name: create comment
-        if: ${{ steps.fcid.outputs.comments.length == 0 }}
-        uses: actions-cool/issues-helper@v2.1.1
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          body: 'Some error!'
+          body: |
+            Error
+            <!-- Created by actions-cool/issues-helper -->
 
       - name: update comment
-        if: ${{ steps.fcid.outputs.comments.length == 1 }}
-        uses: actions-cool/issues-helper@v2.1.1
+        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
-          comment-id: ${{ steps.fcid.outputs.comments[0].id }}
-          body: 'Some error again!'
+          out-comments: ${{ steps.fcid.outputs.comments }}
+          body: |
+            Error Again
+            <!-- Created by actions-cool/issues-helper -->
           update-mode: 'append'
 ```
 
@@ -1022,7 +1046,14 @@ Need to have the person token with push permission.
   - `Name` is the same as in actions
   - `Value` fill in the token just applied by the individual
 
-When the token is not filled in actions or the corresponding secrets are not added to the project, it will default to github-actions <kbd>bot</kbd>. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
+
+⏫ [Back to list](#List)
+
+### GitHub Docs
+
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
 ⏫ [Back to list](#List)
 
@@ -1030,7 +1061,7 @@ When the token is not filled in actions or the corresponding secrets are not add
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2.1.1
+  uses: actions-cool/issues-helper@v2.2.1
   id: createissue
   with:
     actions: 'create-issue'
@@ -1039,12 +1070,10 @@ When the token is not filled in actions or the corresponding secrets are not add
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-[More](https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs).
+More:
 
-### GitHub Docs
-
-- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
+2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
 ⏫ [Back to list](#List)
 
@@ -1123,19 +1152,13 @@ Click the `···` icon in the upper right corner of a comment, select `Copy lin
   uses: actions-cool/issues-helper@1.x
 ```
 
+- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.en-US.md#what-should-i-pay-attention-to-when-upgrading-from-v1x-to-v2)
+
 ## Actions Template
 
 - You can directly use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repositorie template
 - Personal exercises and tests [Actions](https://github.com/actions-cool/test-issues-helper) repository
 - Can also refer to the warehouse of [online users](#who-is-using)
-
-## ⚡ Feedback
-
-You are very welcome to try it out and put forward your comments. You can use the following methods:
-
-- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
-- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
-- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`
 
 ## LICENSE
 

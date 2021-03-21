@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2.1.1
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -60,3 +60,7 @@ jobs:
 - 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
 - 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论
 - 提交 [Pull Request](https://github.com/actions-cool/issues-helper/pulls) 改进 `issues-helper` 的代码
+
+也欢迎加入 钉钉交流群
+
+![](https://github.com/actions-cool/resources/blob/main/dingding.jpeg?raw=true)
