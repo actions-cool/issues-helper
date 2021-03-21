@@ -7586,6 +7586,7 @@ direction = direction === 'desc' ? 'desc' : 'asc';
 const commentAuth = core.getInput('comment-auth');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
+const titleRemove = core.getInput('title-remove');
 const assigneeIncludes = core.getInput('assignee-includes');
 
 let issueState = core.getInput('issue-state') || 'open';
@@ -7625,7 +7626,7 @@ async function doCheckInactive(owner, repo, labels) {
  * 关键字匹配，是否包含前一个某个+后一个某个 '官网,网站/挂了,无法访问'
  */
 async function doCheckIssue(owner, repo, issueNumber) {
-  var checkResult = true;
+  let checkResult = true;
   const issue = await octokit.issues.get({
     owner,
     repo,
@@ -7642,6 +7643,17 @@ async function doCheckIssue(owner, repo, issueNumber) {
       }
     });
     !checkAssignee ? (checkResult = false) : null;
+  }
+
+  if (!!checkResult && titleRemove) {
+    const removes = dealStringToArr(titleRemove);
+    let t = issue.data.title;
+    removes.forEach(re => {
+      t = t.replace(re, '');
+    });
+    if (t.trim().length == 0) {
+      checkResult = false;
+    }
   }
 
   if (!!checkResult && titleIncludes) {

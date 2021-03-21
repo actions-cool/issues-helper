@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.1.2
+        uses: actions-cool/issues-helper@v2.2.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.1.2
+        uses: actions-cool/issues-helper@v2.2.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -85,6 +85,7 @@ jobs:
 | issue-number | 指定的 issue | number | ✔ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
+| title-remove | 检测标题移除默认 title 后是否为空 | string | ✖ |
 | body-includes | 内容包含校验 | string | ✖ |
 
 - `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
@@ -106,7 +107,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.1.2
+        uses: actions-cool/issues-helper@v2.2.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -138,7 +139,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.1.2
+    uses: actions-cool/issues-helper@v2.2.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -184,7 +185,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.1.2
+        uses: actions-cool/issues-helper@v2.2.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -229,7 +230,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.1.2
+        uses: actions-cool/issues-helper@v2.2.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
