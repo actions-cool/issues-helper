@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.2.0
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -73,7 +73,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.2.0
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -111,7 +111,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.2.0
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -143,7 +143,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.2.0
+    uses: actions-cool/issues-helper@v2.2.1
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +189,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.2.0
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -234,7 +234,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.2.0
+        uses: actions-cool/issues-helper@v2.2.1
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}

@@ -1,7 +1,9 @@
 const { readFileSync, writeFileSync } = require('fs');
 
-const last = /v2\.1\.2/g;
-const now = 'v2.2.0';
+const { version } = JSON.parse(readFileSync('./package.json', 'utf-8'));
+
+const last = /v2\.2\.0/g;
+const now = `v${version}`;
 
 let readme = readFileSync('./README.md', 'utf-8');
 readme = readme.replace(last, now);
