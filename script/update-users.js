@@ -34,8 +34,8 @@ ${table}
 // **************************************************************************
 
 const point = '<table>';
-const cnPoint = `## 列 表`;
-const enPoint = `## List`;
+const cnPoint = `## ⚡ 反馈`;
+const enPoint = `## ⚡ Feedback`;
 
 // **************************************************************************
 
@@ -67,7 +67,8 @@ function getImg(o) {
     <a href="${o.url}">
       <img src="${o.logo}" width="46" />
       <div>${getName(o)}</div>
-    </a>`;
+    </a>
+  `;
   }
   return ``;
 }
