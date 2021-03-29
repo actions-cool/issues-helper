@@ -21,7 +21,7 @@ features:
 footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
 ---
 
-## 🍭 快速上手
+## 🍭 快速上手2
 
 这里列举一个非常简单以及常用的例子。对应场景为：当一个 issue 新增 `help wanted` 标签时，系统会自动进行评论。
 
