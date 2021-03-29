@@ -127,6 +127,18 @@
 </tr>
 </table>
 
+## ⚡ 反馈
+
+非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
+
+- 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
+- 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论
+- 提交 [Pull Request](https://github.com/actions-cool/issues-helper/pulls) 改进 `issues-helper` 的代码
+
+也欢迎加入 钉钉交流群
+
+![](https://github.com/actions-cool/resources/blob/main/dingding.jpeg?raw=true)
+
 ## 列 表
 
 当以下列表没有你想要的功能时，可以在 [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18) 中提出。

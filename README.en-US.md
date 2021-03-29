@@ -127,6 +127,14 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 </tr>
 </table>
 
+## ⚡ Feedback
+
+You are very welcome to try it out and put forward your comments. You can use the following methods:
+
+- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
+- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
+- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`
+
 ## List
 
 When the following list does not have the features you want, you can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
