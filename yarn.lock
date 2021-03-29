@@ -1218,6 +1218,11 @@
   resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.35.tgz#42c953a4e2b18ab931f72477e7012172f4ffa313"
   integrity sha512-Lt+wj8NVPx0zUmUwumiVXapmaLUcAk3yPuHCFVXras9k5VT9TdhJqKqGVUQCD60OTMCl0qxJ57OiTL0Mic3Iag==
 
+"@types/node@^14.14.28":
+  version "14.14.37"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-14.14.37.tgz#a3dd8da4eb84a996c36e331df98d82abd76b516e"
+  integrity sha512-XYmBiy+ohOR4Lh5jE379fV2IU+6Jn4g5qASinhitfyO71b/sCo6MKsMLF5tc7Zf2CE8hViVQyYSobJNke8OvUw==
+
 "@types/normalize-package-data@^2.4.0":
   version "2.4.0"
   resolved "https://registry.yarnpkg.com/@types/normalize-package-data/-/normalize-package-data-2.4.0.tgz#e486d0d97396d79beedd0a6e33f4534ff6b4973e"
@@ -1288,6 +1293,13 @@
     "@types/prop-types" "*"
     "@types/scheduler" "*"
     csstype "^3.0.2"
+
+"@types/sax@^1.2.1":
+  version "1.2.1"
+  resolved "https://registry.yarnpkg.com/@types/sax/-/sax-1.2.1.tgz#e0248be936ece791a82db1a57f3fb5f7c87e8172"
+  integrity sha512-dqYdvN7Sbw8QT/0Ci5rhjE4/iCMJEM0Y9rHpCu+gGXD9Lwbz28t6HI2yegsB6BoV1sShRMU6lAmAcgRjmFy7LA==
+  dependencies:
+    "@types/node" "*"
 
 "@types/scheduler@*":
   version "0.16.1"
@@ -1548,10 +1560,10 @@
     react-router-dom "5.2.0"
     regenerator-runtime "0.13.5"
 
-"@umijs/preset-dumi@1.1.7":
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.1.7.tgz#9f9a616402e19be9cd39f36aefe2bb3152653910"
-  integrity sha512-/YOf+4WzVzVrVX4xyxeZbwsQK4mL7yKP8gxbxsA6+52AS/EvFJDpJpkYfzKEjvi3eVBDkpq5Wy1bx/lmLx0kTw==
+"@umijs/preset-dumi@1.1.10":
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/@umijs/preset-dumi/-/preset-dumi-1.1.10.tgz#065bad25c2e38f06c79a2dfcd321dc8c3b78f8ad"
+  integrity sha512-wBjwa/joP8IXO4v5zva8qCbxYdcKiBBqD68/VyLK1JHKT80jJKTLRxAdRKnSoi0yL5yzLXdMk7+BOHF0zk4T3g==
   dependencies:
     "@babel/core" "^7.7.2"
     "@babel/generator" "^7.7.2"
@@ -1567,7 +1579,7 @@
     copy-text-to-clipboard "^2.2.0"
     deepmerge "^4.2.2"
     dumi-assets-types "1.0.0"
-    dumi-theme-default "1.0.7"
+    dumi-theme-default "1.0.10"
     enhanced-resolve "^4.1.1"
     github-slugger "^1.3.0"
     hast-util-has-property "^1.0.4"
@@ -1590,6 +1602,7 @@
     remark-parse "^9.0.0"
     remark-rehype "^8.0.0"
     remark-stringify "^9.0.0"
+    sitemap "^6.3.3"
     slash2 "^2.0.0"
     terser "^5.5.1"
     unified "^8.4.1"
@@ -1743,6 +1756,11 @@ arch@^2.1.1:
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/arch/-/arch-2.2.0.tgz#1bc47818f305764f23ab3306b0bfc086c5a29d11"
   integrity sha512-Of/R0wqp83cgHozfIYLbBMnej79U/SVGOOyuB3VVFv1NRM/PSFMK12x9KVtiYzJqmnU5WR2qp0Z5rHb7sWGnFQ==
+
+arg@^5.0.0:
+  version "5.0.0"
+  resolved "https://registry.yarnpkg.com/arg/-/arg-5.0.0.tgz#a20e2bb5710e82950a516b3f933fee5ed478be90"
+  integrity sha512-4P8Zm2H+BRS+c/xX1LrHw0qKpEhdlZjLCgWy+d78T9vqa2Z2SiD2wMrYuWIAFy5IZUD7nnNXroRttz+0RzlrzQ==
 
 argparse@^1.0.7:
   version "1.0.10"
@@ -2882,21 +2900,21 @@ dumi-assets-types@1.0.0:
   resolved "https://registry.yarnpkg.com/dumi-assets-types/-/dumi-assets-types-1.0.0.tgz#d5368cb11045b203bf1ef1080e553b2287a2ec81"
   integrity sha512-7nhSeWM15vybbUAMPLZsdls2jKoHB2UU4P1RM6kLPucuS8eC/HSmufquFqTTYtX4oIDLHGtil/dVtMreNGwhdA==
 
-dumi-theme-default@1.0.7:
-  version "1.0.7"
-  resolved "https://registry.yarnpkg.com/dumi-theme-default/-/dumi-theme-default-1.0.7.tgz#55fc5cf9c4462668c8b2c51642fec506d822bee9"
-  integrity sha512-OSlNa6Eaxpty7c62Kg7EWFZj+92Lwcai0/SzlzwK8ZMgPyEoarrlvzMujDxplPQjkZyLq9f0Yo5P+nVwTlFv7Q==
+dumi-theme-default@1.0.10:
+  version "1.0.10"
+  resolved "https://registry.yarnpkg.com/dumi-theme-default/-/dumi-theme-default-1.0.10.tgz#8f2da347da16e61889b5fd3a3601c805ac8a70d0"
+  integrity sha512-Hdy3jbVk+ocQSYFXLYR/7HW4NK04VhwDxvpvvLuCzTP9Hq7ZQUCjRhOjYbk3/H+QwDECKVkGP99IgeKtAsTdQg==
   dependencies:
     prism-react-renderer "^1.1.1"
     prismjs "^1.21.0"
     rc-tabs "^11.7.1"
 
-dumi@1.1.7:
-  version "1.1.7"
-  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.1.7.tgz#792064e16611fef60123bd8a8999cdd4ca95e625"
-  integrity sha512-N97AI/LhSe2NL+RssxfT+XOLYZVteMivSYtkLIdC51+olpGw/9RS4SDQphX9UbvapbYYBqd3gFqVvYhVCFJtVA==
+dumi@^1.1.10:
+  version "1.1.10"
+  resolved "https://registry.yarnpkg.com/dumi/-/dumi-1.1.10.tgz#12605cdc33a10f4d2396f886ddd9011698c29b5b"
+  integrity sha512-qLxnMci1duHCelDDfATYpgjoM2dQ1dsL6z/e+Ve8uPyruRQKFjo5qojAUFuv++/GPUCmmeZRgB/Do7FbA5T4Xw==
   dependencies:
-    "@umijs/preset-dumi" "1.1.7"
+    "@umijs/preset-dumi" "1.1.10"
     umi "^3.0.0"
 
 duplexer2@0.0.2:
@@ -7191,6 +7209,11 @@ safer-buffer@^2.1.0:
   resolved "https://registry.yarnpkg.com/safer-buffer/-/safer-buffer-2.1.2.tgz#44fa161b0187b9549dd84bb91802f9bd8385cd6a"
   integrity sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==
 
+sax@^1.2.4:
+  version "1.2.4"
+  resolved "https://registry.yarnpkg.com/sax/-/sax-1.2.4.tgz#2816234e2378bddc4e5354fab5caa895df7100d9"
+  integrity sha512-NqVDv9TpANUjFm0N8uM5GxL36UgKi9/atZw+x7YFnQ8ckwFGKrl4xX4yWtrey3UJm5nP1kUbnYgLopqWNSRhWw==
+
 scheduler@^0.19.1:
   version "0.19.1"
   resolved "https://registry.yarnpkg.com/scheduler/-/scheduler-0.19.1.tgz#4f3e2ed2c1a7d65681f4c854fa8c5a1ccb40f196"
@@ -7305,6 +7328,16 @@ signal-exit@^3.0.0, signal-exit@^3.0.2:
   version "3.0.3"
   resolved "https://registry.yarnpkg.com/signal-exit/-/signal-exit-3.0.3.tgz#a1410c2edd8f077b08b4e253c8eacfcaf057461c"
   integrity sha512-VUJ49FC8U1OxwZLxIbTTrDvLnf/6TDgxZcK8wxR8zs13xpx7xbG60ndBlhNrFi2EMuFRoeDoJO7wthSLq42EjA==
+
+sitemap@^6.3.3:
+  version "6.4.0"
+  resolved "https://registry.yarnpkg.com/sitemap/-/sitemap-6.4.0.tgz#b4bc4edf36de742405a7572bc3e467ba484b852e"
+  integrity sha512-DoPKNc2/apQZTUnfiOONWctwq7s6dZVspxAZe2VPMNtoqNq7HgXRvlRnbIpKjf+8+piQdWncwcy+YhhTGY5USQ==
+  dependencies:
+    "@types/node" "^14.14.28"
+    "@types/sax" "^1.2.1"
+    arg "^5.0.0"
+    sax "^1.2.4"
 
 slash2@^2.0.0:
   version "2.0.0"
