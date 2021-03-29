@@ -67,7 +67,8 @@ function getImg(o) {
     <a href="${o.url}">
       <img src="${o.logo}" width="46" />
       <div>${getName(o)}</div>
-    </a>`;
+    </a>
+  `;
   }
   return ``;
 }

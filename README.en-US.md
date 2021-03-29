@@ -34,91 +34,98 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     <a href="https://github.com/ant-design/ant-design">
       <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
       <div>ant-design</div>
-    </a></td>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design-blazor/ant-design-blazor">
       <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46" />
       <div>ant-design-blazor</div>
-    </a></td>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/vueComponent/ant-design-vue">
       <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
       <div>ant-design-vue</div>
-    </a></td>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/dumi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
       <div>dumi</div>
-    </a></td>
+    </a>
+  </td>
 </tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/vuejs/jsx-next">
       <img src="https://avatars.githubusercontent.com/u/6128107?s=200&v=4" width="46" />
       <div>jsx-next</div>
-    </a></td>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/mui-org/material-ui">
       <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
       <div>material-ui</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/prettier/prettier">
-      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46" />
-      <div>prettier</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/ant-design/pro-components">
-      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <div>pro-components</div>
-    </a></td>
-</tr><tr>
-  <td align="center" width="180">
-    <a href="https://github.com/react-component">
-      <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
-      <div>react-component</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
-      <div>react-music-player</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/umi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>umi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/vitejs/vite">
-      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46" />
-      <div>vite</div>
-    </a></td>
-</tr><tr>
-  <td align="center" width="180">
-    <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
-      <div>vue-request</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/zoo-js/zoo">
-      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
-      <div>zoo</div>
-    </a></td>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/jdf2e/nutui">
       <img src="https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46" />
       <div>nutui</div>
-    </a></td>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/prettier/prettier">
+      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46" />
+      <div>prettier</div>
+    </a>
+  </td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/ant-design/pro-components">
+      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
+      <div>pro-components</div>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/react-component">
+      <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
+      <div>react-component</div>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
+      <div>react-music-player</div>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/umijs/umi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
+      <div>umi</div>
+    </a>
+  </td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/vitejs/vite">
+      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46" />
+      <div>vite</div>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/AttoJS/vue-request">
+      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
+      <div>vue-request</div>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/zoo-js/zoo">
+      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
+      <div>zoo</div>
+    </a>
+  </td>
   <td align="center" width="180"></td>
 </tr>
 </table>
-
-## ⚡ Feedback
-
-You are very welcome to try it out and put forward your comments. You can use the following methods:
-
-- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
-- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
-- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`
 
 ## List
 

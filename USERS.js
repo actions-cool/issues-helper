@@ -57,6 +57,10 @@ const users = [
     url: 'https://github.com/vitejs/vite',
     logo: 'https://avatars.githubusercontent.com/u/65625612?s=200&v=4'
   },
+  {
+    url: 'https://github.com/jdf2e/nutui',
+    logo: 'https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
+  },
 ];
 
 // **************************************************************************
