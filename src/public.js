@@ -1,4 +1,3 @@
-require('dotenv').config();
 const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 
