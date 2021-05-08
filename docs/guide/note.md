@@ -45,3 +45,7 @@ ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trig
 
 - 仓库的所有者或协作者，若有组织，包括成员
 - issue 的参与者，包括创建者、评论者
+
+## 运行基准
+
+比如：我用 Tag 触发一个 Action，触发基准的代码就会走这个 Tag 对应代码的 Action 定义，而非主分支代码。
