@@ -82,13 +82,13 @@ function getImg(o) {
 }
 
 function getImgWidth(o) {
-  if(o) {
+  if (o) {
     let width = o.width;
     if (width === 'auto') {
-      width = ''
+      width = '';
     } else {
       width = width ? width : DEFAULT_WIDTH;
-    };
+    }
     return ` width="${width}"`;
   }
   return '';
