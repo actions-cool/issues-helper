@@ -4,7 +4,8 @@
 /**
  * @param {string} url        github地址
  * @param {string} logo       logo地址
- * @param {string} width      自定义宽度，默认 46
+ * @param {string} width      自定义宽度，默认46
+ * @param {string} imgStyle   自定义logo的style
  * @param {string} customLink 自定义主页链接
  */
 
@@ -71,6 +72,7 @@ const users = [
   },
   {
     width: 'auto',
+    imgStyle: 'margin: 1em 0',
     url: 'https://github.com/alibaba/formily',
     logo: 'https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg'
   },

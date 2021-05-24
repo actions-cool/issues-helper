@@ -65,7 +65,7 @@ function getImg(o) {
   if (o) {
     return `
     <a href="${o.url}">
-      <img src="${o.logo}" width="${o?.width ?? '46'}" />
+      <img src="${o.logo}" width="${o?.width ?? '46'}" style="${o?.imgStyle ?? ''}" />
       <div>${getName(o)}</div>
     </a>
   `;
