@@ -61,6 +61,10 @@ const users = [
     url: 'https://github.com/jdf2e/nutui',
     logo: 'https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png'
   },
+  {
+    url: 'https://github.com/alibaba/formily',
+    logo: 'https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg'
+  },
 ];
 
 // **************************************************************************
