@@ -65,7 +65,7 @@ function getImg(o) {
   if (o) {
     return `
     <a href="${o.url}">
-      <img src="${o.logo}" width="46" />
+      <img src="${o.logo}" width="${o?.width ?? '46'}" />
       <div>${getName(o)}</div>
     </a>
   `;
@@ -75,7 +75,7 @@ function getImg(o) {
 
 function getName(o) {
   if (o) {
-    return o.url.split('/').slice(-1)[0];
+    return o?.customLink ?? o.url.split('/').slice(-1)[0];
   }
   return ``;
 }

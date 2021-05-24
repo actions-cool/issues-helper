@@ -57,7 +57,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 </tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/alibaba/formily">
-      <img src="https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg" width="46" />
+      <img src="https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg" width="auto" />
       <div>formily</div>
     </a>
   </td>
