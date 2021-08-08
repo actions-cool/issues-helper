@@ -71,7 +71,7 @@ async function doQueryIssues(owner, repo, labels, state, creator) {
       if (a && b && iss.pull_request === undefined) {
         if (excludeLabels) {
           const labels = dealStringToArr(excludeLabels);
-          for (let i = 0; i < iss.labels.length; i+=1) {
+          for (let i = 0; i < iss.labels.length; i += 1) {
             if (labels.includes(iss.labels[i].name)) return;
           }
         }
