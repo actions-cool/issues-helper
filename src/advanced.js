@@ -39,7 +39,7 @@ const inactiveLabel = core.getInput('inactive-label') || 'inactive';
 
 // **************************************************************************
 async function doCheckInactive(owner, repo, labels) {
-  const issues = await doQueryIssues(owner, repo, labels, issueState);
+  const issues = await doQueryIssues(owner, repo, labels, issueState, excludeLabels);
 
   if (issues.length) {
     for (let i = 0; i < issues.length; i++) {
