@@ -1,5 +1,3 @@
-const { dealStringToArr } = require('../src/util');
-
 describe('Test Public', () => {
   it('test query', () => {
     const issues = [
