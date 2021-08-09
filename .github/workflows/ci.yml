@@ -15,5 +15,8 @@ jobs:
       - name: format
         run: yarn format-check
 
+      - name: test
+        run: yarn test
+
       - name: package
         run: yarn package

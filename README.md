@@ -783,6 +783,7 @@ jobs:
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `open`。可选值 `all` `closed`，非这 2 项时，均为 `open`
@@ -871,6 +872,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -955,6 +957,7 @@ jobs:
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `open`。可选值 `all` `closed`，非这 2 项时，均为 `open`

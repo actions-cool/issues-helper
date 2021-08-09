@@ -12,6 +12,7 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "format": "prettier --write **/*.ts **/*.js",
     "format-check": "prettier --check **/*.ts **/*.js",
+    "test": "father test",
     "package": "ncc build src/main.js -o dist",
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
@@ -35,6 +36,7 @@
     "@actions/github": "^4.0.0",
     "@octokit/rest": "^18.0.12",
     "dayjs": "^1.9.7",
+    "father": "^2.30.7",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
