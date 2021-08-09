@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -44,6 +44,7 @@ jobs:
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -69,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -107,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -128,6 +129,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -139,7 +141,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -185,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -208,6 +210,7 @@ jobs:
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
@@ -230,7 +233,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}

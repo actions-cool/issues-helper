@@ -1,6 +1,6 @@
 {
   "name": "issues-helper",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "main": "src/main.js",

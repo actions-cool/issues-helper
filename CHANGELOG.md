@@ -1,3 +1,9 @@
+## v2.3.0
+
+`2021.08.09`
+
+- feat: add exclude-labels for `check-inactive` `close-issues` `lock-issues`. [#74](https://github.com/actions-cool/issues-helper/pull/74)
+
 ## v2.2.1
 
 `2021.03.21`
