@@ -11800,6 +11800,7 @@ async function doQueryIssues(owner, repo, labels, state, creator) {
   let issues = [];
   let issueNumbers = [];
   if (res.length) {
+    const excludeLabelsArr = dealStringToArr(excludeLabels);
     res.forEach(iss => {
       const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
       const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
@@ -11809,10 +11810,9 @@ async function doQueryIssues(owner, repo, labels, state, creator) {
        * You can identify pull requests by the pull_request key.
        */
       if (a && b && iss.pull_request === undefined) {
-        if (excludeLabels) {
-          const labels = dealStringToArr(excludeLabels);
+        if (excludeLabelsArr.length) {
           for (let i = 0; i < iss.labels.length; i += 1) {
-            if (labels.includes(iss.labels[i].name)) return;
+            if (excludeLabelsArr.includes(iss.labels[i].name)) return;
           }
         }
 

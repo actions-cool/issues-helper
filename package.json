@@ -1,6 +1,6 @@
 {
   "name": "issues-helper",
-  "version": "2.3.0",
+  "version": "2.3.1",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "main": "src/main.js",
@@ -16,7 +16,8 @@
     "package": "ncc build src/main.js -o dist",
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
-    "ver": "node ./script/update-version.js"
+    "ver": "node ./script/update-version.js",
+    "pub": "npm run package && npm run ver"
   },
   "author": "xrkffgg",
   "license": "MIT",
