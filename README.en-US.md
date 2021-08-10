@@ -127,8 +127,8 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/zoo-js/zoo">
-      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
+    <a href="https://github.com/vuepress/vuepress-next">
+      <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
     </a>
   </td>
 </tr>
@@ -136,7 +136,22 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
   <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
   <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
+</tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/zoo-js/zoo">
+      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+</tr>
+<tr>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
 </tr>
 </table>
 

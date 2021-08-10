@@ -73,6 +73,10 @@ const users = [
     url: 'https://github.com/alibaba/formily',
     logo: 'https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg',
   },
+  {
+    url: 'https://github.com/vuepress/vuepress-next',
+    logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
+  },
 ];
 
 // **************************************************************************
