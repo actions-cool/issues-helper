@@ -74,7 +74,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180">
     <a href="https://github.com/jdf2e/nutui">
-      <img src="https://img14.360buyimg.com/imagetools/s200x200_jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
     </a>
   </td>
 </tr>
