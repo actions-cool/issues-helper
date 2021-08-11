@@ -74,6 +74,9 @@ inputs:
     description: 'The reason lock issue'
   inactive-label:
     description: 'Issue label set use'
+  exclude-labels:
+    description: 'Query issues exclude labels'
+
   duplicate-command:
     description: 'For mark-duplicate'
   duplicate-labels:

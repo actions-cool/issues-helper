@@ -5,10 +5,12 @@ const { stripIndent } = require('common-tags');
 
 let { users } = require('../USERS.js');
 
-users.sort((a, b) => getName(a).localeCompare(getName(b)));
+users.sort((a, b) => getCurrentName(a).localeCompare(getCurrentName(b)));
 
 // **************************************************************************
+const DEFAULT_WIDTH = 46;
 
+// **************************************************************************
 let table = '';
 let row = users.length / 4;
 let lastNo = users.length % 4;
@@ -21,7 +23,14 @@ for (let j = 1; j <= row; j++) {
   <td align="center" width="180">${getImg(users[(j - 1) * 4 + 1])}</td>
   <td align="center" width="180">${getImg(users[(j - 1) * 4 + 2])}</td>
   <td align="center" width="180">${getImg(users[(j - 1) * 4 + 3])}</td>
-</tr>`;
+</tr>
+<tr>
+  <td align="center" width="180">${getName(users[(j - 1) * 4])}</td>
+  <td align="center" width="180">${getName(users[(j - 1) * 4 + 1])}</td>
+  <td align="center" width="180">${getName(users[(j - 1) * 4 + 2])}</td>
+  <td align="center" width="180">${getName(users[(j - 1) * 4 + 3])}</td>
+</tr>
+`;
   table += data;
 }
 
@@ -34,8 +43,8 @@ ${table}
 // **************************************************************************
 
 const point = '<table>';
-const cnPoint = `## 列 表`;
-const enPoint = `## List`;
+const cnPoint = `## ⚡ 反馈`;
+const enPoint = `## ⚡ Feedback`;
 
 // **************************************************************************
 
@@ -65,14 +74,34 @@ function getImg(o) {
   if (o) {
     return `
     <a href="${o.url}">
-      <img src="${o.logo}" width="46" />
-      <div>${getName(o)}</div>
-    </a>`;
+      <img src="${o.logo}"${getImgWidth(o)}/>
+    </a>
+  `;
   }
   return ``;
 }
 
+function getImgWidth(o) {
+  if (o) {
+    let width = o.width;
+    if (width === 'auto') {
+      width = '';
+    } else {
+      width = width ? width : DEFAULT_WIDTH;
+    }
+    return ` width="${width}"`;
+  }
+  return '';
+}
+
 function getName(o) {
+  if (o) {
+    return `<a href="${o.url}">${o.url.split('/').slice(-1)[0]}</a>`;
+  }
+  return ``;
+}
+
+function getCurrentName(o) {
   if (o) {
     return o.url.split('/').slice(-1)[0];
   }

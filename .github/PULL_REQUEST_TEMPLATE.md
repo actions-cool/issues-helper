@@ -42,13 +42,4 @@ Describe changes from the user side, and list all potential break changes or oth
 | 🇺🇸 English |           |
 | 🇨🇳 Chinese |           |
 
-### ☑️ 请求合并前的自查清单 / Self Check before Merge
-
-⚠️ 请自检并全部**勾选全部选项**。/ Please check all items below before review. ⚠️
-
-- [ ] 文档已补充或无须补充 / Doc is updated/provided or not needed
-- [ ] 代码演示已提供或无须提供 / Demo is updated/provided or not needed
-- [ ] TypeScript 定义已补充或无须补充 / TypeScript definition is updated/provided or not needed
-- [ ] Changelog 已提供或无须提供 / Changelog is provided or not needed
-
 <!-- From: https://github.com/one-template/pr-template -->

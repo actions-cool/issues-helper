@@ -1,6 +1,6 @@
 {
   "name": "issues-helper",
-  "version": "2.2.1",
+  "version": "2.3.1",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "main": "src/main.js",
@@ -12,10 +12,12 @@
     "deploy": "npm run docs:build && npm run docs:deploy",
     "format": "prettier --write **/*.ts **/*.js",
     "format-check": "prettier --check **/*.ts **/*.js",
+    "test": "father test",
     "package": "ncc build src/main.js -o dist",
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
-    "ver": "node ./script/update-version.js"
+    "ver": "node ./script/update-version.js",
+    "pub": "npm run package && npm run ver"
   },
   "author": "xrkffgg",
   "license": "MIT",
@@ -35,15 +37,14 @@
     "@actions/github": "^4.0.0",
     "@octokit/rest": "^18.0.12",
     "dayjs": "^1.9.7",
+    "father": "^2.30.7",
     "lodash": "^4.17.20"
   },
   "devDependencies": {
     "@umijs/fabric": "^2.5.6",
     "@vercel/ncc": "^0.25.1",
     "common-tags": "^1.8.0",
-    "dotenv": "^8.2.0",
-    "dumi": "1.1.7",
-    "gh-pages": "^3.1.0",
-    "react": "^17.0.1"
+    "dumi": "^1.1.18",
+    "gh-pages": "^3.1.0"
   }
 }

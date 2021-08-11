@@ -1,8 +1,7 @@
-require('dotenv').config();
 const core = require('@actions/core');
 const { Octokit } = require('@octokit/rest');
 
-const { getPreMonth } = require('./util.js');
+const { getPreMonth, dealStringToArr } = require('./util.js');
 
 // **************************************************************************
 var dayjs = require('dayjs');
@@ -24,9 +23,20 @@ const issueMentioned = core.getInput('issue-mentioned');
 const bodyIncludes = core.getInput('body-includes');
 const titleIncludes = core.getInput('title-includes');
 
+const excludeLabels = core.getInput('exclude-labels');
+
 const inactiveDay = core.getInput('inactive-day');
 
 // **************************************************************************
+/**
+ * 查询 Issues 列表
+ * @param {*} owner
+ * @param {*} repo
+ * @param {*} labels
+ * @param {*} state
+ * @param {*} creator
+ * @returns
+ */
 async function doQueryIssues(owner, repo, labels, state, creator) {
   let params = {
     owner,
@@ -50,6 +60,7 @@ async function doQueryIssues(owner, repo, labels, state, creator) {
   let issues = [];
   let issueNumbers = [];
   if (res.length) {
+    const excludeLabelsArr = dealStringToArr(excludeLabels);
     res.forEach(iss => {
       const a = bodyIncludes ? iss.body.includes(bodyIncludes) : true;
       const b = titleIncludes ? iss.title.includes(titleIncludes) : true;
@@ -59,6 +70,12 @@ async function doQueryIssues(owner, repo, labels, state, creator) {
        * You can identify pull requests by the pull_request key.
        */
       if (a && b && iss.pull_request === undefined) {
+        if (excludeLabelsArr.length) {
+          for (let i = 0; i < iss.labels.length; i += 1) {
+            if (excludeLabelsArr.includes(iss.labels[i].name)) return;
+          }
+        }
+
         if (inactiveDay) {
           let lastTime = dayjs.utc().subtract(Number(inactiveDay), 'day');
           let updateTime = dayjs.utc(iss.updated_at);

@@ -44,3 +44,7 @@ ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trig
 
 - The owner or collaborator of the warehouse, if there is an organization, including members
 - Participants of the issue, including creators and commenters
+
+## Benchmark
+
+For example: I use a Tag to trigger an Action, and the code that triggers the benchmark will follow the Action definition of the code corresponding to this Tag instead of the main branch code.

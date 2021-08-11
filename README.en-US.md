@@ -32,77 +32,124 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 <tr>
   <td align="center" width="180">
     <a href="https://github.com/ant-design/ant-design">
-      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <div>ant-design</div>
-    </a></td>
+      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design-blazor/ant-design-blazor">
-      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46" />
-      <div>ant-design-blazor</div>
-    </a></td>
+      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/vueComponent/ant-design-vue">
-      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46" />
-      <div>ant-design-vue</div>
-    </a></td>
+      <img src="https://avatars1.githubusercontent.com/u/32120805?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/dumi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>dumi</div>
-    </a></td>
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/ant-design/ant-design">ant-design</a></td>
+  <td align="center" width="180"><a href="https://github.com/ant-design-blazor/ant-design-blazor">ant-design-blazor</a></td>
+  <td align="center" width="180"><a href="https://github.com/vueComponent/ant-design-vue">ant-design-vue</a></td>
+  <td align="center" width="180"><a href="https://github.com/umijs/dumi">dumi</a></td>
 </tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/alibaba/formily">
+      <img src="https://img.alicdn.com/imgextra/i2/O1CN01Kq3OHU1fph6LGqjIz_!!6000000004056-55-tps-1141-150.svg" width=""/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/vuejs/jsx-next">
-      <img src="https://avatars.githubusercontent.com/u/6128107?s=200&v=4" width="46" />
-      <div>jsx-next</div>
-    </a></td>
+      <img src="https://avatars.githubusercontent.com/u/6128107?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/mui-org/material-ui">
-      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46" />
-      <div>material-ui</div>
-    </a></td>
+      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/jdf2e/nutui">
+      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/alibaba/formily">formily</a></td>
+  <td align="center" width="180"><a href="https://github.com/vuejs/jsx-next">jsx-next</a></td>
+  <td align="center" width="180"><a href="https://github.com/mui-org/material-ui">material-ui</a></td>
+  <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/prettier/prettier">
-      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46" />
-      <div>prettier</div>
-    </a></td>
+      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design/pro-components">
-      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46" />
-      <div>pro-components</div>
-    </a></td>
-</tr><tr>
+      <img src="https://avatars1.githubusercontent.com/u/12101536?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/react-component">
-      <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46" />
-      <div>react-component</div>
-    </a></td>
+      <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46" />
-      <div>react-music-player</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/umijs/umi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46" />
-      <div>umi</div>
-    </a></td>
-  <td align="center" width="180">
-    <a href="https://github.com/vitejs/vite">
-      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46" />
-      <div>vite</div>
-    </a></td>
+      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46"/>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/prettier/prettier">prettier</a></td>
+  <td align="center" width="180"><a href="https://github.com/ant-design/pro-components">pro-components</a></td>
+  <td align="center" width="180"><a href="https://github.com/react-component">react-component</a></td>
+  <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/umijs/umi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/vitejs/vite">
+      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46" />
-      <div>vue-request</div>
-    </a></td>
+      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
+    <a href="https://github.com/vuepress/vuepress-next">
+      <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
+    </a>
+  </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
+  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
+  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/zoo-js/zoo">
-      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46" />
-      <div>zoo</div>
-    </a></td>
+      <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+  <td align="center" width="180"></td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
+  <td align="center" width="180"></td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
 </tr>
@@ -170,7 +217,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -212,7 +259,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -237,7 +284,7 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -270,7 +317,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -314,7 +361,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -347,7 +394,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.2.1
+  uses: actions-cool/issues-helper@v2.3.1
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -375,7 +422,7 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -410,7 +457,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -444,7 +491,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -479,7 +526,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -500,7 +547,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -523,7 +570,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -548,7 +595,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -571,7 +618,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -604,7 +651,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.2.1
+          uses: actions-cool/issues-helper@v2.3.1
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -634,7 +681,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -684,7 +731,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -727,7 +774,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -749,6 +796,7 @@ jobs:
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | inactive-label | The label name adding | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -780,7 +828,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -820,7 +868,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -841,6 +889,7 @@ jobs:
 | body-includes | Body filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -854,7 +903,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.2.1
+    uses: actions-cool/issues-helper@v2.3.1
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -902,7 +951,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -925,6 +974,7 @@ jobs:
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
@@ -949,7 +999,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -994,7 +1044,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         id: fcid
         with:
           actions: 'find-comments'
@@ -1009,7 +1059,7 @@ jobs:
 
       - name: create comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1020,7 +1070,7 @@ jobs:
 
       - name: update comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
-        uses: actions-cool/issues-helper@v2.2.1
+        uses: actions-cool/issues-helper@v2.3.1
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1061,7 +1111,7 @@ When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, 
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2.2.1
+  uses: actions-cool/issues-helper@v2.3.1
   id: createissue
   with:
     actions: 'create-issue'
