@@ -90,13 +90,13 @@ async function main() {
     const actions = core.getInput('actions', { required: true });
 
     const actionsArr = actions.split(',');
-    actionsArr.forEach(item => {
-      testActions(item.trim());
-    });
+    for await (let action of actionsArr) {
+      testActions(action.trim());
+    }
 
-    function testActions(action) {
+    async function testActions(action) {
       if (ALLACTIONS.includes(action)) {
-        choseActions(action);
+        await choseActions(action);
       } else {
         core.setFailed('This actions not supported!');
       }
