@@ -90,7 +90,6 @@ jobs:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
