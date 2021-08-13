@@ -90,8 +90,8 @@ async function main() {
     const actions = core.getInput('actions', { required: true });
 
     const actionsArr = actions.split(',');
-    for await (const action of actionsArr) {
-      testActions(action.trim());
+    for (const action of actionsArr) {
+      await testActions(action.trim());
     }
 
     async function testActions(action) {
