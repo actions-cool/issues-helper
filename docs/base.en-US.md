@@ -90,7 +90,6 @@ Close the specified issue.
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | Param | Desc  | Type | Required |
