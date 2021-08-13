@@ -234,7 +234,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
 | random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 
@@ -275,7 +275,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ |
 
 - `labels` 支持多个，需用逗号隔开
@@ -299,7 +299,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -336,7 +336,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | body | 新增评论的内容  | string | ✖ |
 | contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ |
 
@@ -471,7 +471,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
 
 - `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
@@ -540,7 +540,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -562,7 +562,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ |
 
 ⏫ [返回列表](#列-表)
@@ -585,7 +585,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ |
 
 - `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
@@ -610,7 +610,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | labels 设置。当空字符时，会移除所有 | string | ✔ |
 
 ⏫ [返回列表](#列-表)
@@ -632,7 +632,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -702,7 +702,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ |
 | title | 修改 issue 的标题 | string | ✖ |
 | body | 修改 issue 的内容 | string | ✖ |
@@ -838,7 +838,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
 | title-excludes | 检测标题移除默认 title 后是否为空 | string | ✖ |
@@ -913,7 +913,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
 | body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
 | direction | 返回 `comments` 排序 | string | ✖ |

@@ -64,10 +64,13 @@ const ALLACTIONS = [
 // **************************************************************************
 async function main() {
   try {
-    const owner = github.context.repo.owner;
-    const repo = github.context.repo.repo;
+    const ctx = github.context;
+    const { owner, repo } = ctx.repo;
 
-    const issueNumber = core.getInput('issue-number');
+    let defaultNo;
+    if (ctx.eventName === 'issues') defaultNo = ctx.payload.issue.number;
+
+    const issueNumber = core.getInput('issue-number') || defaultNo;
     const commentId = core.getInput('comment-id');
 
     const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`;

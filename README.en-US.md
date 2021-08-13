@@ -230,7 +230,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person. No operation when no input or empty character | string | ✖ |
 | random-to | When set, it will be randomly selected in assignees | number | ✖ |
 
@@ -271,7 +271,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
 - `labels` support multiple and separated by comma
@@ -295,7 +295,7 @@ Close the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -332,7 +332,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | body | Add comment content | string | ✖ |
 | contents | Add [reaction](#reactions-types) | string | ✖ |
 
@@ -467,7 +467,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
 
 - `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
@@ -536,7 +536,7 @@ Open the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -558,7 +558,7 @@ Remove the person designated by issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
 ⏫ [Back to list](#List)
@@ -581,7 +581,7 @@ Remove the specified labels.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
 - `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
@@ -606,7 +606,7 @@ Replace the labels of issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | labels set. When empty characters, will remove all | string | ✔ |
 
 ⏫ [Back to list](#List)
@@ -628,7 +628,7 @@ Unlock the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -698,7 +698,7 @@ Update the specified issue according to the `issue-number`.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
 | title | Modify the title of the issue | string | ✖ |
 | body | Modify the content of issue | string | ✖ |
@@ -840,7 +840,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
 | title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
@@ -915,7 +915,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
 | body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
 | direction | Return `comments` sort | string | ✖ |
