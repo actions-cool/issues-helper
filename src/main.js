@@ -98,7 +98,7 @@ async function main() {
       if (ALLACTIONS.includes(action)) {
         await choseActions(action);
       } else {
-        core.setFailed('This actions not supported!');
+        core.setFailed(`Actions: [${action}] is not supported!`);
       }
     }
 
