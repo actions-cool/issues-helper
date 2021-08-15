@@ -13,6 +13,9 @@ inputs:
   token:
     description: 'Github_token'
     default: ${{ github.token }}
+  repo:
+    description: 'The repositorie'
+
   issue-number:
     description: 'Issue-number'
   comment-id:

@@ -65,7 +65,16 @@ const ALLACTIONS = [
 async function main() {
   try {
     const ctx = github.context;
-    const { owner, repo } = ctx.repo;
+
+    // No display to outside
+    let owner, repo;
+    if (core.getInput('repo')) {
+      owner = core.getInput('repo').split('/')[0];
+      repo = core.getInput('repo').split('/')[1];
+    } else {
+      owner = ctx.repo.owner;
+      repo = ctx.repo.repo;
+    }
 
     let defaultNo;
     if (ctx.eventName === 'issues') defaultNo = ctx.payload.issue.number;
