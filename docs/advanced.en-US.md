@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -87,7 +87,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
 | title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
@@ -112,7 +112,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -145,7 +145,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -158,7 +158,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
 | body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
 | direction | Return `comments` sort | string | ✖ |
@@ -191,7 +191,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -237,7 +237,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
