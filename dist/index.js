@@ -11597,10 +11597,22 @@ const ALLACTIONS = [
 // **************************************************************************
 async function main() {
   try {
-    const owner = github.context.repo.owner;
-    const repo = github.context.repo.repo;
+    const ctx = github.context;
 
-    const issueNumber = core.getInput('issue-number');
+    // No display to outside
+    let owner, repo;
+    if (core.getInput('repo')) {
+      owner = core.getInput('repo').split('/')[0];
+      repo = core.getInput('repo').split('/')[1];
+    } else {
+      owner = ctx.repo.owner;
+      repo = ctx.repo.repo;
+    }
+
+    let defaultNo;
+    if (ctx.eventName === 'issues') defaultNo = ctx.payload.issue.number;
+
+    const issueNumber = core.getInput('issue-number') || defaultNo;
     const commentId = core.getInput('comment-id');
 
     const defaultBody = `Currently at ${owner}/${repo}. And this is default comment.`;
@@ -11623,15 +11635,15 @@ async function main() {
     const actions = core.getInput('actions', { required: true });
 
     const actionsArr = actions.split(',');
-    actionsArr.forEach(item => {
-      testActions(item.trim());
-    });
+    for (const action of actionsArr) {
+      await testActions(action.trim());
+    }
 
-    function testActions(action) {
+    async function testActions(action) {
       if (ALLACTIONS.includes(action)) {
-        choseActions(action);
+        await choseActions(action);
       } else {
-        core.setFailed('This actions not supported!');
+        core.setFailed(`Actions: [${action}] is not supported!`);
       }
     }
 
