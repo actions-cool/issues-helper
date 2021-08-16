@@ -4,7 +4,7 @@
 /**
  * @param {string} url        github地址
  * @param {string} logo       logo地址
- * @param {string} width      自定义宽度
+ * @param {string} width      自定义宽度，设置 auto 用于长型 logo
  */
 
 const users = [
@@ -26,7 +26,7 @@ const users = [
   },
   {
     url: 'https://github.com/AttoJS/vue-request',
-    logo: 'https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png'
+    logo: 'https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png'
   },
   {
     url: 'https://github.com/mui-org/material-ui',
@@ -34,11 +34,11 @@ const users = [
   },
   {
     url: 'https://github.com/lijinke666/react-music-player',
-    logo: 'https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true'
+    logo: 'https://user-images.githubusercontent.com/29775873/129506058-b0d8c741-f73a-496c-98de-7db2fb586db7.png'
   },
   {
     url: 'https://github.com/ant-design-blazor/ant-design-blazor',
-    logo: 'https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg'
+    logo: 'https://user-images.githubusercontent.com/29775873/129505619-5abddb68-8663-4c71-b7d2-049c716aab26.png'
   },
   {
     url: 'https://github.com/zoo-js/zoo',
@@ -54,7 +54,7 @@ const users = [
   },
   {
     url: 'https://github.com/prettier/prettier',
-    logo: 'https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true',
+    logo: 'https://user-images.githubusercontent.com/29775873/129505900-ca248179-2435-429d-9fd3-779206bcd899.png',
   },
   {
     url: 'https://github.com/vuejs/jsx-next',

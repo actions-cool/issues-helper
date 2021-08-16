@@ -37,7 +37,7 @@
   </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design-blazor/ant-design-blazor">
-      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505619-5abddb68-8663-4c71-b7d2-049c716aab26.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -91,7 +91,7 @@
   </td>
   <td align="center" width="180">
     <a href="https://github.com/prettier/prettier">
-      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505900-ca248179-2435-429d-9fd3-779206bcd899.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -113,7 +113,7 @@
 </tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129506058-b0d8c741-f73a-496c-98de-7db2fb586db7.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -128,7 +128,7 @@
   </td>
   <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
     </a>
   </td>
 </tr>
