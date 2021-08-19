@@ -37,7 +37,7 @@
   </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design-blazor/ant-design-blazor">
-      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505619-5abddb68-8663-4c71-b7d2-049c716aab26.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -73,8 +73,8 @@
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/jdf2e/nutui">
-      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+    <a href="https://github.com/TuSimple/naive-ui">
+      <img src="https://camo.githubusercontent.com/b8ebecade711b9ae1fa306e7a1c9dd680fb56b0e2b9f015fec9cbad343570353/68747470733a2f2f6e6169766575692e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f6e616976656c6f676f2e737667" width="46"/>
     </a>
   </td>
 </tr>
@@ -82,11 +82,16 @@
   <td align="center" width="180"><a href="https://github.com/alibaba/formily">formily</a></td>
   <td align="center" width="180"><a href="https://github.com/vuejs/jsx-next">jsx-next</a></td>
   <td align="center" width="180"><a href="https://github.com/mui-org/material-ui">material-ui</a></td>
-  <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
+  <td align="center" width="180"><a href="https://github.com/TuSimple/naive-ui">naive-ui</a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/jdf2e/nutui">
+      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
     <a href="https://github.com/prettier/prettier">
-      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505900-ca248179-2435-429d-9fd3-779206bcd899.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -99,18 +104,18 @@
       <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46"/>
     </a>
   </td>
-  <td align="center" width="180">
-    <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46"/>
-    </a>
-  </td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
   <td align="center" width="180"><a href="https://github.com/prettier/prettier">prettier</a></td>
   <td align="center" width="180"><a href="https://github.com/ant-design/pro-components">pro-components</a></td>
   <td align="center" width="180"><a href="https://github.com/react-component">react-component</a></td>
-  <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
 </tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://user-images.githubusercontent.com/29775873/129506058-b0d8c741-f73a-496c-98de-7db2fb586db7.png" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
@@ -123,21 +128,21 @@
   </td>
   <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
     </a>
   </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
+  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
+  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
+  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/vuepress/vuepress-next">
       <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
     </a>
   </td>
-</tr>
-<tr>
-  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
-  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
-  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
-  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/zoo-js/zoo">
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
@@ -145,11 +150,10 @@
   </td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
-  <td align="center" width="180"></td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
-  <td align="center" width="180"></td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
 </tr>
@@ -221,7 +225,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -234,7 +238,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
 | random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 
@@ -263,7 +267,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -275,7 +279,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ |
 
 - `labels` 支持多个，需用逗号隔开
@@ -288,19 +292,18 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -321,7 +324,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -337,7 +340,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | body | 新增评论的内容  | string | ✖ |
 | contents | 为新增评论的增加 [reaction](#reactions-types) | string | ✖ |
 
@@ -365,7 +368,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -398,7 +401,7 @@ jobs:
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -426,7 +429,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -461,7 +464,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -472,7 +475,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
 
 - `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
@@ -495,7 +498,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -530,7 +533,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -541,7 +544,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -551,7 +554,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -563,7 +566,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ |
 
 ⏫ [返回列表](#列-表)
@@ -574,7 +577,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -586,7 +589,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ |
 
 - `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
@@ -599,7 +602,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -611,7 +614,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | labels 设置。当空字符时，会移除所有 | string | ✔ |
 
 ⏫ [返回列表](#列-表)
@@ -622,7 +625,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -633,7 +636,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ⏫ [返回列表](#列-表)
 
@@ -655,7 +658,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.3.1
+          uses: actions-cool/issues-helper@v2.4.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -685,7 +688,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -703,7 +706,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ |
 | title | 修改 issue 的标题 | string | ✖ |
 | body | 修改 issue 的内容 | string | ✖ |
@@ -733,7 +736,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -776,7 +779,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -826,7 +829,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -839,7 +842,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
 | title-excludes | 检测标题移除默认 title 后是否为空 | string | ✖ |
@@ -866,7 +869,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -901,7 +904,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -914,7 +917,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
 | body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
 | direction | 返回 `comments` 排序 | string | ✖ |
@@ -949,7 +952,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -997,7 +1000,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1042,7 +1045,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         id: fcid
         with:
           actions: 'find-comments'
@@ -1057,7 +1060,7 @@ jobs:
 
       - name: create comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1068,7 +1071,7 @@ jobs:
 
       - name: update comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1109,7 +1112,7 @@ jobs:
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   id: createissue
   with:
     actions: 'create-issue'

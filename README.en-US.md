@@ -37,7 +37,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180">
     <a href="https://github.com/ant-design-blazor/ant-design-blazor">
-      <img src="https://raw.githubusercontent.com/ant-design-blazor/ant-design-blazor/7dbee63648e088c73c47eada79c897bc39fc3c26/logo.svg" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505619-5abddb68-8663-4c71-b7d2-049c716aab26.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -73,8 +73,8 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/jdf2e/nutui">
-      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+    <a href="https://github.com/TuSimple/naive-ui">
+      <img src="https://camo.githubusercontent.com/b8ebecade711b9ae1fa306e7a1c9dd680fb56b0e2b9f015fec9cbad343570353/68747470733a2f2f6e6169766575692e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f6e616976656c6f676f2e737667" width="46"/>
     </a>
   </td>
 </tr>
@@ -82,11 +82,16 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   <td align="center" width="180"><a href="https://github.com/alibaba/formily">formily</a></td>
   <td align="center" width="180"><a href="https://github.com/vuejs/jsx-next">jsx-next</a></td>
   <td align="center" width="180"><a href="https://github.com/mui-org/material-ui">material-ui</a></td>
-  <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
+  <td align="center" width="180"><a href="https://github.com/TuSimple/naive-ui">naive-ui</a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/jdf2e/nutui">
+      <img src="https://img14.360buyimg.com/imagetools/jfs/t1/167902/2/8762/791358/603742d7E9b4275e3/e09d8f9a8bf4c0ef.png" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
     <a href="https://github.com/prettier/prettier">
-      <img src="https://github.com/prettier/prettier-logo/blob/master/images/prettier-icon-light.png?raw=true" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129505900-ca248179-2435-429d-9fd3-779206bcd899.png" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -99,18 +104,18 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
       <img src="https://avatars3.githubusercontent.com/u/9441414?s=200&v=4" width="46"/>
     </a>
   </td>
-  <td align="center" width="180">
-    <a href="https://github.com/lijinke666/react-music-player">
-      <img src="https://github.com/lijinke666/react-music-player/blob/master/assetsImg/logo.png?raw=true" width="46"/>
-    </a>
-  </td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
   <td align="center" width="180"><a href="https://github.com/prettier/prettier">prettier</a></td>
   <td align="center" width="180"><a href="https://github.com/ant-design/pro-components">pro-components</a></td>
   <td align="center" width="180"><a href="https://github.com/react-component">react-component</a></td>
-  <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
 </tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/lijinke666/react-music-player">
+      <img src="https://user-images.githubusercontent.com/29775873/129506058-b0d8c741-f73a-496c-98de-7db2fb586db7.png" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
@@ -123,21 +128,21 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://raw.githubusercontent.com/AttoJS/art/master/vue-request-logo.png" width="46"/>
+      <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
     </a>
   </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
+  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
+  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
+  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/vuepress/vuepress-next">
       <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
     </a>
   </td>
-</tr>
-<tr>
-  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
-  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
-  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
-  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/zoo-js/zoo">
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
@@ -145,11 +150,10 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
-  <td align="center" width="180"></td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
-  <td align="center" width="180"></td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
 </tr>
@@ -217,7 +221,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -230,7 +234,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person. No operation when no input or empty character | string | ✖ |
 | random-to | When set, it will be randomly selected in assignees | number | ✖ |
 
@@ -259,7 +263,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -271,7 +275,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
 - `labels` support multiple and separated by comma
@@ -284,19 +288,18 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | Param | Desc  | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -317,7 +320,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -333,7 +336,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | body | Add comment content | string | ✖ |
 | contents | Add [reaction](#reactions-types) | string | ✖ |
 
@@ -361,7 +364,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -394,7 +397,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -422,7 +425,7 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -457,7 +460,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -468,7 +471,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
 
 - `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
@@ -491,7 +494,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -526,7 +529,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -537,7 +540,7 @@ Open the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -547,7 +550,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -559,7 +562,7 @@ Remove the person designated by issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
 ⏫ [Back to list](#List)
@@ -570,7 +573,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -582,7 +585,7 @@ Remove the specified labels.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
 - `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
@@ -595,7 +598,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -607,7 +610,7 @@ Replace the labels of issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | labels set. When empty characters, will remove all | string | ✔ |
 
 ⏫ [Back to list](#List)
@@ -618,7 +621,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -629,7 +632,7 @@ Unlock the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -651,7 +654,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.3.1
+          uses: actions-cool/issues-helper@v2.4.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -681,7 +684,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -699,7 +702,7 @@ Update the specified issue according to the `issue-number`.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
 | title | Modify the title of the issue | string | ✖ |
 | body | Modify the content of issue | string | ✖ |
@@ -731,7 +734,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -774,7 +777,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -828,7 +831,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -841,7 +844,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
 | title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
@@ -868,7 +871,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -903,7 +906,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -916,7 +919,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
 | body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
 | direction | Return `comments` sort | string | ✖ |
@@ -951,7 +954,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -999,7 +1002,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1044,7 +1047,7 @@ jobs:
     if: github.event.label.name == 'watch'
     steps:
       - name: find comments
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         id: fcid
         with:
           actions: 'find-comments'
@@ -1059,7 +1062,7 @@ jobs:
 
       - name: create comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1070,7 +1073,7 @@ jobs:
 
       - name: update comment
         if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'update-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -1111,7 +1114,7 @@ When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, 
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   id: createissue
   with:
     actions: 'create-issue'

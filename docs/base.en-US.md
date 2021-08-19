@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +35,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person. No operation when no input or empty character | string | ✖ |
 | random-to | When set, it will be randomly selected in assignees | number | ✖ |
 
@@ -62,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
 - `labels` support multiple and separated by comma
@@ -85,19 +85,18 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | Param | Desc  | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ## `create-comment`
 
@@ -116,7 +115,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -132,7 +131,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | body | Add comment content | string | ✖ |
 | contents | Add [reaction](/en-US/guide/ref#-reactions-type) | string | ✖ |
 
@@ -158,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +188,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -215,7 +214,7 @@ According to [`comment-id`](/en-US/guide/ref#-comment-id) delete the specified c
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,7 +247,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -259,7 +258,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
 
 - `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
@@ -280,7 +279,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -319,7 +318,7 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -330,7 +329,7 @@ Open the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ## `remove-assignees`
 
@@ -338,7 +337,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -350,7 +349,7 @@ Remove the person designated by issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
 ## `remove-labels`
@@ -359,7 +358,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -371,7 +370,7 @@ Remove the specified labels.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
 - `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
@@ -382,7 +381,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -394,7 +393,7 @@ Replace the labels of issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | labels set. When empty characters, will remove all | string | ✔ |
 
 ## `unlock-issue`
@@ -403,7 +402,7 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -414,7 +413,7 @@ Unlock the specified issue.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ## `update-comment`
 
@@ -434,7 +433,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.3.1
+          uses: actions-cool/issues-helper@v2.4.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -462,7 +461,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -480,7 +479,7 @@ Update the specified issue according to the `issue-number`.
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✔ |
-| issue-number | The number of issue | number | ✔ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
 | title | Modify the title of the issue | string | ✖ |
 | body | Modify the content of issue | string | ✖ |
@@ -510,7 +509,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}

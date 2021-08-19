@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -35,7 +35,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
 | random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
 
@@ -62,7 +62,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -74,7 +74,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ |
 
 - `labels` 支持多个，需用逗号隔开
@@ -85,19 +85,18 @@ jobs:
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
-      body: 'This is auto closed.'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ## `create-comment`
 
@@ -116,7 +115,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -132,7 +131,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | body | 新增评论的内容  | string | ✖ |
 | contents | 为新增评论的增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
 
@@ -158,7 +157,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -189,7 +188,7 @@ jobs:
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2.3.1
+  uses: actions-cool/issues-helper@v2.4.0
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -215,7 +214,7 @@ jobs:
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -248,7 +247,7 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -259,7 +258,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
 
 - `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
@@ -280,7 +279,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'mark-duplicate'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -319,7 +318,7 @@ jobs:
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -330,7 +329,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ## `remove-assignees`
 
@@ -338,7 +337,7 @@ jobs:
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -350,7 +349,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ |
 
 ## `remove-labels`
@@ -359,7 +358,7 @@ jobs:
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -371,7 +370,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ |
 
 - `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
@@ -382,7 +381,7 @@ jobs:
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -394,7 +393,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | labels | labels 设置。当空字符时，会移除所有 | string | ✔ |
 
 ## `unlock-issue`
@@ -403,7 +402,7 @@ jobs:
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -414,7 +413,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 
 ## `update-comment`
 
@@ -434,7 +433,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2.3.1
+          uses: actions-cool/issues-helper@v2.4.0
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
@@ -462,7 +461,7 @@ jobs:
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -480,7 +479,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ |
 | title | 修改 issue 的标题 | string | ✖ |
 | body | 修改 issue 的内容 | string | ✖ |
@@ -509,7 +508,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: welcome
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}

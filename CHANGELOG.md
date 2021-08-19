@@ -6,6 +6,14 @@
 ⚡️ Code style
 -->
 
+## v2.4.0
+
+`2021.08.15`
+
+- 🚀 feat: support custom repo. [#83](https://github.com/actions-cool/issues-helper/pull/83)
+- 🚀 feat: support default issueNumber get from context. [#81](https://github.com/actions-cool/issues-helper/pull/81)
+- 🐞 fix: action run async. [#79](https://github.com/actions-cool/issues-helper/pull/79)
+
 ## v2.3.1
 
 `2021.08.09`

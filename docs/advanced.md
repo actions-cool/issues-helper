@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -83,7 +83,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
 | title-excludes | 检测标题移除默认 title 后是否为空 | string | ✖ |
@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -141,7 +141,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2.3.1
+    uses: actions-cool/issues-helper@v2.4.0
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -154,7 +154,7 @@ jobs:
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| issue-number | 指定的 issue | number | ✔ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
 | body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
 | direction | 返回 `comments` 排序 | string | ✖ |
@@ -187,7 +187,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -233,7 +233,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: month-statistics
-        uses: actions-cool/issues-helper@v2.3.1
+        uses: actions-cool/issues-helper@v2.4.0
         with:
           actions: 'month-statistics'
           token: ${{ secrets.GITHUB_TOKEN }}
