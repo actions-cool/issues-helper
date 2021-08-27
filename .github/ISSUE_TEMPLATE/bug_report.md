@@ -8,8 +8,8 @@ assignees:
 
 ### 🐛 Bug 描述 Bug description
 
-<!-- 请在上方详细地描述 bug，让大家都能理解。 -->
-<!-- Please describe the bug in detail above so that everyone can understand. -->
+<!-- 请在上方详细地描述 bug，让大家都能理解。建议附上使用代码。 -->
+<!-- Please describe the bug in detail above so that everyone can understand. It is recommended to attach the use code. -->
 
 ### 🏞 期望结果 Desired result
 
