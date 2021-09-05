@@ -6,6 +6,12 @@
 ⚡️ Code style
 -->
 
+## v2.4.1
+
+`2021.09.05`
+
+- fix: remove labels define error. [#86](https://github.com/actions-cool/issues-helper/pull/86)
+
 ## v2.4.0
 
 `2021.08.15`

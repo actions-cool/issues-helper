@@ -11294,14 +11294,14 @@ async function doRemoveAssignees(owner, repo, issueNumber, assignees) {
 
 async function doRemoveLabels(owner, repo, issueNumber, labels) {
   const dealLabels = dealStringToArr(labels);
-  for (label of dealLabels) {
+  for (const label of dealLabels) {
     await octokit.issues.removeLabel({
       owner,
       repo,
       issue_number: issueNumber,
       name: label,
     });
-    core.info(`Actions: [remove-labels-foreach][${label}] success!`);
+    core.info(`Actions: [remove-label][${label}] success!`);
   }
   core.info(`Actions: [remove-labels][${labels}] success!`);
 }
