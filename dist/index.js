@@ -11293,8 +11293,18 @@ async function doRemoveAssignees(owner, repo, issueNumber, assignees) {
 }
 
 async function doRemoveLabels(owner, repo, issueNumber, labels) {
-  const dealLabels = dealStringToArr(labels);
-  for (const label of dealLabels) {
+  const issue = await octokit.issues.get({
+    owner,
+    repo,
+    issue_number: issueNumber,
+  });
+
+  const baseLabels = issue.data.labels.map(({ name }) => name);
+  const removeLabels = baseLabels.filter(name => dealStringToArr(labels).includes(name));
+
+  core.info(`Actions: [filter-labels][${removeLabels.join(',')}] success!`);
+
+  for (const label of removeLabels) {
     await octokit.issues.removeLabel({
       owner,
       repo,
@@ -11303,6 +11313,7 @@ async function doRemoveLabels(owner, repo, issueNumber, labels) {
     });
     core.info(`Actions: [remove-label][${label}] success!`);
   }
+
   core.info(`Actions: [remove-labels][${labels}] success!`);
 }
 
