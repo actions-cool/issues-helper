@@ -17,7 +17,7 @@
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
     "ver": "node ./script/update-version.js",
-    "pub": "npm run package && npm run ver"
+    "pub": "npm run package"
   },
   "author": "xrkffgg",
   "license": "MIT",
