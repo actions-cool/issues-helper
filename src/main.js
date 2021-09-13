@@ -77,7 +77,9 @@ async function main() {
     }
 
     let defaultNo;
-    if (ctx.eventName === 'issues') defaultNo = ctx.payload.issue.number;
+    if (ctx.eventName === 'issues' || ctx.eventName === 'issue_comment') {
+      defaultNo = ctx.payload.issue.number;
+    }
 
     const issueNumber = core.getInput('issue-number') || defaultNo;
     const commentId = core.getInput('comment-id');

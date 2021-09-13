@@ -6,6 +6,12 @@
 ⚡️ Code style
 -->
 
+## v2.4.3
+
+`2021.09.13`
+
+- 🚀 feat: default number support `issue-comment`. [#90](https://github.com/actions-cool/issues-helper/pull/90)
+
 ## v2.4.2
 
 `2021.09.06`
