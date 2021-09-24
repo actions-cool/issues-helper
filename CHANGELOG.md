@@ -6,11 +6,23 @@
 ⚡️ Code style
 -->
 
+## v2.4.3
+
+`2021.09.13`
+
+- 🚀 feat: default number support `issue-comment`. [#90](https://github.com/actions-cool/issues-helper/pull/90)
+
+## v2.4.2
+
+`2021.09.06`
+
+- 🐞 fix: `doRemoveLabels` when has no label. [#88](https://github.com/actions-cool/issues-helper/pull/88)
+
 ## v2.4.1
 
 `2021.09.05`
 
-- fix: remove labels define error. [#86](https://github.com/actions-cool/issues-helper/pull/86)
+- 🐞 fix: remove labels define error. [#86](https://github.com/actions-cool/issues-helper/pull/86)
 
 ## v2.4.0
 

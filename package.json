@@ -1,6 +1,6 @@
 {
   "name": "issues-helper",
-  "version": "2.4.1",
+  "version": "2.4.3",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "main": "src/main.js",
@@ -17,7 +17,7 @@
     "users": "node ./script/update-users.js",
     "main": "node ./src/main.js",
     "ver": "node ./script/update-version.js",
-    "pub": "npm run package && npm run ver"
+    "pub": "npm run package"
   },
   "author": "xrkffgg",
   "license": "MIT",
