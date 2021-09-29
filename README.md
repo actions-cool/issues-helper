@@ -163,7 +163,9 @@
 
 如果觉得 issues-helper 能帮到您，欢迎复制到 README 中，支持推广，给更多的项目带来便利：[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
 
-`[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)`
+```
+[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
+```
 
 ## ⚡ 反馈
 
