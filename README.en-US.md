@@ -161,7 +161,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 
 ## README Badge
 
-If you think issues-helper can help you, please copy it to the README to support promotion and bring convenience to more repositories:[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
+If you think issues-helper can help you, please copy it to the README to support promotion and bring convenience to more repositories:[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper). [More color see](https://github.com/actions-cool/issues-helper/issues/92).
 
 ```
 [![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
