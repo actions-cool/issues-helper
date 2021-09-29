@@ -43,8 +43,8 @@ ${table}
 // **************************************************************************
 
 const point = '<table>';
-const cnPoint = `## ⚡ 反馈`;
-const enPoint = `## ⚡ Feedback`;
+const cnPoint = `## README 图标`;
+const enPoint = `## README Badge`;
 
 // **************************************************************************
 
