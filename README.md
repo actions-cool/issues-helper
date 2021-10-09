@@ -159,6 +159,14 @@
 </tr>
 </table>
 
+## README 图标
+
+如果觉得 issues-helper 能帮到您，欢迎复制到 README 中，支持推广，给更多的项目带来便利：[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)。[更多样式](https://github.com/actions-cool/issues-helper/issues/92)。
+
+```
+[![issues-helper](https://img.shields.io/badge/Issues%20Manage%20By-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
+```
+
 ## ⚡ 反馈
 
 非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
