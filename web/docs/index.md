@@ -51,7 +51,7 @@ jobs:
 
 ## 💖 谁在使用？
 
-<embed src="../README.md#RE-/<table>[^]+?[\r\n]<\/table>/"></embed>
+<embed src="../../README.md#RE-/<table>[^]+?[\r\n]<\/table>/"></embed>
 
 ## ⚡ 反馈
 

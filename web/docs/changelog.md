@@ -35,4 +35,4 @@ toc: menu
 
 - v2 [升级参考](/guide/faq)
 
-<embed src="../CHANGELOG.md"></embed>
+<embed src="../../CHANGELOG.md"></embed>

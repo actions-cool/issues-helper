@@ -10,7 +10,10 @@ export default defineConfig({
   logo: 'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
   exportStatic: {},
   ssr: {},
-  outputPath: 'docs-dist',
+  outputPath: '../docs-dist',
+  resolve: {
+    includes: ['./docs'],
+  },
   hash: true,
   base: `/${name}/`,
   publicPath: `/${name}/`,

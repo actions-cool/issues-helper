@@ -1,23 +1,8 @@
-const sampleSize = require('lodash/sampleSize');
+import sampleSize from 'lodash/sampleSize';
+import { dealStringToArr } from 'actions-util';
+export { dealStringToArr };
 
-function dealStringToArr(para) {
-  /**
-   * in  'x1,x2,x3'
-   * out ['x1','x2','x3']
-   */
-  let arr = [];
-  if (para) {
-    const paraArr = para.split(',');
-    paraArr.forEach(it => {
-      if (it.trim()) {
-        arr.push(it.trim());
-      }
-    });
-  }
-  return arr;
-}
-
-function dealRandomAssignees(assignees, randomTo) {
+export const dealRandomAssignees = (assignees: string, randomTo: number): string[] => {
   let arr = dealStringToArr(assignees);
   if (randomTo && Number(randomTo) > 0 && Number(randomTo) < arr.length) {
     arr = sampleSize(arr, randomTo);
@@ -25,11 +10,11 @@ function dealRandomAssignees(assignees, randomTo) {
   return arr;
 }
 
-function matchKeyword(content, keywords) {
+export const matchKeyword = (content: string, keywords: string[]): string | undefined => {
   return keywords.find(item => content.toLowerCase().includes(item));
 }
 
-function testDuplicate(body) {
+export const testDuplicate = (body: string | void): boolean => {
   if (!body || !body.startsWith('Duplicate of')) {
     return false;
   }
@@ -42,11 +27,11 @@ function testDuplicate(body) {
   }
 }
 
-function getPreMonth(m) {
+export const getPreMonth = (m: number): number => {
   return m == 1 ? 12 : m - 1;
 }
 
-function checkPermission(require, permission) {
+export const checkPermission = (require: string, permission: string): boolean => {
   /**
    * 有权限返回 true
    */
@@ -56,13 +41,3 @@ function checkPermission(require, permission) {
 
   return requireNo <= permissionNo;
 }
-
-// **********************************************************
-module.exports = {
-  dealStringToArr,
-  dealRandomAssignees,
-  getPreMonth,
-  matchKeyword,
-  testDuplicate,
-  checkPermission,
-};

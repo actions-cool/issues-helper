@@ -35,4 +35,4 @@ toc: menu
 
 - v2 [upgrade reference](/en-US/guide/faq)
 
-<embed src="../CHANGELOG.md"></embed>
+<embed src="../../CHANGELOG.md"></embed>
