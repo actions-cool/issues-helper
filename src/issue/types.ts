@@ -4,9 +4,10 @@ export interface IIssueBaseInfo {
   owner: string;
   repo: string;
   issueNunber: string | void;
+  githubToken: string;
 }
 
-
+type updateMode = 'append' | string | void;
 
 export interface IIssueCoreEngine {
   addAssignees(assignees: string[]): void;
@@ -33,4 +34,15 @@ export interface IIssueCoreEngine {
   deleteComment(commentId: string): void;
 
   lockIssue(lockReason: TLockReasons): void;
+
+  openIssue(): void;
+
+  removeAssignees(assignees: string[]): void;
+  removeLabels(labels: string[]): void;
+
+  setLabels(labels: string[]): void;
+
+  unlockIssue(): void;
+
+  updateComment(commentId: string, body: TStringOrVoid, mode: updateMode): void;
 }
