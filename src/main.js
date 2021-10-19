@@ -1,5 +1,6 @@
 const core = require('@actions/core');
 const github = require('@actions/github');
+const { THANKS } = require('actions-util/lib/thanks');
 
 // **************************************************************************
 const {
@@ -205,6 +206,8 @@ async function main() {
           break;
       }
     }
+
+    core.info('\n' + THANKS);
   } catch (error) {
     core.setFailed(error.message);
   }
