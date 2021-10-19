@@ -6,6 +6,14 @@
 ⚡️ Code style
 -->
 
+## v2.5.0
+
+`2021.10.19`
+
+- 🚀 feat: add thanks.
+
+> 🐣 This will be the last version of 2.x, 3.x is under development.
+
 ## v2.4.3
 
 `2021.09.13`
