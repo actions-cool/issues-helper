@@ -11770,7 +11770,7 @@ async function main() {
       }
     }
 
-    core.info(THANKS);
+    core.info('\n' + THANKS);
   } catch (error) {
     core.setFailed(error.message);
   }
