@@ -41,3 +41,5 @@ export const checkPermission = (require: string, permission: string): boolean =>
 
   return requireNo <= permissionNo;
 }
+
+

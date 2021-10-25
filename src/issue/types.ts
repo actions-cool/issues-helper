@@ -1,13 +1,13 @@
-import { TEmoji, TLockReasons, TStringOrVoid } from '../types';
+import { TEmoji, TLockReasons } from '../types';
 
 export interface IIssueBaseInfo {
   owner: string;
   repo: string;
-  issueNunber: string | void;
+  issueNunber: string;
   githubToken: string;
 }
 
-type updateMode = 'append' | string | void;
+export type TUpdateMode = 'append' | string | undefined;
 
 export interface IIssueCoreEngine {
   addAssignees(assignees: string[]): void;
@@ -18,8 +18,8 @@ export interface IIssueCoreEngine {
    * @param body The comment body.
    * @returns The create new comment id.
    */
-  createComment(body: string): string;
-  createCommentEmoji(emoji: TEmoji): void;
+  createComment(body: string): Promise<number>;
+  createCommentEmoji(commentId: number, emoji: TEmoji[]): void;
   /**
    * @param title
    * @param body
@@ -27,11 +27,11 @@ export interface IIssueCoreEngine {
    * @param assignees
    * @returns The create new issue number.
    */
-  createIssue(title: string, body: TStringOrVoid, labels: string[], assignees: string[]): string;
-  createIssueEmoji(emoji: TEmoji): void;
-  createLabel(labelName: string, labelColor: string, labelDescription: TStringOrVoid): void;
+  createIssue(title: string, body: string | undefined, labels: string[], assignees: string[]): Promise<number>;
+  createIssueEmoji(emoji: TEmoji[]): void;
+  createLabel(labelName: string, labelColor: string, labelDescription: string | undefined): void;
 
-  deleteComment(commentId: string): void;
+  deleteComment(commentId: number): void;
 
   lockIssue(lockReason: TLockReasons): void;
 
@@ -44,5 +44,6 @@ export interface IIssueCoreEngine {
 
   unlockIssue(): void;
 
-  updateComment(commentId: string, body: TStringOrVoid, mode: updateMode): void;
+  updateComment(commentId: number, body: string, mode: TUpdateMode): void;
+  updateIssue(state: 'open' | 'closed', title: string | undefined, body: string | undefined, mode: TUpdateMode, labels: string[], assignees: string[]): void;
 }
