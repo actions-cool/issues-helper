@@ -1,5 +1,4 @@
 {
-  "name": "issues-helper",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "keywords": [
