@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest';
 
 import { TEmoji, TLockReasons, TUpdateMode, TIssueState } from '../types';
-import { IIssueBaseInfo, IIssueCoreEngine } from './types';
+import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TListIssuesResults } from './types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;
@@ -124,6 +124,22 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     });
   }
 
+  public async listIssues(params: IListIssuesParams, page = 1) {
+    const { octokit, owner, repo } = this;
+    const { data } = await octokit.issues.listForRepo({
+      ...params,
+      owner,
+      repo,
+      per_page: 100,
+      page,
+    });
+    let issues = [...data] as unknown as TListIssuesResults;
+    if (issues.length >= 100) {
+      issues = issues.concat(await this.listIssues(params, page + 1));
+    }
+    return issues;
+  }
+
   public async lockIssue(lockReason: TLockReasons) {
     const { owner, repo, octokit, issueNumber } = this;
     const params: any = {
@@ -165,7 +181,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       issue_number: issueNumber,
     });
 
-    const baseLabels = issue.data.labels.map(({ name }: any) => name);
+    const baseLabels: string[] = issue.data.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
 
     for (const label of removeLabels) {
@@ -190,7 +206,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       issue_number: issueNumber,
     });
 
-    const baseLabels = issue.data.labels.map(({ name }: any) => name);
+    const baseLabels: string[] = issue.data.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => !labels.includes(name));
     const addLabels = labels.filter(name => !baseLabels.includes(name));
 
@@ -256,13 +272,5 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       labels: labels?.length ? labels : baseLabelsName,
       assignees: assignees?.length ? assignees : baseAssignessName,
     });
-  }
-
-  public async queryIssues() {
-
-  }
-
-  private async listIssues(params, page = 1) {
-
   }
 }

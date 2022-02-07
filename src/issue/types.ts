@@ -8,12 +8,25 @@ export interface IIssueBaseInfo {
 }
 
 export interface IListIssuesParams {
-  owner: string;
-  repo: string;
-  state: 'all' | 'open' | 'closed';
-
-
+  state: TIssueState | 'all';
+  creator?: string;
+  assignee?: string;
+  mentioned?: string;
+  labels?: string;
 }
+
+export type TListIssuesResult = {
+  number: number;
+  title: string;
+  body: string;
+  labels: {
+    name: string;
+  }[];
+  updated_at: string;
+  pull_request?: any;
+}
+
+export type TListIssuesResults = TListIssuesResult[];
 
 export interface IIssueCoreEngine {
   setIssueNumber(newIssueNumber: number): void;
@@ -40,6 +53,7 @@ export interface IIssueCoreEngine {
 
   deleteComment(commentId: number): Promise<void>;
 
+  listIssues(params: IListIssuesParams): Promise<TListIssuesResults>;
   lockIssue(lockReason: TLockReasons): Promise<void>;
 
   openIssue(): Promise<void>;

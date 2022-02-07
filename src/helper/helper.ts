@@ -193,7 +193,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       // ^_^ ============= ^_^
       // -[ Advanced Begin ]->
       case 'check-inactive': {
-        await doCheckInactive();
+        await doCheckInactive(body, emoji);
         break;
       }
     }

@@ -5,7 +5,6 @@ import { ELockReasons } from '../shared';
 import { IIssueCoreEngine } from '../issue';
 
 let ICE: IIssueCoreEngine;
-
 export function initBaseICE(_ICE: IIssueCoreEngine) {
   ICE = _ICE;
 }
@@ -15,7 +14,8 @@ export async function doAddAssignees(assignees: string[]) {
   core.info(`[doAddAssignees] [${assignees}] success!`);
 }
 
-export async function doAddLabels(labels: string[]) {
+export async function doAddLabels(labels: string[], issueNumber?: number) {
+  if (issueNumber) ICE.setIssueNumber(issueNumber);
   await ICE.addLabels(labels);
   core.info(`[doAddLabels] [${labels}] success!`);
 }
@@ -25,8 +25,9 @@ export async function doCloseIssue(issueNumber: number) {
   core.info(`[doCloseIssue] [${issueNumber}] success!`);
 }
 
-export async function doCreateComment(body: string, emoji?: string) {
+export async function doCreateComment(body: string, emoji?: string, issueNumber?: number) {
   if (body) {
+    if (issueNumber) ICE.setIssueNumber(issueNumber);
     const commentId = await ICE.createComment(body);
     core.info(`[doCreateComment] [${body}] success!`);
     core.setOutput('comment-id', commentId);
@@ -127,6 +128,9 @@ export async function doUpdateComment(_commentId: number | void, body: string, u
   if (commentId) {
     await ICE.updateComment(+commentId, body, updateMode);
     core.info(`[doUpdateComment] [${commentId}] success!`);
+    if (emoji) {
+      await doCreateCommentEmoji(+commentId, emoji);
+    }
   } else {
     core.warning(`[doUpdateComment] commentId is empty!`);
   }
