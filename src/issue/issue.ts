@@ -1,9 +1,7 @@
 import { Octokit } from '@octokit/rest';
 
-import * as core from '../core';
-
-import { TEmoji, TLockReasons } from '../types';
-import { IIssueBaseInfo, IIssueCoreEngine, TUpdateMode } from './types';
+import { TEmoji, TLockReasons, TUpdateMode, TIssueState } from '../types';
+import { IIssueBaseInfo, IIssueCoreEngine } from './types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;
@@ -13,13 +11,13 @@ export class IssueCoreEngine implements IIssueCoreEngine {
 
   private octokit!: Octokit;
 
-  public constructor(private _info: IIssueBaseInfo) {
+  public constructor(_info: IIssueBaseInfo) {
     if (_info.owner && _info.repo && _info.githubToken) {
       Object.assign(this, _info);
       const octokit = new Octokit({ auth: `token ${this.githubToken}` });
       this.octokit = octokit;
     } else {
-      core.error(`Init failed, need owner、repo and token!`);
+      console && console.error && console.error(`Init failed, need owner、repo and token!`);
     }
   }
 
@@ -29,7 +27,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async addAssignees(assignees: string[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.addAssignees({
       owner,
       repo,
@@ -39,17 +37,17 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async addLabels(labels: string[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.addLabels({
       owner,
       repo,
       issue_number: issueNumber,
-      labels: labels,
+      labels,
     });
   }
 
   public async closeIssue() {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.update({
       owner,
       repo,
@@ -59,19 +57,18 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async createComment(body: string): Promise<number> {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     const { data } = await octokit.issues.createComment({
       owner,
       repo,
       issue_number: issueNumber,
       body,
     });
-    core.setOutput('comment-id', data.id);
     return data.id;
   }
 
   public async createCommentEmoji(commentId: number, emoji: TEmoji[]) {
-    const {owner, repo, octokit } = this;
+    const { owner, repo, octokit } = this;
     for (const content of emoji) {
       await octokit.reactions.createForIssueComment({
         owner,
@@ -79,12 +76,11 @@ export class IssueCoreEngine implements IIssueCoreEngine {
         comment_id: commentId,
         content,
       });
-      core.info(`[create-comment-emoji] [${content}] success!`);
     }
   }
 
-  public async createIssue(title: string, body: string | undefined, labels: string[], assignees: string[]): Promise<number> {
-    const {owner, repo, octokit } = this;
+  public async createIssue(title: string, body: string, labels?: string[], assignees?: string[]): Promise<number> {
+    const { owner, repo, octokit } = this;
     const { data } = await octokit.issues.create({
       owner,
       repo,
@@ -93,12 +89,11 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       labels,
       assignees,
     });
-    core.setOutput('issue-number', data.number);
     return data.number;
   }
 
   public async createIssueEmoji(emoji: TEmoji[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     for (const content of emoji) {
       await octokit.reactions.createForIssue({
         owner,
@@ -106,12 +101,11 @@ export class IssueCoreEngine implements IIssueCoreEngine {
         issue_number: issueNumber,
         content,
       });
-      core.info(`[create-issue-emoji] [${content}] success!`);
     }
   }
 
   public async createLabel(labelName: string, labelColor: string, labelDescription: string | undefined) {
-    const {owner, repo, octokit } = this;
+    const { owner, repo, octokit } = this;
     await octokit.issues.createLabel({
       owner,
       repo,
@@ -122,7 +116,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async deleteComment(commentId: number) {
-    const {owner, repo, octokit } = this;
+    const { owner, repo, octokit } = this;
     await octokit.issues.deleteComment({
       owner,
       repo,
@@ -131,17 +125,20 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async lockIssue(lockReason: TLockReasons) {
-    const {owner, repo, octokit, issueNumber } = this;
-    await octokit.issues.lock({
+    const { owner, repo, octokit, issueNumber } = this;
+    const params: any = {
       owner,
       repo,
       issue_number: issueNumber,
-      lockReason,
-    });
+    }
+    if (lockReason) {
+      params.lock_reason = lockReason;
+    }
+    await octokit.issues.lock(params);
   }
 
   public async openIssue() {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.update({
       owner,
       repo,
@@ -151,7 +148,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async removeAssignees(assignees: string[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.removeAssignees({
       owner,
       repo,
@@ -161,7 +158,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async removeLabels(labels: string[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     const issue = await octokit.issues.get({
       owner,
       repo,
@@ -171,8 +168,6 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     const baseLabels = issue.data.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
 
-    core.info(`[filter-labels] [${removeLabels.join(',')}]!`);
-
     for (const label of removeLabels) {
       await octokit.issues.removeLabel({
         owner,
@@ -180,7 +175,6 @@ export class IssueCoreEngine implements IIssueCoreEngine {
         issue_number: issueNumber,
         name: label,
       });
-      core.info(`[remove-label] [${label}] success!`);
     }
   }
 
@@ -188,7 +182,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     // https://github.com/octokit/rest.js/issues/34
     // - Probability to appear
     // - avoid use setLabels
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
 
     const issue = await octokit.issues.get({
       owner,
@@ -201,18 +195,16 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     const addLabels = labels.filter(name => !baseLabels.includes(name));
 
     if (removeLabels.length) {
-      core.info(`[filter-remove-labels] [${removeLabels.join(',')}]!`);
       await this.removeLabels(removeLabels);
     }
 
     if (addLabels.length) {
-      core.info(`[filter-add-labels] [${addLabels.join(',')}]!`);
       await this.addLabels(addLabels);
     }
   }
 
   public async unlockIssue() {
-    const {owner, repo, octokit, issueNumber } = this;
+    const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.unlock({
       owner,
       repo,
@@ -221,31 +213,25 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async updateComment(commentId: number, body: string, mode: TUpdateMode) {
-    const {owner, repo, octokit } = this;
+    const { owner, repo, octokit } = this;
     const comment = await octokit.issues.getComment({
       owner,
       repo,
       comment_id: commentId,
     });
     const baseBody = comment.data.body;
-
-    let newBody: string;
-    if (mode === 'append') {
-      newBody = `${baseBody}\n${body}`;
-    } else {
-      newBody = body;
-    }
+    const newBody = body ? (mode === 'append' ? `${baseBody}\n${body}` : body) : baseBody;
 
     await octokit.issues.updateComment({
       owner,
       repo,
       comment_id: commentId,
-      body: newBody,
+      body: newBody || '',
     });
   }
 
-  public async updateIssue(state: 'open' | 'closed', title: string | undefined, body: string | undefined, mode: TUpdateMode, labels: string[], assignees: string[]) {
-    const {owner, repo, octokit, issueNumber } = this;
+  public async updateIssue(state: TIssueState, title: string | void, body: string | void, mode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
+    const { owner, repo, octokit, issueNumber } = this;
 
     const issue = await octokit.issues.get({
       owner,
@@ -255,8 +241,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
 
     const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue.data;
 
-    const baseLabelsName = baseLabels.map(({name}: any) => name);
-    const baseAssignessName = baseLabels.map(({login}: any) => login);
+    const baseLabelsName = baseLabels.map(({ name }: any) => name);
+    const baseAssignessName = baseAssigness?.map(({ login }: any) => login);
 
     const newBody = body ? (mode === 'append' ? `${baseBody}\n${body}` : body) : baseBody;
 
@@ -267,8 +253,16 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       state: state || baseState,
       title: title || baseTitle,
       body: newBody,
-      labels: labels.length ? labels : baseLabelsName,
-      assignees: assignees.length ? assignees : baseAssignessName,
+      labels: labels?.length ? labels : baseLabelsName,
+      assignees: assignees?.length ? assignees : baseAssignessName,
     });
+  }
+
+  public async queryIssues() {
+
+  }
+
+  private async listIssues(params, page = 1) {
+
   }
 }

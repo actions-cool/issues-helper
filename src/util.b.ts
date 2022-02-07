@@ -2,14 +2,6 @@ import sampleSize from 'lodash/sampleSize';
 import { dealStringToArr } from 'actions-util';
 export { dealStringToArr };
 
-export const dealRandomAssignees = (assignees: string, randomTo: number): string[] => {
-  let arr = dealStringToArr(assignees);
-  if (randomTo && Number(randomTo) > 0 && Number(randomTo) < arr.length) {
-    arr = sampleSize(arr, randomTo);
-  }
-  return arr;
-}
-
 export const matchKeyword = (content: string, keywords: string[]): string | undefined => {
   return keywords.find(item => content.toLowerCase().includes(item));
 }

@@ -1,5 +1,9 @@
 import * as core from '@actions/core';
 
+export const baseInfo = (mess: string) => {
+  core.info(mess);
+}
+
 export const info = (mess: string) => {
   core.info(`[📝 AC] ${mess}`);
 }
@@ -16,8 +20,8 @@ export const warning = (mess: string) => {
   core.warning(`[🎃 AC] ${mess}`);
 }
 
-export const getInput = (key: string): string | void => {
-  core.getInput(key);
+export const getInput = (key: string, options?: core.InputOptions): string | void => {
+  core.getInput(key, options);
 }
 
 export const setOutput = (key: string, value: string | number | object | void ) => {

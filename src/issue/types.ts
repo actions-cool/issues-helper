@@ -1,25 +1,32 @@
-import { TEmoji, TLockReasons } from '../types';
+import { TEmoji, TLockReasons, TIssueState, TUpdateMode } from '../types';
 
 export interface IIssueBaseInfo {
   owner: string;
   repo: string;
-  issueNunber: string;
+  issueNumber: number;
   githubToken: string;
 }
 
-export type TUpdateMode = 'append' | string | undefined;
+export interface IListIssuesParams {
+  owner: string;
+  repo: string;
+  state: 'all' | 'open' | 'closed';
+
+
+}
 
 export interface IIssueCoreEngine {
-  addAssignees(assignees: string[]): void;
-  addLabels(labels: string[]): void;
+  setIssueNumber(newIssueNumber: number): void;
+  addAssignees(assignees: string[]): Promise<void>;
+  addLabels(labels: string[]): Promise<void>;
 
-  closeIssue(): void;
+  closeIssue(): Promise<void>;
   /**
    * @param body The comment body.
    * @returns The create new comment id.
    */
   createComment(body: string): Promise<number>;
-  createCommentEmoji(commentId: number, emoji: TEmoji[]): void;
+  createCommentEmoji(commentId: number, emoji: TEmoji[]): Promise<void>;
   /**
    * @param title
    * @param body
@@ -27,23 +34,23 @@ export interface IIssueCoreEngine {
    * @param assignees
    * @returns The create new issue number.
    */
-  createIssue(title: string, body: string | undefined, labels: string[], assignees: string[]): Promise<number>;
-  createIssueEmoji(emoji: TEmoji[]): void;
-  createLabel(labelName: string, labelColor: string, labelDescription: string | undefined): void;
+  createIssue(title: string, body: string, labels: string[] | void, assignees: string[] | void): Promise<number>;
+  createIssueEmoji(emoji: TEmoji[]): Promise<void>;
+  createLabel(labelName: string, labelColor: string, labelDescription: string | undefined): Promise<void>;
 
-  deleteComment(commentId: number): void;
+  deleteComment(commentId: number): Promise<void>;
 
-  lockIssue(lockReason: TLockReasons): void;
+  lockIssue(lockReason: TLockReasons): Promise<void>;
 
-  openIssue(): void;
+  openIssue(): Promise<void>;
 
-  removeAssignees(assignees: string[]): void;
-  removeLabels(labels: string[]): void;
+  removeAssignees(assignees: string[]): Promise<void>;
+  removeLabels(labels: string[]): Promise<void>;
 
-  setLabels(labels: string[]): void;
+  setLabels(labels: string[]): Promise<void>;
 
-  unlockIssue(): void;
+  unlockIssue(): Promise<void>;
 
-  updateComment(commentId: number, body: string, mode: TUpdateMode): void;
-  updateIssue(state: 'open' | 'closed', title: string | undefined, body: string | undefined, mode: TUpdateMode, labels: string[], assignees: string[]): void;
+  updateComment(commentId: number, body: string, mode: TUpdateMode): Promise<void>;
+  updateIssue(state: TIssueState, title: string | void, body: string | void, mode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void): Promise<void>;
 }
