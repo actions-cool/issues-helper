@@ -122,22 +122,27 @@
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/umijs/umi">
-      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
+    <a href="https://github.com/antvis/S2">
+      <img src="https://gw.alipayobjects.com/mdn/rms_56cbb2/afts/img/A*TI8XSK3W0EkAAAAAAAAAAAAAARQnAQ" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/vitejs/vite">
-      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46"/>
+    <a href="https://github.com/umijs/umi">
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
     </a>
   </td>
 </tr>
 <tr>
   <td align="center" width="180"><a href="https://github.com/react-component">react-component</a></td>
   <td align="center" width="180"><a href="https://github.com/lijinke666/react-music-player">react-music-player</a></td>
+  <td align="center" width="180"><a href="https://github.com/antvis/S2">S2</a></td>
   <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
-  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
 </tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/vitejs/vite">
+      <img src="https://avatars.githubusercontent.com/u/65625612?s=200&v=4" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/AttoJS/vue-request">
       <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
@@ -153,13 +158,12 @@
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
     </a>
   </td>
-  <td align="center" width="180"></td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
   <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
   <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
-  <td align="center" width="180"></td>
 </tr>
 </table>
 

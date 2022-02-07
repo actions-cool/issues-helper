@@ -1,5 +1,6 @@
 // **************************************************************************
-// Add to end
+// step1: add to end
+// step2: npm run users
 
 /**
  * @param {string} url        github地址
@@ -84,6 +85,10 @@ const users = [
   {
     url: 'https://github.com/element-plus/element-plus',
     logo: 'https://avatars.githubusercontent.com/u/68583457',
+  },
+  {
+    url: 'https://github.com/antvis/S2',
+    logo: 'https://gw.alipayobjects.com/mdn/rms_56cbb2/afts/img/A*TI8XSK3W0EkAAAAAAAAAAAAAARQnAQ',
   },
 ];
 
