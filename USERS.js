@@ -1,5 +1,6 @@
 // **************************************************************************
-// Add to end
+// step1: add to end
+// step2: npm run users
 
 /**
  * @param {string} url        github地址
@@ -80,6 +81,14 @@ const users = [
   {
     url: 'https://github.com/TuSimple/naive-ui',
     logo: 'https://camo.githubusercontent.com/b8ebecade711b9ae1fa306e7a1c9dd680fb56b0e2b9f015fec9cbad343570353/68747470733a2f2f6e6169766575692e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f6e616976656c6f676f2e737667',
+  },
+  {
+    url: 'https://github.com/element-plus/element-plus',
+    logo: 'https://avatars.githubusercontent.com/u/68583457',
+  },
+  {
+    url: 'https://github.com/antvis/S2',
+    logo: 'https://gw.alipayobjects.com/mdn/rms_56cbb2/afts/img/A*TI8XSK3W0EkAAAAAAAAAAAAAARQnAQ',
   },
 ];
 
