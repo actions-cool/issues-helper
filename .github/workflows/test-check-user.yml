@@ -1,0 +1,19 @@
+name: Check User Permission
+
+on:
+  issues:
+    types: [opened, edited]
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions-cool/check-user-permission@v2
+        id: check
+        with:
+          require: 'write'
+          check-contributor: true
+
+      - run: echo "user-permission = ${{ steps.check.outputs.user-permission }}"
+      - run: echo "require-result = ${{ steps.check.outputs.require-result }}"
+      - run: echo "check-result = ${{ steps.check.outputs.check-result }}"
