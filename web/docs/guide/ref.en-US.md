@@ -66,7 +66,7 @@ x2 + y2
 "x1"      false
 ```
 
-## 📍 `Reactions` Type
+## 📍 `emoji` Type
 
 | content | emoji |
 | -- | -- |

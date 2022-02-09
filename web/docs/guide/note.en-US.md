@@ -44,6 +44,7 @@ ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trig
 
 - The owner or collaborator of the warehouse, if there is an organization, including members
 - Participants of the issue, including creators and commenters
+- Max 10
 
 ## Benchmark
 

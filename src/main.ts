@@ -1,5 +1,6 @@
-import * as github from '@actions/github';
 import { dealStringToArr, THANKS } from 'actions-util';
+
+import * as github from '@actions/github';
 
 import * as core from './core';
 import { IssueHelperEngine } from './helper';

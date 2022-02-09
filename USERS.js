@@ -1,6 +1,7 @@
 // **************************************************************************
 // step1: add to end
 // step2: npm run users
+// step3: push 3 files & open a new PR
 
 /**
  * @param {string} url        github地址

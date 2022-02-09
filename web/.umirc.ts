@@ -3,11 +3,13 @@ import { defineConfig } from 'dumi';
 
 const name = 'issues-helper';
 
+const logo = 'https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ';
+
 export default defineConfig({
   title: 'Issues Helper',
   mode: 'site',
-  favicon: 'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
-  logo: 'https://avatars1.githubusercontent.com/u/73879334?s=200&v=4',
+  favicon: logo,
+  logo,
   exportStatic: {},
   ssr: {},
   outputPath: '../docs-dist',
@@ -30,7 +32,6 @@ export default defineConfig({
       { title: '基 础', path: '/base' },
       { title: '进 阶', path: '/advanced' },
       { title: '更新日志', path: '/changelog' },
-      { title: '国内镜像', path: 'https://issues-helper.gitee.io' },
       { title: 'GitHub', path: 'https://github.com/actions-cool/issues-helper' },
     ],
     'en-US': [

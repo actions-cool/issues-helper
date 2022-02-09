@@ -22,7 +22,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -32,9 +32,9 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
 | labels | 标签筛选 | string | ✖ |
 | issue-state | 状态筛选 | string | ✖ |
 | issue-assignee | 指定人筛选 | string | ✖ |
@@ -70,7 +70,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -82,7 +82,7 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | assignee-includes | 是否包含指定人 | string | ✖ |
 | title-includes | 标题包含校验 | string | ✖ |
@@ -108,7 +108,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -119,9 +119,9 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
 | labels | 标签筛选 | string | ✖ |
 | issue-assignee | 指定人筛选 | string | ✖ |
 | issue-creator | 创建人筛选 | string | ✖ |
@@ -141,7 +141,7 @@ jobs:
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -153,7 +153,7 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
 | body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
@@ -165,6 +165,46 @@ jobs:
 [
   {id: 1, auth: 'x', body: 'xxx', created: '', updated: ''},
   {id: 2, auth: 'x', body: 'xxx', created: '', updated: ''},
+]
+```
+
+- `direction` 默认为升序，只有设置 `desc` 时，会返回降序
+- 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
+
+## `find-issues`
+
+查找当前仓库，创建者是 k ，title 包含 `this` ，body 包含 `that`，打开状态的 issues 列表。
+
+```yml
+- name: Find issues
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'find-issues'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-creator: 'k'
+      issue-state: 'open'
+      title-includes: 'this'
+      body-includes: 'that'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
+| issue-state | 状态筛选 | string | ✖ |
+| issue-creator | 创建者筛选 | string | ✖ |
+| title-includes | 标题包含过滤，不填时无校验 | string | ✖ |
+| body-includes | 内容包含过滤，不填时无校验 | string | ✖ |
+| exclude-labels | 排除标签筛选 | string | ✖ |
+| inactive-day | 非活跃天数筛选 | number | ✖ |
+| direction | 返回 `issues` 排序 | string | ✖ |
+
+- 返回 `issues`，格式如下：
+
+```js
+[
+  {number: 1, auth: 'x', body: 'xxx', body: 'xxx', state: 'open', created: '', updated: ''},
+  {number: 2, auth: 'x', body: 'xxx', body: 'xxx', state: 'closed', created: '', updated: ''},
 ]
 ```
 
@@ -187,7 +227,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -198,9 +238,9 @@ jobs:
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| contents | 为该评论增加 [reaction](/guide/ref#-reactions-类型) | string | ✖ |
+| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
 | labels | 标签筛选 | string | ✖ |
 | issue-state | 状态筛选 | string | ✖ |
 | issue-assignee | 指定人筛选 | string | ✖ |
@@ -217,42 +257,124 @@ jobs:
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 
-## `month-statistics`
+## `mark-assignees`
 
-每月 1 号 1 时，生成一个 issue 上月统计。
+快捷加指定人，仅作用于 issue 新增编辑评论。
 
-```
-name: Issue Month Statistics
+```yml
+name: Issue Mark Assignees
 
 on:
-  schedule:
-    - cron: "0 1 1 * *"
+  issue_comment:
+    types: [created, edited]
 
 jobs:
-  month-statistics:
+  mark-duplicate:
     runs-on: ubuntu-latest
     steps:
-      - name: month-statistics
-        uses: actions-cool/issues-helper@v2
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v3
         with:
-          actions: 'month-statistics'
+          actions: 'mark-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
-          count-lables: 'true'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
 | -- | -- | -- | -- |
 | actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✔ |
-| labels | 为新增 issue 添加 labels | string | ✖ |
-| assignees | 为新增 issue 添加 assignees | string | ✖ |
-| count-lables | 新增 issue 是否统计 labels | string | ✖ |
-| count-comments | 新增 issue 是否统计 comments | string | ✖ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
+| assign-command | 可设置简洁命令，如：`/a` | string | ✖ |
+| require-permission | 要求权限，默认为 `write` | string | ✖ |
 
-- 新增 `issue` 的标题默认为 `[当前仓库] Month Statistics: 年-月`
-- `count-lables`：可设置 `'true'`，增加 labels 统计
-- `count-comments`：可设置 `'true'`，增加 comments 统计
+- `assign-command`：可设置简洁命令。默认：`/assign`
+- `require-permission`：可选值有 `admin`，`write`，`read`，`none`
+  - 团队成员若设置 `read` 权限，则为 `read`
+  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
+  - 普通用户为 `read` 权限
+  - 当设置 `write` 后，`admin` 和 `write` 满足条件
 
-如下所示：
+## `mark-duplicate`
 
-![](../public/month.png)
+快捷标记重复问题，仅作用于 issue 新增编辑评论。
+
+```yml
+name: Issue Mark Duplicate
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mark-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'mark-duplicate'
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
+| duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ |
+| duplicate-labels | 为该 issue 额外增加 labels | string | ✖ |
+| remove-labels | 设置可移除的 labels | string | ✖ |
+| labels | 替换该 issue 的 labels | string | ✖ |
+| emoji | 为该评论的增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| close-issue | 是否同时关闭该 issue | string | ✖ |
+| require-permission | 要求权限，默认为 `write` | string | ✖ |
+
+- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
+- `labels`：优先级最高
+- `close-issue`：`true` 或 `'true'` 均可生效
+- `require-permission`：可选值有 `admin`，`write`，`read`，`none`
+  - 团队成员若设置 `read` 权限，则为 `read`
+  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
+  - 普通用户为 `read` 权限
+  - 当设置 `write` 后，`admin` 和 `write` 满足条件
+
+<Alert>
+注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
+</Alert>
+
+![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*PN2tS7PjDQ4AAAAAAAAAAAAAARQnAQ)
+
+## `welcome`
+
+当一个 issue 新建时，对首次新建 issue 的用户进行欢迎。若用户非首次新建，则无操作。
+
+```yml
+name: Issue Welcome
+
+on:
+  issues:
+    types: [opened]
+
+jobs:
+  issue-welcome:
+    runs-on: ubuntu-latest
+    steps:
+      - name: welcome
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'welcome'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          body: hi @${{ github.event.issue.user.login }}, welcome!
+          labels: 'welcome1, welcome2'
+          assignees: 'xx1'
+          issue-emoji: '+1, -1, eyes'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明)  | string | ✔ |
+| body | 评论欢迎的内容，不填则不评论 | string | ✖ |
+| labels | 为该 issue 增加 labels | string | ✖ |
+| assignees | 为该 issue 增加 assignees | string | ✖ |
+| issue-emoji | 为该 issue 增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+
+- 若这 4 个可选项都不填，则无操作

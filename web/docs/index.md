@@ -3,19 +3,19 @@ title: Issues 助手
 order: 1
 hero:
   title: Issues 助手
-  image: https://avatars1.githubusercontent.com/u/73879334?s=200&v=4
+  image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
   desc: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
   actions:
     - text: 快速开始
       link: /guide/start
 features:
-  - icon: https://github.com/actions-cool/resources/blob/main/image/free.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*Km0BQJs7vWAAAAAAAAAAAAAAARQnAQ
     title: 完全免费
     desc: 使用 GitHub 自带提供的 Actions 服务
-  - icon: https://github.com/actions-cool/resources/blob/main/image/snap.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*ELKWSIMizH0AAAAAAAAAAAAAARQnAQ
     title: 简单易用
     desc: 教程详细，模版丰富
-  - icon: https://github.com/actions-cool/resources/blob/main/image/network.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*j-SURo-DkyIAAAAAAAAAAAAAARQnAQ
     title: 轻松托管
     desc: 只要 GitHub 不宕机，它就不受影响
 footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -63,4 +63,4 @@ jobs:
 
 也欢迎加入 钉钉交流群
 
-![](https://github.com/actions-cool/resources/blob/main/dingding.jpeg?raw=true)
+![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*-iuDSpF7QAQAAAAAAAAAAAAAARQnAQ)

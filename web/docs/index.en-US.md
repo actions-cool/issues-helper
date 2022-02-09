@@ -3,19 +3,19 @@ title: Issues Helper
 order: 1
 hero:
   title: Issues Helper
-  image: https://avatars1.githubusercontent.com/u/73879334?s=200&v=4
+  image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
   desc: 🤖 A GitHub Action that easily helps you automatically manage issues
   actions:
     - text: Quick start
       link: /en-US/guide/start
 features:
-  - icon: https://github.com/actions-cool/resources/blob/main/image/free.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*Km0BQJs7vWAAAAAAAAAAAAAAARQnAQ
     title: Completely free
     desc: Use the Actions service provided by GitHub
-  - icon: https://github.com/actions-cool/resources/blob/main/image/snap.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*ELKWSIMizH0AAAAAAAAAAAAAARQnAQ
     title: Easy to use
     desc: Detailed tutorials and rich templates
-  - icon: https://github.com/actions-cool/resources/blob/main/image/network.png?raw=true
+  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*j-SURo-DkyIAAAAAAAAAAAAAARQnAQ
     title: Easy hosting
     desc: As long as GitHub is not down, it will not be affected
 footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: help wanted
         if: github.event.label.name == 'help wanted'
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}

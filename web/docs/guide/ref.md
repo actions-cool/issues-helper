@@ -66,7 +66,7 @@ x2 + y2
 "x1"      false
 ```
 
-## 📍 `Reactions` 类型
+## 📍 `emoji` 类型
 
 | content | emoji |
 | -- | -- |

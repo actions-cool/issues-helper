@@ -16,6 +16,7 @@
   "author": "xrkffgg",
   "main": "src/main.ts",
   "scripts": {
+    "dev": "APP_ROOT=web dumi dev",
     "start": "APP_ROOT=web dumi dev",
     "docs:build": "APP_ROOT=web dumi build",
     "docs-dev:build": "APP_ROOT=web UMI_ENV=dev dumi build",
@@ -25,11 +26,14 @@
     "format-check": "prettier --check **/*.ts",
     "lint": "eslint src/*.ts",
     "lint-fix": "eslint src/*.ts --fix",
+    "check-commit": "node ./scripts/check-commit.js",
+    "tag": "node ./scripts/tag.js",
+    "release": "node ./scripts/release",
     "test": "father test",
     "package": "ncc build src/main.ts -o dist",
     "users": "node ./script/update-users.js",
     "version": "node ./script/update-version.js",
-    "pub": "npm run package",
+    "pub": "sh -e ./scripts/pub.sh",
     "all": "npm run format-check && npm run lint && npm run test && npm run package"
   },
   "dependencies": {
@@ -48,12 +52,16 @@
     "@vercel/ncc": "^0.27.0",
     "common-tags": "^1.8.2",
     "dumi": "^1.1.26",
+    "chalk": "^4.1.2",
+    "new-github-release-url": "^1.0.0",
+    "open": "^7.3.0",
     "eslint": "^7.18.0",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
     "father": "^2.30.7",
     "gh-pages": "^3.1.0",
     "prettier": "^2.2.1",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "simple-git": "^2.46.0"
   }
 }

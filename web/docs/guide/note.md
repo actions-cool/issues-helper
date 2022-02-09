@@ -45,6 +45,7 @@ ref: [GitHub docs](https://docs.github.com/en/actions/reference/events-that-trig
 
 - 仓库的所有者或协作者，若有组织，包括成员
 - issue 的参与者，包括创建者、评论者
+- 最多支持 10 个
 
 ## 运行基准
 
