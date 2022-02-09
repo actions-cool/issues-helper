@@ -182,7 +182,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 </tr>
 </table>
 
-## README Badge
+## Badge
 
 If you think `actions-cool` can help you, please copy it to the README to support promotion and bring convenience to more repositories:[![actions-cool](https://img.shields.io/badge/using-actions--cool-blue?style=flat-square)](https://github.com/actions-cool). [More color see](https://github.com/actions-cool/issues-helper/issues/92).
 

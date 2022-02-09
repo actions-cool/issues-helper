@@ -40,15 +40,15 @@ const body = getChangelog(changelog);
 
 async function run() {
   const url = newGithubReleaseUrl({
-		user,
+    user,
     repo,
-		tag,
-		body: body,
-	});
+    tag,
+    body: body,
+  });
 
   await open(url);
 
   console.log(chalk.yellow('🚀 Please check tag and changelog. Then click publish!'));
-};
+}
 
 run();

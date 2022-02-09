@@ -182,7 +182,7 @@
 </tr>
 </table>
 
-## 💫 图标
+## 图标
 
 如果觉得 actions-cool 能帮到你，欢迎复制到 README 中支持，推广给更多的项目：[![actions-cool](https://img.shields.io/badge/using-actions--cool-blue?style=flat-square)](https://github.com/actions-cool)，[更多样式](https://github.com/actions-cool/issues-helper/issues/92)。
 
