@@ -1,4 +1,4 @@
-import { TEmoji, TLockReasons, TIssueState, TUpdateMode } from '../types';
+import { TEmoji, TLockReasons, TIssueState, TUpdateMode, TUserPermission } from '../types';
 
 export interface IIssueBaseInfo {
   owner: string;
@@ -15,18 +15,38 @@ export interface IListIssuesParams {
   labels?: string;
 }
 
-export type TListIssuesResult = {
+export type TIssueInfo = {
   number: number;
   title: string;
   body: string;
+  user: {
+    login: string;
+  };
+  assignees: {
+    login: string;
+  }[];
   labels: {
     name: string;
   }[];
+  state: TIssueState;
+  created_at: string;
   updated_at: string;
   pull_request?: any;
 }
 
-export type TListIssuesResults = TListIssuesResult[];
+export type TIssueList = TIssueInfo[];
+
+export type TCommentInfo = {
+  id: number;
+  body: string;
+  user: {
+    login: string;
+  };
+  created_at: string;
+  updated_at: string;
+}
+
+export type TCommentList = TCommentInfo[];
 
 export interface IIssueCoreEngine {
   setIssueNumber(newIssueNumber: number): void;
@@ -53,7 +73,11 @@ export interface IIssueCoreEngine {
 
   deleteComment(commentId: number): Promise<void>;
 
-  listIssues(params: IListIssuesParams): Promise<TListIssuesResults>;
+  getIssue(): Promise<TIssueInfo>;
+  getUserPermission(username: string): Promise<TUserPermission>;
+
+  listComments(): Promise<TCommentList>;
+  listIssues(params: IListIssuesParams): Promise<TIssueList>;
   lockIssue(lockReason: TLockReasons): Promise<void>;
 
   openIssue(): Promise<void>;

@@ -5,6 +5,7 @@ import { Context, TIssueState, TUpdateMode, TAction, TEmoji } from '../types';
 import {
   IssueCoreEngine,
   IIssueCoreEngine,
+  TCommentInfo,
 } from '../issue';
 import { dealRandomAssignees } from '../util';
 import { IIssueHelperEngine } from './types';
@@ -32,6 +33,14 @@ import {
 import {
   initAdvancedICE,
   doCheckInactive,
+  doCheckIssue,
+  doCloseIssues,
+  doFindComments,
+  doFindIssues,
+  doLockIssues,
+  doMarkAssignees,
+  doMarkDuplicate,
+  doWelcome,
 } from './advanced';
 
 export class IssueHelperEngine implements IIssueHelperEngine {
@@ -106,7 +115,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   public async doExeAction(action: TAction) {
-    const { owner, repo, issueNumber, emoji, labels, assignees, title, body, updateMode, state } = this;
+    const { owner, repo, issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx } = this;
     switch (action) {
       // ---[ Base Begin ]--->>>
       case 'add-assignees': {
@@ -126,7 +135,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'close-issue': {
-        await doCloseIssue(issueNumber);
+        await doCloseIssue();
         break;
       }
       case 'create-comment': {
@@ -146,11 +155,11 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'lock-issue': {
-        await doLockIssue(issueNumber);
+        await doLockIssue();
         break;
       }
       case 'open-issue': {
-        await doOpenIssue(issueNumber);
+        await doOpenIssue();
         break;
       }
       case 'remove-assignees': {
@@ -178,7 +187,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'unlock-issue': {
-        await doUnlockIssue(issueNumber);
+        await doUnlockIssue();
         break;
       }
       case 'update-comment': {
@@ -186,7 +195,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'update-issue': {
-        await doUpdateIssue(issueNumber, state, title, body, updateMode, labels, assignees);
+        await doUpdateIssue(0, state, title, body, updateMode, labels, assignees);
         break;
       }
       // ---[ Base End ]--->>>
@@ -196,6 +205,59 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         await doCheckInactive(body, emoji);
         break;
       }
+      case 'check-issue': {
+        await doCheckIssue();
+        break;
+      }
+      case 'close-issues': {
+        await doCloseIssues(body, emoji);
+        break;
+      }
+      case 'find-comments': {
+        await doFindComments();
+        break;
+      }
+      case 'find-issues': {
+        await doFindIssues();
+        break;
+      }
+      case 'lock-issues': {
+        await doLockIssues(body, emoji);
+        break;
+      }
+      case 'mark-assignees': {
+        if (this.checkEvent4Mark()) {
+          core.warning(`[mark-assignees] only support event '[issue_comment: created/edited]'!`);
+          return;
+        }
+        await doMarkAssignees(ctx.payload.comment as TCommentInfo);
+        break;
+      }
+      case 'mark-duplicate': {
+        if (this.checkEvent4Mark()) {
+          core.warning(`[mark-duplicate] only support event '[issue_comment: created/edited]'!`);
+          return;
+        }
+        await doMarkDuplicate(ctx.payload.comment as TCommentInfo, labels, emoji);
+        break;
+      }
+      case 'welcome': {
+        if (ctx.eventName === 'issues' && ctx.payload.action === 'opened') {
+          await doWelcome(ctx.actor, issueNumber, body, labels, assignees, emoji);
+        } else {
+          core.warning('[welcome] only support issue opened!');
+        }
+        break;
+      }
+      default: {
+        core.warning(`The ${action} is not allowed.`)
+        break;
+      }
     }
+  }
+
+  private checkEvent4Mark() {
+    const { ctx } = this;
+    return ctx.eventName !== 'issue_comment' && (ctx.payload.action === 'created' || ctx.payload.action === 'edited');
   }
 }

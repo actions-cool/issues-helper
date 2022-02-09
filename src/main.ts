@@ -2,8 +2,8 @@ import * as github from '@actions/github';
 import { dealStringToArr, THANKS } from 'actions-util';
 
 import * as core from './core';
-import { TAction } from './types';
 import { IssueHelperEngine } from './helper';
+import type { TAction } from './types';
 
 async function main() {
   try {
@@ -16,6 +16,6 @@ async function main() {
   } catch (err: any) {
     core.setFailed(err.message);
   }
-};
+}
 
 main();

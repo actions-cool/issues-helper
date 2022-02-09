@@ -20,9 +20,10 @@ export async function doAddLabels(labels: string[], issueNumber?: number) {
   core.info(`[doAddLabels] [${labels}] success!`);
 }
 
-export async function doCloseIssue(issueNumber: number) {
+export async function doCloseIssue(issueNumber?: number) {
+  if (issueNumber) ICE.setIssueNumber(issueNumber);
   await ICE.closeIssue();
-  core.info(`[doCloseIssue] [${issueNumber}] success!`);
+  core.info(`[doCloseIssue] success!`);
 }
 
 export async function doCreateComment(body: string, emoji?: string, issueNumber?: number) {
@@ -87,20 +88,20 @@ export async function doDeleteComment(_commentId: number | void) {
   }
 }
 
-export async function doLockIssue(issueNumber: number) {
-  const lockReason = core.getInput('lock-reason') || '';
-  // @ts-ignore
+export async function doLockIssue(issueNumber?: number) {
+  if (issueNumber) ICE.setIssueNumber(issueNumber);
+  const lockReason = (core.getInput('lock-reason') || '') as TLockReasons;
   if (lockReason && !ELockReasons[lockReason]) {
     core.warning(`[doLockIssue] lock-reason is illegal!`);
     return;
   }
   await ICE.lockIssue(lockReason as TLockReasons);
-  core.info(`[doLockIssue] ${issueNumber} success!`);
+  core.info(`[doLockIssue] success!`);
 }
 
-export async function doOpenIssue(issueNumber: number) {
+export async function doOpenIssue() {
   await ICE.openIssue();
-  core.info(`[doOpenIssue] [${issueNumber}] success!`);
+  core.info(`[doOpenIssue] success!`);
 }
 
 export async function doRemoveAssignees(assignees: string[]) {
@@ -118,9 +119,9 @@ export async function doSetLabels(labels: string[]) {
   core.info(`[doSetLabels] [${labels}] success!`);
 }
 
-export async function doUnlockIssue(issueNumber: number) {
+export async function doUnlockIssue() {
   await ICE.unlockIssue();
-  core.info(`[doUnlockIssue] [${issueNumber}] success!`);
+  core.info(`[doUnlockIssue] success!`);
 }
 
 export async function doUpdateComment(_commentId: number | void, body: string, updateMode: TUpdateMode, emoji: string | void) {
@@ -137,6 +138,7 @@ export async function doUpdateComment(_commentId: number | void, body: string, u
 }
 
 export async function doUpdateIssue(issueNumber: number, state: TIssueState, title: string | void, body: string | void, updateMode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
+  if (issueNumber) ICE.setIssueNumber(issueNumber);
   await ICE.updateIssue(state, title, body, updateMode, labels, assignees);
-  core.info(`[doUpdateIssue] [${issueNumber}] success!`);
+  core.info(`[doUpdateIssue] success!`);
 }

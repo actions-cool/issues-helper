@@ -1,3 +1,5 @@
+import type { TPermissionType } from 'actions-util';
+
 export { Context } from '@actions/github/lib/context';
 
 export type TEmoji = '+1' | '-1' | 'laugh' | 'confused' | 'heart' | 'hooray' | 'rocket' | 'eyes';
@@ -8,9 +10,24 @@ export type TIssueState = 'open' | 'closed';
 
 export type TUpdateMode = 'append' | 'replace';
 
+export type TUserPermission = TPermissionType;
+
+export type TOutInfo = {
+  auth: string;
+  id?: number;
+  number?: number;
+  title?: string;
+  body?: string;
+  state?: TIssueState;
+  created: string;
+  updated: string;
+};
+
+export type TOutList = TOutInfo[];
+
 export type TAction =
   // [ Base Begin ]
-    'add-assignees'
+  | 'add-assignees'
   | 'add-labels'
   | 'close-issue'
   | 'create-comment'
@@ -36,6 +53,5 @@ export type TAction =
   | 'lock-issues'
   | 'mark-assignees'
   | 'mark-duplicate'
-  | 'month-statistics'
   | 'welcome';
-  // [ Advanced End ]
+// [ Advanced End ]

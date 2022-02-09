@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest';
-
-import { TEmoji, TLockReasons, TUpdateMode, TIssueState } from '../types';
-import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TListIssuesResults } from './types';
+import { EEmoji } from '../shared';
+import { TEmoji, TLockReasons, TUpdateMode, TIssueState, TUserPermission } from '../types';
+import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TIssueList, TIssueInfo, TCommentList } from './types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;
@@ -70,12 +70,14 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   public async createCommentEmoji(commentId: number, emoji: TEmoji[]) {
     const { owner, repo, octokit } = this;
     for (const content of emoji) {
-      await octokit.reactions.createForIssueComment({
-        owner,
-        repo,
-        comment_id: commentId,
-        content,
-      });
+      if (content && EEmoji[content]) {
+        await octokit.reactions.createForIssueComment({
+          owner,
+          repo,
+          comment_id: commentId,
+          content,
+        });
+      }
     }
   }
 
@@ -95,12 +97,14 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   public async createIssueEmoji(emoji: TEmoji[]) {
     const { owner, repo, octokit, issueNumber } = this;
     for (const content of emoji) {
-      await octokit.reactions.createForIssue({
-        owner,
-        repo,
-        issue_number: issueNumber,
-        content,
-      });
+      if (content && EEmoji[content]) {
+        await octokit.reactions.createForIssue({
+          owner,
+          repo,
+          issue_number: issueNumber,
+          content,
+        });
+      }
     }
   }
 
@@ -124,6 +128,42 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     });
   }
 
+  public async getIssue() {
+    const { owner, repo, octokit, issueNumber } = this;
+    const issue = await octokit.issues.get({
+      owner,
+      repo,
+      issue_number: issueNumber,
+    });
+    return issue.data as TIssueInfo;
+  }
+
+  public async getUserPermission(username: string) {
+    const { owner, repo, octokit } = this;
+    const { data } = await octokit.repos.getCollaboratorPermissionLevel({
+      owner,
+      repo,
+      username,
+    });
+    return data.permission as TUserPermission;
+  }
+
+  public async listComments(page = 1) {
+    const { octokit, owner, repo, issueNumber } = this;
+    const { data } = await octokit.issues.listComments({
+      owner,
+      repo,
+      issue_number: issueNumber,
+      per_page: 100,
+      page,
+    });
+    let comments = [...data] as unknown as TCommentList;
+    if (comments.length >= 100) {
+      comments = comments.concat(await this.listComments(page + 1));
+    }
+    return comments;
+  }
+
   public async listIssues(params: IListIssuesParams, page = 1) {
     const { octokit, owner, repo } = this;
     const { data } = await octokit.issues.listForRepo({
@@ -133,7 +173,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       per_page: 100,
       page,
     });
-    let issues = [...data] as unknown as TListIssuesResults;
+    let issues = [...data] as unknown as TIssueList;
     if (issues.length >= 100) {
       issues = issues.concat(await this.listIssues(params, page + 1));
     }
@@ -174,14 +214,10 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async removeLabels(labels: string[]) {
-    const { owner, repo, octokit, issueNumber } = this;
-    const issue = await octokit.issues.get({
-      owner,
-      repo,
-      issue_number: issueNumber,
-    });
+    const { owner, repo, octokit, issueNumber, getIssue } = this;
+    const issue = await getIssue();
 
-    const baseLabels: string[] = issue.data.labels.map(({ name }: any) => name);
+    const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
 
     for (const label of removeLabels) {
@@ -198,15 +234,10 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     // https://github.com/octokit/rest.js/issues/34
     // - Probability to appear
     // - avoid use setLabels
-    const { owner, repo, octokit, issueNumber } = this;
+    const { getIssue } = this;
+    const issue = await getIssue();
 
-    const issue = await octokit.issues.get({
-      owner,
-      repo,
-      issue_number: issueNumber,
-    });
-
-    const baseLabels: string[] = issue.data.labels.map(({ name }: any) => name);
+    const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => !labels.includes(name));
     const addLabels = labels.filter(name => !baseLabels.includes(name));
 
@@ -247,15 +278,9 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async updateIssue(state: TIssueState, title: string | void, body: string | void, mode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
-    const { owner, repo, octokit, issueNumber } = this;
-
-    const issue = await octokit.issues.get({
-      owner,
-      repo,
-      issue_number: issueNumber,
-    });
-
-    const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue.data;
+    const { owner, repo, octokit, issueNumber, getIssue } = this;
+    const issue = await getIssue();
+    const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue;
 
     const baseLabelsName = baseLabels.map(({ name }: any) => name);
     const baseAssignessName = baseAssigness?.map(({ login }: any) => login);

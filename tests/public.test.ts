@@ -1,5 +1,7 @@
-describe('Test Public', () => {
-  it('test query', () => {
+import { replaceStr2Arr } from '../src/util';
+
+describe('Test', () => {
+  it('test doQueryIssues', () => {
     const issues = [
       {
         id: 0,
@@ -41,5 +43,13 @@ describe('Test Public', () => {
     expect(r[1].id).toEqual(4);
     expect(r[2].id).toEqual(5);
     expect(r.length).toEqual(3);
+  });
+
+  it('test replaceStr2Arr', () => {
+    const st = '/assign @1 @2 @3@a 3  @s @1_2 2';
+    const re = '/assign';
+    const sp = '@';
+
+    expect(replaceStr2Arr(st, re, sp)).toEqual(['1', '2', '3', 'a 3', 's', '1_2 2']);
   });
 });

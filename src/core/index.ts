@@ -24,16 +24,14 @@ export const getInput = (key: string, options?: core.InputOptions): string | voi
   core.getInput(key, options);
 }
 
-export const setOutput = (key: string, value: string | number | object | void ) => {
-  let formatValue: string | number | object | void;
-  if (value || typeof(value) === 'boolean') {
-    if (typeof(value) === 'object') {
-      formatValue = JSON.stringify(value);
-    } else {
-      formatValue = value;
-    }
-    core.setOutput(key, formatValue);
+export const setOutput = (key: string, value: string | boolean | number | object ) => {
+  let formatValue: string | number | boolean | object;
+  if (typeof(value) === 'object') {
+    formatValue = JSON.stringify(value);
+  } else {
+    formatValue = value;
   }
+  core.setOutput(key, formatValue);
 }
 
 export const setFailed = (mess: string) => {
