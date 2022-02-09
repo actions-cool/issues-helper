@@ -67,7 +67,7 @@ inputs:
     description: 'Query use'
   issue-mentioned:
     description: 'Query use'
-  issue-contents:
+  issue-emoji:
     description: 'For welcome'
   issue-state:
     description: 'Query use'
