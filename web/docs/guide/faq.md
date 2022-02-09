@@ -78,6 +78,7 @@ v1.12 和 v2.0.0 版本的差别只有一处。即 `mark-duplicate` 中的 `requ
   - 修复 `lock-issues` lock 与 comment 的顺序问题
 - 🛠 Refactor
   - contents 更名为容易理解的 emoji
+  - `issue-emojis` 更名为 `issue-emoji`
   - deleteComment updateComment 不再支持 `out-comments`，保持纯粹功能
   - 移除 title body 默认值
   - `month-statistics` 移除，可使用 [issues-month-statistics](https://github.com/actions-cool/issues-month-statistics)

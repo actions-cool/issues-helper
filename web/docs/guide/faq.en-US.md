@@ -78,6 +78,7 @@ Reference for functional changes:
   - Fix `lock-issues` lock and comment order issue
 - 🛠 Refactor
   - `contents` renamed to easy-to-understand `emoji`
+  - `issue-emojis` renamed to `issue-emoji`
   - deleteComment updateComment no longer supports `out-comments`, keeping pure functionality
   - Remove title body default
   - `month-statistics` is removed, can use [issues-month-statistics](https://github.com/actions-cool/issues-month-statistics)
