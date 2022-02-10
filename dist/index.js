@@ -15673,7 +15673,8 @@ class IssueCoreEngine {
                 repo,
                 issue_number: issueNumber,
             });
-            return issue;
+            console.log(issue);
+            return issue.data;
         });
     }
     getUserPermission(username) {
@@ -15754,8 +15755,8 @@ class IssueCoreEngine {
     }
     removeLabels(labels) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { owner, repo, octokit, issueNumber, getIssue } = this;
-            const issue = yield getIssue();
+            const { owner, repo, octokit, issueNumber } = this;
+            const issue = yield this.getIssue();
             const baseLabels = issue.labels.map(({ name }) => name);
             const removeLabels = baseLabels.filter(name => labels.includes(name));
             for (const label of removeLabels) {
@@ -15773,8 +15774,7 @@ class IssueCoreEngine {
             // https://github.com/octokit/rest.js/issues/34
             // - Probability to appear
             // - avoid use setLabels
-            const { getIssue } = this;
-            const issue = yield getIssue();
+            const issue = yield this.getIssue();
             const baseLabels = issue.labels.map(({ name }) => name);
             const removeLabels = baseLabels.filter(name => !labels.includes(name));
             const addLabels = labels.filter(name => !baseLabels.includes(name));
@@ -15816,8 +15816,8 @@ class IssueCoreEngine {
     }
     updateIssue(state, title, body, mode, labels, assignees) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { owner, repo, octokit, issueNumber, getIssue } = this;
-            const issue = yield getIssue();
+            const { owner, repo, octokit, issueNumber } = this;
+            const issue = yield this.getIssue();
             const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue;
             const baseLabelsName = baseLabels.map(({ name }) => name);
             const baseAssignessName = baseAssigness === null || baseAssigness === void 0 ? void 0 : baseAssigness.map(({ login }) => login);

@@ -136,7 +136,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       repo,
       issue_number: issueNumber,
     });
-    return issue as unknown as TIssueInfo;
+    console.log(issue)
+    return issue.data as unknown as TIssueInfo;
   }
 
   public async getUserPermission(username: string) {
@@ -215,8 +216,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async removeLabels(labels: string[]) {
-    const { owner, repo, octokit, issueNumber, getIssue } = this;
-    const issue = await getIssue();
+    const { owner, repo, octokit, issueNumber } = this;
+    const issue = await this.getIssue();
 
     const baseLabels: string[] = issue.labels.map(({ name }) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
@@ -235,8 +236,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     // https://github.com/octokit/rest.js/issues/34
     // - Probability to appear
     // - avoid use setLabels
-    const { getIssue } = this;
-    const issue = await getIssue();
+    const issue = await this.getIssue();
 
     const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
     const removeLabels = baseLabels.filter(name => !labels.includes(name));
@@ -279,8 +279,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   }
 
   public async updateIssue(state: TIssueState, title: string | void, body: string | void, mode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
-    const { owner, repo, octokit, issueNumber, getIssue } = this;
-    const issue = await getIssue();
+    const { owner, repo, octokit, issueNumber } = this;
+    const issue = await this.getIssue();
     const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue;
 
     const baseLabelsName = baseLabels.map(({ name }: any) => name);
