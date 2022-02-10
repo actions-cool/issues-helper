@@ -1,5 +1,5 @@
 import { Octokit } from '@octokit/rest';
-import * as core from '@actions/core';
+import * as core from '../core';
 import { EEmoji } from '../shared';
 import { TEmoji, TLockReasons, TUpdateMode, TIssueState, TUserPermission } from '../types';
 import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TIssueList, TIssueInfo, TCommentList } from './types';

@@ -19,7 +19,6 @@ import {
 
 let ICE: IIssueCoreEngine;
 export function initAdvancedICE(_ICE: IIssueCoreEngine) {
-  console.log(_ICE)
   ICE = _ICE;
 }
 

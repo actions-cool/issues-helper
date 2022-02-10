@@ -9,10 +9,8 @@ import type { TAction } from './types';
 async function main() {
   try {
     const actions = core.getInput('actions', { required: true });
-    console.log(actions)
     const IHE = new IssueHelperEngine(github.context);
     for (const action of dealStringToArr(actions)) {
-      console.log(action)
       await IHE.doExeAction(action as TAction);
     }
     core.baseInfo(`\n${THANKS}`);

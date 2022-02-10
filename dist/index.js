@@ -14609,7 +14609,6 @@ const util_1 = __nccwpck_require__(9604);
 const base_1 = __nccwpck_require__(8824);
 let ICE;
 function initAdvancedICE(_ICE) {
-    console.log(_ICE);
     ICE = _ICE;
 }
 exports.initAdvancedICE = initAdvancedICE;
@@ -15536,7 +15535,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.IssueCoreEngine = void 0;
 const rest_1 = __nccwpck_require__(5375);
-const core = __importStar(__nccwpck_require__(2186));
+const core = __importStar(__nccwpck_require__(9875));
 const shared_1 = __nccwpck_require__(3826);
 class IssueCoreEngine {
     constructor(_info) {
@@ -15893,10 +15892,8 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const actions = core.getInput('actions', { required: true });
-            console.log(actions);
             const IHE = new helper_1.IssueHelperEngine(github.context);
             for (const action of (0, actions_util_1.dealStringToArr)(actions)) {
-                console.log(action);
                 yield IHE.doExeAction(action);
             }
             core.baseInfo(`\n${actions_util_1.THANKS}`);
