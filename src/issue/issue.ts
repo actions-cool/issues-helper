@@ -136,7 +136,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       repo,
       issue_number: issueNumber,
     });
-    return issue.data as TIssueInfo;
+    return issue as unknown as TIssueInfo;
   }
 
   public async getUserPermission(username: string) {
@@ -217,7 +217,6 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   public async removeLabels(labels: string[]) {
     const { owner, repo, octokit, issueNumber, getIssue } = this;
     const issue = await getIssue();
-    console.log(issue)
 
     const baseLabels: string[] = issue.labels.map(({ name }) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
