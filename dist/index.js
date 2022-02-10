@@ -15756,6 +15756,7 @@ class IssueCoreEngine {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, repo, octokit, issueNumber, getIssue } = this;
             const issue = yield getIssue();
+            console.log(issue);
             const baseLabels = issue.labels.map(({ name }) => name);
             const removeLabels = baseLabels.filter(name => labels.includes(name));
             for (const label of removeLabels) {

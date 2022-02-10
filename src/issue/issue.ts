@@ -217,8 +217,9 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   public async removeLabels(labels: string[]) {
     const { owner, repo, octokit, issueNumber, getIssue } = this;
     const issue = await getIssue();
+    console.log(issue)
 
-    const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
+    const baseLabels: string[] = issue.labels.map(({ name }) => name);
     const removeLabels = baseLabels.filter(name => labels.includes(name));
 
     for (const label of removeLabels) {
