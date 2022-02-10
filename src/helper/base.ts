@@ -1,8 +1,9 @@
 import { dealStringToArr } from 'actions-util';
+
 import * as core from '../core';
-import { TIssueState, TUpdateMode, TEmoji, TLockReasons } from '../types';
+import type { IIssueCoreEngine } from '../issue';
 import { ELockReasons } from '../shared';
-import { IIssueCoreEngine } from '../issue';
+import type { TEmoji, TIssueState, TLockReasons, TUpdateMode } from '../types';
 
 let ICE: IIssueCoreEngine;
 export function initBaseICE(_ICE: IIssueCoreEngine) {
@@ -50,7 +51,13 @@ export async function doCreateCommentEmoji(_commentId: number | void, emoji: str
   }
 }
 
-export async function doCreateIssue(title: string, body: string, labels: string[] | void, assignees: string[] | void, emoji: string | void) {
+export async function doCreateIssue(
+  title: string,
+  body: string,
+  labels?: string[],
+  assignees?: string[],
+  emoji?: string | void,
+) {
   if (title) {
     const issueNumber = await ICE.createIssue(title, body, labels, assignees);
     core.info(`[doCreateIssue] [${title}] success!`);
@@ -124,7 +131,12 @@ export async function doUnlockIssue() {
   core.info(`[doUnlockIssue] success!`);
 }
 
-export async function doUpdateComment(_commentId: number | void, body: string, updateMode: TUpdateMode, emoji: string | void) {
+export async function doUpdateComment(
+  _commentId: number | void,
+  body: string,
+  updateMode: TUpdateMode,
+  emoji: string | void,
+) {
   const commentId = _commentId || core.getInput('comment-id');
   if (commentId) {
     await ICE.updateComment(+commentId, body, updateMode);
@@ -137,7 +149,15 @@ export async function doUpdateComment(_commentId: number | void, body: string, u
   }
 }
 
-export async function doUpdateIssue(issueNumber: number, state: TIssueState, title: string | void, body: string | void, updateMode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
+export async function doUpdateIssue(
+  issueNumber: number,
+  state: TIssueState,
+  title: string | void,
+  body: string | void,
+  updateMode: TUpdateMode,
+  labels?: string[] | void,
+  assignees?: string[] | void,
+) {
   if (issueNumber) ICE.setIssueNumber(issueNumber);
   await ICE.updateIssue(state, title, body, updateMode, labels, assignees);
   core.info(`[doUpdateIssue] success!`);

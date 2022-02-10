@@ -1,22 +1,28 @@
 // import * as github from '@actions/github';
 import { dealStringToArr } from 'actions-util';
-import * as core from '../core';
-import { Context, TIssueState, TUpdateMode, TAction, TEmoji } from '../types';
-import {
-  IssueCoreEngine,
-  IIssueCoreEngine,
-  TCommentInfo,
-} from '../issue';
-import { dealRandomAssignees } from '../util';
-import { IIssueHelperEngine } from './types';
 
+import * as core from '../core';
+import type { IIssueCoreEngine, TCommentInfo } from '../issue';
+import { IssueCoreEngine } from '../issue';
+import type { Context, TAction, TIssueState, TUpdateMode } from '../types';
+import { dealRandomAssignees } from '../util';
 import {
-  initBaseICE,
+  doCheckInactive,
+  doCheckIssue,
+  doCloseIssues,
+  doFindComments,
+  doFindIssues,
+  doLockIssues,
+  doMarkAssignees,
+  doMarkDuplicate,
+  doWelcome,
+  initAdvancedICE,
+} from './advanced';
+import {
   doAddAssignees,
   doAddLabels,
   doCloseIssue,
   doCreateComment,
-  doCreateCommentEmoji,
   doCreateIssue,
   doCreateLabel,
   doDeleteComment,
@@ -28,20 +34,9 @@ import {
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
+  initBaseICE,
 } from './base';
-
-import {
-  initAdvancedICE,
-  doCheckInactive,
-  doCheckIssue,
-  doCloseIssues,
-  doFindComments,
-  doFindIssues,
-  doLockIssues,
-  doMarkAssignees,
-  doMarkDuplicate,
-  doWelcome,
-} from './advanced';
+import type { IIssueHelperEngine } from './types';
 
 export class IssueHelperEngine implements IIssueHelperEngine {
   private ICE!: IIssueCoreEngine;
@@ -51,8 +46,8 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   private issueNumber!: number;
 
   private emoji?: string;
-  private labels?: string[] | void;
-  private assignees?: string[] | void;
+  private labels?: string[];
+  private assignees?: string[];
   private title: string = '';
   private body: string = '';
   private state: TIssueState = 'open';
@@ -249,7 +244,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       default: {
-        core.warning(`The ${action} is not allowed.`)
+        core.warning(`The ${action} is not allowed.`);
         break;
       }
     }
@@ -257,6 +252,9 @@ export class IssueHelperEngine implements IIssueHelperEngine {
 
   private checkEvent4Mark() {
     const { ctx } = this;
-    return ctx.eventName !== 'issue_comment' && (ctx.payload.action === 'created' || ctx.payload.action === 'edited');
+    return (
+      ctx.eventName !== 'issue_comment' &&
+      (ctx.payload.action === 'created' || ctx.payload.action === 'edited')
+    );
   }
 }

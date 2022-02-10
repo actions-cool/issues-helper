@@ -1,20 +1,22 @@
-import { dealStringToArr, checkPermission, TPermissionType } from 'actions-util';
+import type { TPermissionType } from 'actions-util';
+import { checkPermission, dealStringToArr } from 'actions-util';
 import dayjs from 'dayjs';
-import utc from 'dayjs/plugin/utc';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+import utc from 'dayjs/plugin/utc';
+
 import * as core from '../core';
-import { matchKeyword, checkDuplicate, replaceStr2Arr } from '../util';
-import { TIssueState, TOutList, TEmoji } from '../types';
-import { IIssueCoreEngine, IListIssuesParams, TIssueList, TCommentInfo } from '../issue';
+import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
+import type { TEmoji, TIssueState, TOutList } from '../types';
+import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
 import {
   doAddAssignees,
   doAddLabels,
+  doCloseIssue,
   doCreateComment,
   doCreateCommentEmoji,
-  doCloseIssue,
   doLockIssue,
-  doUpdateComment,
   doSetLabels,
+  doUpdateComment,
 } from './base';
 
 let ICE: IIssueCoreEngine;
@@ -22,7 +24,11 @@ export function initAdvancedICE(_ICE: IIssueCoreEngine) {
   ICE = _ICE;
 }
 
-export async function doQueryIssues(state: TIssueState | 'all', creator?: string, ignoreLabels?: boolean): Promise<TIssueList> {
+export async function doQueryIssues(
+  state: TIssueState | 'all',
+  creator?: string,
+  ignoreLabels?: boolean,
+): Promise<TIssueList> {
   const params = {
     state,
   } as IListIssuesParams;
@@ -30,14 +36,16 @@ export async function doQueryIssues(state: TIssueState | 'all', creator?: string
   const issueCreator = core.getInput('issue-creator');
   const issueAssignee = core.getInput('issue-assignee');
   const issueMentioned = core.getInput('issue-mentioned');
-  issueCreator ? (params.creator = issueCreator) : null;
-  issueAssignee ? (params.assignee = issueAssignee) : null;
-  issueMentioned ? (params.mentioned = issueMentioned) : null;
+
+  if (issueCreator) params.creator = issueCreator;
+  if (issueAssignee) params.assignee = issueAssignee;
+  if (issueMentioned) params.mentioned = issueMentioned;
 
   const labels = core.getInput('labels');
-  labels && !ignoreLabels ? params.labels = labels : null;
 
-  creator ? params.creator = creator : null;
+  if (labels && !ignoreLabels) params.labels = labels;
+
+  if (creator) params.creator = creator;
 
   const issuesList = await ICE.listIssues(params);
   const issues: TIssueList = [];
@@ -131,7 +139,7 @@ export async function doCheckIssue() {
         checkAssignee = true;
       }
     });
-    !checkAssignee ? (checkResult = false) : null;
+    if (!checkAssignee) checkResult = false;
   }
 
   const titleRemove = core.getInput('title-excludes');
@@ -234,8 +242,8 @@ export async function doFindIssues() {
         state: issue.state,
         created: issue.created_at,
         updated: issue.updated_at,
-      }
-    })
+      };
+    });
     if (direction === 'desc') {
       issues.reverse();
     }
@@ -282,7 +290,11 @@ export async function doMarkAssignees(comment: TCommentInfo) {
   }
 }
 
-export async function doMarkDuplicate(comment: TCommentInfo, labels?: string[] | void, emoji?: string) {
+export async function doMarkDuplicate(
+  comment: TCommentInfo,
+  labels?: string[] | void,
+  emoji?: string,
+) {
   const duplicateCommand = core.getInput('duplicate-command');
   const duplicateLabels = core.getInput('duplicate-labels');
   const removeLables = core.getInput('remove-labels') || '';
@@ -342,7 +354,14 @@ export async function doMarkDuplicate(comment: TCommentInfo, labels?: string[] |
   }
 }
 
-export async function doWelcome(auth: string, issueNumber: number, body: string, labels?: string[] | void, assignees?: string[] | void, emoji?: string) {
+export async function doWelcome(
+  auth: string,
+  issueNumber: number,
+  body: string,
+  labels?: string[] | void,
+  assignees?: string[] | void,
+  emoji?: string,
+) {
   core.info(`[doWelcome] [${auth}]`);
   const issues = await doQueryIssues('all', auth, true);
   if (issues.length == 0 || (issues.length == 1 && issues[0].number == issueNumber)) {

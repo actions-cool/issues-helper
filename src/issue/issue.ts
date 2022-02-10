@@ -1,7 +1,15 @@
 import { Octokit } from '@octokit/rest';
+
 import { EEmoji } from '../shared';
-import { TEmoji, TLockReasons, TUpdateMode, TIssueState, TUserPermission } from '../types';
-import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TIssueList, TIssueInfo, TCommentList } from './types';
+import type { TEmoji, TIssueState, TLockReasons, TUpdateMode, TUserPermission } from '../types';
+import type {
+  IIssueBaseInfo,
+  IIssueCoreEngine,
+  IListIssuesParams,
+  TCommentList,
+  TIssueInfo,
+  TIssueList,
+} from './types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;
@@ -16,7 +24,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       this.issueNumber = _info.issueNumber;
       this.octokit = new Octokit({ auth: `token ${_info.token}` });
     } else {
-      console && console.error && console.error(`Init failed, need owner、repo!`);
+      console.error(`Init failed, need owner、repo!`);
     }
   }
 
@@ -80,7 +88,12 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     }
   }
 
-  public async createIssue(title: string, body: string, labels?: string[], assignees?: string[]): Promise<number> {
+  public async createIssue(
+    title: string,
+    body: string,
+    labels?: string[],
+    assignees?: string[],
+  ): Promise<number> {
     const { owner, repo, octokit } = this;
     const { data } = await octokit.issues.create({
       owner,
@@ -107,7 +120,11 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     }
   }
 
-  public async createLabel(labelName: string, labelColor: string, labelDescription: string | undefined) {
+  public async createLabel(
+    labelName: string,
+    labelColor: string,
+    labelDescription: string | undefined,
+  ) {
     const { owner, repo, octokit } = this;
     await octokit.issues.createLabel({
       owner,
@@ -185,7 +202,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       owner,
       repo,
       issue_number: issueNumber,
-    }
+    };
     if (lockReason) {
       params.lock_reason = lockReason;
     }
@@ -275,10 +292,23 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     });
   }
 
-  public async updateIssue(state: TIssueState, title: string | void, body: string | void, mode: TUpdateMode, labels?: string[] | void, assignees?: string[] | void) {
+  public async updateIssue(
+    state: TIssueState,
+    title: string | void,
+    body: string | void,
+    mode: TUpdateMode,
+    labels?: string[] | void,
+    assignees?: string[] | void,
+  ) {
     const { owner, repo, octokit, issueNumber } = this;
     const issue = await this.getIssue();
-    const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue;
+    const {
+      body: baseBody,
+      title: baseTitle,
+      labels: baseLabels,
+      assignees: baseAssigness,
+      state: baseState,
+    } = issue;
 
     const baseLabelsName = baseLabels.map(({ name }: any) => name);
     const baseAssignessName = baseAssigness?.map(({ login }: any) => login);

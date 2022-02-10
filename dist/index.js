@@ -14602,8 +14602,8 @@ Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.doWelcome = exports.doMarkDuplicate = exports.doMarkAssignees = exports.doLockIssues = exports.doFindIssues = exports.doFindComments = exports.doCloseIssues = exports.doCheckIssue = exports.doCheckInactive = exports.doQueryIssues = exports.initAdvancedICE = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
 const dayjs_1 = __importDefault(__nccwpck_require__(7401));
-const utc_1 = __importDefault(__nccwpck_require__(4359));
 const isSameOrBefore_1 = __importDefault(__nccwpck_require__(9517));
+const utc_1 = __importDefault(__nccwpck_require__(4359));
 const core = __importStar(__nccwpck_require__(9875));
 const util_1 = __nccwpck_require__(9604);
 const base_1 = __nccwpck_require__(8824);
@@ -14620,12 +14620,17 @@ function doQueryIssues(state, creator, ignoreLabels) {
         const issueCreator = core.getInput('issue-creator');
         const issueAssignee = core.getInput('issue-assignee');
         const issueMentioned = core.getInput('issue-mentioned');
-        issueCreator ? (params.creator = issueCreator) : null;
-        issueAssignee ? (params.assignee = issueAssignee) : null;
-        issueMentioned ? (params.mentioned = issueMentioned) : null;
+        if (issueCreator)
+            params.creator = issueCreator;
+        if (issueAssignee)
+            params.assignee = issueAssignee;
+        if (issueMentioned)
+            params.mentioned = issueMentioned;
         const labels = core.getInput('labels');
-        labels && !ignoreLabels ? params.labels = labels : null;
-        creator ? params.creator = creator : null;
+        if (labels && !ignoreLabels)
+            params.labels = labels;
+        if (creator)
+            params.creator = creator;
         const issuesList = yield ICE.listIssues(params);
         const issues = [];
         const issueNumbers = [];
@@ -14720,7 +14725,8 @@ function doCheckIssue() {
                     checkAssignee = true;
                 }
             });
-            !checkAssignee ? (checkResult = false) : null;
+            if (!checkAssignee)
+                checkResult = false;
         }
         const titleRemove = core.getInput('title-excludes');
         if (!!checkResult && titleRemove) {
@@ -15229,8 +15235,8 @@ const actions_util_1 = __nccwpck_require__(6972);
 const core = __importStar(__nccwpck_require__(9875));
 const issue_1 = __nccwpck_require__(4680);
 const util_1 = __nccwpck_require__(9604);
-const base_1 = __nccwpck_require__(8824);
 const advanced_1 = __nccwpck_require__(5745);
+const base_1 = __nccwpck_require__(8824);
 class IssueHelperEngine {
     constructor(ctx) {
         this.ctx = ctx;
@@ -15439,7 +15445,8 @@ class IssueHelperEngine {
     }
     checkEvent4Mark() {
         const { ctx } = this;
-        return ctx.eventName !== 'issue_comment' && (ctx.payload.action === 'created' || ctx.payload.action === 'edited');
+        return (ctx.eventName !== 'issue_comment' &&
+            (ctx.payload.action === 'created' || ctx.payload.action === 'edited'));
     }
 }
 exports.IssueHelperEngine = IssueHelperEngine;
@@ -15528,7 +15535,7 @@ class IssueCoreEngine {
             this.octokit = new rest_1.Octokit({ auth: `token ${_info.token}` });
         }
         else {
-            console && console.error && console.error(`Init failed, need owner、repo!`);
+            console.error(`Init failed, need owner、repo!`);
         }
     }
     // Allow modify issue number in this way
@@ -15798,7 +15805,7 @@ class IssueCoreEngine {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, repo, octokit, issueNumber } = this;
             const issue = yield this.getIssue();
-            const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState } = issue;
+            const { body: baseBody, title: baseTitle, labels: baseLabels, assignees: baseAssigness, state: baseState, } = issue;
             const baseLabelsName = baseLabels.map(({ name }) => name);
             const baseAssignessName = baseAssigness === null || baseAssigness === void 0 ? void 0 : baseAssigness.map(({ login }) => login);
             const newBody = body ? (mode === 'append' ? `${baseBody}\n${body}` : body) : baseBody;
@@ -15864,8 +15871,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const actions_util_1 = __nccwpck_require__(6972);
 const github = __importStar(__nccwpck_require__(5438));
+const actions_util_1 = __nccwpck_require__(6972);
 const core = __importStar(__nccwpck_require__(9875));
 const helper_1 = __nccwpck_require__(8406);
 function main() {
@@ -15953,7 +15960,11 @@ const getPreMonth = (m) => {
 exports.getPreMonth = getPreMonth;
 // replace some & split & cull empty
 const replaceStr2Arr = (str, replace, split) => {
-    return str.replace(replace, '').trim().split(split).reduce((result, it) => it ? [...result, it.trim()] : result, []);
+    return str
+        .replace(replace, '')
+        .trim()
+        .split(split)
+        .reduce((result, it) => (it ? [...result, it.trim()] : result), []);
 };
 exports.replaceStr2Arr = replaceStr2Arr;
 
