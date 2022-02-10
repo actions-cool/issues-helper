@@ -15258,7 +15258,6 @@ class IssueHelperEngine {
     }
     initInput(ctx) {
         var _a;
-        console.log(JSON.stringify(ctx));
         // No display to outside
         const repoInput = core.getInput('repo');
         if (repoInput) {
@@ -15269,7 +15268,6 @@ class IssueHelperEngine {
             this.owner = ctx.repo.owner;
             this.repo = ctx.repo.repo;
         }
-        console.log('1', this.owner, this.repo);
         let defaultCtxNumber;
         if (ctx.eventName === 'issues' || ctx.eventName === 'issue_comment') {
             defaultCtxNumber = (_a = ctx.payload.issue) === null || _a === void 0 ? void 0 : _a.number;
@@ -15282,7 +15280,6 @@ class IssueHelperEngine {
             core.setFailed(`issue-number is missing!`);
             return;
         }
-        this.token = core.getInput('token');
         this.emoji = core.getInput('emoji') || '';
         this.labels = (0, actions_util_1.dealStringToArr)(core.getInput('labels') || '');
         const assigneesInput = core.getInput('assignees') || '';
@@ -15294,13 +15291,11 @@ class IssueHelperEngine {
         this.updateMode = core.getInput('update-mode') === 'append' ? 'append' : 'replace';
     }
     initIssueCore() {
-        const { owner, repo, issueNumber, token } = this;
-        console.log('2', owner, repo);
+        const { owner, repo, issueNumber } = this;
         this.ICE = new issue_1.IssueCoreEngine({
             owner,
             repo,
             issueNumber,
-            token,
         });
         core.info(`[Init] [${owner}/${repo}] [${issueNumber}]`);
     }
@@ -15522,6 +15517,25 @@ __exportStar(__nccwpck_require__(6882), exports);
 
 "use strict";
 
+var __createBinding = (this && this.__createBinding) || (Object.create ? (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    Object.defineProperty(o, k2, { enumerable: true, get: function() { return m[k]; } });
+}) : (function(o, m, k, k2) {
+    if (k2 === undefined) k2 = k;
+    o[k2] = m[k];
+}));
+var __setModuleDefault = (this && this.__setModuleDefault) || (Object.create ? (function(o, v) {
+    Object.defineProperty(o, "default", { enumerable: true, value: v });
+}) : function(o, v) {
+    o["default"] = v;
+});
+var __importStar = (this && this.__importStar) || function (mod) {
+    if (mod && mod.__esModule) return mod;
+    var result = {};
+    if (mod != null) for (var k in mod) if (k !== "default" && Object.prototype.hasOwnProperty.call(mod, k)) __createBinding(result, mod, k);
+    __setModuleDefault(result, mod);
+    return result;
+};
 var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
     function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
     return new (P || (P = Promise))(function (resolve, reject) {
@@ -15534,15 +15548,16 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.IssueCoreEngine = void 0;
 const rest_1 = __nccwpck_require__(5375);
+const core = __importStar(__nccwpck_require__(2186));
 const shared_1 = __nccwpck_require__(3826);
 class IssueCoreEngine {
     constructor(_info) {
-        console.log(_info);
         if (_info.owner && _info.repo) {
             this.owner = _info.owner;
             this.repo = _info.repo;
             this.issueNumber = _info.issueNumber;
-            this.octokit = new rest_1.Octokit({ auth: `token ${_info.token}` });
+            const token = core.getInput('token');
+            this.octokit = new rest_1.Octokit({ auth: `token ${token}` });
         }
         else {
             console && console.error && console.error(`Init failed, need owner、repo!`);

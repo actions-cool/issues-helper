@@ -49,7 +49,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   private owner!: string;
   private repo!: string;
   private issueNumber!: number;
-  private token?: string | void;
 
   private emoji?: string;
   private labels?: string[] | void;
@@ -67,7 +66,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   private initInput(ctx: Context) {
-    console.log(JSON.stringify(ctx))
     // No display to outside
     const repoInput = core.getInput('repo');
     if (repoInput) {
@@ -77,7 +75,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       this.owner = ctx.repo.owner;
       this.repo = ctx.repo.repo;
     }
-    console.log('1', this.owner, this.repo)
 
     let defaultCtxNumber: number | undefined;
     if (ctx.eventName === 'issues' || ctx.eventName === 'issue_comment') {
@@ -91,7 +88,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       return;
     }
 
-    this.token = core.getInput('token');
     this.emoji = core.getInput('emoji') || '';
     this.labels = dealStringToArr(core.getInput('labels') || '');
 
@@ -106,13 +102,11 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   private initIssueCore() {
-    const { owner, repo, issueNumber, token } = this;
-    console.log('2', owner, repo)
+    const { owner, repo, issueNumber } = this;
     this.ICE = new IssueCoreEngine({
       owner,
       repo,
       issueNumber,
-      token,
     });
     core.info(`[Init] [${owner}/${repo}] [${issueNumber}]`);
   }

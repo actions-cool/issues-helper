@@ -1,4 +1,5 @@
 import { Octokit } from '@octokit/rest';
+import * as core from '@actions/core';
 import { EEmoji } from '../shared';
 import { TEmoji, TLockReasons, TUpdateMode, TIssueState, TUserPermission } from '../types';
 import { IIssueBaseInfo, IIssueCoreEngine, IListIssuesParams, TIssueList, TIssueInfo, TCommentList } from './types';
@@ -10,12 +11,12 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   private octokit!: Octokit;
 
   public constructor(_info: IIssueBaseInfo) {
-    console.log(_info)
     if (_info.owner && _info.repo) {
       this.owner = _info.owner;
       this.repo = _info.repo;
       this.issueNumber = _info.issueNumber;
-      this.octokit = new Octokit({ auth: `token ${_info.token}` });
+      const token = core.getInput('token');
+      this.octokit = new Octokit({ auth: `token ${token}` });
     } else {
       console && console.error && console.error(`Init failed, need owner、repo!`);
     }
