@@ -49,7 +49,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   private owner!: string;
   private repo!: string;
   private issueNumber!: number;
-  private githubToken!: string;
+  private token?: string | void;
 
   private emoji?: string;
   private labels?: string[] | void;
@@ -89,7 +89,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       return;
     }
 
-    this.githubToken = core.getInput('token', { required: true }) as string;
+    this.token = core.getInput('token');
     this.emoji = core.getInput('emoji') || '';
     this.labels = dealStringToArr(core.getInput('labels') || '');
 
@@ -104,12 +104,12 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   private initIssueCore() {
-    const { owner, repo, issueNumber, githubToken } = this;
+    const { owner, repo, issueNumber, token } = this;
     this.ICE = new IssueCoreEngine({
       owner,
       repo,
       issueNumber,
-      githubToken,
+      token,
     });
     core.info(`[Init] [${owner}/${repo}] [${issueNumber}]`);
   }

@@ -4,7 +4,7 @@ export interface IIssueBaseInfo {
   owner: string;
   repo: string;
   issueNumber: number;
-  githubToken: string;
+  token?: string | void;
 }
 
 export interface IListIssuesParams {

@@ -7,17 +7,16 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;
   private repo!: string;
   private issueNumber!: number;
-  private githubToken!: string;
-
   private octokit!: Octokit;
 
   public constructor(_info: IIssueBaseInfo) {
-    if (_info.owner && _info.repo && _info.githubToken) {
-      Object.assign(this, _info);
-      const octokit = new Octokit({ auth: `token ${this.githubToken}` });
-      this.octokit = octokit;
+    if (_info.owner && _info.repo) {
+      this.owner = _info.owner;
+      this.repo = _info.repo;
+      this.issueNumber = _info.issueNumber;
+      this.octokit = new Octokit({ auth: `token ${_info.token}` });
     } else {
-      console && console.error && console.error(`Init failed, need owner、repo and token!`);
+      console && console.error && console.error(`Init failed, need owner、repo!`);
     }
   }
 
