@@ -15230,7 +15230,6 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.IssueHelperEngine = void 0;
-// import * as github from '@actions/github';
 const actions_util_1 = __nccwpck_require__(6972);
 const core = __importStar(__nccwpck_require__(9875));
 const issue_1 = __nccwpck_require__(4680);

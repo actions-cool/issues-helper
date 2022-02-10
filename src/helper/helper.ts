@@ -1,4 +1,3 @@
-// import * as github from '@actions/github';
 import { dealStringToArr } from 'actions-util';
 
 import * as core from '../core';
