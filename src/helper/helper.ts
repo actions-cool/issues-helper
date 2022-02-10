@@ -103,12 +103,14 @@ export class IssueHelperEngine implements IIssueHelperEngine {
 
   private initIssueCore() {
     const { owner, repo, issueNumber } = this;
+    const token = core.getInput('token');
     this.ICE = new IssueCoreEngine({
       owner,
       repo,
       issueNumber,
+      token,
     });
-    core.info(`[Init] [${owner}/${repo}] [${issueNumber}]`);
+    core.info(`[Init] [${owner}/${repo} => ${issueNumber}]`);
   }
 
   public async doExeAction(action: TAction) {
