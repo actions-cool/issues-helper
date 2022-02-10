@@ -67,6 +67,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   private initInput(ctx: Context) {
+    console.log(JSON.stringify(ctx))
     // No display to outside
     const repoInput = core.getInput('repo');
     if (repoInput) {

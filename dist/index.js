@@ -14879,7 +14879,7 @@ function doMarkAssignees(comment) {
         const assignCommand = core.getInput('assign-command') || '/assign';
         if (comment.body.startsWith(assignCommand)) {
             const { body, user } = comment;
-            const assigns = body.replace(assignCommand, '').trim().split('@').reduce((result, it) => it ? [...result, it.trim()] : result, []);
+            const assigns = (0, util_1.replaceStr2Arr)(body, assignCommand, '@');
             const requirePermission = core.getInput('require-permission') || 'write';
             const permission = yield ICE.getUserPermission(user.login);
             if (!(0, actions_util_1.checkPermission)(requirePermission, permission)) {
@@ -15258,6 +15258,7 @@ class IssueHelperEngine {
     }
     initInput(ctx) {
         var _a;
+        console.log(JSON.stringify(ctx));
         // No display to outside
         const repoInput = core.getInput('repo');
         if (repoInput) {
@@ -15280,7 +15281,7 @@ class IssueHelperEngine {
             core.setFailed(`issue-number is missing!`);
             return;
         }
-        this.githubToken = core.getInput('token', { required: true });
+        this.token = core.getInput('token');
         this.emoji = core.getInput('emoji') || '';
         this.labels = (0, actions_util_1.dealStringToArr)(core.getInput('labels') || '');
         const assigneesInput = core.getInput('assignees') || '';
@@ -15292,12 +15293,12 @@ class IssueHelperEngine {
         this.updateMode = core.getInput('update-mode') === 'append' ? 'append' : 'replace';
     }
     initIssueCore() {
-        const { owner, repo, issueNumber, githubToken } = this;
+        const { owner, repo, issueNumber, token } = this;
         this.ICE = new issue_1.IssueCoreEngine({
             owner,
             repo,
             issueNumber,
-            githubToken,
+            token,
         });
         core.info(`[Init] [${owner}/${repo}] [${issueNumber}]`);
     }
@@ -15534,13 +15535,14 @@ const rest_1 = __nccwpck_require__(5375);
 const shared_1 = __nccwpck_require__(3826);
 class IssueCoreEngine {
     constructor(_info) {
-        if (_info.owner && _info.repo && _info.githubToken) {
-            Object.assign(this, _info);
-            const octokit = new rest_1.Octokit({ auth: `token ${this.githubToken}` });
-            this.octokit = octokit;
+        if (_info.owner && _info.repo) {
+            this.owner = _info.owner;
+            this.repo = _info.repo;
+            this.issueNumber = _info.issueNumber;
+            this.octokit = new rest_1.Octokit({ auth: `token ${_info.token}` });
         }
         else {
-            console && console.error && console.error(`Init failed, need owner、repo and token!`);
+            console && console.error && console.error(`Init failed, need owner、repo!`);
         }
     }
     // Allow modify issue number in this way
@@ -15877,8 +15879,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-const github = __importStar(__nccwpck_require__(5438));
 const actions_util_1 = __nccwpck_require__(6972);
+const github = __importStar(__nccwpck_require__(5438));
 const core = __importStar(__nccwpck_require__(9875));
 const helper_1 = __nccwpck_require__(8406);
 function main() {
@@ -15937,7 +15939,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.getPreMonth = exports.checkDuplicate = exports.matchKeyword = exports.dealRandomAssignees = void 0;
+exports.replaceStr2Arr = exports.getPreMonth = exports.checkDuplicate = exports.matchKeyword = exports.dealRandomAssignees = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
 const sampleSize_1 = __importDefault(__nccwpck_require__(2199));
 const dealRandomAssignees = (assignees, randomTo) => {
@@ -15964,6 +15966,11 @@ const getPreMonth = (m) => {
     return m == 1 ? 12 : m - 1;
 };
 exports.getPreMonth = getPreMonth;
+// replace some & split & cull empty
+const replaceStr2Arr = (str, replace, split) => {
+    return str.replace(replace, '').trim().split(split).reduce((result, it) => it ? [...result, it.trim()] : result, []);
+};
+exports.replaceStr2Arr = replaceStr2Arr;
 
 
 /***/ }),
