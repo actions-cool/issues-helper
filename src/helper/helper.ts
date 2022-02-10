@@ -77,6 +77,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       this.owner = ctx.repo.owner;
       this.repo = ctx.repo.repo;
     }
+    console.log('1', this.owner, this.repo)
 
     let defaultCtxNumber: number | undefined;
     if (ctx.eventName === 'issues' || ctx.eventName === 'issue_comment') {
@@ -106,6 +107,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
 
   private initIssueCore() {
     const { owner, repo, issueNumber, token } = this;
+    console.log('2', owner, repo)
     this.ICE = new IssueCoreEngine({
       owner,
       repo,

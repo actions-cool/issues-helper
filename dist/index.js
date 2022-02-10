@@ -15269,6 +15269,7 @@ class IssueHelperEngine {
             this.owner = ctx.repo.owner;
             this.repo = ctx.repo.repo;
         }
+        console.log('1', this.owner, this.repo);
         let defaultCtxNumber;
         if (ctx.eventName === 'issues' || ctx.eventName === 'issue_comment') {
             defaultCtxNumber = (_a = ctx.payload.issue) === null || _a === void 0 ? void 0 : _a.number;
@@ -15294,6 +15295,7 @@ class IssueHelperEngine {
     }
     initIssueCore() {
         const { owner, repo, issueNumber, token } = this;
+        console.log('2', owner, repo);
         this.ICE = new issue_1.IssueCoreEngine({
             owner,
             repo,
@@ -15535,6 +15537,7 @@ const rest_1 = __nccwpck_require__(5375);
 const shared_1 = __nccwpck_require__(3826);
 class IssueCoreEngine {
     constructor(_info) {
+        console.log(_info);
         if (_info.owner && _info.repo) {
             this.owner = _info.owner;
             this.repo = _info.repo;

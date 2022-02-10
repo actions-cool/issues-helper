@@ -10,6 +10,7 @@ export class IssueCoreEngine implements IIssueCoreEngine {
   private octokit!: Octokit;
 
   public constructor(_info: IIssueBaseInfo) {
+    console.log(_info)
     if (_info.owner && _info.repo) {
       this.owner = _info.owner;
       this.repo = _info.repo;
