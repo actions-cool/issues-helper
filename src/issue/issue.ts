@@ -136,7 +136,6 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       repo,
       issue_number: issueNumber,
     });
-    console.log(issue)
     return issue.data as unknown as TIssueInfo;
   }
 

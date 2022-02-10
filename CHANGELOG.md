@@ -24,8 +24,6 @@
   - Remove title body default
   - `month-statistics` is removed, can use [issues-month-statistics](https://github.com/actions-cool/issues-month-statistics)
 
-<!-- V3 -->
-
 ## v2.5.0
 
 `2021.10.19`

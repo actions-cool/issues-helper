@@ -15673,7 +15673,6 @@ class IssueCoreEngine {
                 repo,
                 issue_number: issueNumber,
             });
-            console.log(issue);
             return issue.data;
         });
     }
