@@ -14552,21 +14552,8 @@ const warning = (mess) => {
     core.warning(`[🎃 AC] ${mess}`);
 };
 exports.warning = warning;
-const getInput = (key, options) => {
-    core.getInput(key, options);
-};
-exports.getInput = getInput;
-const setOutput = (key, value) => {
-    let formatValue;
-    if (typeof (value) === 'object') {
-        formatValue = JSON.stringify(value);
-    }
-    else {
-        formatValue = value;
-    }
-    core.setOutput(key, formatValue);
-};
-exports.setOutput = setOutput;
+exports.getInput = core.getInput;
+exports.setOutput = core.setOutput;
 const setFailed = (mess) => {
     core.setFailed(`[🚨 AC] ${mess}`);
 };
@@ -14812,7 +14799,7 @@ function doFindComments() {
             if (direction === 'desc') {
                 comments.reverse();
             }
-            core.setOutput('comments', comments);
+            core.setOutput('comments', JSON.stringify(comments));
             core.info(`[doFindComments] comments --> ${JSON.stringify(comments)}`);
         }
         else {
@@ -14850,7 +14837,7 @@ function doFindIssues() {
         else {
             core.info(`[doFindIssues] Query issues empty!`);
         }
-        core.setOutput('issues', issues);
+        core.setOutput('issues', JSON.stringify(issues));
     });
 }
 exports.doFindIssues = doFindIssues;
