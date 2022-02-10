@@ -14622,6 +14622,7 @@ const util_1 = __nccwpck_require__(9604);
 const base_1 = __nccwpck_require__(8824);
 let ICE;
 function initAdvancedICE(_ICE) {
+    console.log(_ICE);
     ICE = _ICE;
 }
 exports.initAdvancedICE = initAdvancedICE;
@@ -15301,7 +15302,7 @@ class IssueHelperEngine {
     }
     doExeAction(action) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { owner, repo, issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx } = this;
+            const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx } = this;
             switch (action) {
                 // ---[ Base Begin ]--->>>
                 case 'add-assignees': {
@@ -15905,8 +15906,10 @@ function main() {
     return __awaiter(this, void 0, void 0, function* () {
         try {
             const actions = core.getInput('actions', { required: true });
+            console.log(actions);
             const IHE = new helper_1.IssueHelperEngine(github.context);
             for (const action of (0, actions_util_1.dealStringToArr)(actions)) {
+                console.log(action);
                 yield IHE.doExeAction(action);
             }
             core.baseInfo(`\n${actions_util_1.THANKS}`);
