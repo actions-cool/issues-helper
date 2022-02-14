@@ -14672,7 +14672,7 @@ function doQueryIssues(state, creator, ignoreLabels) {
                 }
             });
         }
-        core.info(`[doQueryIssues] issueNumbers is [${JSON.stringify(issueNumbers)}]`);
+        core.info(`[doQueryIssues] issueNumbers is ---> ${JSON.stringify(issueNumbers)}`);
         return issues;
     });
 }
@@ -14938,7 +14938,7 @@ function doMarkDuplicate(comment, labels, emoji) {
             core.info(`[doMarkDuplicate] Done!`);
         }
         else {
-            core.warning(`This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`);
+            core.warning(`This comment body should start with 'duplicate-command' or 'Duplicate of' and not include '?'`);
         }
     });
 }
@@ -15269,8 +15269,7 @@ class IssueHelperEngine {
             this.issueNumber = +issueNumber;
         }
         else {
-            core.setFailed(`issue-number is missing!`);
-            return;
+            core.warning(`'issue-number' is missing or this action not needed yet!`);
         }
         this.emoji = core.getInput('emoji') || '';
         this.labels = (0, actions_util_1.dealStringToArr)(core.getInput('labels') || '');
@@ -15435,6 +15434,7 @@ class IssueHelperEngine {
                     }
                     break;
                 }
+                // -[ Advanced End ]->
                 default: {
                     core.warning(`The ${action} is not allowed.`);
                     break;

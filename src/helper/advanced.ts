@@ -91,7 +91,7 @@ export async function doQueryIssues(
     });
   }
 
-  core.info(`[doQueryIssues] issueNumbers is [${JSON.stringify(issueNumbers)}]`);
+  core.info(`[doQueryIssues] issueNumbers is ---> ${JSON.stringify(issueNumbers)}`);
   return issues;
 }
 
@@ -349,7 +349,7 @@ export async function doMarkDuplicate(
     core.info(`[doMarkDuplicate] Done!`);
   } else {
     core.warning(
-      `This comment body should start whith 'duplicate-command' or 'Duplicate of' and not include '?'`,
+      `This comment body should start with 'duplicate-command' or 'Duplicate of' and not include '?'`,
     );
   }
 }

@@ -78,8 +78,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
     if (issueNumber) {
       this.issueNumber = +issueNumber;
     } else {
-      core.setFailed(`issue-number is missing!`);
-      return;
+      core.warning(`'issue-number' is missing or this action not needed yet!`);
     }
 
     this.emoji = core.getInput('emoji') || '';
@@ -242,6 +241,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         }
         break;
       }
+      // -[ Advanced End ]->
       default: {
         core.warning(`The ${action} is not allowed.`);
         break;
