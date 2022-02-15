@@ -4,7 +4,25 @@
 💄 Perf
 📝 Docs
 ⚡️ Code style
+🛠 refactor
 -->
+
+## v3.0.0
+
+`2022.02.15`
+
+- 🚀 New Feature
+  - `mark-assignees`: Comment quick settings assignees
+  - `find-issues`: Conditional query current warehouse issues
+- 🐞 Bug Fix
+  - Fixed `find-comments` return result direction not working
+  - Fix `lock-issues` lock and comment order issue
+- 🛠 Refactor
+  - `contents` renamed to easy-to-understand `emoji`
+  - `issue-emojis` renamed to `issue-emoji`
+  - deleteComment updateComment no longer supports `out-comments`, keeping pure functionality
+  - Remove title body default
+  - `month-statistics` is removed
 
 ## v2.5.0
 

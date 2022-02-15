@@ -3,3 +3,4 @@ lib/
 docs-dist/
 node_modules/
 src/.umi/
+src/main.ts

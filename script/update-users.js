@@ -43,8 +43,8 @@ ${table}
 // **************************************************************************
 
 const point = '<table>';
-const cnPoint = `## README 图标`;
-const enPoint = `## README Badge`;
+const cnPoint = `## 图标`;
+const enPoint = `## Badge`;
 
 // **************************************************************************
 

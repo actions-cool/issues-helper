@@ -28,6 +28,7 @@ inputs:
     description: 'Issue assignees'
   random-to:
     description: 'Issue assignees random to'
+
   # label
   labels:
     description: 'Issue labels'
@@ -42,20 +43,19 @@ inputs:
     description: 'Issue state'
   update-mode:
     description: 'Body update mode'
-  contents:
+  emoji:
     description: 'Issue reactions emoji'
   direction:
-    description: 'Find comments direction'
+    description: 'Find direction'
 
   # comments
   comment-auth:
     description: 'Find comments query auth'
-  out-comments:
-    description: 'Find comments out comments'
   assignee-includes:
     description: 'Check use'
   body-includes:
     description: 'Query use'
+
   # check
   title-excludes:
     description: 'Remove some to check title whether empty.'
@@ -67,7 +67,7 @@ inputs:
     description: 'Query use'
   issue-mentioned:
     description: 'Query use'
-  issue-contents:
+  issue-emoji:
     description: 'For welcome'
   issue-state:
     description: 'Query use'
@@ -79,7 +79,8 @@ inputs:
     description: 'Issue label set use'
   exclude-labels:
     description: 'Query issues exclude labels'
-
+  assign-command:
+    description: 'For mark-assigness'
   duplicate-command:
     description: 'For mark-duplicate'
   duplicate-labels:
@@ -90,10 +91,6 @@ inputs:
     description: 'For remove labels'
   close-issue:
     description: 'For mark-duplicate'
-  count-lables:
-    description: 'For month-statistics'
-  count-comments:
-    description: 'For month-statistics'
 
 outputs:
   issue-number:
@@ -102,6 +99,8 @@ outputs:
     description: 'Create comment ID'
   comments:
     description: 'Find comments'
+  issues:
+    description: 'Find issues'
   check-result:
     description: 'Check issue'
 

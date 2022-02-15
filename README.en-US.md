@@ -1,20 +1,35 @@
-# 🤖 Issues Helper
+<p align="center">
+  <a href="https://actions-cool.github.io/issues-helper/">
+    <img width="200" src="https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ">
+  </a>
+</p>
 
-[简体中文](./README.md) | English
+<h1 align="center">🤖 Issues Helper</h1>
 
-[![](https://img.shields.io/github/workflow/status/actions-cool/issues-helper/ci?style=flat-square)](https://github.com/actions-cool/issues-helper/actions)
-[![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
-[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
-[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
-
-[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
-[![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers)
-[![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions)
-[![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
+<div align="center">
 
 A GitHub Action that easily helps you automatically manage issues
 
-[Online documentation](https://actions-cool.github.io/issues-helper) | [Changelog](https://github.com/actions-cool/issues-helper/blob/main/CHANGELOG.md)
+[![](https://img.shields.io/github/workflow/status/actions-cool/issues-helper/ci?style=flat-square)](https://github.com/actions-cool/issues-helper/actions)
+[![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
+![](https://img.shields.io/github/languages/top/actions-cool/issues-helper?color=%2308979c&style=flat-square)
+[![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg?style=flat-square)](https://github.com/prettier/prettier)
+
+[![](https://img.shields.io/github/stars/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/stargazers)
+[![](https://img.shields.io/github/v/release/actions-cool/issues-helper?style=flat-square&color=orange)](https://github.com/actions-cool/issues-helper/releases)
+[![](https://img.shields.io/badge/discussions-on%20github-blue?style=flat-square&color=%2308979c)](https://github.com/actions-cool/issues-helper/discussions)
+[![](https://img.shields.io/github/license/actions-cool/issues-helper?style=flat-square)](https://github.com/actions-cool/issues-helper/blob/main/LICENSE)
+
+</div>
+
+[简体中文](./README.md) | English
+
+## 🔗 Link
+
+- [Online documentation](https://actions-cool.github.io/issues-helper)
+- [Online v2 documentation](https://actions-cool.github.io/issues-helper-2.x/)
+- [Changelog](./CHANGELOG.md)
 
 ## 😎 Why use GitHub Action?
 
@@ -167,12 +182,12 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
 </tr>
 </table>
 
-## README Badge
+## Badge
 
-If you think issues-helper can help you, please copy it to the README to support promotion and bring convenience to more repositories:[![issues-helper](https://img.shields.io/badge/using-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper). [More color see](https://github.com/actions-cool/issues-helper/issues/92).
+If you think `actions-cool` can help you, please copy it to the README to support promotion and bring convenience to more repositories:[![actions-cool](https://img.shields.io/badge/using-actions--cool-blue?style=flat-square)](https://github.com/actions-cool). [More color see](https://github.com/actions-cool/issues-helper/issues/92).
 
 ```
-[![issues-helper](https://img.shields.io/badge/using-issues--helper-blue?style=flat-square)](https://github.com/actions-cool/issues-helper)
+[![actions-cool](https://img.shields.io/badge/using-actions--cool-blue?style=flat-square)](https://github.com/actions-cool)
 ```
 
 ## ⚡ Feedback
@@ -185,7 +200,7 @@ You are very welcome to try it out and put forward your comments. You can use th
 
 ## List
 
-When the following list does not have the features you want, you can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).
+When the following list does not have the features you want, you can submit it in [issues](https://github.com/actions-cool/issues-helper/issues).
 
 - ⭐ Base
   - [`add-assignees`](#add-assignees)
@@ -196,7 +211,6 @@ When the following list does not have the features you want, you can submit it i
   - [`create-label`](#create-label)
   - [`delete-comment`](#delete-comment)
   - [`lock-issue`](#lock-issue)
-  - [`mark-duplicate`](#mark-duplicate)
   - [`open-issue`](#open-issue)
   - [`remove-assignees`](#remove-assignees)
   - [`remove-labels`](#remove-labels)
@@ -204,16 +218,16 @@ When the following list does not have the features you want, you can submit it i
   - [`unlock-issue`](#unlock-issue)
   - [`update-comment`](#update-comment)
   - [`update-issue`](#update-issue)
-  - [`welcome`](#welcome)
 - 🌟 Advanced
   - [`check-inactive`](#check-inactive)
   - [`check-issue`](#check-issue)
   - [`close-issues`](#close-issues)
   - [`find-comments`](#find-comments)
+  - [`find-issues`](#find-issues)
   - [`lock-issues`](#lock-issues)
-  - [`month-statistics`](#month-statistics)
-- 🌰 Example
-  - [`find-comments + create-comment + update-comment`](#find-comments--create-comment--update-comment)
+  - [`mark-assignees`](#mark-assignees)
+  - [`mark-duplicate`](#mark-duplicate)
+  - [`welcome`](#welcome)
 
 ## 🚀 Usage
 
@@ -237,7 +251,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Add assigness
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'add-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -246,10 +260,10 @@ jobs:
           random-to: 1
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person. No operation when no input or empty character | string | ✖ |
 | random-to | When set, it will be randomly selected in assignees | number | ✖ |
@@ -259,6 +273,7 @@ jobs:
 - [Reference to on](#github-docs)
 - `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
 - `assignees` support multiple and separated by comma
+- You can assign up to 10 people to each issue
 
 ⏫ [Back to list](#List)
 
@@ -279,7 +294,7 @@ jobs:
     if: contains(github.event.issue.body, 'xxx') == false
     steps:
       - name: Add labels
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -287,10 +302,10 @@ jobs:
           labels: 'bug' or 'xx1,xx2'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
@@ -304,17 +319,17 @@ Close the specified issue.
 
 ```yml
 - name: Close issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'close-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
@@ -336,7 +351,7 @@ jobs:
     if: github.event.label.name == 'xxx'
     steps:
       - name: Create comment
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'create-comment'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -345,22 +360,21 @@ jobs:
             Hello @${{ github.event.issue.user.login }}. Add some comments.
 
             你好 @${{ github.event.issue.user.login }}。巴拉巴拉。
-          contents: '+1' or '+1,heart'
+          emoji: '+1' or '+1,heart'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
-| body | Add comment content | string | ✖ |
-| contents | Add [reaction](#reactions-types) | string | ✖ |
+| body | Add comment content | string | ✔ |
+| emoji | Add [emoji](#emoji-types) | string | ✖ |
 
-- `body` default is `Currently at ${owner}/${repo}. And this is default comment.`
-  - Where `${owner}/${repo}` means the current repo
+- No action when `body` is empty
 - Return `comment-id`, which can be used for subsequent operations. [Usage reference](#outputs-use)
 - `${{ github.event.issue.user.login }}` indicates the creator of the issue
-- `contents` support multiple and separated by comma
+- `emoji` support multiple and separated by comma
 
 ⏫ [Back to list](#List)
 
@@ -380,7 +394,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Create issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'create-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -388,21 +402,21 @@ jobs:
           body: 'xxxx'
           labels: 'xx'
           assignees: 'xxx'
-          contents: '+1'
+          emoji: '+1'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
-| title | The title of the new issue | string | ✖ |
+| token | [Token explain](#token) | string | ✖ |
+| title | The title of the new issue | string | ✔ |
 | body | The body of the new issue | string | ✖ |
 | labels | The labels for the new issue | string | ✖ |
 | assignees | The assignees for the new issue | string | ✖ |
 | random-to | When set, it will be randomly selected in assignees | number | ✖ |
-| contents | Add [reaction](#reactions-types) | string | ✖ |
+| emoji | Add [emoji](#emoji-types) | string | ✖ |
 
-- `title` default is `Default Title`
+- No action when `title` is empty
 - Return `issue-number`. [Usage reference](#outputs-use)
 
 ⏫ [Back to list](#List)
@@ -413,7 +427,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 
 ```yml
 - name: Create label
-  uses: actions-cool/issues-helper@v2
+  uses: actions-cool/issues-helper@v3
   with:
     actions: 'create-label'
     token: ${{ secrets.GITHUB_TOKEN }}
@@ -422,10 +436,10 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
     label-desc: 'xx'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | label-name | Label name, emoji support | string | ✔ |
 | label-color | Label color, the format is hexadecimal color code, without `#` | string | ✖ |
 | label-desc | Label description | string | ✖ |
@@ -441,21 +455,18 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'delete-comment'
       token: ${{ secrets.GITHUB_TOKEN }}
       comment-id: xxx
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | comment-id | The comment ID | number | ✔ |
-| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
-
-- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -476,66 +487,21 @@ jobs:
     if: github.event.label.name == 'invalid'
     steps:
       - name: Lock issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'lock-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
 
 - `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
-
-⏫ [Back to list](#List)
-
-#### `mark-duplicate`
-
-Quickly mark duplicate questions, only for issue new comments or edit comments.
-
-```yml
-name: Issue Mark Duplicate
-
-on:
-  issue_comment:
-    types: [created, edited]
-
-jobs:
-  mark-duplicate:
-    runs-on: ubuntu-latest
-    steps:
-      - name: mark-duplicate
-        uses: actions-cool/issues-helper@v2
-        with:
-          actions: 'mark-duplicate'
-          token: ${{ secrets.GITHUB_TOKEN }}
-```
-
-| Param | Desc  | Type | Required |
-| -- | -- | -- | -- |
-| actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
-| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ |
-| duplicate-labels | Add additional labels to this issue | string | ✖ |
-| remove-labels | Set removable labels | string | ✖ |
-| labels | Replace the labels of the issue | string | ✖ |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
-| close-issue | Whether to close the issue at the same time | string | ✖ |
-| require-permission | Permission required, default is `write` | string | ✖ |
-
-- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
-- `labels`: Highest priority
-- `close-issue`: Both `true` or `'true'` can take effect
-- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
-  - If the team member sets the `read` permission, it is `read`
-  - If the external Collaborator is set to `read` permission, it is `read`
-  - Ordinary users have `read` permission
-  - When set `write`, `admin` and `write` meet the conditions
 
 ⏫ [Back to list](#List)
 
@@ -545,17 +511,17 @@ Open the specified issue.
 
 ```yml
 - name: Open issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'open-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: xxx
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
@@ -566,7 +532,7 @@ Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'remove-assignees'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -574,10 +540,10 @@ Remove the person designated by issue.
       assignees: 'xx'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
@@ -589,7 +555,7 @@ Remove the specified labels.
 
 ```yml
 - name: Remove labels
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'remove-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -597,10 +563,10 @@ Remove the specified labels.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
@@ -614,7 +580,7 @@ Replace the labels of issue.
 
 ```yml
 - name: Set labels
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'set-labels'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -622,10 +588,10 @@ Replace the labels of issue.
       labels: 'xx'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | labels set. When empty characters, will remove all | string | ✔ |
 
@@ -637,17 +603,17 @@ Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'unlock-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: ${{ github.event.issue.number }}
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ⏫ [Back to list](#List)
@@ -670,27 +636,26 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Update comment
-          uses: actions-cool/issues-helper@v2
+          uses: actions-cool/issues-helper@v3
           with:
             actions: 'update-comment'
             token: ${{ secrets.GITHUB_TOKEN }}
             comment-id: ${{ github.event.comment.id }}
-            contents: 'eyes'
+            emoji: 'eyes'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | comment-id | The comment ID | number | ✔ |
 | out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
 | body | Update the content of comment | string | ✖ |
 | update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
-| contents | Add [reaction](#reactions-types) | string | ✖ |
+| emoji | Add [reaction](#emoji-types) | string | ✖ |
 
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
-- When `out-comments` is entered, `comment-id` does not work
 
 ⏫ [Back to list](#List)
 
@@ -700,7 +665,7 @@ Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'update-issue'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -711,13 +676,13 @@ Update the specified issue according to the `issue-number`.
       update-mode: 'replace'
       labels: 'xx'
       assignees: 'xxx'
-      contents: '+1'
+      emoji: '+1'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
 | title | Modify the title of the issue | string | ✖ |
@@ -725,51 +690,10 @@ Update the specified issue according to the `issue-number`.
 | update-mode |  Update mode. Default `replace`, another `append` | string | ✖ |
 | labels | Replace the labels of issue | string | ✖ |
 | assignees | Replace the assignees of issue | string | ✖ |
-| contents | Add [reaction](#reactions-types) | string | ✖ |
+| emoji | Add [reaction](#emoji-types) | string | ✖ |
 
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
-
-⏫ [Back to list](#List)
-
-#### `welcome`
-
-When an issue is created, the user who created the issue for the first time is welcome.
-
-If the user is not creating for the first time, there is no operation.
-
-```yml
-name: Issue Welcome
-
-on:
-  issues:
-    types: [opened]
-
-jobs:
-  issue-welcome:
-    runs-on: ubuntu-latest
-    steps:
-      - name: welcome
-        uses: actions-cool/issues-helper@v2
-        with:
-          actions: 'welcome'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          body: hi @${{ github.event.issue.user.login }}, welcome!
-          labels: 'welcome1, welcome2'
-          assignees: 'xx1'
-          issue-contents: '+1, -1, eyes'
-```
-
-| Param | Desc  | Type | Required |
-| -- | -- | -- | -- |
-| actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
-| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ |
-| labels | Add labels to this issue | string | ✖ |
-| assignees | Add assignees to this issue | string | ✖ |
-| issue-contents | Add [reaction](#reactions-types) to this issue| string | ✖ |
-
-- If these 4 options are not filled, no operation
 
 ⏫ [Back to list](#List)
 
@@ -793,19 +717,19 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-inactive
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'check-inactive'
           token: ${{ secrets.GITHUB_TOKEN }}
           inactive-day: 30
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| emoji | Add [reaction](#emoji-types) for this comment | string | ✖ |
 | labels | Labels filtering | string | ✖ |
 | issue-state | State filtering | string | ✖ |
 | issue-assignee | Assignee filtering | string | ✖ |
@@ -847,7 +771,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: check-issue
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'check-issue'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -856,10 +780,10 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignee-includes | Assignees contains check | string | ✖ |
 | title-includes | Title contains check | string | ✖ |
@@ -887,7 +811,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: close-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'close-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -895,12 +819,12 @@ jobs:
           inactive-day: 7
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| emoji | Add [reaction](#emoji-types) for this comment | string | ✖ |
 | labels | Labels filtering | string | ✖ |
 | issue-assignee | Assignee filtering | string | ✖ |
 | issue-creator | Creator filtering | string | ✖ |
@@ -922,7 +846,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 ```yml
 - name: Find comments
-    uses: actions-cool/issues-helper@v2
+    uses: actions-cool/issues-helper@v3
     with:
       actions: 'find-comments'
       token: ${{ secrets.GITHUB_TOKEN }}
@@ -931,10 +855,10 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
       body-includes: 'this'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
 | body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
@@ -946,6 +870,48 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 [
   {id: 1, auth: 'x', body: 'xxx', created: '', updated: ''},
   {id: 2, auth: 'x', body: 'xxx', created: '', updated: ''},
+]
+```
+
+- `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
+- The `created` `updated` in the returned array, determined by the environment, will be UTC +0
+
+⏫ [Back to list](#List)
+
+#### `find-issues`
+
+Find the current repository, the creator is k , the title contains `this` , the body contains `that`, and the list of issues in the open state.
+
+```yml
+- name: Find issues
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'find-issues'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-creator: 'k'
+      issue-state: 'open'
+      title-includes: 'this'
+      body-includes: 'that'
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| direction | Return sort | string | ✖ |
+
+- Returns `issues` in the following format:
+
+```js
+[
+  {number: 1, auth: 'x', body: 'xxx', body: 'xxx', state: 'open', created: '', updated: ''},
+  {number: 2, auth: 'x', body: 'xxx', body: 'xxx', state: 'closed', created: '', updated: ''},
 ]
 ```
 
@@ -970,7 +936,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: lock-issues
-        uses: actions-cool/issues-helper@v2
+        uses: actions-cool/issues-helper@v3
         with:
           actions: 'lock-issues'
           token: ${{ secrets.GITHUB_TOKEN }}
@@ -978,12 +944,12 @@ jobs:
           inactive-day: 128
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
 | body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
-| contents | Add [reaction](#reactions-types) for this comment | string | ✖ |
+| emoji | Add [reaction](#emoji-types) for this comment | string | ✖ |
 | labels | Labels filtering | string | ✖ |
 | issue-state | State filtering | string | ✖ |
 | issue-assignee | Assignee filtering | string | ✖ |
@@ -1002,103 +968,127 @@ jobs:
 
 ⏫ [Back to list](#List)
 
-#### `month-statistics`
+#### `mark-assignees`
 
-At 1 o'clock on the 1st of each month, an issue is generated for the statistics of the previous month.
+Quickly assign person, only for the issue to add editor comments.
 
-```
-name: Issue Month Statistics
+```yml
+name: Issue Mark Assignees
 
 on:
-  schedule:
-    - cron: "0 1 1 * *"
+  issue_comment:
+    types: [created, edited]
 
 jobs:
-  month-statistics:
+  mark-duplicate:
     runs-on: ubuntu-latest
     steps:
-      - name: month-statistics
-        uses: actions-cool/issues-helper@v2
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v3
         with:
-          actions: 'month-statistics'
+          actions: 'mark-assignees'
           token: ${{ secrets.GITHUB_TOKEN }}
-          count-lables: 'true'
 ```
 
-| Param | Desc  | Type | Required |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
 | actions | Action type | string | ✔ |
-| token | [Token explain](#token) | string | ✔ |
-| labels | The labels for the new issue | string | ✖ |
-| assignees | The assignees for the new issue | string | ✖ |
-| count-lables | Whether the new issue count labels | string | ✖ |
-| count-comments | Whether the new issue count comments | string | ✖ |
+| token | [Token explain](#token) | string | ✖ |
+| assign-command | Simple commands can be set, such as: `/a` | string | ✖ |
+| require-permission | Permission required, default is `write` | string | ✖ |
 
-- The new issue title defaults to `[Current repo] Month Statistics: Year-Month`
-- `count-lables`: You can set `'true'` to add labels statistics
-- `count-comments`: You can set `'true'` to add comments statistics
+- `assign-command`: default `/assign`
+- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the `read` permission, it is `read`
+  - If the external Collaborator is set to `read` permission, it is `read`
+  - Ordinary users have `read` permission
+  - When set `write`, `admin` and `write` meet the conditions
 
 ⏫ [Back to list](#List)
 
-## 🌰 Example
+#### `mark-duplicate`
 
-Flexible reference.
-
-### `find-comments + create-comment + update-comment`
-
-Hypothetical scenario: When the issue modification of the `watch` label is added, find out whether there is a comment created by k that contains `<!-- Created by actions-cool/issues-helper -->`, if so, update the comment, If not, add a comment.
-
-Of course, if you need such a scene, you can directly use [**Maintain One Comment**](https://github.com/actions-cool/maintain-one-comment).
+Quickly mark duplicate questions, only for issue new comments or edit comments.
 
 ```yml
-name: Test
+name: Issue Mark Duplicate
+
+on:
+  issue_comment:
+    types: [created, edited]
+
+jobs:
+  mark-duplicate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: mark-duplicate
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'mark-duplicate'
+          token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
+| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ |
+| duplicate-labels | Add additional labels to this issue | string | ✖ |
+| remove-labels | Set removable labels | string | ✖ |
+| labels | Replace the labels of the issue | string | ✖ |
+| emoji | Add [reaction](#emoji-types) for this comment | string | ✖ |
+| close-issue | Whether to close the issue at the same time | string | ✖ |
+| require-permission | Permission required, default is `write` | string | ✖ |
+
+- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
+- `labels`: Highest priority
+- `close-issue`: Both `true` or `'true'` can take effect
+- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the `read` permission, it is `read`
+  - If the external Collaborator is set to `read` permission, it is `read`
+  - Ordinary users have `read` permission
+  - When set `write`, `admin` and `write` meet the conditions
+
+⏫ [Back to list](#List)
+
+#### `welcome`
+
+When an issue is created, the user who created the issue for the first time is welcome.
+
+If the user is not creating for the first time, there is no operation.
+
+```yml
+name: Issue Welcome
 
 on:
   issues:
-    types: [edited]
+    types: [opened]
 
 jobs:
-  do-test:
+  issue-welcome:
     runs-on: ubuntu-latest
-    if: github.event.label.name == 'watch'
     steps:
-      - name: find comments
-        uses: actions-cool/issues-helper@v2
-        id: fcid
+      - name: welcome
+        uses: actions-cool/issues-helper@v3
         with:
-          actions: 'find-comments'
+          actions: 'welcome'
           token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          comment-auth: k
-          body-includes: '<!-- Created by actions-cool/issues-helper -->'
-
-      # Output view found content. GitHub default outputs are strings
-      - run: echo find-comments ${{ steps.fcid.outputs.comments }}
-        shell: bash
-
-      - name: create comment
-        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == false
-        uses: actions-cool/issues-helper@v2
-        with:
-          actions: 'create-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          issue-number: ${{ github.event.issue.number }}
-          body: |
-            Error
-            <!-- Created by actions-cool/issues-helper -->
-
-      - name: update comment
-        if: contains(steps.fcid.outputs.comments, '<!-- Created by actions-cool/issues-helper -->') == true
-        uses: actions-cool/issues-helper@v2
-        with:
-          actions: 'update-comment'
-          token: ${{ secrets.GITHUB_TOKEN }}
-          out-comments: ${{ steps.fcid.outputs.comments }}
-          body: |
-            Error Again
-            <!-- Created by actions-cool/issues-helper -->
-          update-mode: 'append'
+          body: hi @${{ github.event.issue.user.login }}, welcome!
+          labels: 'welcome1, welcome2'
+          assignees: 'xx1'
+          issue-emoji: '+1, -1, eyes'
 ```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
+| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ |
+| labels | Add labels to this issue | string | ✖ |
+| assignees | Add assignees to this issue | string | ✖ |
+| issue-emoji | Add [reaction](#emoji-types) to this issue| string | ✖ |
+
+- If these 4 options are not filled, no operation
 
 ⏫ [Back to list](#List)
 
@@ -1130,7 +1120,7 @@ When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, 
 
 ```yml
 - name: Create issue
-  uses: actions-cool/issues-helper@v2
+  uses: actions-cool/issues-helper@v3
   id: createissue
   with:
     actions: 'create-issue'
@@ -1175,7 +1165,7 @@ x2 + y2
 ```
 
 ⏫ [Back to list](#List)
-### Reactions types
+### Emoji types
 
 | content | emoji |
 | -- | -- |
@@ -1195,33 +1185,6 @@ x2 + y2
 Click the `···` icon in the upper right corner of a comment, select `Copy link`, and the number at the end of the url is `comment_id`.
 
 ⏫ [Back to list](#List)
-
-## ✨ Version
-
-- Version rules
-  - Use two-level semantic version, such as v1, v1.1, v2, v2.1
-  - v1 represents the initial version
-  - The fixes and additions to the v1 version will be released to the v1.1 version
-  - When the released v1.x runs stable for a certain period of time or undergoes refactoring, release the advanced v2 version
-  - After the v2 version, the version will be released strictly according to the three-level semantics, such as v2.0.0, v2.1.0
-
-- Version selection
-  - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
-  - You can also refer to the update log below to select the version
-  - The latest v1.x release code will be merged into the 1.x branch
-  - It also supports the direct use of branch versions. Such as:
-
-```yml
-- name: Issues Helper
-  uses: actions-cool/issues-helper@main
-
-# or
-
-- name: Issues Helper
-  uses: actions-cool/issues-helper@1.x
-```
-
-- v2 [upgrade reference](https://github.com/actions-cool/issues-helper/blob/fix/docs/guide/faq.en-US.md#what-should-i-pay-attention-to-when-upgrading-from-v1x-to-v2)
 
 ## Actions Template
 
