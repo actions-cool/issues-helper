@@ -81,7 +81,7 @@ Reference for functional changes:
   - `issue-emojis` renamed to `issue-emoji`
   - deleteComment updateComment no longer supports `out-comments`, keeping pure functionality
   - Remove title body default
-  - `month-statistics` is removed, can use [issues-month-statistics](https://github.com/actions-cool/issues-month-statistics)
+  - `month-statistics` removed
 
 ## What should I do if there is no function I want here?
 
