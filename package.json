@@ -24,8 +24,8 @@
     "release": "node ./scripts/release",
     "test": "father test",
     "package": "ncc build src/main.ts -o dist",
-    "users": "node ./script/update-users.js",
-    "version": "node ./script/update-version.js",
+    "users": "node ./scripts/update-users.js",
+    "version": "node ./scripts/update-version.js",
     "pub": "sh -e ./scripts/pub.sh",
     "all": "npm run format-check && npm run lint && npm run test && npm run package"
   },
