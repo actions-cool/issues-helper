@@ -91,6 +91,10 @@ const users = [
     url: 'https://github.com/antvis/S2',
     logo: 'https://gw.alipayobjects.com/mdn/rms_56cbb2/afts/img/A*TI8XSK3W0EkAAAAAAAAAAAAAARQnAQ',
   },
+  {
+    url: 'https://github.com/twbs/bootstrap',
+    logo: 'https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo-shadow.png',
+  },
 ];
 
 // **************************************************************************
