@@ -95,6 +95,10 @@ const users = [
     url: 'https://github.com/twbs/bootstrap',
     logo: 'https://getbootstrap.com/docs/5.1/assets/brand/bootstrap-logo-shadow.png',
   },
+  {
+    url: 'https://github.com/nolimits4web/swiper',
+    logo: 'https://user-images.githubusercontent.com/29775873/156721728-3b0021ea-6932-4a77-a104-2e0bad97346e.png',
+  },
 ];
 
 // **************************************************************************

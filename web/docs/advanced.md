@@ -269,10 +269,10 @@ on:
     types: [created, edited]
 
 jobs:
-  mark-duplicate:
+  mark-assignees:
     runs-on: ubuntu-latest
     steps:
-      - name: mark-duplicate
+      - name: mark-assignees
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'mark-assignees'

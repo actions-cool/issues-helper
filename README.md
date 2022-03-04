@@ -154,6 +154,11 @@
   <td align="center" width="180"><a href="https://github.com/antvis/S2">S2</a></td>
 </tr><tr>
   <td align="center" width="180">
+    <a href="https://github.com/nolimits4web/swiper">
+      <img src="https://user-images.githubusercontent.com/29775873/156721728-3b0021ea-6932-4a77-a104-2e0bad97346e.png" width="46"/>
+    </a>
+  </td>
+  <td align="center" width="180">
     <a href="https://github.com/umijs/umi">
       <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
     </a>
@@ -168,18 +173,18 @@
       <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
     </a>
   </td>
+</tr>
+<tr>
+  <td align="center" width="180"><a href="https://github.com/nolimits4web/swiper">swiper</a></td>
+  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
+  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
+  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/vuepress/vuepress-next">
       <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
     </a>
   </td>
-</tr>
-<tr>
-  <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
-  <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
-  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
-  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
-</tr><tr>
   <td align="center" width="180">
     <a href="https://github.com/zoo-js/zoo">
       <img src="https://avatars1.githubusercontent.com/u/70757173?s=200&v=4" width="46"/>
@@ -187,11 +192,10 @@
   </td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
-  <td align="center" width="180"></td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
-  <td align="center" width="180"></td>
   <td align="center" width="180"></td>
   <td align="center" width="180"></td>
 </tr>
@@ -994,10 +998,10 @@ on:
     types: [created, edited]
 
 jobs:
-  mark-duplicate:
+  mark-assignees:
     runs-on: ubuntu-latest
     steps:
-      - name: mark-duplicate
+      - name: mark-assignees
         uses: actions-cool/issues-helper@v3
         with:
           actions: 'mark-assignees'
