@@ -4,9 +4,9 @@
 // step3: push 3 files & open a new PR
 
 /**
- * @param {string} url        github地址
- * @param {string} logo       logo地址
- * @param {string} width      自定义宽度，设置 auto 用于长型 logo
+ * @param {string} url        github repo
+ * @param {string} logo       logo url
+ * @param {string} width      auto use rectangle logo
  */
 
 const users = [
@@ -98,6 +98,10 @@ const users = [
   {
     url: 'https://github.com/nolimits4web/swiper',
     logo: 'https://user-images.githubusercontent.com/29775873/156721728-3b0021ea-6932-4a77-a104-2e0bad97346e.png',
+  },
+  {
+    url: 'https://github.com/vitest-dev/vitest',
+    logo: 'https://user-images.githubusercontent.com/11247099/145112184-a9ff6727-661c-439d-9ada-963124a281f7.png',
   },
 ];
 

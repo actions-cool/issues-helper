@@ -169,8 +169,8 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     </a>
   </td>
   <td align="center" width="180">
-    <a href="https://github.com/AttoJS/vue-request">
-      <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
+    <a href="https://github.com/vitest-dev/vitest">
+      <img src="https://user-images.githubusercontent.com/11247099/145112184-a9ff6727-661c-439d-9ada-963124a281f7.png" width="46"/>
     </a>
   </td>
 </tr>
@@ -178,8 +178,13 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   <td align="center" width="180"><a href="https://github.com/nolimits4web/swiper">swiper</a></td>
   <td align="center" width="180"><a href="https://github.com/umijs/umi">umi</a></td>
   <td align="center" width="180"><a href="https://github.com/vitejs/vite">vite</a></td>
-  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
+  <td align="center" width="180"><a href="https://github.com/vitest-dev/vitest">vitest</a></td>
 </tr><tr>
+  <td align="center" width="180">
+    <a href="https://github.com/AttoJS/vue-request">
+      <img src="https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png" width="46"/>
+    </a>
+  </td>
   <td align="center" width="180">
     <a href="https://github.com/vuepress/vuepress-next">
       <img src="https://v2.vuepress.vuejs.org/images/hero.png" width="46"/>
@@ -191,12 +196,11 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
     </a>
   </td>
   <td align="center" width="180"></td>
-  <td align="center" width="180"></td>
 </tr>
 <tr>
+  <td align="center" width="180"><a href="https://github.com/AttoJS/vue-request">vue-request</a></td>
   <td align="center" width="180"><a href="https://github.com/vuepress/vuepress-next">vuepress-next</a></td>
   <td align="center" width="180"><a href="https://github.com/zoo-js/zoo">zoo</a></td>
-  <td align="center" width="180"></td>
   <td align="center" width="180"></td>
 </tr>
 </table>
