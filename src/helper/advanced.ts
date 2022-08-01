@@ -169,7 +169,7 @@ export async function doCheckIssue() {
     const bodyArr = bodyIncludes.split('/');
     const keyword1 = dealStringToArr(bodyArr[0]);
     const keyword2 = dealStringToArr(bodyArr[1]);
-    checkResult = keyword2.length
+    checkResult = keyword2 && keyword2.length
       ? matchKeyword(issue.body, keyword1) && matchKeyword(issue.body, keyword2)
       : matchKeyword(issue.body, keyword1);
   }
