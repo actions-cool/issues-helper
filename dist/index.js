@@ -14753,9 +14753,10 @@ function doCheckIssue() {
             const bodyArr = bodyIncludes.split('/');
             const keyword1 = (0, actions_util_1.dealStringToArr)(bodyArr[0]);
             const keyword2 = (0, actions_util_1.dealStringToArr)(bodyArr[1]);
-            checkResult = keyword2 && keyword2.length
-                ? (0, util_1.matchKeyword)(issue.body, keyword1) && (0, util_1.matchKeyword)(issue.body, keyword2)
-                : (0, util_1.matchKeyword)(issue.body, keyword1);
+            checkResult =
+                keyword2 && keyword2.length
+                    ? (0, util_1.matchKeyword)(issue.body, keyword1) && (0, util_1.matchKeyword)(issue.body, keyword2)
+                    : (0, util_1.matchKeyword)(issue.body, keyword1);
         }
         core.info(`[doCheckIssue] result is [${checkResult}]`);
         core.setOutput('check-result', checkResult);
