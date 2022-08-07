@@ -6,7 +6,7 @@ import utc from 'dayjs/plugin/utc';
 
 import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
-import type { TEmoji, TIssueState, TOutList } from '../types';
+import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
 import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
 import {
   doAddAssignees,
@@ -179,13 +179,13 @@ export async function doCheckIssue() {
   core.setOutput('check-result', checkResult);
 }
 
-export async function doCloseIssues(body: string, emoji?: string) {
+export async function doCloseIssues(body: string, closeReason: TCloseReason, emoji?: string) {
   const issues = await doQueryIssues('open');
   if (issues.length) {
     for (const { number } of issues) {
       core.info(`[doCloseIssues] Doing ---> ${number}`);
       if (body) await doCreateComment(body, emoji, number);
-      await doCloseIssue(number);
+      await doCloseIssue(closeReason, number);
     }
   } else {
     core.info(`[doCloseIssues] Query issues empty!`);
@@ -293,6 +293,7 @@ export async function doMarkAssignees(comment: TCommentInfo) {
 
 export async function doMarkDuplicate(
   comment: TCommentInfo,
+  closeReason: TCloseReason,
   labels?: string[] | void,
   emoji?: string,
 ) {
@@ -345,7 +346,7 @@ export async function doMarkDuplicate(
       await doSetLabels(newLabels);
     }
     if (closeIssue === 'true') {
-      await doCloseIssue();
+      await doCloseIssue(closeReason);
     }
     core.info(`[doMarkDuplicate] Done!`);
   } else {

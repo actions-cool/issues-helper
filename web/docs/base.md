@@ -98,6 +98,7 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
 | issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
 
 ## `create-comment`
 

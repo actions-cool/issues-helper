@@ -1,7 +1,7 @@
 import { Octokit } from '@octokit/rest';
 
 import { EEmoji } from '../shared';
-import type { TEmoji, TIssueState, TLockReasons, TUpdateMode, TUserPermission } from '../types';
+import type { TEmoji, TIssueState, TLockReasons, TUpdateMode, TUserPermission, TCloseReason } from '../types';
 import type {
   IIssueBaseInfo,
   IIssueCoreEngine,
@@ -53,13 +53,14 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     });
   }
 
-  public async closeIssue() {
+  public async closeIssue(reason: TCloseReason) {
     const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.update({
       owner,
       repo,
       issue_number: issueNumber,
       state: 'closed',
+      state_reason: reason,
     });
   }
 

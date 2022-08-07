@@ -3,7 +3,7 @@ import { dealStringToArr } from 'actions-util';
 import * as core from '../core';
 import type { IIssueCoreEngine, TCommentInfo } from '../issue';
 import { IssueCoreEngine } from '../issue';
-import type { Context, TAction, TIssueState, TUpdateMode } from '../types';
+import type { Context, TAction, TCloseReason, TIssueState, TUpdateMode } from '../types';
 import { dealRandomAssignees } from '../util';
 import {
   doCheckInactive,
@@ -51,6 +51,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   private body: string = '';
   private state: TIssueState = 'open';
   private updateMode: TUpdateMode = 'replace';
+  private closeReason: TCloseReason = 'not_planned';
 
   public constructor(readonly ctx: Context) {
     this.initInput(ctx);
@@ -92,6 +93,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
     this.body = core.getInput('body') || '';
     this.state = core.getInput('state') === 'closed' ? 'closed' : 'open';
     this.updateMode = core.getInput('update-mode') === 'append' ? 'append' : 'replace';
+    this.closeReason = core.getInput('close-reason') === 'completed' ? 'completed' : 'not_planned';
   }
 
   private initIssueCore() {
@@ -107,7 +109,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   public async doExeAction(action: TAction) {
-    const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx } = this;
+    const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx, closeReason } = this;
     switch (action) {
       // ---[ Base Begin ]--->>>
       case 'add-assignees': {
@@ -127,7 +129,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'close-issue': {
-        await doCloseIssue();
+        await doCloseIssue(closeReason);
         break;
       }
       case 'create-comment': {
@@ -202,7 +204,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         break;
       }
       case 'close-issues': {
-        await doCloseIssues(body, emoji);
+        await doCloseIssues(body, closeReason, emoji);
         break;
       }
       case 'find-comments': {
@@ -230,7 +232,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
           core.warning(`[mark-duplicate] only support event '[issue_comment: created/edited]'!`);
           return;
         }
-        await doMarkDuplicate(ctx.payload.comment as TCommentInfo, labels, emoji);
+        await doMarkDuplicate(ctx.payload.comment as TCommentInfo, closeReason, labels, emoji);
         break;
       }
       case 'welcome': {

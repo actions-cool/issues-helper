@@ -130,6 +130,7 @@ jobs:
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
+| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
@@ -326,6 +327,7 @@ jobs:
 | emoji | 为该评论的增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
 | close-issue | 是否同时关闭该 issue | string | ✖ |
 | require-permission | 要求权限，默认为 `write` | string | ✖ |
+| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
 
 - `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
 - `labels`：优先级最高

@@ -134,6 +134,7 @@ jobs:
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -329,6 +330,7 @@ jobs:
 | emoji | Add [emoji](/en-US/guide/ref#-emoji-type) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
 | require-permission | Permission required, default is `write` | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority

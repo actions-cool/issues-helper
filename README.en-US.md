@@ -354,6 +354,7 @@ Close the specified issue.
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 ⏫ [Back to list](#List)
 
@@ -856,6 +857,7 @@ jobs:
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
@@ -1062,6 +1064,7 @@ jobs:
 | emoji | Add [reaction](#emoji-types) for this comment | string | ✖ |
 | close-issue | Whether to close the issue at the same time | string | ✖ |
 | require-permission | Permission required, default is `write` | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 - `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
 - `labels`: Highest priority

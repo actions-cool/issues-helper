@@ -14763,7 +14763,7 @@ function doCheckIssue() {
     });
 }
 exports.doCheckIssue = doCheckIssue;
-function doCloseIssues(body, emoji) {
+function doCloseIssues(body, closeReason, emoji) {
     return __awaiter(this, void 0, void 0, function* () {
         const issues = yield doQueryIssues('open');
         if (issues.length) {
@@ -14771,7 +14771,7 @@ function doCloseIssues(body, emoji) {
                 core.info(`[doCloseIssues] Doing ---> ${number}`);
                 if (body)
                     yield (0, base_1.doCreateComment)(body, emoji, number);
-                yield (0, base_1.doCloseIssue)(number);
+                yield (0, base_1.doCloseIssue)(closeReason, number);
             }
         }
         else {
@@ -14889,7 +14889,7 @@ function doMarkAssignees(comment) {
     });
 }
 exports.doMarkAssignees = doMarkAssignees;
-function doMarkDuplicate(comment, labels, emoji) {
+function doMarkDuplicate(comment, closeReason, labels, emoji) {
     return __awaiter(this, void 0, void 0, function* () {
         const duplicateCommand = core.getInput('duplicate-command');
         const duplicateLabels = core.getInput('duplicate-labels');
@@ -14934,7 +14934,7 @@ function doMarkDuplicate(comment, labels, emoji) {
                 yield (0, base_1.doSetLabels)(newLabels);
             }
             if (closeIssue === 'true') {
-                yield (0, base_1.doCloseIssue)();
+                yield (0, base_1.doCloseIssue)(closeReason);
             }
             core.info(`[doMarkDuplicate] Done!`);
         }
@@ -15032,11 +15032,11 @@ function doAddLabels(labels, issueNumber) {
     });
 }
 exports.doAddLabels = doAddLabels;
-function doCloseIssue(issueNumber) {
+function doCloseIssue(reason, issueNumber) {
     return __awaiter(this, void 0, void 0, function* () {
         if (issueNumber)
             ICE.setIssueNumber(issueNumber);
-        yield ICE.closeIssue();
+        yield ICE.closeIssue(reason);
         core.info(`[doCloseIssue] success!`);
     });
 }
@@ -15244,6 +15244,7 @@ class IssueHelperEngine {
         this.body = '';
         this.state = 'open';
         this.updateMode = 'replace';
+        this.closeReason = 'not_planned';
         this.initInput(ctx);
         this.initIssueCore();
         (0, base_1.initBaseICE)(this.ICE);
@@ -15281,6 +15282,7 @@ class IssueHelperEngine {
         this.body = core.getInput('body') || '';
         this.state = core.getInput('state') === 'closed' ? 'closed' : 'open';
         this.updateMode = core.getInput('update-mode') === 'append' ? 'append' : 'replace';
+        this.closeReason = core.getInput('close-reason') === 'completed' ? 'completed' : 'not_planned';
     }
     initIssueCore() {
         const { owner, repo, issueNumber } = this;
@@ -15295,7 +15297,7 @@ class IssueHelperEngine {
     }
     doExeAction(action) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx } = this;
+            const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx, closeReason } = this;
             switch (action) {
                 // ---[ Base Begin ]--->>>
                 case 'add-assignees': {
@@ -15317,7 +15319,7 @@ class IssueHelperEngine {
                     break;
                 }
                 case 'close-issue': {
-                    yield (0, base_1.doCloseIssue)();
+                    yield (0, base_1.doCloseIssue)(closeReason);
                     break;
                 }
                 case 'create-comment': {
@@ -15395,7 +15397,7 @@ class IssueHelperEngine {
                     break;
                 }
                 case 'close-issues': {
-                    yield (0, advanced_1.doCloseIssues)(body, emoji);
+                    yield (0, advanced_1.doCloseIssues)(body, closeReason, emoji);
                     break;
                 }
                 case 'find-comments': {
@@ -15423,7 +15425,7 @@ class IssueHelperEngine {
                         core.warning(`[mark-duplicate] only support event '[issue_comment: created/edited]'!`);
                         return;
                     }
-                    yield (0, advanced_1.doMarkDuplicate)(ctx.payload.comment, labels, emoji);
+                    yield (0, advanced_1.doMarkDuplicate)(ctx.payload.comment, closeReason, labels, emoji);
                     break;
                 }
                 case 'welcome': {
@@ -15564,7 +15566,7 @@ class IssueCoreEngine {
             });
         });
     }
-    closeIssue() {
+    closeIssue(reason) {
         return __awaiter(this, void 0, void 0, function* () {
             const { owner, repo, octokit, issueNumber } = this;
             yield octokit.issues.update({
@@ -15572,6 +15574,7 @@ class IssueCoreEngine {
                 repo,
                 issue_number: issueNumber,
                 state: 'closed',
+                state_reason: reason,
             });
         });
     }

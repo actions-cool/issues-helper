@@ -3,7 +3,7 @@ import { dealStringToArr } from 'actions-util';
 import * as core from '../core';
 import type { IIssueCoreEngine } from '../issue';
 import { ELockReasons } from '../shared';
-import type { TEmoji, TIssueState, TLockReasons, TUpdateMode } from '../types';
+import type { TCloseReason, TEmoji, TIssueState, TLockReasons, TUpdateMode } from '../types';
 
 let ICE: IIssueCoreEngine;
 export function initBaseICE(_ICE: IIssueCoreEngine) {
@@ -21,9 +21,9 @@ export async function doAddLabels(labels: string[], issueNumber?: number) {
   core.info(`[doAddLabels] [${labels}] success!`);
 }
 
-export async function doCloseIssue(issueNumber?: number) {
+export async function doCloseIssue(reason: TCloseReason,issueNumber?: number) {
   if (issueNumber) ICE.setIssueNumber(issueNumber);
-  await ICE.closeIssue();
+  await ICE.closeIssue(reason);
   core.info(`[doCloseIssue] success!`);
 }
 
