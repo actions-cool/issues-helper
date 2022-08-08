@@ -1,4 +1,11 @@
-import type { TCloseReason, TEmoji, TIssueState, TLockReasons, TUpdateMode, TUserPermission } from '../types';
+import type {
+  TCloseReason,
+  TEmoji,
+  TIssueState,
+  TLockReasons,
+  TUpdateMode,
+  TUserPermission,
+} from '../types';
 
 export interface IIssueBaseInfo {
   owner: string;

@@ -21,7 +21,7 @@ export async function doAddLabels(labels: string[], issueNumber?: number) {
   core.info(`[doAddLabels] [${labels}] success!`);
 }
 
-export async function doCloseIssue(reason: TCloseReason,issueNumber?: number) {
+export async function doCloseIssue(reason: TCloseReason, issueNumber?: number) {
   if (issueNumber) ICE.setIssueNumber(issueNumber);
   await ICE.closeIssue(reason);
   core.info(`[doCloseIssue] success!`);

@@ -109,7 +109,18 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   }
 
   public async doExeAction(action: TAction) {
-    const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx, closeReason } = this;
+    const {
+      issueNumber,
+      emoji,
+      labels,
+      assignees,
+      title,
+      body,
+      updateMode,
+      state,
+      ctx,
+      closeReason,
+    } = this;
     switch (action) {
       // ---[ Base Begin ]--->>>
       case 'add-assignees': {

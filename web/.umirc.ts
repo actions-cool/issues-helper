@@ -3,7 +3,8 @@ import { defineConfig } from 'dumi';
 
 const name = 'issues-helper';
 
-const logo = 'https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ';
+const logo =
+  'https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ';
 
 export default defineConfig({
   title: 'Issues Helper',

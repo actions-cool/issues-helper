@@ -15297,7 +15297,7 @@ class IssueHelperEngine {
     }
     doExeAction(action) {
         return __awaiter(this, void 0, void 0, function* () {
-            const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx, closeReason } = this;
+            const { issueNumber, emoji, labels, assignees, title, body, updateMode, state, ctx, closeReason, } = this;
             switch (action) {
                 // ---[ Base Begin ]--->>>
                 case 'add-assignees': {
