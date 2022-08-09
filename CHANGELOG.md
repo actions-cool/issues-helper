@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.1.0
+
+`2022.08.09`
+
+- 🚀 feat: add reason for closing issue. [#110](https://github.com/actions-cool/issues-helper/pull/110) [@Xhofe](https://github.com/Xhofe)
+
 ## v3.0.1
 
 `2022.08.01`
