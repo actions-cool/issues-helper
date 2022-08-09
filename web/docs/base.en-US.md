@@ -98,6 +98,7 @@ Close the specified issue.
 | actions | Action type | string | ✔ |
 | token | [Token explain](/en-US/guide/ref#-token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 ## `create-comment`
 

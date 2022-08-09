@@ -28,6 +28,8 @@ inputs:
     description: 'Issue assignees'
   random-to:
     description: 'Issue assignees random to'
+  close-reason:
+    description: 'Issue close reason'
 
   # label
   labels:

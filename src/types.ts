@@ -12,6 +12,8 @@ export type TUpdateMode = 'append' | 'replace';
 
 export type TUserPermission = TPermissionType;
 
+export type TCloseReason = 'completed' | 'not_planned';
+
 export type TOutInfo = {
   auth: string;
   id?: number;
