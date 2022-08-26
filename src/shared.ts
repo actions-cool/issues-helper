@@ -15,3 +15,7 @@ export const ELockReasons = {
   resolved: 'resolved',
   spam: 'spam',
 };
+
+export const EConst = {
+  ExcludeEmpty: '$exclude-empty',
+};
