@@ -51,7 +51,7 @@ jobs:
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 - `inactive-label`：默认为 `inactive`，可自定义其他。当项目未包含该 label 时，会自动新建
-- `exclude-labels`: 设置包含 `$exclude-empty` 时，可排除无 label issue
+- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
 
 ## `check-issue`
 
@@ -136,7 +136,7 @@ jobs:
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
-- `exclude-labels`: 设置包含 `$exclude-empty` 时，可排除无 label issue
+- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
 
 ## `find-comments`
 
@@ -213,7 +213,7 @@ jobs:
 
 - `direction` 默认为升序，只有设置 `desc` 时，会返回降序
 - 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
-- `exclude-labels`: 设置包含 `$exclude-empty` 时，可排除无 label issue
+- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
 
 ## `lock-issues`
 
@@ -260,7 +260,7 @@ jobs:
 - `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
 - `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
-- `exclude-labels`: 设置包含 `$exclude-empty` 时，可排除无 label issue
+- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
 
 ## `mark-assignees`
 
