@@ -770,6 +770,7 @@ jobs:
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
 - `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ⏫ [Back to list](#List)
 
@@ -862,6 +863,7 @@ jobs:
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ⏫ [Back to list](#List)
 
@@ -942,6 +944,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
 
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ⏫ [Back to list](#List)
 
@@ -990,6 +993,7 @@ jobs:
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
 - `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ⏫ [Back to list](#List)
 

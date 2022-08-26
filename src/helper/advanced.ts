@@ -8,6 +8,7 @@ import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
 import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
 import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
+import { EConst } from '../shared';
 import {
   doAddAssignees,
   doAddLabels,
@@ -67,8 +68,12 @@ export async function doQueryIssues(
        */
       if (bodyCheck && titleCheck && issue.pull_request === undefined) {
         if (excludeLabelsArr.length) {
-          for (let i = 0; i < issue.labels.length; i += 1) {
-            if (excludeLabelsArr.includes(issue.labels[i].name)) return;
+          if (issue.labels.length) {
+            for (let i = 0; i < issue.labels.length; i += 1) {
+              if (excludeLabelsArr.includes(issue.labels[i].name)) return;
+            }
+          } else {
+            if (excludeLabelsArr.includes(EConst.ExcludeEmpty)) return;
           }
         }
 

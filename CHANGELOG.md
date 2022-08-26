@@ -7,6 +7,13 @@
 🛠 refactor
 -->
 
+## v3.2.0
+
+`2022.08.26`
+
+- 🚀 feat: add `$exclude-empty` for `exclude-labels`.
+  - When set to include `$exclude-empty`, no label issue can be excluded
+
 ## v3.1.0
 
 `2022.08.09`
