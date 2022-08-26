@@ -14606,6 +14606,7 @@ const isSameOrBefore_1 = __importDefault(__nccwpck_require__(9517));
 const utc_1 = __importDefault(__nccwpck_require__(4359));
 const core = __importStar(__nccwpck_require__(9875));
 const util_1 = __nccwpck_require__(9604);
+const shared_1 = __nccwpck_require__(3826);
 const base_1 = __nccwpck_require__(8824);
 let ICE;
 function initAdvancedICE(_ICE) {
@@ -14649,8 +14650,14 @@ function doQueryIssues(state, creator, ignoreLabels) {
                  */
                 if (bodyCheck && titleCheck && issue.pull_request === undefined) {
                     if (excludeLabelsArr.length) {
-                        for (let i = 0; i < issue.labels.length; i += 1) {
-                            if (excludeLabelsArr.includes(issue.labels[i].name))
+                        if (issue.labels.length) {
+                            for (let i = 0; i < issue.labels.length; i += 1) {
+                                if (excludeLabelsArr.includes(issue.labels[i].name))
+                                    return;
+                            }
+                        }
+                        else {
+                            if (excludeLabelsArr.includes(shared_1.EConst.ExcludeEmpty))
                                 return;
                         }
                     }
@@ -15904,7 +15911,7 @@ main();
 "use strict";
 
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.ELockReasons = exports.EEmoji = void 0;
+exports.EConst = exports.ELockReasons = exports.EEmoji = void 0;
 exports.EEmoji = {
     '+1': '+1',
     '-1': '-1',
@@ -15920,6 +15927,9 @@ exports.ELockReasons = {
     'too heated': 'too heated',
     resolved: 'resolved',
     spam: 'spam',
+};
+exports.EConst = {
+    ExcludeEmpty: '$exclude-empty',
 };
 
 
