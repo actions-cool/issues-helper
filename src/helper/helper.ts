@@ -11,6 +11,7 @@ import {
   doCloseIssues,
   doFindComments,
   doFindIssues,
+  doGetIssue,
   doLockIssues,
   doMarkAssignees,
   doMarkDuplicate,
@@ -224,6 +225,10 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       }
       case 'find-issues': {
         await doFindIssues();
+        break;
+      }
+      case 'get-issue': {
+        await doGetIssue();
         break;
       }
       case 'lock-issues': {

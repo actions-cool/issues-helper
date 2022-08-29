@@ -215,6 +215,32 @@ jobs:
 - 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
 - `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
 
+## `get-issue`
+
+根据 `issue-number` 来返回该 issue 相关信息，如 `title` `body` `labels` 等。
+
+```yml
+- name: Get issue
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'get-issue'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+
+
+- 返回 `issue`，格式如下：
+
+```js
+  {number: 1, title: 'x', body: 'xxx', user: {login: 'xxx'}, assignees: [{login: 'xxx'}], labels: [{name: 'xxx'}], state: 'open', created_at: '', updated_at: '', pull_request: ''},
+```
+
 ## `lock-issues`
 
 每 3 个月 1 号 UTC 0 时，锁定已填加 `inactive` label 且 128 天以上未活跃的所有 issues。

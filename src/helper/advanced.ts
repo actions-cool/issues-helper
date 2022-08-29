@@ -260,6 +260,12 @@ export async function doFindIssues() {
   core.setOutput('issues', JSON.stringify(issues));
 }
 
+export async function doGetIssue() {
+  const issue = await ICE.getIssue();
+  core.info(`[doGetIssue] success!`);
+  core.setOutput('issue', JSON.stringify(issue));
+}
+
 export async function doLockIssues(body: string, emoji?: string) {
   let issueState = core.getInput('issue-state');
   if (issueState !== 'all' && issueState !== 'closed') {

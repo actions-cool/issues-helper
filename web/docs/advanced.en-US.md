@@ -218,6 +218,32 @@ Find the current repository, the creator is k , the title contains `this` , the 
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
+## `get-issue`
+
+return `issue` info according to the `issue-number`, such as `title` `body` `labels`
+
+```yml
+- name: Get issue
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'get-issue'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/en-US/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+
+
+- Returns `issue` in the following format:
+
+```js
+  {number: 1, title: 'x', body: 'xxx', user: {login: 'xxx'}, assignees: [{login: 'xxx'}], labels: [{name: 'xxx'}], state: 'open', created_at: '', updated_at: '', pull_request: ''},
+```
+
 ## `lock-issues`
 
 Every 3 months at UTC 0 on the 1st, lock all issues that have been filled with the `inactive` label and have not been active for more than 128 days.
