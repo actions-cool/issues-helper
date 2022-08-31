@@ -7,7 +7,7 @@ import utc from 'dayjs/plugin/utc';
 import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
 import { EConst } from '../shared';
-import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
+import type { TCloseReason, TEmoji, TIssueState, TOutList, TOutInfo } from '../types';
 import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
 import {
   doAddAssignees,
@@ -262,8 +262,24 @@ export async function doFindIssues() {
 
 export async function doGetIssue() {
   const issue = await ICE.getIssue();
-  core.info(`[doGetIssue] success!`);
-  core.setOutput('issue', JSON.stringify(issue));
+  let issueInfo = {} as TOutInfo;
+  if (issue.number) {
+    issueInfo = {
+      number: issue.number,
+      auth: issue.user.login,
+      title: issue.title,
+      body: issue.body,
+      state: issue.state,
+      labels: issue.labels.map(item => item.name),
+      assignees: issue.assignees.map(item => item.login),
+      created: issue.created_at,
+      updated: issue.updated_at,
+    }
+    core.info(`[doGetIssue] success!`);
+  } else {
+    core.info(`[doGetIssue] Query issue empty!`);
+  }
+  core.setOutput('issue', JSON.stringify(issueInfo));
 }
 
 export async function doLockIssues(body: string, emoji?: string) {

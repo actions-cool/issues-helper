@@ -101,6 +101,8 @@ outputs:
     description: 'Create comment ID'
   comments:
     description: 'Find comments'
+  issue:
+    description: 'Get Issue'
   issues:
     description: 'Find issues'
   check-result:
