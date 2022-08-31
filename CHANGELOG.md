@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.2.1
+
+`2022.08.31`
+
+- 🐞 fix: mark-duplicate labels invalid. [#116](https://github.com/actions-cool/issues-helper/pull/116)
+
 ## v3.2.0
 
 `2022.08.26`
