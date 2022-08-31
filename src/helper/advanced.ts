@@ -344,7 +344,7 @@ export async function doMarkDuplicate(
     if (duplicateLabels) {
       newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
     }
-    if (labels) {
+    if (labels?.length) {
       newLabels = [...labels];
     }
     if (newLabels.length > 0) {

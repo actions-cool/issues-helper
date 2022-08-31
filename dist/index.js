@@ -14934,7 +14934,7 @@ function doMarkDuplicate(comment, closeReason, labels, emoji) {
             if (duplicateLabels) {
                 newLabels = [...newLabels, ...(0, actions_util_1.dealStringToArr)(duplicateLabels)];
             }
-            if (labels) {
+            if (labels === null || labels === void 0 ? void 0 : labels.length) {
                 newLabels = [...labels];
             }
             if (newLabels.length > 0) {
