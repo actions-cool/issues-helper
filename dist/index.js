@@ -14931,12 +14931,19 @@ function doMarkDuplicate(comment, closeReason, labels, emoji) {
                     .map(({ name }) => name)
                     .filter(name => !(0, actions_util_1.dealStringToArr)(removeLables).includes(name));
             }
+            console.log('0');
+            console.log(JSON.stringify(newLabels));
             if (duplicateLabels) {
                 newLabels = [...newLabels, ...(0, actions_util_1.dealStringToArr)(duplicateLabels)];
             }
+            console.log('1');
+            console.log(JSON.stringify(newLabels));
             if (labels) {
                 newLabels = [...labels];
             }
+            console.log('2');
+            console.log(JSON.stringify(labels));
+            console.log(JSON.stringify(newLabels));
             if (newLabels.length > 0) {
                 yield (0, base_1.doSetLabels)(newLabels);
             }

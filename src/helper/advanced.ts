@@ -341,12 +341,19 @@ export async function doMarkDuplicate(
         .map(({ name }) => name)
         .filter(name => !dealStringToArr(removeLables).includes(name));
     }
+    console.log('0')
+    console.log(JSON.stringify(newLabels))
     if (duplicateLabels) {
       newLabels = [...newLabels, ...dealStringToArr(duplicateLabels)];
     }
+    console.log('1')
+    console.log(JSON.stringify(newLabels))
     if (labels) {
       newLabels = [...labels];
     }
+    console.log('2');
+    console.log(JSON.stringify(labels));
+    console.log(JSON.stringify(newLabels));
     if (newLabels.length > 0) {
       await doSetLabels(newLabels);
     }
