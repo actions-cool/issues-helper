@@ -348,7 +348,7 @@ export async function doMarkDuplicate(
     }
     console.log('1')
     console.log(JSON.stringify(newLabels))
-    if (labels) {
+    if (labels?.length) {
       newLabels = [...labels];
     }
     console.log('2');

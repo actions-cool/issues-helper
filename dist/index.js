@@ -14938,7 +14938,7 @@ function doMarkDuplicate(comment, closeReason, labels, emoji) {
             }
             console.log('1');
             console.log(JSON.stringify(newLabels));
-            if (labels) {
+            if (labels === null || labels === void 0 ? void 0 : labels.length) {
                 newLabels = [...labels];
             }
             console.log('2');
