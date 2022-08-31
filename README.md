@@ -100,8 +100,8 @@
   <td align="center" width="180"><a href="https://github.com/vuejs/jsx-next">jsx-next</a></td>
 </tr><tr>
   <td align="center" width="180">
-    <a href="https://github.com/mui-org/material-ui">
-      <img src="https://avatars2.githubusercontent.com/u/33663932?s=200&v=4" width="46"/>
+    <a href="https://github.com/mui/material-ui">
+      <img src="https://avatars.githubusercontent.com/u/33663932?s=200&v=4" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -121,7 +121,7 @@
   </td>
 </tr>
 <tr>
-  <td align="center" width="180"><a href="https://github.com/mui-org/material-ui">material-ui</a></td>
+  <td align="center" width="180"><a href="https://github.com/mui/material-ui">material-ui</a></td>
   <td align="center" width="180"><a href="https://github.com/TuSimple/naive-ui">naive-ui</a></td>
   <td align="center" width="180"><a href="https://github.com/jdf2e/nutui">nutui</a></td>
   <td align="center" width="180"><a href="https://github.com/prettier/prettier">prettier</a></td>

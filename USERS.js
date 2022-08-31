@@ -31,8 +31,8 @@ const users = [
     logo: 'https://user-images.githubusercontent.com/29775873/129506134-55044c85-24cd-47d3-81ef-dba842214d71.png'
   },
   {
-    url: 'https://github.com/mui-org/material-ui',
-    logo: 'https://avatars2.githubusercontent.com/u/33663932?s=200&v=4'
+    url: 'https://github.com/mui/material-ui',
+    logo: 'https://avatars.githubusercontent.com/u/33663932?s=200&v=4'
   },
   {
     url: 'https://github.com/lijinke666/react-music-player',
