@@ -2,12 +2,12 @@ import { Octokit } from '@octokit/rest';
 
 import { EEmoji } from '../shared';
 import type {
+  TCloseReason,
   TEmoji,
   TIssueState,
   TLockReasons,
   TUpdateMode,
   TUserPermission,
-  TCloseReason,
 } from '../types';
 import type {
   IIssueBaseInfo,

@@ -177,7 +177,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
-### `find-issues`
+## `find-issues`
 
 Find the current repository, the creator is k , the title contains `this` , the body contains `that`, and the list of issues in the open state.
 

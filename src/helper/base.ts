@@ -95,6 +95,19 @@ export async function doDeleteComment(_commentId: number | void) {
   }
 }
 
+export async function doGetIssue() {
+  const { number, title, body, state, labels, assignees } = await ICE.getIssue();
+
+  core.setOutput('issue-number', number);
+  core.setOutput('issue-title', title || '');
+  core.setOutput('issue-body', body || '');
+  core.setOutput('issue-state', state);
+  const labelsString = labels.length ? labels.map(({ name }) => name).join(',') : '';
+  core.setOutput('issue-labels', labelsString);
+  const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
+  core.setOutput('issue-body', assigneesString);
+}
+
 export async function doLockIssue(issueNumber?: number) {
   if (issueNumber) ICE.setIssueNumber(issueNumber);
   const lockReason = (core.getInput('lock-reason') || '') as TLockReasons;

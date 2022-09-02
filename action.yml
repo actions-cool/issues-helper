@@ -96,7 +96,17 @@ inputs:
 
 outputs:
   issue-number:
-    description: 'Create Issue Number'
+    description: 'Issue Number'
+  issue-title:
+    description: 'Issue Title'
+  issue-body:
+    description: 'Issue Body'
+  issue-labels:
+    description: 'Issue labels'
+  issue-assignees:
+    description: 'Issue assignees'
+  issue-state:
+    description: 'Issue state'
   comment-id:
     description: 'Create comment ID'
   comments:

@@ -52,6 +52,7 @@ export type TAction =
   | 'close-issues'
   | 'find-comments'
   | 'find-issues'
+  | 'get-issue'
   | 'lock-issues'
   | 'mark-assignees'
   | 'mark-duplicate'

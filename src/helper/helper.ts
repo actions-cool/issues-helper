@@ -25,6 +25,7 @@ import {
   doCreateIssue,
   doCreateLabel,
   doDeleteComment,
+  doGetIssue,
   doLockIssue,
   doOpenIssue,
   doRemoveAssignees,
@@ -157,6 +158,10 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       }
       case 'delete-comment': {
         await doDeleteComment();
+        break;
+      }
+      case 'get-issue': {
+        await doGetIssue();
         break;
       }
       case 'lock-issue': {
