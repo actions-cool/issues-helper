@@ -2,13 +2,13 @@
 toc: menu
 ---
 
-为了更好的展示功能，下面以实际场景举例，请灵活参考。
+# ⭐ Base
 
-# ⭐ 基 础
+In order to better display the function, the following is an example of the actual scene, please refer to it flexibly.
 
 ## `add-assignees`
 
-当一个 issue 新增或修改时，将这个 issue 指定某人或多人。
+When an issue is added or modified, assign this issue to one or more people.
 
 ```yml
 name: Add Assigness
@@ -31,24 +31,24 @@ jobs:
           random-to: 1
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| assignees | 指定人。当不填或者为空字符时，不操作 | string | ✖ |
-| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| assignees | Designated person. No operation when no input or empty character | string | ✖ |
+| random-to | When set, it will be randomly selected in assignees | number | ✖ |
 
-- `actions` 支持多个，需用逗号隔开。如：`add-assignees,add-labels`
-- 其中的 `name` 可根据自行根据实际情况修改
-- [on 参考](/guide/ref#-github-相关文档)
-- `${{ github.event.issue.number }}` 表示当前 issue，[更多参考](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
-- `assignees` 支持多个，需用逗号隔开
-- assign 最多只能设定 10 个
+- `actions` support multiple and separated by comma. Like: `add-assignees,add-labels`
+- The `name` can be modified according to the actual situation
+- [Reference to on](/guide/ref#-github-docs)
+- `${{ github.event.issue.number }}` is the current issue. [More references](https://docs.github.com/en/free-pro-team@latest/developers/webhooks-and-events)
+- `assignees` support multiple and separated by comma
+- You can assign up to 10 people to each issue
 
 ## `add-labels`
 
-当一个新增的 issue 内容不包含指定格式时，为这个 issue 添加 labels。
+When the content of a new issue does not contain the specified format, add labels for the issue.
 
 ```yml
 name: Add Labels
@@ -68,21 +68,21 @@ jobs:
           actions: 'add-labels'
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
-          labels: 'bug' or 'bug1,bug2'
+          labels: 'bug' or 'xx1,xx2'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| labels | 新增的 labels。当不填或者为空字符时，不新增 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| labels | New labels. When it is not filled in or is empty character, do not add | string | ✖ |
 
-- `labels` 支持多个，需用逗号隔开
+- `labels` support multiple and separated by comma
 
 ## `close-issue`
 
-关闭指定 issue。
+Close the specified issue.
 
 ```yml
 - name: Close issue
@@ -93,16 +93,16 @@ jobs:
       issue-number: xxx
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
 ## `create-comment`
 
-当新增一个指定 label 时，对该 issue 进行评论。
+When a designated label is added, comment on the issue.
 
 ```yml
 name: Create Comment
@@ -123,28 +123,28 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           issue-number: ${{ github.event.issue.number }}
           body: |
-            Hello ${{ github.event.issue.user.login }}. Add some comments.
+            Hello @${{ github.event.issue.user.login }}. Add some comments.
 
-            你好 ${{ github.event.issue.user.login }}。巴拉巴拉。
+            你好 @${{ github.event.issue.user.login }}。巴拉巴拉。
           emoji: '+1' or '+1,heart'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| body | 新增评论的内容  | string | ✖ |
-| emoji | 为新增评论的增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| body | Add comment content | string | ✖ |
+| emoji | Add [emoji](/guide/ref#-emoji-type) | string | ✖ |
 
-- `body` 为空时，无操作
-- 返回 `comment-id`，可用于之后操作。[用法参考](/guide/ref#-outputs-使用)
-- `${{ github.event.issue.user.login }}` 表示该 issue 的创建者
-- `emoji` 支持多个，需用逗号隔开
+- No action when `body` is empty
+- Return `comment-id`, which can be used for subsequent operations. [Usage reference](/guide/ref#-outputs-use)
+- `${{ github.event.issue.user.login }}` indicates the creator of the issue
+- `emoji` support multiple and separated by comma
 
 ## `create-issue`
 
-感觉新增 issue 使用场景不多。这里举例，每月 1 号 UTC 00:00 新增一个 issue。
+Here is an example, add an issue at UTC 00:00 on the 1st of every month.
 
 ```yml
 name: Create Issue
@@ -169,23 +169,23 @@ jobs:
           emoji: '+1'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| title | 新增 issue 的标题 | string | ✖ |
-| body | 新增 issue 的内容 | string | ✖ |
-| labels | 为新增 issue 添加 labels | string | ✖ |
-| assignees | 为新增 issue 添加 assignees | string | ✖ |
-| random-to | 当设置时，会在 assignees 中随机选择 | number | ✖ |
-| emoji | 为新增 issue 增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| title | The title of the new issue | string | ✖ |
+| body | The body of the new issue | string | ✖ |
+| labels | The labels for the new issue | string | ✖ |
+| assignees | The assignees for the new issue | string | ✖ |
+| random-to | When set, it will be randomly selected in assignees | number | ✖ |
+| emoji | Add [emoji](/guide/ref#-emoji-type) | string | ✖ |
 
-- `title` 默认为：`Default Title`
-- 返回 `issue-number`，[用法参考](/guide/ref#-outputs-使用)
+- `title` default is `Default Title`
+- Return `issue-number`. [Usage reference](/guide/ref#-outputs-use)
 
 ## `create-label`
 
-新增 label。若想批量维护 labels，[可查看](https://github.com/actions-cool/labels-helper)。
+Create label. If you want to maintain labels in batches, [see](https://github.com/actions-cool/labels-helper).
 
 ```yml
 - name: Create label
@@ -198,20 +198,20 @@ jobs:
     label-desc: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| label-name | 标签名称，支持 emoji | string | ✔ |
-| label-color | 标签颜色，格式为 16 进制色码，不加 `#` | string | ✖ |
-| label-desc | 标签描述 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| label-name | Label name, emoji support | string | ✔ |
+| label-color | Label color, the format is hexadecimal color code, without `#` | string | ✖ |
+| label-desc | Label description | string | ✖ |
 
-- `label-name`：若已存在，则无操作
-- `label-color`：默认为 `ededed`
+- `label-name`: If it already exists, no operation
+- `label-color`: Default is `ededed`
 
 ## `delete-comment`
 
-根据 [`comment-id`](/guide/ref#-comment-id) 删除指定评论。
+According to [`comment-id`](/guide/ref#-comment-id) delete the specified comment.
 
 ```yml
 - name: Delete comment
@@ -222,15 +222,34 @@ jobs:
       comment-id: xxx
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| comment-id | 指定的 comment | number | ✔ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| comment-id | The comment ID | number | ✔ |
+
+## `get-issue`
+
+Query issue information.
+
+```yml
+- name: Get Issue
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'get-issue'
+      token: ${{ secrets.GITHUB_TOKEN }}
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+
+- Return `issue-number` `issue-title` `issue-body` `issue-labels` `issue-assignees` `issue-state`. [Usage reference](/guide/ref#-outputs-use)
 
 ## `lock-issue`
 
-当新增 `invalid` label 时，对该 issue 进行锁定。
+When the `invalid` label is added, the issue is locked.
 
 ```yml
 name: Lock Issue
@@ -252,18 +271,18 @@ jobs:
           issue-number: ${{ github.event.issue.number }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| lock-reason | 锁定 issue 的原因 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| lock-reason | Reason for locking issue | string | ✖ |
 
-- `lock-reason`：可选值有 `off-topic` `too heated` `resolved` `spam`
+- `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
 
 ## `open-issue`
 
-打开指定 issue。
+Open the specified issue.
 
 ```yml
 - name: Open issue
@@ -274,15 +293,15 @@ jobs:
       issue-number: xxx
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ## `remove-assignees`
 
-移除 issue 指定人员。
+Remove the person designated by issue.
 
 ```yml
 - name: Remove assignees
@@ -294,16 +313,16 @@ jobs:
       assignees: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| assignees | 移除的指定人。当为空字符时，不进行移除 | string | ✔ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
 ## `remove-labels`
 
-移除指定 labels。
+Remove the specified labels.
 
 ```yml
 - name: Remove labels
@@ -315,18 +334,18 @@ jobs:
       labels: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| labels | 移除的 labels。当为空字符时，不进行移除 | string | ✔ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| labels | The removed labels. When it is a blank character, do not remove | string | ✔ |
 
-- `labels` 支持多个，如 `x1,x2,x3`，只会移除 issue 已添加的 labels
+- `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
 
 ## `set-labels`
 
-替换 issue 的 labels。
+Replace the labels of issue.
 
 ```yml
 - name: Set labels
@@ -338,16 +357,16 @@ jobs:
       labels: 'xx'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| labels | labels 设置。当空字符时，会移除所有 | string | ✔ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| labels | labels set. When empty characters, will remove all | string | ✔ |
 
 ## `unlock-issue`
 
-解锁指定 issue。
+Unlock the specified issue.
 
 ```yml
 - name: Unlock issue
@@ -358,17 +377,17 @@ jobs:
       issue-number: ${{ github.event.issue.number }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
 ## `update-comment`
 
-根据 [`comment-id`](/guide/ref#-comment-id) 更新指定评论。
+Update the specified comment according to [`comment-id`](/guide/ref#-comment-id).
 
-下面的例子展示的是，为每个新增的 comment 增加 👀 。
+The following example shows that 👀 is added for each new comment.
 
 ```yml
 name: Add eyes to each comment
@@ -390,23 +409,23 @@ jobs:
             emoji: 'eyes'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| comment-id | 指定的 comment | number | ✔ |
-| out-comments | `find-comments` 的输出，若查找多个，则操作多个 | string | ✖ |
-| body | 更新 comment 的内容 | string | ✖ |
-| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
-| emoji | 增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| comment-id | The comment ID | number | ✔ |
+| out-comments | The output of `find-comments`, if you find multiple, operate multiple | string | ✖ |
+| body | Update the content of comment | string | ✖ |
+| update-mode | Update mode. Default `replace`, another `append` | string | ✖ |
+| emoji | Add [emoji](/guide/ref#-emoji-type) | string | ✖ |
 
-- `body` 不填时，会保持原有
-- `update-mode` 为 `append` 时，会进行附加操作。非 `append` 都会进行替换。仅对 `body` 生效
-- 当 `out-comments` 输入时，`comment-id` 不起作用
+- When `body` is not entered, it will remain as it is
+- When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
+- When `out-comments` is entered, `comment-id` does not work
 
 ## `update-issue`
 
-根据 `issue-number` 更新指定 issue。
+Update the specified issue according to the `issue-number`.
 
 ```yml
 - name: Update issue
@@ -424,18 +443,18 @@ jobs:
       emoji: '+1'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| state | 修改 issue 的状态，可选值 `open` `closed` | string | ✖ |
-| title | 修改 issue 的标题 | string | ✖ |
-| body | 修改 issue 的内容 | string | ✖ |
-| update-mode | 更新模式。默认 `replace` 替换，`append` 附加 | string | ✖ |
-| labels | 替换 issue 的 labels | string | ✖ |
-| assignees | 替换 issue 的 assignees | string | ✖ |
-| emoji | 增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| state | Modify the status of issue, optional value `open` `closed` | string | ✖ |
+| title | Modify the title of the issue | string | ✖ |
+| body | Modify the content of issue | string | ✖ |
+| update-mode |  Update mode. Default `replace`, another `append` | string | ✖ |
+| labels | Replace the labels of issue | string | ✖ |
+| assignees | Replace the assignees of issue | string | ✖ |
+| emoji | Add [emoji](/guide/ref#-emoji-type) | string | ✖ |
 
-- `state` 默认为 `open`
-- 当可选项不填时，会保持原有
+- `state` defaults to `open`
+- When the option is not filled, it will keep the original

@@ -2,9 +2,9 @@
 toc: menu
 ---
 
-# ✨ 更新日志
+# ✨ Changelog
 
-- v2 [升级参考](/guide/faq)
-- v3 [变更](/guide/faq/#v3-变更)
+- v2 [upgrade reference](/guide/faq)
+- v3 [changelog](/guide/faq#v3-changelog)
 
 <embed src="../../CHANGELOG.md"></embed>

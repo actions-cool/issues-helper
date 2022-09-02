@@ -2,13 +2,13 @@
 toc: menu
 ---
 
-# 🌟 进 阶
+# 🌟 Advanced
 
-进阶用法不建议 actions 多个一次同时使用。
+Advanced usage is not recommended to use multiple actions at the same time.
 
 ## `check-inactive`
 
-每月 1 号 UTC 0 时，对所有 30 天以上未活跃的 issues 增加 `inactive` 标签。
+At UTC 0 on the 1st of each month, add the `inactive` tag to all issues that have not been active for more than 30 days.
 
 ```yml
 name: Check inactive
@@ -29,35 +29,39 @@ jobs:
           inactive-day: 30
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
-| labels | 标签筛选 | string | ✖ |
-| issue-state | 状态筛选 | string | ✖ |
-| issue-assignee | 指定人筛选 | string | ✖ |
-| issue-creator | 创建人筛选 | string | ✖ |
-| issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
-| inactive-day | 非活跃天数筛选 | number | ✖ |
-| inactive-label | 新增标签名称 | string | ✖ |
-| exclude-labels | 排除标签筛选 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| inactive-label | The label name adding | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
 
-- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
-- `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
-- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
-- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
-- `inactive-label`：默认为 `inactive`，可自定义其他。当项目未包含该 label 时，会自动新建
-- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
+- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
+- `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
+- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
+- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ## `check-issue`
 
-根据传入的参数和 `issue-number` 来检查该 issue 是否满足条件，返回一个布尔值。
+Check whether the issue meets the conditions according to the passed parameters and `issue-number`, and return a boolean value.
 
-下面的例子效果是：当 issue 新开时，校验当前 issue 指定人是否包含 `x1` 或者 `x2`，满足一个指定人即可校验通过，同时校验标题是否满足条件，[校验规则](/guide/ref#-includes-校验规则)。
+The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`.
+
+If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions.
+
+[Check rules](/guide/ref#-includes-check-rules)
 
 ```yml
 name: Check Issue
@@ -80,22 +84,22 @@ jobs:
           title-includes: 'x1,x2/y1,y2'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| assignee-includes | 是否包含指定人 | string | ✖ |
-| title-includes | 标题包含校验 | string | ✖ |
-| title-excludes | 检测标题移除默认 title 后是否为空 | string | ✖ |
-| body-includes | 内容包含校验 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| assignee-includes | Assignees contains check | string | ✖ |
+| title-includes | Title contains check | string | ✖ |
+| title-excludes | Check whether the title is empty after removing the default title | string | ✖ |
+| body-includes | Body contains check | string | ✖ |
 
-- `title-includes` `body-includes` 支持格式 `x1,x2` 或者 `x1,x2/y1,y2`。只支持两个层级
-- 返回 `check-result`，由于 yml 原因，判断条件为 `if: steps.xxid.outputs.check-result == 'true'`
+- `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
+- Return `check-result`, due to yml reasons, the judgment condition is `if: steps.xxid.outputs.check-result =='true'`
 
 ## `close-issues`
 
-每 7 天 UTC 0 时，关闭已填加 `need info` label 且 7 天以上未活跃的 issues。
+Every 7 days at UTC 0, close the issues that have been filled with the `need info` label and have not been active for more than 7 days.
 
 ```yml
 name: Check need info
@@ -117,30 +121,30 @@ jobs:
           inactive-day: 7
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
-| labels | 标签筛选 | string | ✖ |
-| issue-assignee | 指定人筛选 | string | ✖ |
-| issue-creator | 创建人筛选 | string | ✖ |
-| issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
-| inactive-day | 非活跃天数筛选 | number | ✖ |
-| exclude-labels | 排除标签筛选 | string | ✖ |
-| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
-- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
-- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
-- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
-- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
+- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
+- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
+- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ## `find-comments`
 
-查找当前仓库 1 号 issue 中，创建者是 k ，内容包含 `this` 的评论列表。
+Find the current warehouse issue No. 1, the creator is k and the content contains the comment list of `this`.
 
 ```yml
 - name: Find comments
@@ -153,16 +157,16 @@ jobs:
       body-includes: 'this'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
-| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
-| direction | 返回 `comments` 排序 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
+| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
+| direction | Return `comments` sort | string | ✖ |
 
-- 返回 `comments`，格式如下：
+- Return `comments` in the following format:
 
 ```js
 [
@@ -171,12 +175,11 @@ jobs:
 ]
 ```
 
-- `direction` 默认为升序，只有设置 `desc` 时，会返回降序
-- 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
-
+- `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
+- The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 ## `find-issues`
 
-查找当前仓库，创建者是 k ，title 包含 `this` ，body 包含 `that`，打开状态的 issues 列表。
+Find the current repository, the creator is k , the title contains `this` , the body contains `that`, and the list of issues in the open state.
 
 ```yml
 - name: Find issues
@@ -190,19 +193,19 @@ jobs:
       body-includes: 'that'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| issue-state | 状态筛选 | string | ✖ |
-| issue-creator | 创建者筛选 | string | ✖ |
-| title-includes | 标题包含过滤，不填时无校验 | string | ✖ |
-| body-includes | 内容包含过滤，不填时无校验 | string | ✖ |
-| exclude-labels | 排除标签筛选 | string | ✖ |
-| inactive-day | 非活跃天数筛选 | number | ✖ |
-| direction | 返回 `issues` 排序 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| direction | Return sort | string | ✖ |
 
-- 返回 `issues`，格式如下：
+- Returns `issues` in the following format:
 
 ```js
 [
@@ -211,13 +214,13 @@ jobs:
 ]
 ```
 
-- `direction` 默认为升序，只有设置 `desc` 时，会返回降序
-- 返回数组中 `created` `updated`，由所处环境决定，会是 UTC +0
-- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
+- `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
+- The `created` `updated` in the returned array, determined by the environment, will be UTC +0
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ## `lock-issues`
 
-每 3 个月 1 号 UTC 0 时，锁定已填加 `inactive` label 且 128 天以上未活跃的所有 issues。
+Every 3 months at UTC 0 on the 1st, lock all issues that have been filled with the `inactive` label and have not been active for more than 128 days.
 
 ```yml
 name: Lock inactive issues
@@ -239,32 +242,32 @@ jobs:
           inactive-day: 128
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| body | 操作 issue 时，可进行评论。不填时，不评论 | string | ✖ |
-| emoji | 为该评论增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
-| labels | 标签筛选 | string | ✖ |
-| issue-state | 状态筛选 | string | ✖ |
-| issue-assignee | 指定人筛选 | string | ✖ |
-| issue-creator | 创建人筛选 | string | ✖ |
-| issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
-| inactive-day | 非活跃天数筛选 | number | ✖ |
-| lock-reason | 锁定 issue 的原因 | string | ✖ |
-| exclude-labels | 排除标签筛选 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| body | When operating an issue, you can comment. Do not comment when not typing | string | ✖ |
+| contents | Add [reaction](/guide/ref#-reactions-type) for this comment | string | ✖ |
+| labels | Labels filtering | string | ✖ |
+| issue-state | State filtering | string | ✖ |
+| issue-assignee | Assignee filtering | string | ✖ |
+| issue-creator | Creator filtering | string | ✖ |
+| issue-mentioned | Mentioned filtering | string | ✖ |
+| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering | string | ✖ |
+| inactive-day | Inactive days filtering | number | ✖ |
+| lock-reason | Reason for locking issue | string | ✖ |
+| exclude-labels | Exclude labels filtering | string | ✖ |
 
-- `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
-- `issue-state`：默认为 `all`。可选值 `open` `closed`，非这 2 项时，均为 `all`
-- `issue-assignee`：不支持多人。不填或输入 * 时，查询所有。输入 `none` 会查询未添加指定人的 issues
-- `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
-- `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
+- `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
+- `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
+- `issue-assignee`: Multiplayer is not supported. If you do not enter or enter *, all will be searched. Entering `none` will query issues for which the specified person is not added
+- `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
+- `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
 ## `mark-assignees`
 
-快捷加指定人，仅作用于 issue 新增编辑评论。
+Quickly assign person, only for the issue to add editor comments.
 
 ```yml
 name: Issue Mark Assignees
@@ -284,23 +287,23 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| assign-command | 可设置简洁命令，如：`/a` | string | ✖ |
-| require-permission | 要求权限，默认为 `write` | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| assign-command | Simple commands can be set, such as: `/a` | string | ✖ |
+| require-permission | Permission required, default is `write` | string | ✖ |
 
-- `assign-command`：可设置简洁命令。默认：`/assign`
-- `require-permission`：可选值有 `admin`，`write`，`read`，`none`
-  - 团队成员若设置 `read` 权限，则为 `read`
-  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
-  - 普通用户为 `read` 权限
-  - 当设置 `write` 后，`admin` 和 `write` 满足条件
+- `assign-command`: default `/assign`
+- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the `read` permission, it is `read`
+  - If the external Collaborator is set to `read` permission, it is `read`
+  - Ordinary users have `read` permission
+  - When set `write`, `admin` and `write` meet the conditions
 
 ## `mark-duplicate`
 
-快捷标记重复问题，仅作用于 issue 新增编辑评论。
+Quickly mark duplicate questions, only for issue new comments or edit comments.
 
 ```yml
 name: Issue Mark Duplicate
@@ -320,37 +323,39 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明) | string | ✖ |
-| duplicate-command | 可设置简洁命令，如：`/d` | string | ✖ |
-| duplicate-labels | 为该 issue 额外增加 labels | string | ✖ |
-| remove-labels | 设置可移除的 labels | string | ✖ |
-| labels | 替换该 issue 的 labels | string | ✖ |
-| emoji | 为该评论的增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
-| close-issue | 是否同时关闭该 issue | string | ✖ |
-| require-permission | 要求权限，默认为 `write` | string | ✖ |
-| close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| duplicate-command | Simple commands can be set, such as: `/d` | string | ✖ |
+| duplicate-labels | Add additional labels to this issue | string | ✖ |
+| remove-labels | Set removable labels | string | ✖ |
+| labels | Replace the labels of the issue | string | ✖ |
+| emoji | Add [emoji](/guide/ref#-emoji-type) for this comment | string | ✖ |
+| close-issue | Whether to close the issue at the same time | string | ✖ |
+| require-permission | Permission required, default is `write` | string | ✖ |
+| close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
-- `duplicate-command`：当设置简洁命令时，同时仍支持原有 `Duplicate of`。屏蔽内容包含 `?`
-- `labels`：优先级最高
-- `close-issue`：`true` 或 `'true'` 均可生效
-- `require-permission`：可选值有 `admin`，`write`，`read`，`none`
-  - 团队成员若设置 `read` 权限，则为 `read`
-  - 外部 Collaborator 若设置 `read` 权限，则为 `read`
-  - 普通用户为 `read` 权限
-  - 当设置 `write` 后，`admin` 和 `write` 满足条件
+- `duplicate-command`: When setting concise commands, while still supporting the original `Duplicate of`. Block content contains `?`
+- `labels`: Highest priority
+- `close-issue`: Both `true` or `'true'` can take effect
+- `require-permission`: Optional values are `admin`, `write`, `read`, `none`
+  - If the team member sets the `read` permission, it is `read`
+  - If the external Collaborator is set to `read` permission, it is `read`
+  - Ordinary users have `read` permission
+  - When set `write`, `admin` and `write` meet the conditions
 
 <Alert>
-注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
+Note: Duplicate created with the concise command does not display the content of the red box in the figure below. But in fact this has no effect.
 </Alert>
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*PN2tS7PjDQ4AAAAAAAAAAAAAARQnAQ)
 
 ## `welcome`
 
-当一个 issue 新建时，对首次新建 issue 的用户进行欢迎。若用户非首次新建，则无操作。
+When an issue is created, the user who created the issue for the first time is welcome.
+
+If the user is not creating for the first time, there is no operation.
 
 ```yml
 name: Issue Welcome
@@ -374,13 +379,13 @@ jobs:
           issue-emoji: '+1, -1, eyes'
 ```
 
-| 参数 | 描述 | 类型 | 必填 |
+| Param | Desc | Type | Required |
 | -- | -- | -- | -- |
-| actions | 操作类型 | string | ✔ |
-| token | [token 说明](/guide/ref#-token-说明)  | string | ✔ |
-| body | 评论欢迎的内容，不填则不评论 | string | ✖ |
-| labels | 为该 issue 增加 labels | string | ✖ |
-| assignees | 为该 issue 增加 assignees | string | ✖ |
-| issue-emoji | 为该 issue 增加 [emoji](/guide/ref#-emoji-类型) | string | ✖ |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| body | Comment on the welcome content, no comment if you leave it blank | string | ✖ |
+| labels | Add labels to this issue | string | ✖ |
+| assignees | Add assignees to this issue | string | ✖ |
+| issue-emoji | Add [emoji](/guide/ref#-emoji-type) to this issue| string | ✖ |
 
-- 若这 4 个可选项都不填，则无操作
+- If these 4 options are not filled, no operation

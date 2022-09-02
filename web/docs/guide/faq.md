@@ -2,43 +2,43 @@
 toc: menu
 ---
 
-## 该功能是否收费？
+## Is there a charge for this feature?
 
-GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 2000 次的限制，[具体查看](https://github.com/settings/billing)。`Public` 项目无限制。
+GitHub Actions is provided free of charge by GitHub. Among them, the `Private` project has a monthly limit of 2000 times, [see details](https://github.com/settings/billing). The `Public` project is unlimited.
 
-### 有没有速率的限制？
+### Is there a rate limit?
 
-有的。Action 底层使用的是 GitHub REST API。一般情况是每小时 5000 次。原则上基本是够用的，同时也要求在 Action 定义时，尽量避免无效的请求。[具体查看](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting)。
+Yes. The bottom layer of Action uses GitHub REST API. The general situation is 5000 times per hour. It is basically sufficient in principle, and it is also required to avoid invalid requests when defining Action. [Detailed view](https://docs.github.com/en/rest/overview/resources-in-the-rest-api#rate-limiting).
 
-## 有没有现成的模板可以参考？
+## Are there any ready-made templates for reference?
 
-有的。
+Yes.
 
-1. 你可以使用这个 [GitHub Actions workflow template](https://github.com/actions-cool/.github) 仓库的模板
-2. 个人练习和测试 [Actions](https://github.com/actions-cool/test-issues-helper) 的仓库
-3. 也可以来 [线上使用者](/#-谁在使用？) 的仓库参照
+1. You can use this [GitHub Actions workflow template](https://github.com/actions-cool/.github) repository template
+2. Personal exercises and tests [Actions](https://github.com/actions-cool/test-issues-helper) repository
+3. You can also refer to the warehouse of [online users](#-who-is-using)
 
-## 我想暂停 Actions，有没有简单的办法？
+## I want to pause Actions, is there an easy way?
 
-有的，你可以将直接修改 `actions`。例如：`actions: 'create-comment'` 修改为 `actions: '#create-comment'`。同时也方便恢复。
+Yes, you can directly modify `actions`. For example: `actions:'create-comment'` is changed to `actions:'#create-comment'`. It is also convenient for recovery.
 
-## 这么多版本，如何选择？
+## So many versions, how to choose?
 
-你可以查看详细的 [更新日志](/changelog)。推荐采用最新 releases 版本。
+You can view the detailed [changelog](/changelog). The latest releases version is recommended.
 
-- 版本规则
-  - 采用两级语义化版本，如v1、v1.1、v2、v2.1
-  - v1 表示初始版本
-  - 对 v1 版本的修复和新增会发布到 v1.1 版本
-  - 当发布的 v1.x 运行一定时间稳定或进行重构时，发布进阶 v2.x 版本
-  - v2 版本后会严格按照三级语义来发布版本，如 v2.0.0、v2.1.0
+- Version rules
+  - Use two-level semantic version, such as v1, v1.1, v2, v2.1
+  - v1 represents the initial version
+  - The fixes and additions to the v1 version will be released to the v1.1 version
+  - When the released v1.x runs stable for a certain period of time or undergoes refactoring, release the advanced v2.x version
+  - After the v2 version, the version will be released strictly according to the three-level semantics, such as v2.0.0, v2.1.0
 
-- 版本选择
-  - 建议采用最新 releases 版本。可在 [releases](https://github.com/actions-cool/issues-helper/releases) 看到
-  - 同时也可参照下面的更新日志来选择版本
-  - 最新的 v1.x release 代码会合并到 1.x 分支中
-  - v2 版本后支持使用 v2 tag，将同步最新 2.x 代码
-  - 支持直接使用分支版本。如：
+- Version selection
+  - It is recommended to use the latest releases version. It can be seen in [releases](https://github.com/actions-cool/issues-helper/releases)
+  - You can also refer to the update log below to select the version
+  - The latest v1.x release code will be merged into the 1.x branch
+  - After the v2 version, the v2 tag is supported, and the latest 2.x code will be synchronized
+  - It also supports the direct use of branch versions. Such as:
 
 ```yml
 - name: Issues Helper
@@ -52,37 +52,37 @@ GitHub Actions 是由 GitHub 免费提供的。其中 `Private` 项目每月有 
 # or
 
 - name: Issues Helper
-  uses: actions-cool/issues-helper@v3
+  uses: actions-cool/issues-helper@v2
 ```
 
-## 从 v1.x 升级到 v2，有什么注意的地方吗？
+## What should I pay attention to when upgrading from v1.x to v2?
 
-v1.12 和 v2.0.0 版本的差别只有一处。即 `mark-duplicate` 中的 `require-permission` 增加了默认值 `write`。
+There is only one difference between v1.12 and v2.0.0. That is, `require-permission` in `mark-duplicate` has added the default value `write`.
 
-## v3 变更
+## v3 changelog
 
-🚀 v3 版本重构完成，主要变更内容：
+🚀 The refactoring of the v3 version is completed. The main changes are:
 
 1. JS to TS
-2. 将 issue 核心功能封装成为类供 helper 使用
-3. 提示信息统一
-4. 增加自动发布脚本
+2. Encapsulate the core functions of the issue into classes for helpers to use
+3. Unified prompt information
+4. Added automatic release script
 
-功能变更参考：
+Reference for functional changes:
 
 - 🚀 New Feature
-  - `mark-assignees`: 评论快捷设置 assignees
-  - `find-issues`: 条件查询当前仓库 issues
+  - `mark-assignees`: Comment quick settings assignees
+  - `find-issues`: Conditional query current warehouse issues
 - 🐞 Bug Fix
-  - 修复 `find-comments` 返回结果 direction 未起作用
-  - 修复 `lock-issues` lock 与 comment 的顺序问题
+  - Fixed `find-comments` return result direction not working
+  - Fix `lock-issues` lock and comment order issue
 - 🛠 Refactor
-  - contents 更名为容易理解的 emoji
-  - `issue-emojis` 更名为 `issue-emoji`
-  - deleteComment updateComment 不再支持 `out-comments`，保持纯粹功能
-  - 移除 title body 默认值
-  - `month-statistics` 移除
+  - `contents` renamed to easy-to-understand `emoji`
+  - `issue-emojis` renamed to `issue-emoji`
+  - deleteComment updateComment no longer supports `out-comments`, keeping pure functionality
+  - Remove title body default
+  - `month-statistics` removed
 
-## 如果这里没有我想要的功能，该怎么办？
+## What should I do if there is no function I want here?
 
-你可以在 issues 中提出。
+You can submit it in [What do you want?](https://github.com/actions-cool/issues-helper/discussions/18).

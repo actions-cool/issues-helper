@@ -1,29 +1,29 @@
 ---
-title: Issues 助手
+title: Issues Helper
 order: 1
 hero:
-  title: Issues 助手
+  title: Issues Helper
   image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
-  desc: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
+  desc: 🤖 A GitHub Action that easily helps you automatically manage issues
   actions:
-    - text: 快速开始
+    - text: Quick start
       link: /guide/start
 features:
   - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*Km0BQJs7vWAAAAAAAAAAAAAAARQnAQ
-    title: 完全免费
-    desc: 使用 GitHub 自带提供的 Actions 服务
+    title: Completely free
+    desc: Use the Actions service provided by GitHub
   - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*ELKWSIMizH0AAAAAAAAAAAAAARQnAQ
-    title: 简单易用
-    desc: 教程详细，模版丰富
+    title: Easy to use
+    desc: Detailed tutorials and rich templates
   - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*j-SURo-DkyIAAAAAAAAAAAAAARQnAQ
-    title: 轻松托管
-    desc: 只要 GitHub 不宕机，它就不受影响
+    title: Easy hosting
+    desc: As long as GitHub is not down, it will not be affected
 footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
 ---
 
-## 🍭 快速上手
+## 🍭 Get started quickly
 
-这里列举一个非常简单以及常用的例子。对应场景为：当一个 issue 新增 `help wanted` 标签时，系统会自动进行评论。
+Here is a very simple and commonly used example. The corresponding scenario is: when an issue adds the `help wanted` tag, the system will automatically comment.
 
 ```yml
 name: Issue Reply
@@ -49,18 +49,14 @@ jobs:
             你好 @${{ github.event.issue.user.login }}，我们完全同意你的提议/反馈，欢迎PR。
 ```
 
-## 💖 谁在使用？
+## 💖 Who is using?
 
 <embed src="../../README.md#RE-/<table>[^]+?[\r\n]<\/table>/"></embed>
 
-## ⚡ 反馈
+## ⚡ Feedback
 
-非常欢迎你来尝试使用，并提出意见，你可以通过以下方式：
+You are very welcome to try it out and put forward your comments. You can use the following methods:
 
-- 通过 [Issue](https://github.com/actions-cool/issues-helper/issues) 报告 bug 或进行咨询
-- 通过 [Discussions](https://github.com/actions-cool/issues-helper/discussions) 进行讨论
-- 提交 [Pull Request](https://github.com/actions-cool/issues-helper/pulls) 改进 `issues-helper` 的代码
-
-也欢迎加入 钉钉交流群
-
-![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*-iuDSpF7QAQAAAAAAAAAAAAAARQnAQ)
+- Report bugs or consult with [Issue](https://github.com/actions-cool/issues-helper/issues)
+- Discuss via [Discussions](https://github.com/actions-cool/issues-helper/discussions)
+- Submit [Pull Request](https://github.com/actions-cool/issues-helper/pulls) to improve the code of `issues-helper`

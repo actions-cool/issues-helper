@@ -2,25 +2,25 @@
 toc: menu
 ---
 
-## 📍 `token` 说明
+## 📍 `token`
 
-需拥有 push 权限的人员 token。
+Need to have the person token with push permission.
 
-- [个人 token 申请](https://github.com/settings/tokens)
-  - 需勾选 `Full control of private repositories`
-- 项目添加 secrets
-  - 选择 settings，选择 secrets，选择 `New repository secret`
-  - `Name` 与 actions 中保持一致
-  - `Value` 填写刚才个人申请的 token
+- [Personal token application](https://github.com/settings/tokens)
+  - Need to check `Full control of private repositories`
+- Project add secrets
+  - Select settings, select secrets, select `New repository secret`
+  - `Name` is the same as in actions
+  - `Value` fill in the token just applied by the individual
 
-当 actions 不填写 token 时，或输入 `${{ secrets.GITHUB_TOKEN }}`，会默认为 `github-actions-bot`。[更多查看](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow)。
+When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
 
-## 📍 GitHub 相关文档
+## 📍 GitHub Docs
 
-- [GitHub Actions 语法](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
-- [工作流触发机制](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
+- [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
+- [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
-## 📍 `outputs` 使用
+## 📍 `outputs` use
 
 ```yml
 - name: Create issue
@@ -33,12 +33,12 @@ toc: menu
   run: echo "Outputs issue_number is ${{ steps.createissue.outputs.issue-number }}"
 ```
 
-更多查看：
+More:
 
 1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
 2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
-## 📍 `includes` 校验规则
+## 📍 `includes` check rules
 
 ```js
 "title-includes": 'x1,x2'
@@ -66,7 +66,7 @@ x2 + y2
 "x1"      false
 ```
 
-## 📍 `emoji` 类型
+## 📍 `emoji` Type
 
 | content | emoji |
 | -- | -- |
@@ -79,8 +79,8 @@ x2 + y2
 | `rocket` | 🚀 |
 | `eyes` | 👀 |
 
-如需详细了解，可 [查看](https://docs.github.com/en/free-pro-team@latest/rest/reference/reactions)。
+For details, please [view](https://docs.github.com/en/free-pro-team@latest/rest/reference/reactions).
 
 ## 📍 `comment-id`
 
-点击某个评论右上角 `···` 图标，选择 `Copy link`，url 末尾数字即是 `comment_id`。
+Click the `···` icon in the upper right corner of a comment, select `Copy link`, and the number at the end of the url is `comment_id`.

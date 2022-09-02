@@ -1,24 +1,24 @@
-## 快速开始
+## Quick start
 
-### 1. 新建 Action
+### 1. New Action
 
-点击仓库的 Actions，若已增加过 Actions，会显示如下界面。
+Click Actions in the warehouse, if Actions have been added, the following interface will be displayed.
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*D5dMQLk2pI0AAAAAAAAAAAAAARQnAQ)
 
-点击 `New workflow` 新增。
+Click `New workflow` to add.
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*cClPRIW6HKcAAAAAAAAAAAAAARQnAQ)
 
 <Alert type="success">
-你可以点击 <Badge>set up a workflow yourself</Badge> 新增一个自定义 action，也可以根据模板来套用新增一个 action。<a target="_blank" href="https://github.com/actions-cool/.github">模板使用</a>。
+You can click <Badge>set up a workflow yourself</Badge> to add a custom action, or you can apply a new action based on a template. <a target="_blank" href="https://github.com/actions-cool/.github">Templates</a>.
 </Alert>
 
-### 2. 编写 Action
+### 2. Edit Action
 
-Actions 存放地址是固定的，统一为 `/.github/workflows/xx.yml`。
+Actions storage address is fixed, unified as `/.github/workflows/xx.yml`.
 
-下面拿首页的例子详细说明下。对应场景为：当一个 issue 新增 `help wanted` 标签时，系统会自动进行评论。
+Let's take the example of the home page and explain it in detail. The corresponding scenario is: when an issue adds the `help wanted` tag, the system will automatically comment.
 
 ```yml
 name: Issue Reply
@@ -43,25 +43,25 @@ jobs:
 
             你好 @${{ github.event.issue.user.login }}，我们完全同意你的提议/反馈，欢迎PR。
 ```
-- `YML` 语法参考
-  - [GitHub Actions 语法](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows)
-- `name`：workflow 名称
-  - Actions 流程名称，可根据实际情况自定义
-- `on`：action 触发条件
-  - 参考 [工作流触发机制](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
-- `uses`：使用 actions 名称
-  - `uses: actions-cool/issues-helper@v2.0.0`。版本选择请 [参考](/changelog)
-- `issues-hepler` 参数
-  - `actions`：使用功能的名称，**必填**。支持多个，需用逗号隔开，如 `create-comment,close-issue` 表示评论和关闭 issue
-  - `token`：需拥有 push 权限的人员 token
-    - 更多 [参考](/guide/ref#-token-说明)
-  - `issue-number`：传入参数，这里表示当前 issue 的编号。如果你对写法疑惑，可 [查看](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
-  - `body`：传入参数，这里表示当前进行评论的内容
+- `YML` syntax reference
+  - [Workflow syntax for GitHub Actions](https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#about-yaml-syntax-for-workflows)
+- `name`: The workflow name
+  - Actions workflow name, can be customized according to actual situation
+- `on`: The action trigger condition
+  - Reference [Events that trigger workflows](https://docs.github.com/en/actions/using-workflows/events-that-trigger-workflows)
+- `uses`: Use actions name
+  - `uses: actions-cool/issues-helper@v2.0.0`。Please [refer](/changelog) to version selection
+- `issues-hepler` parameter
+  - `actions`: The name of the function used, **required**. Support multiple, separated by commas, such as `create-comment,close-issue` means comment and close issue
+  - `token`: A person who needs to have push permission token
+    - [More view](/guide/ref#-token)
+  - `issue-number`: Incoming parameter, here means the number of the current issue. If you are confused about the writing, you can [view](https://docs.github.com/en/actions/learn-github-actions/contexts#github-context)
+  - `body`: Incoming parameters, here means the content of the current comment
 
-### 3. 启用 Action
+### 3. Enable Action
 
-当你完成编写完成提交到主分支后，即可自动启用该 workflow，触发条件遵循 `on` 的定义。
+When you finish writing and submit to the master branch, you can automatically enable the workflow, and the trigger conditions follow the definition of `on`.
 
-😏 相信到这里你已经对 `如何使用` 有了大概的了解，是不是想快点尝试一下。
+😏 I believe that you have a general understanding of `how to use`, do you want to try it quickly?
 
-下面请在 [基 础](/base) 和 [进 阶](/advanced) 查看你需要的功能，灵活参考。
+Please check the functions you need in [Basic](/base) and [Advanced](/advanced) for flexible reference.
