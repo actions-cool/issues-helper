@@ -15014,7 +15014,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.doUpdateIssue = exports.doUpdateComment = exports.doUnlockIssue = exports.doSetLabels = exports.doRemoveLabels = exports.doRemoveAssignees = exports.doOpenIssue = exports.doLockIssue = exports.doDeleteComment = exports.doCreateLabel = exports.doCreateIssue = exports.doCreateCommentEmoji = exports.doCreateComment = exports.doCloseIssue = exports.doAddLabels = exports.doAddAssignees = exports.initBaseICE = void 0;
+exports.doUpdateIssue = exports.doUpdateComment = exports.doUnlockIssue = exports.doSetLabels = exports.doRemoveLabels = exports.doRemoveAssignees = exports.doOpenIssue = exports.doLockIssue = exports.doGetIssue = exports.doDeleteComment = exports.doCreateLabel = exports.doCreateIssue = exports.doCreateCommentEmoji = exports.doCreateComment = exports.doCloseIssue = exports.doAddLabels = exports.doAddAssignees = exports.initBaseICE = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
 const core = __importStar(__nccwpck_require__(9875));
 const shared_1 = __nccwpck_require__(3826);
@@ -15125,6 +15125,19 @@ function doDeleteComment(_commentId) {
     });
 }
 exports.doDeleteComment = doDeleteComment;
+function doGetIssue() {
+    return __awaiter(this, void 0, void 0, function* () {
+        const { number, title, body, labels, assignees } = yield ICE.getIssue();
+        core.setOutput('issue-number', number);
+        core.setOutput('issue-title', title || '');
+        core.setOutput('issue-body', body || '');
+        const labelsString = labels.length ? labels.map(({ name }) => name).join(',') : '';
+        core.setOutput('issue-labels', labelsString);
+        const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
+        core.setOutput('issue-body', assigneesString);
+    });
+}
+exports.doGetIssue = doGetIssue;
 function doLockIssue(issueNumber) {
     return __awaiter(this, void 0, void 0, function* () {
         if (issueNumber)
@@ -15343,6 +15356,10 @@ class IssueHelperEngine {
                 }
                 case 'delete-comment': {
                     yield (0, base_1.doDeleteComment)();
+                    break;
+                }
+                case 'get-issue': {
+                    yield (0, base_1.doGetIssue)();
                     break;
                 }
                 case 'lock-issue': {

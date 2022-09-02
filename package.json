@@ -19,6 +19,8 @@
     "format-check": "prettier --check **/*.ts **/*/*.ts",
     "lint": "eslint src/*.ts src/*/*.ts",
     "lint-fix": "eslint src/*.ts src/*/*.ts --fix",
+    "lint-up": "npm run format && npm run lint-fix",
+    "lint-all": "npm run format-check && npm run lint",
     "check-commit": "node ./scripts/check-commit.js",
     "tag": "node ./scripts/tag.js",
     "release": "node ./scripts/release",
@@ -27,7 +29,7 @@
     "users": "node ./scripts/update-users.js",
     "version": "node ./scripts/update-version.js",
     "pub": "sh -e ./scripts/pub.sh",
-    "all": "npm run format-check && npm run lint && npm run test && npm run package"
+    "all": "npm run lint-all && npm run test && npm run package"
   },
   "dependencies": {
     "@actions/core": "^1.6.0",

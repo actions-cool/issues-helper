@@ -96,13 +96,19 @@ inputs:
 
 outputs:
   issue-number:
-    description: 'Create Issue Number'
+    description: 'Issue Number'
+  issue-title:
+    description: 'Issue Title'
+  issue-body:
+    description: 'Issue Body'
+  issue-labels:
+    description: 'Issue labels'
+  issue-assignees:
+    description: 'Issue assignees'
   comment-id:
     description: 'Create comment ID'
   comments:
     description: 'Find comments'
-  issue:
-    description: 'Get Issue'
   issues:
     description: 'Find issues'
   check-result:
