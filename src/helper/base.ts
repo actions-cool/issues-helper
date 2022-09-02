@@ -97,6 +97,7 @@ export async function doDeleteComment(_commentId: number | void) {
 
 export async function doGetIssue() {
   const { number, title, body, labels, assignees } = await ICE.getIssue();
+
   core.setOutput('issue-number', number);
   core.setOutput('issue-title', title || '');
   core.setOutput('issue-body', body || '');
@@ -104,6 +105,7 @@ export async function doGetIssue() {
   core.setOutput('issue-labels', labelsString);
   const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
   core.setOutput('issue-body', assigneesString);
+  console.log(number, title, body, labelsString, assigneesString)
 }
 
 export async function doLockIssue(issueNumber?: number) {

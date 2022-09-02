@@ -15135,6 +15135,7 @@ function doGetIssue() {
         core.setOutput('issue-labels', labelsString);
         const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
         core.setOutput('issue-body', assigneesString);
+        console.log(number, title, body, labelsString, assigneesString);
     });
 }
 exports.doGetIssue = doGetIssue;
