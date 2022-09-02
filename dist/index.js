@@ -15127,15 +15127,15 @@ function doDeleteComment(_commentId) {
 exports.doDeleteComment = doDeleteComment;
 function doGetIssue() {
     return __awaiter(this, void 0, void 0, function* () {
-        const { number, title, body, labels, assignees } = yield ICE.getIssue();
+        const { number, title, body, state, labels, assignees } = yield ICE.getIssue();
         core.setOutput('issue-number', number);
         core.setOutput('issue-title', title || '');
         core.setOutput('issue-body', body || '');
+        core.setOutput('issue-state', state);
         const labelsString = labels.length ? labels.map(({ name }) => name).join(',') : '';
         core.setOutput('issue-labels', labelsString);
         const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
         core.setOutput('issue-body', assigneesString);
-        console.log(number, title, body, labelsString, assigneesString);
     });
 }
 exports.doGetIssue = doGetIssue;

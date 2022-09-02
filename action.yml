@@ -105,6 +105,8 @@ outputs:
     description: 'Issue labels'
   issue-assignees:
     description: 'Issue assignees'
+  issue-state:
+    description: 'Issue state'
   comment-id:
     description: 'Create comment ID'
   comments:
