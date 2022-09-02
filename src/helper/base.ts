@@ -97,7 +97,6 @@ export async function doDeleteComment(_commentId: number | void) {
 
 export async function doGetIssue() {
   const { number, title, body, state, labels, assignees } = await ICE.getIssue();
-
   core.setOutput('issue-number', number);
   core.setOutput('issue-title', title || '');
   core.setOutput('issue-body', body || '');
