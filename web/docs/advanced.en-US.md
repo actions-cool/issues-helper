@@ -177,7 +177,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
-### `find-issues`
+## `find-issues`
 
 Find the current repository, the creator is k , the title contains `this` , the body contains `that`, and the list of issues in the open state.
 
@@ -217,32 +217,6 @@ Find the current repository, the creator is k , the title contains `this` , the 
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
-
-## `get-issue`
-
-return `issue` info according to the `issue-number`, such as `title` `body` `labels`
-
-```yml
-- name: Get issue
-    uses: actions-cool/issues-helper@v3
-    with:
-      actions: 'get-issue'
-      token: ${{ secrets.GITHUB_TOKEN }}
-      issue-number: ${{ github.event.issue.number }}
-```
-
-| Param | Desc | Type | Required |
-| -- | -- | -- | -- |
-| actions | Action type | string | ✔ |
-| token | [Token explain](/en-US/guide/ref#-token) | string | ✖ |
-| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
-
-
-- Returns `issue` in the following format:
-
-```js
-  {number: 1, title: 'x', body: 'xxx', user: {login: 'xxx'}, assignees: [{login: 'xxx'}], labels: [{name: 'xxx'}], state: 'open', created_at: '', updated_at: '', pull_request: ''},
-```
 
 ## `lock-issues`
 

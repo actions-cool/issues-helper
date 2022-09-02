@@ -20,9 +20,6 @@ export type TOutInfo = {
   number?: number;
   title?: string;
   body?: string;
-  state?: TIssueState;
-  labels?: string[];
-  assignees?: string[];
   created: string;
   updated: string;
 };
