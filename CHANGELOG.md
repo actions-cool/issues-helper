@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.3.0
+
+`2022.09.02`
+
+- 🚀 feat: add `get-issue`. [#114](https://github.com/actions-cool/issues-helper/pull/114)
+
 ## v3.2.1
 
 `2022.08.31`
