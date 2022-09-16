@@ -941,6 +941,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
       issue-state: 'open'
       title-includes: 'this'
       body-includes: 'that'
+      labels: 'documentation'
 ```
 
 | Param | Desc | Type | Required |
@@ -951,6 +952,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
 | issue-creator | Creator filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | body-includes | Body filtering | string | ✖ |
+| labels | Labels filtering | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | direction | Return sort | string | ✖ |

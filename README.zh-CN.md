@@ -940,6 +940,7 @@ jobs:
       issue-state: 'open'
       title-includes: 'this'
       body-includes: 'that'
+      labels: 'documentation'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
@@ -950,6 +951,7 @@ jobs:
 | issue-creator | 创建者筛选 | string | ✖ |
 | title-includes | 标题包含过滤，不填时无校验 | string | ✖ |
 | body-includes | 内容包含过滤，不填时无校验 | string | ✖ |
+| labels | 标签筛选 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | direction | 返回 `issues` 排序 | string | ✖ |
