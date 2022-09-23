@@ -45,27 +45,29 @@ ${table}
 const point = '<table>';
 const cnPoint = `## 图标`;
 const enPoint = `## Badge`;
+const ReadmeCN = './README.zh-CN.md';
+const ReadmeEN = './README.md';
 
 // **************************************************************************
 
-const cn = readFileSync('./README.md', 'utf8');
+const cn = readFileSync(ReadmeCN, 'utf8');
 const cnIn = cn.indexOf(point);
 const cnAfterIn = cn.indexOf(cnPoint);
 const cnBefore = cn.substring(0, cnIn);
 const cnAfter = cn.substring(cnAfterIn, cn.length);
 const newcn = cnBefore + table + cnAfter;
-writeFileSync('./README.md', newcn);
+writeFileSync(ReadmeCN, newcn);
 console.log(`🎉 Done cn`);
 
 // **************************************************************************
 
-const en = readFileSync('./README.en-US.md', 'utf8');
+const en = readFileSync(ReadmeEN, 'utf8');
 const enIn = en.indexOf(point);
 const enAfterIn = en.indexOf(enPoint);
 const enBefore = en.substring(0, enIn);
 const enAfter = en.substring(enAfterIn, en.length);
 const newen = enBefore + table + enAfter;
-writeFileSync('./README.en-US.md', newen);
+writeFileSync(ReadmeEN, newen);
 console.log(`🎉 Done en`);
 
 // **************************************************************************

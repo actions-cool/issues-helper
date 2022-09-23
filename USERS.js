@@ -103,6 +103,10 @@ const users = [
     url: 'https://github.com/vitest-dev/vitest',
     logo: 'https://user-images.githubusercontent.com/11247099/145112184-a9ff6727-661c-439d-9ada-963124a281f7.png',
   },
+  {
+    url: 'https://github.com/electron/electron',
+    logo: 'https://avatars.githubusercontent.com/u/13409222?s=200&v=4',
+  },
 ];
 
 // **************************************************************************
