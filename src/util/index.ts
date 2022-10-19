@@ -9,7 +9,7 @@ export const dealRandomAssignees = (assignees: string, randomTo: string | void):
   return arr;
 };
 
-export const matchKeyword = (content: string, keywords: string[]): boolean => {
+export const matchKeyword = (content: string = '', keywords: string[]): boolean => {
   return !!keywords.find(item => content.toLowerCase().includes(item));
 };
 
