@@ -15973,7 +15973,7 @@ const dealRandomAssignees = (assignees, randomTo) => {
     return arr;
 };
 exports.dealRandomAssignees = dealRandomAssignees;
-const matchKeyword = (content, keywords) => {
+const matchKeyword = (content = '', keywords) => {
     return !!keywords.find(item => content.toLowerCase().includes(item));
 };
 exports.matchKeyword = matchKeyword;

@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.3.1
+
+`2022.10.19`
+
+- 🐞 fix: body null case. [#123](https://github.com/actions-cool/issues-helper/pull/123)
+
 ## v3.3.0
 
 `2022.09.02`
