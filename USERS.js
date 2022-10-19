@@ -51,10 +51,6 @@ const users = [
     logo: 'https://avatars3.githubusercontent.com/u/9441414?s=200&v=4'
   },
   {
-    url: 'https://github.com/ant-design/pro-components',
-    logo: 'https://avatars1.githubusercontent.com/u/12101536?s=200&v=4'
-  },
-  {
     url: 'https://github.com/prettier/prettier',
     logo: 'https://user-images.githubusercontent.com/29775873/129505900-ca248179-2435-429d-9fd3-779206bcd899.png',
   },
