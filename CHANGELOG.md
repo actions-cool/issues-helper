@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.3.2
+
+`2022.10.21`
+
+- 💄 chore: update `@actions/core` version. [#125](https://github.com/actions-cool/issues-helper/pull/125) [@wjz304](https://github.com/wjz304)
+
 ## v3.3.1
 
 `2022.10.19`
