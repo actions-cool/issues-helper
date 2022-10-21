@@ -60,42 +60,21 @@ class Command {
         this.message = message;
     }
     toString() {
-        let cmdStr = '';
-        if(this.command == 'set-output'){
-            if (this.properties && Object.keys(this.properties).length > 0) {
-                let first = true;
-                for (const key in this.properties) {
-                    if (this.properties.hasOwnProperty(key)) {
-                        const val = this.properties[key];
-                        if (val) {
-                            if (first) {
-                                first = false;
-                            }
-                            else {
-                                cmdStr += ' && ';
-                            }
-                            cmdStr += `echo "${key}=${escapeProperty(val)}" >> $GITHUB_OUTPUT`;
+        let cmdStr = CMD_STRING + this.command;
+        if (this.properties && Object.keys(this.properties).length > 0) {
+            cmdStr += ' ';
+            let first = true;
+            for (const key in this.properties) {
+                if (this.properties.hasOwnProperty(key)) {
+                    const val = this.properties[key];
+                    if (val) {
+                        if (first) {
+                            first = false;
                         }
-                    }
-                }
-            }
-        } else {
-            cmdStr = CMD_STRING + this.command;
-            if (this.properties && Object.keys(this.properties).length > 0) {
-                cmdStr += ' ';
-                let first = true;
-                for (const key in this.properties) {
-                    if (this.properties.hasOwnProperty(key)) {
-                        const val = this.properties[key];
-                        if (val) {
-                            if (first) {
-                                first = false;
-                            }
-                            else {
-                                cmdStr += ',';
-                            }
-                            cmdStr += `${key}=${escapeProperty(val)}`;
+                        else {
+                            cmdStr += ',';
                         }
+                        cmdStr += `${key}=${escapeProperty(val)}`;
                     }
                 }
             }
