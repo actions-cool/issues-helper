@@ -38,6 +38,7 @@ async function run() {
   if (tags.includes(tagSimple)) {
     console.log(chalk.yellow(`[Git Action] Delete ${tagSimple} tag`));
     execSync(`git push origin :refs/tags/${tagSimple}`);
+    console.log(chalk.green(`[Git Action] Delete ${tagSimple} tag success`));
   }
 
   console.log(chalk.yellow(`[Git Action] Add new simple ${tagSimple} tag`));
