@@ -17435,7 +17435,7 @@ const dealRandomAssignees = (assignees, randomTo) => {
 };
 exports.dealRandomAssignees = dealRandomAssignees;
 const matchKeyword = (content = '', keywords) => {
-    return !!keywords.find(item => content.toLowerCase().includes(item));
+    return !!keywords.find(item => content === null || content === void 0 ? void 0 : content.toLowerCase().includes(item));
 };
 exports.matchKeyword = matchKeyword;
 const checkDuplicate = (body) => {
