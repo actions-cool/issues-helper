@@ -10,7 +10,7 @@ export const dealRandomAssignees = (assignees: string, randomTo: string | void):
 };
 
 export const matchKeyword = (content: string = '', keywords: string[]): boolean => {
-  return !!keywords.find(item => content.toLowerCase().includes(item));
+  return !!keywords.find(item => content?.toLowerCase().includes(item));
 };
 
 export const checkDuplicate = (body: string | void): boolean => {
