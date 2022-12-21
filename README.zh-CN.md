@@ -10,7 +10,7 @@
 
 一个轻松帮你自动管理 issues 的 GitHub Action
 
-[![](https://img.shields.io/github/workflow/status/actions-cool/issues-helper/ci?style=flat-square)](https://github.com/actions-cool/issues-helper/actions)
+[![](https://img.shields.io/github/actions/workflow/status/actions-cool/issues-helper/ci.yml?branch=main&style=flat-square)](https://github.com/actions-cool/issues-helper/actions)
 [![](https://img.shields.io/badge/marketplace-issues--helper-red?style=flat-square)](https://github.com/marketplace/actions/issues-helper)
 ![](https://img.shields.io/github/languages/top/actions-cool/issues-helper?color=%2308979c&style=flat-square)
 [![dumi](https://img.shields.io/badge/docs%20by-dumi-blue?style=flat-square)](https://github.com/umijs/dumi)
