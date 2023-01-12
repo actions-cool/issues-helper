@@ -16475,7 +16475,7 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
     });
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.doUpdateIssue = exports.doUpdateComment = exports.doUnlockIssue = exports.doSetLabels = exports.doRemoveLabels = exports.doRemoveAssignees = exports.doOpenIssue = exports.doLockIssue = exports.doGetIssue = exports.doDeleteComment = exports.doCreateLabel = exports.doCreateIssue = exports.doCreateCommentEmoji = exports.doCreateComment = exports.doCloseIssue = exports.doAddLabels = exports.doAddAssignees = exports.initBaseICE = void 0;
+exports.doUpdateIssue = exports.doUpdateComment = exports.doUnlockIssue = exports.doToggleLabels = exports.doSetLabels = exports.doRemoveLabels = exports.doRemoveAssignees = exports.doOpenIssue = exports.doLockIssue = exports.doGetIssue = exports.doDeleteComment = exports.doCreateLabel = exports.doCreateIssue = exports.doCreateCommentEmoji = exports.doCreateComment = exports.doCloseIssue = exports.doAddLabels = exports.doAddAssignees = exports.initBaseICE = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
 const core = __importStar(__nccwpck_require__(9875));
 const shared_1 = __nccwpck_require__(3826);
@@ -16642,6 +16642,13 @@ function doSetLabels(labels) {
     });
 }
 exports.doSetLabels = doSetLabels;
+function doToggleLabels(labels) {
+    return __awaiter(this, void 0, void 0, function* () {
+        yield ICE.toggleLabels(labels);
+        core.info(`[doToggleLabels] [${labels}] success!`);
+    });
+}
+exports.doToggleLabels = doToggleLabels;
 function doUnlockIssue() {
     return __awaiter(this, void 0, void 0, function* () {
         yield ICE.unlockIssue();
@@ -16869,6 +16876,15 @@ class IssueHelperEngine {
                 }
                 case 'update-issue': {
                     yield (0, base_1.doUpdateIssue)(0, state, title, body, updateMode, labels, assignees);
+                    break;
+                }
+                case 'toggle-labels': {
+                    if (labels && labels.length) {
+                        yield (0, base_1.doToggleLabels)(labels);
+                    }
+                    else {
+                        core.warning(`[doToggleLabels] labels is empty!`);
+                    }
                     break;
                 }
                 // ---[ Base End ]--->>>
@@ -17254,6 +17270,28 @@ class IssueCoreEngine {
             const baseLabels = issue.labels.map(({ name }) => name);
             const removeLabels = baseLabels.filter(name => !labels.includes(name));
             const addLabels = labels.filter(name => !baseLabels.includes(name));
+            if (removeLabels.length) {
+                yield this.removeLabels(removeLabels);
+            }
+            if (addLabels.length) {
+                yield this.addLabels(addLabels);
+            }
+        });
+    }
+    toggleLabels(labels) {
+        return __awaiter(this, void 0, void 0, function* () {
+            const issue = yield this.getIssue();
+            const baseLabels = issue.labels.map(({ name }) => name);
+            let addLabels = [];
+            let removeLabels = [];
+            for (const label of labels) {
+                if (baseLabels.includes(label)) {
+                    removeLabels.push(label);
+                }
+                else {
+                    addLabels.push(label);
+                }
+            }
             if (removeLabels.length) {
                 yield this.removeLabels(removeLabels);
             }
