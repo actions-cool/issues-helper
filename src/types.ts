@@ -44,6 +44,7 @@ export type TAction =
   | 'unlock-issue'
   | 'update-comment'
   | 'update-issue'
+  | 'toggle-labels'
   // [ Base End ]
   // ^_^ ========== ^_^
   // [ Advanced Begin ]

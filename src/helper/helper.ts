@@ -31,6 +31,7 @@ import {
   doRemoveAssignees,
   doRemoveLabels,
   doSetLabels,
+  doToggleLabels,
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
@@ -206,6 +207,14 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       }
       case 'update-issue': {
         await doUpdateIssue(0, state, title, body, updateMode, labels, assignees);
+        break;
+      }
+      case 'toggle-labels': {
+        if (labels && labels.length) {
+          await doToggleLabels(labels);
+        } else {
+          core.warning(`[doToggleLabels] labels is empty!`);
+        }
         break;
       }
       // ---[ Base End ]--->>>

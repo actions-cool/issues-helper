@@ -138,6 +138,11 @@ export async function doSetLabels(labels: string[]) {
   core.info(`[doSetLabels] [${labels}] success!`);
 }
 
+export async function doToggleLabels(labels: string[]) {
+  await ICE.toggleLabels(labels);
+  core.info(`[doToggleLabels] [${labels}] success!`);
+}
+
 export async function doUnlockIssue() {
   await ICE.unlockIssue();
   core.info(`[doUnlockIssue] success!`);

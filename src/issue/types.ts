@@ -102,6 +102,7 @@ export interface IIssueCoreEngine {
   removeLabels: (labels: string[]) => Promise<void>;
 
   setLabels: (labels: string[]) => Promise<void>;
+  toggleLabels: (labels: string[]) => Promise<void>;
 
   unlockIssue: () => Promise<void>;
 

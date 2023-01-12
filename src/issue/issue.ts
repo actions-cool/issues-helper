@@ -273,6 +273,30 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     }
   }
 
+  public async toggleLabels(labels: string[]) {
+    const issue = await this.getIssue();
+    const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
+
+    let addLabels = [];
+    let removeLabels = [];
+
+    for (const label of labels) {
+      if (baseLabels.includes(label)) {
+        removeLabels.push(label);
+      } else {
+        addLabels.push(label);
+      }
+    }
+
+    if (removeLabels.length) {
+      await this.removeLabels(removeLabels);
+    }
+
+    if (addLabels.length) {
+      await this.addLabels(addLabels);
+    }
+  }
+
   public async unlockIssue() {
     const { owner, repo, octokit, issueNumber } = this;
     await octokit.issues.unlock({
