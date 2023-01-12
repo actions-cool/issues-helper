@@ -458,3 +458,24 @@ Update the specified issue according to the `issue-number`.
 
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
+
+## `toggle-labels`
+
+Toggle the labels of issue.
+
+```yml
+- name: Toggle labels
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'toggle-labels'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+      labels: 'xx'
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](/guide/ref#-token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| labels | The toggle labels. Delete if the label already exists, add if it does not exist | string | ✔ |

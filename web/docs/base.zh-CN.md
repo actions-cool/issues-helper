@@ -458,3 +458,24 @@ jobs:
 
 - `state` 默认为 `open`
 - 当可选项不填时，会保持原有
+
+## `toggle-labels`
+
+切换 issue 的 labels。
+
+```yml
+- name: Toggle labels
+    uses: actions-cool/issues-helper@v3
+    with:
+      actions: 'toggle-labels'
+      token: ${{ secrets.GITHUB_TOKEN }}
+      issue-number: ${{ github.event.issue.number }}
+      labels: 'xx'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](/zh-CN/guide/ref#-token-说明) | string | ✖ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+| labels | 切换 labels。如果 label 已存在则删除，不存在则添加 | string | ✔ |
