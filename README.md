@@ -255,6 +255,7 @@ When the following list does not have the features you want, you can submit it i
   - [`lock-issues`](#lock-issues)
   - [`mark-assignees`](#mark-assignees)
   - [`mark-duplicate`](#mark-duplicate)
+  - [`toggle-labels`](#toggle-labels)
   - [`welcome`](#welcome)
 
 ## 🚀 Usage
@@ -1147,6 +1148,39 @@ jobs:
 | issue-emoji | Add [reaction](#emoji-types) to this issue| string | ✖ |
 
 - If these 4 options are not filled, no operation
+
+⏫ [Back to list](#List)
+
+#### `toggle-labels`
+
+When an issue is reopened, the set labels are removed if they already exist, otherwise they are added. [wiki-Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or)
+
+```yml
+name: Toggle Labels
+
+on:
+  issues:
+    types: [reopened]
+
+jobs:
+  toggle-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Toggle labels
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'toggle-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          labels: 'unread,outdated'
+```
+
+| Param | Desc | Type | Required |
+| -- | -- | -- | -- |
+| actions | Action type | string | ✔ |
+| token | [Token explain](#token) | string | ✖ |
+| issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
+| labels | The toggle labels. Delete if the label already exists, add if it does not exist | string | ✔ |
 
 ⏫ [Back to list](#List)
 
