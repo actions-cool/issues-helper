@@ -1153,7 +1153,7 @@ jobs:
 
 #### `toggle-labels`
 
-When an issue is reopened, the set labels are removed if they already exist, otherwise they are added. [wiki-Exclusive or](https://en.wikipedia.org/wiki/Exclusive_or)
+When an issue is reopened, the set labels are removed if they already exist, otherwise they are added.
 
 ```yml
 name: Toggle Labels
