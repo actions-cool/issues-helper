@@ -16414,8 +16414,25 @@ function doMarkDuplicate(comment, closeReason, labels, emoji) {
 exports.doMarkDuplicate = doMarkDuplicate;
 function doToggleLabels(labels = []) {
     return __awaiter(this, void 0, void 0, function* () {
-        yield ICE.toggleLabels(labels);
-        core.info(`[doToggleLabels] [${labels}] success!`);
+        const issue = yield ICE.getIssue();
+        const baseLabels = issue.labels.map(({ name }) => name);
+        const addLabels = [];
+        const removeLabels = [];
+        for (const label of labels) {
+            if (baseLabels.includes(label)) {
+                removeLabels.push(label);
+            }
+            else {
+                addLabels.push(label);
+            }
+        }
+        if (removeLabels.length) {
+            yield (0, base_1.doRemoveLabels)(removeLabels);
+        }
+        if (addLabels.length) {
+            yield (0, base_1.doAddLabels)(addLabels);
+        }
+        core.info(`[doToggleLabels] Done!`);
     });
 }
 exports.doToggleLabels = doToggleLabels;
@@ -17265,28 +17282,6 @@ class IssueCoreEngine {
             const baseLabels = issue.labels.map(({ name }) => name);
             const removeLabels = baseLabels.filter(name => !labels.includes(name));
             const addLabels = labels.filter(name => !baseLabels.includes(name));
-            if (removeLabels.length) {
-                yield this.removeLabels(removeLabels);
-            }
-            if (addLabels.length) {
-                yield this.addLabels(addLabels);
-            }
-        });
-    }
-    toggleLabels(labels) {
-        return __awaiter(this, void 0, void 0, function* () {
-            const issue = yield this.getIssue();
-            const baseLabels = issue.labels.map(({ name }) => name);
-            const addLabels = [];
-            const removeLabels = [];
-            for (const label of labels) {
-                if (baseLabels.includes(label)) {
-                    removeLabels.push(label);
-                }
-                else {
-                    addLabels.push(label);
-                }
-            }
             if (removeLabels.length) {
                 yield this.removeLabels(removeLabels);
             }
