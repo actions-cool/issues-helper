@@ -361,7 +361,7 @@ export async function doMarkDuplicate(
   }
 }
 
-export async function doToggleLabels(labels: string[]) {
+export async function doToggleLabels(labels: string[] = []) {
   await ICE.toggleLabels(labels);
   core.info(`[doToggleLabels] [${labels}] success!`);
 }

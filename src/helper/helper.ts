@@ -14,6 +14,7 @@ import {
   doLockIssues,
   doMarkAssignees,
   doMarkDuplicate,
+  doToggleLabels,
   doWelcome,
   initAdvancedICE,
 } from './advanced';
@@ -31,7 +32,6 @@ import {
   doRemoveAssignees,
   doRemoveLabels,
   doSetLabels,
-  doToggleLabels,
   doUnlockIssue,
   doUpdateComment,
   doUpdateIssue,
@@ -209,14 +209,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         await doUpdateIssue(0, state, title, body, updateMode, labels, assignees);
         break;
       }
-      case 'toggle-labels': {
-        if (labels && labels.length) {
-          await doToggleLabels(labels);
-        } else {
-          core.warning(`[doToggleLabels] labels is empty!`);
-        }
-        break;
-      }
       // ---[ Base End ]--->>>
       // ^_^ ============= ^_^
       // -[ Advanced Begin ]->
@@ -258,6 +250,10 @@ export class IssueHelperEngine implements IIssueHelperEngine {
           return;
         }
         await doMarkDuplicate(ctx.payload.comment as TCommentInfo, closeReason, labels, emoji);
+        break;
+      }
+      case 'toggle-labels': {
+        await doToggleLabels(labels);
         break;
       }
       case 'welcome': {
