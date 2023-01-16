@@ -361,6 +361,11 @@ export async function doMarkDuplicate(
   }
 }
 
+export async function doToggleLabels(labels: string[]) {
+  await ICE.toggleLabels(labels);
+  core.info(`[doToggleLabels] [${labels}] success!`);
+}
+
 export async function doWelcome(
   auth: string,
   issueNumber: number,
