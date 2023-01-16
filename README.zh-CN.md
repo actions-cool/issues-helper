@@ -1138,7 +1138,7 @@ jobs:
 | actions | 操作类型 | string | ✔ |
 | token | [token 说明](#token) | string | ✖ |
 | issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
-| labels | 切换 labels。如果 label 已存在则删除，不存在则添加 | string | ✔ |
+| labels | 切换 labels。如果 label 已存在则删除，不存在则添加 | string | ✖ |
 
 ⏫ [返回列表](#列-表)
 
