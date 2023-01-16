@@ -1111,7 +1111,7 @@ jobs:
 
 #### `toggle-labels`
 
-当一个 issue 被重新打开，判断设置的 labels 如果已经存在则进行删除，否则进行添加。[维基-逻辑异或](https://zh.wikipedia.org/wiki/%E9%80%BB%E8%BE%91%E5%BC%82%E6%88%96)
+当一个 issue 被重新打开，判断设置的 labels 如果已经存在则进行删除，否则进行添加。
 
 ```yml
 name: Toggle Labels
