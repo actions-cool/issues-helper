@@ -1180,7 +1180,7 @@ jobs:
 | actions | Action type | string | ✔ |
 | token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
-| labels | The toggle labels. Delete if the label already exists, add if it does not exist | string | ✔ |
+| labels | The toggle labels. Delete if the label already exists, add if it does not exist | string | ✖ |
 
 ⏫ [Back to list](#List)
 
