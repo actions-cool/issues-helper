@@ -277,8 +277,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
     const issue = await this.getIssue();
     const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
 
-    let addLabels = [];
-    let removeLabels = [];
+    const addLabels = [];
+    const removeLabels = [];
 
     for (const label of labels) {
       if (baseLabels.includes(label)) {
