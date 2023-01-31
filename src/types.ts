@@ -57,5 +57,5 @@ export type TAction =
   | 'mark-assignees'
   | 'mark-duplicate'
   | 'welcome'
-  | 'toggle-labels'
+  | 'toggle-labels';
 //// [ Advanced End ]
