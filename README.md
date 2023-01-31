@@ -255,8 +255,8 @@ When the following list does not have the features you want, you can submit it i
   - [`lock-issues`](#lock-issues)
   - [`mark-assignees`](#mark-assignees)
   - [`mark-duplicate`](#mark-duplicate)
-  - [`toggle-labels`](#toggle-labels)
   - [`welcome`](#welcome)
+  - [`toggle-labels`](#toggle-labels)
 
 ## 🚀 Usage
 

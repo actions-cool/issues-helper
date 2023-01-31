@@ -44,7 +44,6 @@ export type TAction =
   | 'unlock-issue'
   | 'update-comment'
   | 'update-issue'
-  | 'toggle-labels'
   // [ Base End ]
   // ^_^ ========== ^_^
   // [ Advanced Begin ]
@@ -57,5 +56,6 @@ export type TAction =
   | 'lock-issues'
   | 'mark-assignees'
   | 'mark-duplicate'
-  | 'welcome';
+  | 'welcome'
+  | 'toggle-labels'
 //// [ Advanced End ]
