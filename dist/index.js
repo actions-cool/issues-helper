@@ -16060,7 +16060,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-exports.doWelcome = exports.doMarkDuplicate = exports.doMarkAssignees = exports.doLockIssues = exports.doFindIssues = exports.doFindComments = exports.doCloseIssues = exports.doCheckIssue = exports.doCheckInactive = exports.doQueryIssues = exports.initAdvancedICE = void 0;
+exports.doToggleLabels = exports.doWelcome = exports.doMarkDuplicate = exports.doMarkAssignees = exports.doLockIssues = exports.doFindIssues = exports.doFindComments = exports.doCloseIssues = exports.doCheckIssue = exports.doCheckInactive = exports.doQueryIssues = exports.initAdvancedICE = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
 const dayjs_1 = __importDefault(__nccwpck_require__(7401));
 const isSameOrBefore_1 = __importDefault(__nccwpck_require__(9517));
@@ -16437,6 +16437,30 @@ function doWelcome(auth, issueNumber, body, labels, assignees, emoji) {
     });
 }
 exports.doWelcome = doWelcome;
+function doToggleLabels(labels = []) {
+    return __awaiter(this, void 0, void 0, function* () {
+        const issue = yield ICE.getIssue();
+        const baseLabels = issue.labels.map(({ name }) => name);
+        const addLabels = [];
+        const removeLabels = [];
+        for (const label of labels) {
+            if (baseLabels.includes(label)) {
+                removeLabels.push(label);
+            }
+            else {
+                addLabels.push(label);
+            }
+        }
+        if (removeLabels.length) {
+            yield (0, base_1.doRemoveLabels)(removeLabels);
+        }
+        if (addLabels.length) {
+            yield (0, base_1.doAddLabels)(addLabels);
+        }
+        core.info(`[doToggleLabels] Done!`);
+    });
+}
+exports.doToggleLabels = doToggleLabels;
 
 
 /***/ }),
@@ -16921,6 +16945,10 @@ class IssueHelperEngine {
                     else {
                         core.warning('[welcome] only support issue opened!');
                     }
+                    break;
+                }
+                case 'toggle-labels': {
+                    yield (0, advanced_1.doToggleLabels)(labels);
                     break;
                 }
                 // -[ Advanced End ]->

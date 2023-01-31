@@ -14,6 +14,7 @@ import {
   doLockIssues,
   doMarkAssignees,
   doMarkDuplicate,
+  doToggleLabels,
   doWelcome,
   initAdvancedICE,
 } from './advanced';
@@ -257,6 +258,10 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         } else {
           core.warning('[welcome] only support issue opened!');
         }
+        break;
+      }
+      case 'toggle-labels': {
+        await doToggleLabels(labels);
         break;
       }
       // -[ Advanced End ]->

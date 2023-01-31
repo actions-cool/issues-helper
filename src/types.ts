@@ -56,5 +56,6 @@ export type TAction =
   | 'lock-issues'
   | 'mark-assignees'
   | 'mark-duplicate'
-  | 'welcome';
+  | 'welcome'
+  | 'toggle-labels';
 //// [ Advanced End ]

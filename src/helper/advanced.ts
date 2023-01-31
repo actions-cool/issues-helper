@@ -16,6 +16,7 @@ import {
   doCreateComment,
   doCreateCommentEmoji,
   doLockIssue,
+  doRemoveLabels,
   doSetLabels,
   doUpdateComment,
 } from './base';
@@ -391,4 +392,30 @@ export async function doWelcome(
   } else {
     core.info(`[doWelcome] ${auth} is not first time!`);
   }
+}
+
+export async function doToggleLabels(labels: string[] = []) {
+  const issue = await ICE.getIssue();
+  const baseLabels: string[] = issue.labels.map(({ name }: any) => name);
+
+  const addLabels = [];
+  const removeLabels = [];
+
+  for (const label of labels) {
+    if (baseLabels.includes(label)) {
+      removeLabels.push(label);
+    } else {
+      addLabels.push(label);
+    }
+  }
+
+  if (removeLabels.length) {
+    await doRemoveLabels(removeLabels);
+  }
+
+  if (addLabels.length) {
+    await doAddLabels(addLabels);
+  }
+
+  core.info(`[doToggleLabels] Done!`);
 }

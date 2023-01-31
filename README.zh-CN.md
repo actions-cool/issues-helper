@@ -260,6 +260,7 @@
   - [`mark-assignees`](#mark-assignees)
   - [`mark-duplicate`](#mark-duplicate)
   - [`welcome`](#welcome)
+  - [`toggle-labels`](#toggle-labels)
 
 ## 🚀 使 用
 
@@ -1145,6 +1146,39 @@ jobs:
 | issue-emoji | 为该 issue 增加 [emoji](#emoji-types) | string | ✖ |
 
 - 若这 4 个可选项都不填，则无操作
+
+⏫ [返回列表](#列-表)
+
+#### `toggle-labels`
+
+当一个 issue 被重新打开，判断设置的 labels 如果已经存在则进行删除，否则进行添加。
+
+```yml
+name: Toggle Labels
+
+on:
+  issues:
+    types: [reopened]
+
+jobs:
+  toggle-labels:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Toggle labels
+        uses: actions-cool/issues-helper@v3
+        with:
+          actions: 'toggle-labels'
+          token: ${{ secrets.GITHUB_TOKEN }}
+          issue-number: ${{ github.event.issue.number }}
+          labels: 'unread,outdated'
+```
+
+| 参数 | 描述 | 类型 | 必填 |
+| -- | -- | -- | -- |
+| actions | 操作类型 | string | ✔ |
+| token | [token 说明](#token) | string | ✖ |
+| issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
+| labels | 切换 labels。如果 label 已存在则删除，不存在则添加 | string | ✖ |
 
 ⏫ [返回列表](#列-表)
 
