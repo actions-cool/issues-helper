@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.4.0
+
+`2023.02.06`
+
+- 🚀 feat: support `toggle-labels`. [#132](https://github.com/actions-cool/issues-helper/pull/132) [@Wxh16144](https://github.com/Wxh16144)
+
 ## v3.3.3
 
 `2022.11.13`

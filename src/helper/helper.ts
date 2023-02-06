@@ -252,16 +252,16 @@ export class IssueHelperEngine implements IIssueHelperEngine {
         await doMarkDuplicate(ctx.payload.comment as TCommentInfo, closeReason, labels, emoji);
         break;
       }
+      case 'toggle-labels': {
+        await doToggleLabels(labels);
+        break;
+      }
       case 'welcome': {
         if (ctx.eventName === 'issues' && ctx.payload.action === 'opened') {
           await doWelcome(ctx.actor, issueNumber, body, labels, assignees, emoji);
         } else {
           core.warning('[welcome] only support issue opened!');
         }
-        break;
-      }
-      case 'toggle-labels': {
-        await doToggleLabels(labels);
         break;
       }
       // -[ Advanced End ]->
