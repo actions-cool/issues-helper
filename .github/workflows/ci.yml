@@ -5,6 +5,9 @@ on: [push, pull_request]
 jobs:
   setup:
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        node-version: [16.x]
     steps:
       - name: checkout
         uses: actions/checkout@main
