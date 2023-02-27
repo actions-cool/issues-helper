@@ -47,7 +47,7 @@
     "@vercel/ncc": "0.34.0",
     "chalk": "^4.1.2",
     "common-tags": "^1.8.2",
-    "dumi": "^1.1.26",
+    "dumi": "~1.1.26",
     "eslint": "^7.18.0",
     "eslint-plugin-github": "^4.1.1",
     "eslint-plugin-simple-import-sort": "^7.0.0",
