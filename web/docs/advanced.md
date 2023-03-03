@@ -345,9 +345,9 @@ jobs:
   - Ordinary users have `read` permission
   - When set `write`, `admin` and `write` meet the conditions
 
-<Alert>
-Note: Duplicate created with the concise command does not display the content of the red box in the figure below. But in fact this has no effect.
-</Alert>
+:::info{title=Note}
+Duplicate created with the concise command does not display the content of the red box in the figure below. But in fact this has no effect.
+:::
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*PN2tS7PjDQ4AAAAAAAAAAAAAARQnAQ)
 

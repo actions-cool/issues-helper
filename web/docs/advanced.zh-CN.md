@@ -342,9 +342,9 @@ jobs:
   - 普通用户为 `read` 权限
   - 当设置 `write` 后，`admin` 和 `write` 满足条件
 
-<Alert>
-注意：使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
-</Alert>
+:::info{title=注意}
+使用简洁命令创建的 Duplicate 不显示下图红框内容。但其实这个没有任何影响的。
+:::
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*PN2tS7PjDQ4AAAAAAAAAAAAAARQnAQ)
 
