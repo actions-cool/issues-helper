@@ -3,6 +3,10 @@ import { defineConfig } from 'dumi';
 
 const name = 'issues-helper';
 
+const isProdSite =
+  // 不是预览模式 同时是生产环境
+  process.env.PREVIEW !== 'true' && process.env.NODE_ENV === 'production';
+
 const logo =
   'https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ';
 
@@ -11,15 +15,9 @@ export default defineConfig({
   mode: 'site',
   favicon: logo,
   logo,
-  exportStatic: {},
-  ssr: {},
   outputPath: '../docs-dist',
-  resolve: {
-    includes: ['./docs'],
-  },
-  hash: true,
-  base: `/${name}/`,
-  publicPath: `/${name}/`,
+  base: isProdSite ? `/${name}/` : '/',
+  publicPath: isProdSite ? `/${name}/` : '/',
   locales: [
     ['en-US', 'English'],
     ['zh-CN', '中文'],
