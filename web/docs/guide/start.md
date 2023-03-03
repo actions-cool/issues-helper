@@ -12,7 +12,7 @@ Click `New workflow` to add.
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*cClPRIW6HKcAAAAAAAAAAAAAARQnAQ)
 
-:::success
+:::success{title="Tips"}
 You can click <Badge>set up a workflow yourself</Badge> to add a custom action, or you can apply a new action based on a template. <a target="_blank" href="https://github.com/actions-cool/.github">Templates</a>.
 :::
 

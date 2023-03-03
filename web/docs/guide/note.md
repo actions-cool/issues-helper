@@ -2,7 +2,7 @@
 title: 🎗 Note
 ---
 
-:::success
+:::success{title="😊"}
 Here are some things I summarized in my use, I hope it can help you.
 :::
 

@@ -27,16 +27,17 @@ export default defineConfig({
         { title: '指 南', link: '/zh-CN/guide' },
         { title: '基 础', link: '/zh-CN/base' },
         { title: '进 阶', link: '/zh-CN/advanced' },
-        { title: '更新日志', link: '/zh-CN/changelog' },
-        { title: 'GitHub', link: 'https://github.com/actions-cool/issues-helper' },
+        { title: '更新日志', link: '/zh-CN/changelog' }
       ],
       'en-US': [
         { title: 'Guide', link: '/guide' },
         { title: 'Base', link: '/base' },
         { title: 'Advanced', link: '/advanced' },
         { title: 'Changelog', link: '/changelog' },
-        { title: 'GitHub', link: 'https://github.com/actions-cool/issues-helper' },
       ],
+    },
+    socialLinks: {
+      github: 'https://github.com/actions-cool/issues-helper'
     },
     footer: 'Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg'
   },

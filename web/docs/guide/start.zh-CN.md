@@ -12,7 +12,7 @@ title: ⚡️ 快速开始
 
 ![](https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*cClPRIW6HKcAAAAAAAAAAAAAARQnAQ)
 
-:::success
+:::success{title="提示"}
 你可以点击 <Badge>set up a workflow yourself</Badge> 新增一个自定义 action，也可以根据模板来套用新增一个 action。<a target="_blank" href="https://github.com/actions-cool/.github">模板使用</a>。
 :::
 
