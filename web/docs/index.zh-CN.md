@@ -3,7 +3,6 @@ title: Issues 助手
 order: 1
 hero:
   title: Issues 助手
-  image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
   description: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
   actions:
     - text: 快速开始
