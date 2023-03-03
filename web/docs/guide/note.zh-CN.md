@@ -1,10 +1,10 @@
 ---
-toc: menu
+title: 🎗 记 录
 ---
 
-<Alert type="success">
+:::success
 这里记录自己在使用中总结的一些东西，希望可以帮助到你。
-</Alert>
+:::
 
 ## `yml` 中包含判断
 

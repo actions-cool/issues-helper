@@ -1,10 +1,10 @@
 ---
-toc: menu
+title: 🎗 Note
 ---
 
-<Alert type="success">
+:::success
 Here are some things I summarized in my use, I hope it can help you.
-</Alert>
+:::
 
 ## Include judgment in `yml`
 
