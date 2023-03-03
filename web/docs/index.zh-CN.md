@@ -4,21 +4,20 @@ order: 1
 hero:
   title: Issues 助手
   image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
-  desc: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
+  description: 🤖 一个轻松帮你自动管理 issues 的 GitHub Action
   actions:
     - text: 快速开始
       link: /zh-CN/guide/start
 features:
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*Km0BQJs7vWAAAAAAAAAAAAAAARQnAQ
+  - emoji: 🎁
     title: 完全免费
-    desc: 使用 GitHub 自带提供的 Actions 服务
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*ELKWSIMizH0AAAAAAAAAAAAAARQnAQ
+    description: 使用 GitHub 自带提供的 Actions 服务
+  - emoji: 👌
     title: 简单易用
-    desc: 教程详细，模版丰富
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*j-SURo-DkyIAAAAAAAAAAAAAARQnAQ
+    description: 教程详细，模版丰富
+  - emoji: 🌍
     title: 轻松托管
-    desc: 只要 GitHub 不宕机，它就不受影响
-footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
+    description: 只要 GitHub 不宕机，它就不受影响
 ---
 
 ## 🍭 快速上手

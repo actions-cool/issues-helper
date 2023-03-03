@@ -38,5 +38,6 @@ export default defineConfig({
         { title: 'GitHub', link: 'https://github.com/actions-cool/issues-helper' },
       ],
     },
+    footer: 'Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg'
   },
 });
