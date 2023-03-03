@@ -47,6 +47,11 @@ package-lock.json
 .umi-test
 .env.local
 
+# dumi
+web/.dumi/tmp
+web/.dumi/tmp-test
+web/.dumi/tmp-production
+
 # cache
 .sass-cache/
 
