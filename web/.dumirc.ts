@@ -1,5 +1,7 @@
 // more config: https://d.umijs.org/config
 import { defineConfig } from 'dumi';
+import path from 'path';
+import remarkPlugin from './remark-plugins';
 
 const name = 'issues-helper';
 
@@ -20,6 +22,7 @@ export default defineConfig({
     { id: 'zh-CN', name: '中文' },
   ],
   favicons: [logo],
+  extraRemarkPlugins: [remarkPlugin],
   themeConfig: {
     logo,
     nav: {
