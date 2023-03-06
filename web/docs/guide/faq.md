@@ -1,5 +1,5 @@
 ---
-toc: menu
+title: 💬 FAQ
 ---
 
 ## Is there a charge for this feature?

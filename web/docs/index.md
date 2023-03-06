@@ -3,22 +3,20 @@ title: Issues Helper
 order: 1
 hero:
   title: Issues Helper
-  image: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ
-  desc: 🤖 A GitHub Action that easily helps you automatically manage issues
+  description: 🤖 A GitHub Action that easily helps you automatically manage issues
   actions:
     - text: Quick start
       link: /guide/start
 features:
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*Km0BQJs7vWAAAAAAAAAAAAAAARQnAQ
+  - emoji: 🎁
     title: Completely free
-    desc: Use the Actions service provided by GitHub
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*ELKWSIMizH0AAAAAAAAAAAAAARQnAQ
+    description: Use the Actions service provided by GitHub
+  - emoji: 👌
     title: Easy to use
-    desc: Detailed tutorials and rich templates
-  - icon: https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*j-SURo-DkyIAAAAAAAAAAAAAARQnAQ
+    description: Detailed tutorials and rich templates
+  - emoji: 🌍
     title: Easy hosting
-    desc: As long as GitHub is not down, it will not be affected
-footer: Open-source MIT Licensed | Copyright © 2020-present<br />Powered by xrkffgg
+    description: As long as GitHub is not down, it will not be affected
 ---
 
 ## 🍭 Get started quickly

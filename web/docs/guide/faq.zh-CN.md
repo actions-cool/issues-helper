@@ -1,5 +1,5 @@
 ---
-toc: menu
+title: 💬 FAQ
 ---
 
 ## 该功能是否收费？

@@ -1,5 +1,5 @@
 ---
-toc: menu
+title: 🎁 Reference
 ---
 
 ## 📍 `token`

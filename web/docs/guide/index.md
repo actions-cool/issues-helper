@@ -1,4 +1,6 @@
-## Introduction
+---
+title: 🍭 Guide
+---
 
 The Issues Helper is a GitHub Action that easily helps you automatically manage issues.
 
