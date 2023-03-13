@@ -43,8 +43,8 @@ function remarkPlugin(opt) {
                 index,
                 1,
                 // ...('children' in node ? node.children : []) // 不需要保留子节点
-              )
-            };
+              );
+            }
             return unistUtilVisit.CONTINUE;
           }
 
@@ -53,36 +53,36 @@ function remarkPlugin(opt) {
            * 1. token 说明
            */
           if (node.url === '#token') {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
 
           if (['#emoji-类型', '#emoji-types'].includes(node.url)) {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
 
           if (node.url === '#github-docs') {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
 
           if (['#outputs-使用', '#outputs-use'].includes(node.url)) {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
 
           if (['#校验规则', '#check-rules'].includes(node.url)) {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
 
           if (node.url === '#comment-id') {
-            node.url = `./guide/ref${node.url}`
+            node.url = `./guide/ref${node.url}`;
             return unistUtilVisit.CONTINUE;
           }
         });
-      };
+      }
 
       if (
         (node.value === WRAPPER_CLOSE_TAG || node.value.startsWith(WRAPPER_OPEN_TAG)) &&
@@ -90,8 +90,8 @@ function remarkPlugin(opt) {
         typeof index === 'number'
       ) {
         if (parent && typeof index === 'number') {
-          parent.children.splice(index, 1)
-        };
+          parent.children.splice(index, 1);
+        }
       }
     });
   };
