@@ -810,9 +810,7 @@ Check whether the issue meets the conditions according to the passed parameters 
 
 The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`.
 
-If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions.
-
-[Check rules](#check-rules)
+If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions. [Check rules](#check-rules)
 
 ```yml
 name: Check Issue
