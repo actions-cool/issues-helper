@@ -261,6 +261,7 @@ When the following list does not have the features you want, you can submit it i
 ## 🚀 Usage
 
 ### ⭐ Base
+<wrapper base data-depth="2" data-warn="DO_NOT_REMOVE_THIS_COMMENT">
 
 In order to better display the function, the following is an example of the actual scene, please refer to it flexibly.
 
@@ -304,7 +305,7 @@ jobs:
 - `assignees` support multiple and separated by comma
 - You can assign up to 10 people to each issue
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `add-labels`
 
@@ -340,7 +341,7 @@ jobs:
 
 - `labels` support multiple and separated by comma
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `close-issue`
 
@@ -362,7 +363,7 @@ Close the specified issue.
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `create-comment`
 
@@ -406,7 +407,7 @@ jobs:
 - `${{ github.event.issue.user.login }}` indicates the creator of the issue
 - `emoji` support multiple and separated by comma
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `create-issue`
 
@@ -449,7 +450,7 @@ jobs:
 - No action when `title` is empty
 - Return `issue-number`. [Usage reference](#outputs-use)
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `create-label`
 
@@ -477,7 +478,7 @@ Create label. If you want to maintain labels in batches, [see](https://github.co
 - `label-name`: If it already exists, no operation
 - `label-color`: Default is `ededed`
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `delete-comment`
 
@@ -498,7 +499,7 @@ According to [`comment-id`](#comment-id) delete the specified comment.
 | token | [Token explain](#token) | string | ✖ |
 | comment-id | The comment ID | number | ✔ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `get-issue`
 
@@ -519,7 +520,7 @@ Query issue information.
 
 - Return `issue-number` `issue-title` `issue-body` `issue-labels` `issue-assignees` `issue-state`. [Usage reference](#outputs-use)
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `lock-issue`
 
@@ -554,7 +555,7 @@ jobs:
 
 - `lock-reason`: Optional values are `off-topic` `too heated` `resolved` `spam`
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `open-issue`
 
@@ -575,7 +576,7 @@ Open the specified issue.
 | token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `remove-assignees`
 
@@ -598,7 +599,7 @@ Remove the person designated by issue.
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | assignees | Designated person removed. When it is an empty character, do not remove | string | ✔ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `remove-labels`
 
@@ -623,7 +624,7 @@ Remove the specified labels.
 
 - `labels` supports multiple, such as `x1,x2,x3`, only the labels added by the issue will be removed
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `set-labels`
 
@@ -646,7 +647,7 @@ Replace the labels of issue.
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | labels set. When empty characters, will remove all | string | ✔ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `unlock-issue`
 
@@ -667,7 +668,7 @@ Unlock the specified issue.
 | token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `update-comment`
 
@@ -708,7 +709,7 @@ jobs:
 - When `body` is not entered, it will remain as it is
 - When `update-mode` is `append`, additional operations will be performed. Anything other than `append` will be replaced. Only effective for `body`
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `update-issue`
 
@@ -746,9 +747,11 @@ Update the specified issue according to the `issue-number`.
 - `state` defaults to `open`
 - When the option is not filled, it will keep the original
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
+</wrapper>
 
 ### 🌟 Advanced
+<wrapper advanced data-depth="2" data-warn="DO_NOT_REMOVE_THIS_COMMENT">
 
 Advanced usage is not recommended to use multiple actions at the same time.
 
@@ -799,7 +802,7 @@ jobs:
 - `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `check-issue`
 
@@ -807,9 +810,7 @@ Check whether the issue meets the conditions according to the passed parameters 
 
 The effect of the following example is: when an issue is newly opened, verify whether the current issue designator contains `x1` or `x2`.
 
-If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions.
-
-[Check rules](#check-rules)
+If one designated person is satisfied, the verification will pass, and at the same time, verify whether the title meets the conditions. [Check rules](#check-rules)
 
 ```yml
 name: Check Issue
@@ -845,7 +846,7 @@ jobs:
 - `title-includes` `body-includes` supports the format `x1,x2` or `x1,x2/y1,y2`. Only supports two levels
 - Return `check-result`, due to yml reasons, the judgment condition is `if: steps.xxid.outputs.check-result =='true'`
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `close-issues`
 
@@ -892,7 +893,7 @@ jobs:
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `find-comments`
 
@@ -930,7 +931,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `find-issues`
 
@@ -975,7 +976,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `lock-issues`
 
@@ -1024,7 +1025,7 @@ jobs:
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `mark-assignees`
 
@@ -1062,7 +1063,7 @@ jobs:
   - Ordinary users have `read` permission
   - When set `write`, `admin` and `write` meet the conditions
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `mark-duplicate`
 
@@ -1108,7 +1109,7 @@ jobs:
   - Ordinary users have `read` permission
   - When set `write`, `admin` and `write` meet the conditions
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `toggle-labels`
 
@@ -1141,7 +1142,7 @@ jobs:
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | labels | The toggle labels. Delete if the label already exists, add if it does not exist | string | ✖ |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 #### `welcome`
 
@@ -1182,9 +1183,11 @@ jobs:
 
 - If these 4 options are not filled, no operation
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
+</wrapper>
 
 ## 🎁 Reference
+<wrapper reference data-depth="1" data-warn="DO_NOT_REMOVE_THIS_COMMENT">
 
 ### token
 
@@ -1199,14 +1202,14 @@ Need to have the person token with push permission.
 
 When the token is not filled in actions or input `${{ secrets.GITHUB_TOKEN }}`, it will default to `github-actions-bot`. [More](https://docs.github.com/en/free-pro-team@latest/actions/reference/authentication-in-a-workflow).
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 ### GitHub Docs
 
 - [Workflow syntax for GitHub Actions](https://docs.github.com/en/free-pro-team@latest/actions/reference/workflow-syntax-for-github-actions#on)
 - [Events that trigger workflows](https://docs.github.com/en/free-pro-team@latest/actions/reference/events-that-trigger-workflows)
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 ### `outputs` use
 
@@ -1226,7 +1229,7 @@ More:
 1. https://docs.github.com/en/free-pro-team@latest/actions/creating-actions/metadata-syntax-for-github-actions#outputs
 2. https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 ### Check rules
 
@@ -1256,7 +1259,7 @@ x2 + y2
 "x1"      false
 ```
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 ### Emoji types
 
 | content | emoji |
@@ -1270,13 +1273,14 @@ x2 + y2
 | `rocket` | 🚀 |
 | `eyes` | 👀 |
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
 
 ### `comment-id`
 
 Click the `···` icon in the upper right corner of a comment, select `Copy link`, and the number at the end of the url is `comment_id`.
 
-⏫ [Back to list](#List)
+[⏫ Back to list](#List)
+</wrapper>
 
 ## Actions Template
 
