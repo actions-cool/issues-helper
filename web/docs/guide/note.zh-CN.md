@@ -24,10 +24,10 @@ if: contains(github.event.issue.body, 'ie') == false
 with:
   actions: 'month-statistics'
   token: ${{ secrets.GITHUB_TOKEN }}
-  count-lables: 'true'
+  count-labels: 'true'
 ```
 
-- `count-lables`：不管设置 `true` 还是 `'ture'`，在程序里接收到的都是字符串格式
+- `count-labels`：不管设置 `true` 还是 `'ture'`，在程序里接收到的都是字符串格式
 
 同时输出的也是字符串格式。[参看](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs)。
 
