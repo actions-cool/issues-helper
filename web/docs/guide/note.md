@@ -23,10 +23,10 @@ if: contains(github.event.issue.body, 'ie') == false
 with:
   actions: 'month-statistics'
   token: ${{ secrets.GITHUB_TOKEN }}
-  count-lables: 'true'
+  count-labels: 'true'
 ```
 
-- `count-lables`: Regardless of setting `true` or `'ture'`, all received in the program is in string format
+- `count-labels`: Regardless of setting `true` or `'ture'`, all received in the program is in string format
 
 At the same time, the output is also in string format. [See](https://docs.github.com/en/actions/reference/workflow-syntax-for-github-actions#jobsjob_idoutputs).
 
