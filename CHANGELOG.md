@@ -9,6 +9,8 @@
 
 ## v3.5.0
 
+`2023.07.19`
+
 - 🚀 feat: support `inactive-mode`. Optional `comment`, which will check the last comment update time. [#158](https://github.com/actions-cool/issues-helper/pull/158)
 
 ## v3.4.0
