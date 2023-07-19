@@ -796,6 +796,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
+| inactive-day | 检测不活跃的模式，默认 `issue`，可选 `comment`，即为最后一个评论更新时间 | string | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
 

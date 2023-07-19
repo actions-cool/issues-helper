@@ -59,7 +59,7 @@ export async function doQueryIssues(
     const titleIncludes = core.getInput('title-includes');
 
     const excludeLabelsArr = dealStringToArr(excludeLabels);
-    issuesList.forEach(issue => {
+    issuesList.forEach(async issue => {
       const bodyCheck = bodyIncludes ? issue.body.includes(bodyIncludes) : true;
       const titleCheck = titleIncludes ? issue.title.includes(titleIncludes) : true;
       /**
@@ -84,8 +84,17 @@ export async function doQueryIssues(
           dayjs.extend(isSameOrBefore);
 
           const lastTime = dayjs.utc().subtract(+inactiveDay, 'day');
-          const updateTime = dayjs.utc(issue.updated_at);
-          if (updateTime.isSameOrBefore(lastTime)) {
+
+          const inactiveMode = core.getInput('inactive-mode') || 'issue';
+          let updateTime = dayjs.utc(issue.updated_at);
+          if (inactiveMode === 'comment') {
+            ICE.setIssueNumber(issue.number);
+            const comments = await ICE.listComments();
+            if (comments.length) {
+              updateTime = dayjs.utc(comments[comments.length - 1].updated_at);
+            }
+          }
+          if (updateTime && updateTime.isSameOrBefore(lastTime)) {
             issues.push(issue);
             issueNumbers.push(issue.number);
           }
