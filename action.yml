@@ -75,6 +75,8 @@ inputs:
     description: 'Query use'
   inactive-day:
     description: 'Query use'
+  inactive-mode:
+    description: 'Inactive mode'
   lock-reason:
     description: 'The reason lock issue'
   inactive-label:

@@ -21,6 +21,7 @@
     "lint": "eslint src/*.ts src/*/*.ts",
     "lint-fix": "eslint src/*.ts src/*/*.ts --fix",
     "lint-up": "npm run format && npm run lint-fix",
+    "ci:fix": "npm run lint-up",
     "lint-all": "npm run format-check && npm run lint",
     "check-commit": "node ./scripts/check-commit.js",
     "tag": "node ./scripts/tag.js",

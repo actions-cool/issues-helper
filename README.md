@@ -792,6 +792,7 @@ jobs:
 | body-includes | Body filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
+| inactive-mode | Detect inactive mode, default `issue`, optional `comment`, which is the last comment update time | string | ✖ |
 | inactive-label | The label name adding | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
 
