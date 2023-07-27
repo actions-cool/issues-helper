@@ -796,7 +796,7 @@ jobs:
 | body-includes | 包含内容筛选 | string | ✖ |
 | title-includes | 包含标题筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
-| inactive-mode | 检测不活跃的模式，默认 `issue`，可选 `comment`，即为最后一个评论更新时间 | string | ✖ |
+| inactive-mode | 检测不活跃的模式 | string | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
 
@@ -806,6 +806,13 @@ jobs:
 - `inactive-day`：当输入时，会筛选 issue 更新时间早于当前时间减去非活跃天数。不填时，会查询所有
 - `inactive-label`：默认为 `inactive`，可自定义其他。当项目未包含该 label 时，会自动新建
 - `exclude-labels`：设置包含 `$exclude-empty` 时，可排除无 label issue
+- `inactive-mode`:
+  - 默认 `issue`，检查 issue 的更新时间
+  - 可选 `comment`，检查最后一个评论的更新时间
+  - 可选 `issue-created`，检查 issue 的创建时间
+  - 可选 `comment-created`，最后一个评论的创建时间
+  - 你也可以设置多个如：`comment, issue-created`
+    - 将会以优先级检测，先检测最后一条评论更新时间，如无评论，则使用 issue 的创建时间
 
 [⏫ 返回列表](#列-表)
 

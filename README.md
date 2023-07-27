@@ -792,7 +792,7 @@ jobs:
 | body-includes | Body filtering | string | ✖ |
 | title-includes | Title filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
-| inactive-mode | Detect inactive mode, default `issue`, optional `comment`, which is the last comment update time | string | ✖ |
+| inactive-mode | Detect inactive mode, default `issue` | string | ✖ |
 | inactive-label | The label name adding | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
 
@@ -802,6 +802,13 @@ jobs:
 - `inactive-day`: When entering, it will filter the issue update time earlier than the current time minus the number of inactive days. If not entered, all
 - `inactive-label`: The default is `inactive`, others can be customized. When the project does not contain the label, it will be created automatically
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
+- `inactive-mode`:
+  - Default `issue`: the issue updated time
+  - Optional `comment`: the last comment update time
+  - Optional `issue-created`: the issue created time
+  - Optional `comment-created`: the comment creation time
+  - You can also set multiple such as: `comment, issue-created`
+    - It will be detected with priority, the update time of the last comment will be detected first, if there is no comment, the creation time of the issue will be used
 
 [⏫ Back to list](#List)
 

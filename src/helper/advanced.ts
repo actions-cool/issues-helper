@@ -85,16 +85,32 @@ export async function doQueryIssues(
 
           const lastTime = dayjs.utc().subtract(+inactiveDay, 'day');
 
-          const inactiveMode = core.getInput('inactive-mode') || 'issue';
-          let updateTime = dayjs.utc(issue.updated_at);
-          if (inactiveMode === 'comment') {
-            ICE.setIssueNumber(issue.number);
-            const comments = await ICE.listComments();
-            if (comments.length) {
-              updateTime = dayjs.utc(comments[comments.length - 1].updated_at);
+          const inactiveMode = dealStringToArr(core.getInput('inactive-mode'));
+          let checkTime: dayjs.Dayjs | null = null;
+
+          for (const mode of inactiveMode) {
+            if (checkTime) {
+              break;
+            }
+            if (mode === 'comment' || mode === 'comment-created') {
+              ICE.setIssueNumber(issue.number);
+              const comments = await ICE.listComments();
+              if (comments.length) {
+                checkTime = dayjs.utc(
+                  comments[comments.length - 1][mode === 'comment' ? 'updated_at' : 'created_at'],
+                );
+              }
+            }
+            if (mode === 'issue-created') {
+              checkTime = dayjs.utc(issue.created_at);
             }
           }
-          if (updateTime && updateTime.isSameOrBefore(lastTime)) {
+
+          if (!checkTime) {
+            checkTime = dayjs.utc(issue.updated_at);
+          }
+
+          if (checkTime && checkTime.isSameOrBefore(lastTime)) {
             issues.push(issue);
             issueNumbers.push(issue.number);
           }
