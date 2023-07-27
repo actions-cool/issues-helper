@@ -16408,16 +16408,27 @@ function doQueryIssues(state, creator, ignoreLabels) {
                         dayjs_1.default.extend(utc_1.default);
                         dayjs_1.default.extend(isSameOrBefore_1.default);
                         const lastTime = dayjs_1.default.utc().subtract(+inactiveDay, 'day');
-                        const inactiveMode = core.getInput('inactive-mode') || 'issue';
-                        let updateTime = dayjs_1.default.utc(issue.updated_at);
-                        if (inactiveMode === 'comment') {
-                            ICE.setIssueNumber(issue.number);
-                            const comments = yield ICE.listComments();
-                            if (comments.length) {
-                                updateTime = dayjs_1.default.utc(comments[comments.length - 1].updated_at);
+                        const inactiveMode = (0, actions_util_1.dealStringToArr)(core.getInput('inactive-mode'));
+                        let checkTime = null;
+                        for (const mode of inactiveMode) {
+                            if (checkTime) {
+                                break;
+                            }
+                            if (mode === 'comment' || mode === 'comment-created') {
+                                ICE.setIssueNumber(issue.number);
+                                const comments = yield ICE.listComments();
+                                if (comments.length) {
+                                    checkTime = dayjs_1.default.utc(comments[comments.length - 1][mode === 'comment' ? 'updated_at' : 'created_at']);
+                                }
+                            }
+                            if (mode === 'issue-created') {
+                                checkTime = dayjs_1.default.utc(issue.created_at);
                             }
                         }
-                        if (updateTime && updateTime.isSameOrBefore(lastTime)) {
+                        if (!checkTime) {
+                            checkTime = dayjs_1.default.utc(issue.updated_at);
+                        }
+                        if (checkTime && checkTime.isSameOrBefore(lastTime)) {
                             issues.push(issue);
                             issueNumbers.push(issue.number);
                         }

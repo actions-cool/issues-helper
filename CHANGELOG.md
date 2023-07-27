@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.5.1
+
+`2023.07.27`
+
+- 💄 perf: `inactive-mode` support `issue-created` `comment-created`.
+
 ## v3.5.0
 
 `2023.07.19`
