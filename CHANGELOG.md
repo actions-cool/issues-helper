@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.5.2
+
+`2023.08.16`
+
+- 🐞 fix: return `issue-assignees` in the correct output field for `get-issue`. [#163](https://github.com/actions-cool/issues-helper/pull/163) [@misund](https://github.com/misund)
+
 ## v3.5.1
 
 `2023.07.27`

@@ -16920,7 +16920,7 @@ function doGetIssue() {
         const labelsString = labels.length ? labels.map(({ name }) => name).join(',') : '';
         core.setOutput('issue-labels', labelsString);
         const assigneesString = assignees.length ? assignees.map(({ login }) => login).join(',') : '';
-        core.setOutput('issue-body', assigneesString);
+        core.setOutput('issue-assignees', assigneesString);
     });
 }
 exports.doGetIssue = doGetIssue;
