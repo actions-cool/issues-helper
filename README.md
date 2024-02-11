@@ -980,6 +980,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
 ]
 ```
 
+- `issue-state`: The default is `open`. Other values are: `closed`, `all`
 - `direction` defaults to ascending order, only when `desc` is set, descending order will be returned
 - The `created` `updated` in the returned array, determined by the environment, will be UTC +0
 - `exclude-labels`: When set to include `$exclude-empty`, no label issue can be excluded
