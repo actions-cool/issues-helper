@@ -79,7 +79,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180">
     <a href="https://github.com/umijs/dumi">
-      <img src="https://gw.alipayobjects.com/zos/bmw-prod/d3e3eb39-1cd7-4aa5-827c-877deced6b7e/lalxt4g3_w256_h256.png" width="46"/>
+      <img src="https://avatars1.githubusercontent.com/u/33895495?s=200&v=4" width="46"/>
     </a>
   </td>
   <td align="center" width="180">
@@ -116,7 +116,7 @@ Please leave a message at [**here**](https://github.com/actions-cool/issues-help
   </td>
   <td align="center" width="180">
     <a href="https://github.com/TuSimple/naive-ui">
-      <img src="https://camo.githubusercontent.com/b8ebecade711b9ae1fa306e7a1c9dd680fb56b0e2b9f015fec9cbad343570353/68747470733a2f2f6e6169766575692e6f73732d636e2d686f6e676b6f6e672e616c6979756e63732e636f6d2f6e616976656c6f676f2e737667" width="46"/>
+      <img src="https://www.naiveui.com/assets/naivelogo-XQ1U1Js8.svg" width="46"/>
     </a>
   </td>
 </tr>
