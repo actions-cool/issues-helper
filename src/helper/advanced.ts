@@ -272,6 +272,7 @@ export async function doFindIssues() {
         title: issue.title,
         body: issue.body,
         state: issue.state,
+        assignees: issue.assignees.map(val => val.login),
         created: issue.created_at,
         updated: issue.updated_at,
       };

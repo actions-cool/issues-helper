@@ -977,8 +977,8 @@ jobs:
 
 ```js
 [
-  {number: 1, auth: 'x', body: 'xxx', body: 'xxx', state: 'open', created: '', updated: ''},
-  {number: 2, auth: 'x', body: 'xxx', body: 'xxx', state: 'closed', created: '', updated: ''},
+  {number: 1, auth: 'x', body: 'xxx', body: 'xxx', state: 'open', assignees: ['x1', 'x2'], created: '', updated: ''},
+  {number: 2, auth: 'x', body: 'xxx', body: 'xxx', state: 'closed', assignees: ['x1', 'x2'], created: '', updated: ''},
 ]
 ```
 
