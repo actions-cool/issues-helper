@@ -7,6 +7,13 @@
 🛠 refactor
 -->
 
+## v3.6.0
+
+`2024.02.18`
+
+- 🚀 feat: add assignees to find-issues. [#192](https://github.com/actions-cool/issues-helper/pull/192)
+- 💄 chore: Bump runtime to node20. [#190](https://github.com/actions-cool/issues-helper/pull/190) [@danielcompton](https://github.com/danielcompton)
+
 ## v3.5.2
 
 `2023.08.16`
