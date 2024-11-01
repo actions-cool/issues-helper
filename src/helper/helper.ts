@@ -80,8 +80,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
     const issueNumber = core.getInput('issue-number') || defaultCtxNumber;
     if (issueNumber) {
       this.issueNumber = +issueNumber;
-    } else {
-      core.warning(`'issue-number' is missing or this action not needed yet!`);
     }
 
     this.emoji = core.getInput('emoji') || '';
