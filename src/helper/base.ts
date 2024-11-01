@@ -74,8 +74,8 @@ export async function doCreateIssue(
 
 export async function doCreateLabel() {
   const name = core.getInput('label-name');
-  const color = core.getInput('label-color') || 'ededed';
-  const description = core.getInput('label-desc') || '';
+  const color = core.getInput('label-color');
+  const description = core.getInput('label-desc');
 
   if (name) {
     await ICE.createLabel(name, color, description);

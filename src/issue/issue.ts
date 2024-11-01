@@ -130,8 +130,8 @@ export class IssueCoreEngine implements IIssueCoreEngine {
 
   public async createLabel(
     labelName: string,
-    labelColor: string,
-    labelDescription: string | undefined,
+    labelColor: string = 'ededed',
+    labelDescription: string = '',
   ) {
     const { owner, repo, octokit } = this;
     await octokit.issues.createLabel({
@@ -318,10 +318,18 @@ export class IssueCoreEngine implements IIssueCoreEngine {
       state: baseState,
     } = issue;
 
-    const baseLabelsName = baseLabels.map(({ name }: any) => name);
-    const baseAssignessName = baseAssigness?.map(({ login }: any) => login);
+    const baseLabelsName = baseLabels.map(({ name }) => name);
+    const baseAssignessName = baseAssigness?.map(({ login }) => login);
 
     const newBody = body ? (mode === 'append' ? `${baseBody}\n${body}` : body) : baseBody;
+
+    if (labels && labels.length) {
+      for (const label of labels) {
+        if (baseLabelsName && baseLabelsName.length && baseLabelsName.indexOf(label) < 0) {
+          await this.createLabel(label);
+        }
+      }
+    }
 
     await octokit.issues.update({
       owner,
