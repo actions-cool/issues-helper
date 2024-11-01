@@ -1,6 +1,6 @@
 name: Preview Build
 
-on: 
+on:
   pull_request:
     types: [opened, synchronize, reopened]
 
@@ -22,7 +22,7 @@ jobs:
           zip -r dist.zip docs-dist
 
       - name: upload dist artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: dist
           path: dist.zip
@@ -34,7 +34,7 @@ jobs:
 
       - name: Upload PR number
         if: ${{ always() }}
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: pr
           path: ./pr-id.txt
