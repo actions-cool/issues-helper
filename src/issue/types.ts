@@ -83,7 +83,7 @@ export interface IIssueCoreEngine {
   createIssueEmoji: (emoji: TEmoji[]) => Promise<void>;
   createLabel: (
     labelName: string,
-    labelColor: string,
+    labelColor: string | undefined,
     labelDescription: string | undefined,
   ) => Promise<void>;
 
