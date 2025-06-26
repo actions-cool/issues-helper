@@ -21,6 +21,7 @@ export const warning = (mess: string) => {
 };
 
 export const getInput = core.getInput;
+export const getBooleanInput = core.getBooleanInput;
 
 export const setOutput = core.setOutput;
 

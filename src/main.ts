@@ -8,7 +8,7 @@ import type { TAction } from './types';
 async function main() {
   try {
     const actions = core.getInput('actions', { required: true });
-    const showThanks = core.getInput('show-thanks');
+    const showThanks = core.getBooleanInput('show-thanks');
     const IHE = new IssueHelperEngine(github.context);
     for (const action of dealStringToArr(actions)) {
       await IHE.doExeAction(action as TAction);
