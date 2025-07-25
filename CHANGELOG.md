@@ -11,7 +11,7 @@
 
 `2025.07.25`
 
-- 🚀 feat: add `create-issue-if-not-exist` to find-issues.
+- 🚀 feat: add `create-issue-if-not-exist` to find-issues. [#204](https://github.com/actions-cool/issues-helper/pull/204)
 
 ## v3.6.1
 
