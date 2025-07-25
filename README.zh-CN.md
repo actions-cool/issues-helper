@@ -972,6 +972,7 @@ jobs:
 | exclude-labels | 排除标签筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | direction | 返回 `issues` 排序 | string | ✖ |
+| create-issue-if-not-exist | 如果没找到新建一个 | boolean | ✖ |
 
 - 返回 `issues`，格式如下：
 

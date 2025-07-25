@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.6.2
+
+`2025.07.25`
+
+- 🚀 feat: add `create-issue-if-not-exist` to find-issues. [#204](https://github.com/actions-cool/issues-helper/pull/204)
+
 ## v3.6.1
 
 `2025.07.25`
@@ -17,7 +23,7 @@
 
 `2024.02.18`
 
-- 🚀 feat: add assignees to find-issues. [#192](https://github.com/actions-cool/issues-helper/pull/192)
+- 🚀 feat: add `assignees` to find-issues. [#192](https://github.com/actions-cool/issues-helper/pull/192)
 - 💄 chore: Bump runtime to node20. [#190](https://github.com/actions-cool/issues-helper/pull/190) [@danielcompton](https://github.com/danielcompton)
 
 ## v3.5.2

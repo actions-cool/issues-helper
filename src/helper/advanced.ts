@@ -15,6 +15,7 @@ import {
   doCloseIssue,
   doCreateComment,
   doCreateCommentEmoji,
+  doCreateIssue,
   doLockIssue,
   doRemoveLabels,
   doSetLabels,
@@ -283,6 +284,13 @@ export async function doFindIssues() {
     core.info(`[doFindIssues] issues --> ${JSON.stringify(issues)}`);
   } else {
     core.info(`[doFindIssues] Query issues empty!`);
+    const ifCreate = core.getInput('create-issue-if-not-exist');
+    if (ifCreate) {
+      const titleIncludes = core.getInput('title-includes') || 'New issue by AC find-issues';
+      const bodyIncludes = core.getInput('body-includes') || '';
+      const labels = dealStringToArr(core.getInput('labels') || '');
+      doCreateIssue(titleIncludes, bodyIncludes, labels);
+    }
   }
   core.setOutput('issues', JSON.stringify(issues));
 }

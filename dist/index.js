@@ -39702,6 +39702,13 @@ function doFindIssues() {
         }
         else {
             core.info(`[doFindIssues] Query issues empty!`);
+            const ifCreate = core.getInput('create-issue-if-not-exist');
+            if (ifCreate) {
+                const titleIncludes = core.getInput('title-includes') || 'New issue by AC find-issues';
+                const bodyIncludes = core.getInput('body-includes') || '';
+                const labels = (0, actions_util_1.dealStringToArr)(core.getInput('labels') || '');
+                (0, base_1.doCreateIssue)(titleIncludes, bodyIncludes, labels);
+            }
         }
         core.setOutput('issues', JSON.stringify(issues));
     });
