@@ -99,6 +99,8 @@ inputs:
     description: 'Whether to print the thank-you banner'
     required: false
     default: 'true'
+  create-issue-if-not-exist:
+    description: 'Create a new issue if not exist when find-issues'
 
 outputs:
   issue-number:

@@ -970,6 +970,7 @@ Find the current repository, the creator is k , the title contains `this` , the 
 | exclude-labels | Exclude labels filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | direction | Return sort | string | ✖ |
+| create-issue-if-not-exist | Create a new issue if not exist | boolean | ✖ |
 
 - Returns `issues` in the following format:
 
