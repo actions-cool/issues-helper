@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.6.1
+
+`2025.07.25`
+
+- 🚀 feat: allow user to disable the thankyou message. [#201](https://github.com/actions-cool/issues-helper/pull/201) [@KingBain](https://github.com/KingBain)
+
 ## v3.6.0
 
 `2024.02.18`
