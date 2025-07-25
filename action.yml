@@ -95,6 +95,10 @@ inputs:
     description: 'For remove labels'
   close-issue:
     description: 'For mark-duplicate'
+  show-thanks:
+    description: 'Whether to print the thank-you banner'
+    required: false
+    default: 'true'
 
 outputs:
   issue-number:
