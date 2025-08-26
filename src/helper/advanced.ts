@@ -303,10 +303,14 @@ export async function doLockIssues(body: string, emoji?: string) {
   const issues = await doQueryIssues(issueState as TIssueState | 'all');
 
   if (issues.length) {
-    for (const { number } of issues) {
-      core.info(`[doLockIssues] Doing ---> ${number}`);
-      if (body) await doCreateComment(body, emoji, number);
-      await doLockIssue(number);
+    for (const { number, locked } of issues) {
+      if (!locked) {
+        core.info(`[doLockIssues] Doing ---> ${number}`);
+        if (body) await doCreateComment(body, emoji, number);
+        await doLockIssue(number);
+      } else {
+        core.info(`[doLockIssues] Locked ---> ${number}`);
+      }
     }
   } else {
     core.info(`[doLockIssues] Query issues empty!`);

@@ -39722,11 +39722,16 @@ function doLockIssues(body, emoji) {
         }
         const issues = yield doQueryIssues(issueState);
         if (issues.length) {
-            for (const { number } of issues) {
-                core.info(`[doLockIssues] Doing ---> ${number}`);
-                if (body)
-                    yield (0, base_1.doCreateComment)(body, emoji, number);
-                yield (0, base_1.doLockIssue)(number);
+            for (const { number, locked } of issues) {
+                if (!locked) {
+                    core.info(`[doLockIssues] Doing ---> ${number}`);
+                    if (body)
+                        yield (0, base_1.doCreateComment)(body, emoji, number);
+                    yield (0, base_1.doLockIssue)(number);
+                }
+                else {
+                    core.info(`[doLockIssues] Locked ---> ${number}`);
+                }
             }
         }
         else {

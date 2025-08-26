@@ -39,6 +39,7 @@ export type TIssueInfo = {
   created_at: string;
   updated_at: string;
   pull_request?: any;
+  locked?: boolean;
 };
 
 export type TIssueList = TIssueInfo[];
