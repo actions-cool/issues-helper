@@ -11,7 +11,7 @@
 
 `2025.08.26`
 
-- 
+- 🐞 fix: lock-issues only process unlocked. [#207](https://github.com/actions-cool/issues-helper/pull/207)
 
 ## v3.6.2
 
