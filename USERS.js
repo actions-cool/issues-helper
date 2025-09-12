@@ -76,10 +76,6 @@ const users = [
     logo: 'https://v2.vuepress.vuejs.org/images/hero.png',
   },
   {
-    url: 'https://github.com/TuSimple/naive-ui',
-    logo: 'https://www.naiveui.com/assets/naivelogo-XQ1U1Js8.svg',
-  },
-  {
     url: 'https://github.com/element-plus/element-plus',
     logo: 'https://avatars.githubusercontent.com/u/68583457',
   },
