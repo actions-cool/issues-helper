@@ -127,11 +127,7 @@ export async function doQueryIssues(
   return issues;
 }
 
-export async function doCheckInactive(
-  body: string,
-  emoji?: string,
-  excludeIssueNumbers?: number[],
-) {
+export async function doCheckInactive(body: string, emoji?: string) {
   let issueState = core.getInput('issue-state');
   if (issueState !== 'all' && issueState !== 'closed') {
     issueState = 'open';
@@ -139,6 +135,9 @@ export async function doCheckInactive(
   const issues = await doQueryIssues(issueState as TIssueState | 'all');
   if (issues.length) {
     const inactiveLabel = core.getInput('inactive-label') || 'inactive';
+    const excludeIssueNumbers = dealStringToArr(core.getInput('exclude-issue-numbers') || '').map(
+      Number,
+    );
     for (const issue of issues) {
       const { labels, number } = issue;
       if (excludeIssueNumbers?.includes(number)) continue;

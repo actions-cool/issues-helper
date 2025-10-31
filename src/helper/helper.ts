@@ -211,10 +211,7 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       // ^_^ ============= ^_^
       // -[ Advanced Begin ]->
       case 'check-inactive': {
-        const excludeIssueNumbers = dealStringToArr(
-          core.getInput('exclude-issue-numbers') || '',
-        ).map(Number);
-        await doCheckInactive(body, emoji, excludeIssueNumbers);
+        await doCheckInactive(body, emoji);
         break;
       }
       case 'check-issue': {
