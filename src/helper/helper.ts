@@ -45,7 +45,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
   private owner!: string;
   private repo!: string;
   private issueNumber!: number;
-  private excludeIssueNumbers!: number[];
 
   private emoji?: string;
   private labels?: string[];
@@ -85,7 +84,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
 
     this.emoji = core.getInput('emoji') || '';
     this.labels = dealStringToArr(core.getInput('labels') || '');
-    this.excludeIssueNumbers = dealStringToArr(core.getInput('exclude-issue-numbers') || '').map(Number);
 
     const assigneesInput = core.getInput('assignees') || '';
     const randomTo = core.getInput('random-to');
@@ -122,7 +120,6 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       state,
       ctx,
       closeReason,
-      excludeIssueNumbers,
     } = this;
     switch (action) {
       // ---[ Base Begin ]--->>>
@@ -214,6 +211,9 @@ export class IssueHelperEngine implements IIssueHelperEngine {
       // ^_^ ============= ^_^
       // -[ Advanced Begin ]->
       case 'check-inactive': {
+        const excludeIssueNumbers = dealStringToArr(
+          core.getInput('exclude-issue-numbers') || '',
+        ).map(Number);
         await doCheckInactive(body, emoji, excludeIssueNumbers);
         break;
       }

@@ -127,7 +127,11 @@ export async function doQueryIssues(
   return issues;
 }
 
-export async function doCheckInactive(body: string, emoji?: string, excludeIssueNumbers?: number[]) {
+export async function doCheckInactive(
+  body: string,
+  emoji?: string,
+  excludeIssueNumbers?: number[],
+) {
   let issueState = core.getInput('issue-state');
   if (issueState !== 'all' && issueState !== 'closed') {
     issueState = 'open';
