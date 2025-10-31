@@ -795,6 +795,7 @@ jobs:
 | inactive-mode | 检测不活跃的模式 | string | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
+| exclude-issue-numbers | 排除指定 issue | string | ✖ | 
 
 - `labels`：为多个时，会查询同时拥有多个。不填时，会查询所有
 - `issue-state`：默认为 `open`。可选值 `all` `closed`，非这 2 项时，均为 `open`
