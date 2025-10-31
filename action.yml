@@ -101,6 +101,8 @@ inputs:
     default: 'true'
   create-issue-if-not-exist:
     description: 'Create a new issue if not exist when find-issues'
+  exclude-issue-numbers:
+    description: 'Exclude the specified issues'
 
 outputs:
   issue-number:

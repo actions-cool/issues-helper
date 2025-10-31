@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.7.0
+
+`2025.10.31`
+
+- 🚀 feat: `check-inactive` action add `exclude-issue-numbers` param. [#211](https://github.com/actions-cool/issues-helper/pull/211) [@btea](https://github.com/btea)
+
 ## v3.6.3
 
 `2025.08.26`

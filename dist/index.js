@@ -39545,8 +39545,11 @@ function doCheckInactive(body, emoji) {
         const issues = yield doQueryIssues(issueState);
         if (issues.length) {
             const inactiveLabel = core.getInput('inactive-label') || 'inactive';
+            const excludeIssueNumbers = (0, actions_util_1.dealStringToArr)(core.getInput('exclude-issue-numbers') || '').map(Number);
             for (const issue of issues) {
                 const { labels, number } = issue;
+                if (excludeIssueNumbers === null || excludeIssueNumbers === void 0 ? void 0 : excludeIssueNumbers.includes(number))
+                    continue;
                 const labelNames = labels.map(({ name }) => name);
                 if (!labelNames.includes(inactiveLabel)) {
                     core.info(`[doCheckInactive] Doing ---> ${number}`);
