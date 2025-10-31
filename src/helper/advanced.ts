@@ -135,8 +135,12 @@ export async function doCheckInactive(body: string, emoji?: string) {
   const issues = await doQueryIssues(issueState as TIssueState | 'all');
   if (issues.length) {
     const inactiveLabel = core.getInput('inactive-label') || 'inactive';
+    const excludeIssueNumbers = dealStringToArr(core.getInput('exclude-issue-numbers') || '').map(
+      Number,
+    );
     for (const issue of issues) {
       const { labels, number } = issue;
+      if (excludeIssueNumbers?.includes(number)) continue;
       const labelNames = labels.map(({ name }) => name);
       if (!labelNames.includes(inactiveLabel)) {
         core.info(`[doCheckInactive] Doing ---> ${number}`);

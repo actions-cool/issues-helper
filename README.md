@@ -791,6 +791,7 @@ jobs:
 | inactive-mode | Detect inactive mode, default `issue` | string | ✖ |
 | inactive-label | The label name adding | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
+| exclude-issue-numbers | Exclude the specified issues | string | ✖ | 
 
 - `labels`: When there are multiple, the query will have multiple at the same time. If not entered, all
 - `issue-state`: The default is `all`. Optional value `open` `closed`, when these 2 items are not, both are `all`
