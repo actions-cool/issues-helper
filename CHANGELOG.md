@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.7.1
+
+`2025.11.03`
+
+- 🚀 feat: find-comments action body-includes param support multiple value. [#213](https://github.com/actions-cool/issues-helper/pull/213) [@btea](https://github.com/btea)
+
 ## v3.7.0
 
 `2025.10.31`
