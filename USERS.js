@@ -103,6 +103,10 @@ const users = [
     url: 'https://github.com/ant-design/ant-design-mobile',
     logo: 'https://gw.alipayobjects.com/zos/bmw-prod/b874caa9-4458-412a-9ac6-a61486180a62.svg',
   },
+  {
+    url: 'https://github.com/vuejs/core',
+    logo: 'https://avatars.githubusercontent.com/u/6128107?s=48&v=4',
+  },
 ];
 
 // **************************************************************************
