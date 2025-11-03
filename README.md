@@ -912,7 +912,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: 1
       comment-auth: 'k'
-      body-includes: 'this'
+      body-includes: 'this,that'
 ```
 
 | Param | Desc | Type | Required |
@@ -921,7 +921,7 @@ Find the current warehouse issue No. 1, the creator is k and the content contain
 | token | [Token explain](#token) | string | ✖ |
 | issue-number | The number of issue. When not input, it will be obtained from the trigger event | number | ✖ |
 | comment-auth | Comment creator, all will be queried if not filled | string | ✖ |
-| body-includes | Comment content includes filtering, no verification if not filled | string | ✖ |
+| body-includes | Comment content includes filtering, supports filtering of multiple strings, no verification if not filled | string | ✖ |
 | direction | Return `comments` sort | string | ✖ |
 
 - Return `comments` in the following format:

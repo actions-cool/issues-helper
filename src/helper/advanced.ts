@@ -8,7 +8,9 @@ import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
 import { EConst } from '../shared';
 import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
-import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
+import { checkDuplicate, matchKeyword, replac
+  
+  eStr2Arr } from '../util';
 import {
   doAddAssignees,
   doAddLabels,
@@ -240,7 +242,7 @@ export async function doFindComments() {
     const direction = core.getInput('direction') === 'desc' ? 'desc' : 'asc';
     for (const comment of commentList) {
       const checkUser = commentAuth ? comment.user.login === commentAuth : true;
-      const checkBody = bodyIncludes ? comment.body.includes(bodyIncludes) : true;
+      const checkBody = bodyIncludes ? dealStringToArr(bodyIncludes).some(text => comment.body.includes(text)) : true;
       if (checkUser && checkBody) {
         comments.push({
           id: comment.id,
