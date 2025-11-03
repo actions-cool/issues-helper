@@ -8,9 +8,7 @@ import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../issue';
 import { EConst } from '../shared';
 import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
-import { checkDuplicate, matchKeyword, replac
-  
-  eStr2Arr } from '../util';
+import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
 import {
   doAddAssignees,
   doAddLabels,
