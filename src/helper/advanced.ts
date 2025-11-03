@@ -240,7 +240,9 @@ export async function doFindComments() {
     const direction = core.getInput('direction') === 'desc' ? 'desc' : 'asc';
     for (const comment of commentList) {
       const checkUser = commentAuth ? comment.user.login === commentAuth : true;
-      const checkBody = bodyIncludes ? dealStringToArr(bodyIncludes).some(text => comment.body.includes(text)) : true;
+      const checkBody = bodyIncludes
+        ? dealStringToArr(bodyIncludes).some(text => comment.body.includes(text))
+        : true;
       if (checkUser && checkBody) {
         comments.push({
           id: comment.id,
