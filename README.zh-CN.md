@@ -914,7 +914,7 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-number: 1
       comment-auth: 'k'
-      body-includes: 'this'
+      body-includes: 'this,that'
 ```
 
 | 参数 | 描述 | 类型 | 必填 |
@@ -923,7 +923,7 @@ jobs:
 | token | [token 说明](#token) | string | ✖ |
 | issue-number | 指定的 issue，当不传时会从触发事件中获取 | number | ✖ |
 | comment-auth | 评论创建者，不填时会查询所有 | string | ✖ |
-| body-includes | 评论内容包含过滤，不填时无校验 | string | ✖ |
+| body-includes | 评论内容包含过滤，支持多个字符串过滤，不填时无校验 | string | ✖ |
 | direction | 返回 `comments` 排序 | string | ✖ |
 
 - 返回 `comments`，格式如下：
