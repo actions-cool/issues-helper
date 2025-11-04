@@ -789,8 +789,8 @@ jobs:
 | issue-assignee | 指定人筛选 | string | ✖ |
 | issue-creator | 创建人筛选 | string | ✖ |
 | issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
+| body-includes | 包含内容筛选，支持多个字符串过滤 | string | ✖ |
+| title-includes | 包含标题筛选，支持多个字符串过滤 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | inactive-mode | 检测不活跃的模式 | string | ✖ |
 | inactive-label | 新增标签名称 | string | ✖ |
@@ -889,8 +889,8 @@ jobs:
 | issue-assignee | 指定人筛选 | string | ✖ |
 | issue-creator | 创建人筛选 | string | ✖ |
 | issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
+| body-includes | 包含内容筛选，支持多个字符串过滤 | string | ✖ |
+| title-includes | 包含标题筛选，支持多个字符串过滤 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
 | close-reason | 关闭原因。默认`not_planned`未计划，`completed`完成 | string | ✖ |
@@ -952,8 +952,8 @@ jobs:
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-creator: 'k'
       issue-state: 'open'
-      title-includes: 'this'
-      body-includes: 'that'
+      title-includes: 'this,that'
+      body-includes: 'that,this'
       labels: 'documentation'
 ```
 
@@ -963,8 +963,8 @@ jobs:
 | token | [token 说明](#token) | string | ✖ |
 | issue-state | 状态筛选 | string | ✖ |
 | issue-creator | 创建者筛选 | string | ✖ |
-| title-includes | 标题包含过滤，不填时无校验 | string | ✖ |
-| body-includes | 内容包含过滤，不填时无校验 | string | ✖ |
+| title-includes | 标题包含过滤，支持多个字符串过滤，不填时无校验 | string | ✖ |
+| body-includes | 内容包含过滤，支持多个字符串过滤，不填时无校验 | string | ✖ |
 | labels | 标签筛选 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
@@ -1021,8 +1021,8 @@ jobs:
 | issue-assignee | 指定人筛选 | string | ✖ |
 | issue-creator | 创建人筛选 | string | ✖ |
 | issue-mentioned | 提及人筛选 | string | ✖ |
-| body-includes | 包含内容筛选 | string | ✖ |
-| title-includes | 包含标题筛选 | string | ✖ |
+| body-includes | 包含内容筛选，支持多个字符串过滤 | string | ✖ |
+| title-includes | 包含标题筛选，支持多个字符串过滤 | string | ✖ |
 | inactive-day | 非活跃天数筛选 | number | ✖ |
 | lock-reason | 锁定 issue 的原因 | string | ✖ |
 | exclude-labels | 排除标签筛选 | string | ✖ |
