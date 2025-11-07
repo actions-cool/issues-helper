@@ -789,8 +789,8 @@ jobs:
 | issue-assignee | Assignee filtering | string | ✖ |
 | issue-creator | Creator filtering | string | ✖ |
 | issue-mentioned | Mentioned filtering | string | ✖ |
-| body-includes | Body filtering | string | ✖ |
-| title-includes | Title filtering | string | ✖ |
+| body-includes | Body filtering, supports filtering of multiple strings | string | ✖ |
+| title-includes | Title filtering, supports filtering of multiple strings | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | inactive-mode | Detect inactive mode, default `issue` | string | ✖ |
 | inactive-label | The label name adding | string | ✖ |
@@ -891,8 +891,8 @@ jobs:
 | issue-assignee | Assignee filtering | string | ✖ |
 | issue-creator | Creator filtering | string | ✖ |
 | issue-mentioned | Mentioned filtering | string | ✖ |
-| body-includes | Body filtering | string | ✖ |
-| title-includes | Title filtering | string | ✖ |
+| body-includes | Body filtering, supports filtering of multiple strings | string | ✖ |
+| title-includes | Title filtering, supports filtering of multiple strings | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
 | close-reason | Reason for closing. Default `not_planned`, another `completed` | string | ✖ |
@@ -954,8 +954,8 @@ Find the current repository, the creator is k , the title contains `this` , the 
       token: ${{ secrets.GITHUB_TOKEN }}
       issue-creator: 'k'
       issue-state: 'open'
-      title-includes: 'this'
-      body-includes: 'that'
+      title-includes: 'this,that'
+      body-includes: 'that,this'
       labels: 'documentation'
 ```
 
@@ -965,8 +965,8 @@ Find the current repository, the creator is k , the title contains `this` , the 
 | token | [Token explain](#token) | string | ✖ |
 | issue-state | State filtering | string | ✖ |
 | issue-creator | Creator filtering | string | ✖ |
-| title-includes | Title filtering | string | ✖ |
-| body-includes | Body filtering | string | ✖ |
+| title-includes | Title filtering, supports filtering of multiple strings | string | ✖ |
+| body-includes | Body filtering, supports filtering of multiple strings | string | ✖ |
 | labels | Labels filtering | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
@@ -1024,8 +1024,8 @@ jobs:
 | issue-assignee | Assignee filtering | string | ✖ |
 | issue-creator | Creator filtering | string | ✖ |
 | issue-mentioned | Mentioned filtering | string | ✖ |
-| body-includes | Body filtering | string | ✖ |
-| title-includes | Title filtering | string | ✖ |
+| body-includes | Body filtering, supports filtering of multiple strings | string | ✖ |
+| title-includes | Title filtering, supports filtering of multiple strings | string | ✖ |
 | inactive-day | Inactive days filtering | number | ✖ |
 | lock-reason | Reason for locking issue | string | ✖ |
 | exclude-labels | Exclude labels filtering | string | ✖ |

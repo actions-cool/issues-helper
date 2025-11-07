@@ -60,9 +60,15 @@ export async function doQueryIssues(
     const titleIncludes = core.getInput('title-includes');
 
     const excludeLabelsArr = dealStringToArr(excludeLabels);
+    const bodyIncludesArr = dealStringToArr(bodyIncludes);
+    const titleIncludesArr = dealStringToArr(titleIncludes);
     issuesList.forEach(async issue => {
-      const bodyCheck = bodyIncludes ? issue.body.includes(bodyIncludes) : true;
-      const titleCheck = titleIncludes ? issue.title.includes(titleIncludes) : true;
+      const bodyCheck =
+        bodyIncludesArr.length > 0 ? bodyIncludesArr.some(body => issue.body.includes(body)) : true;
+      const titleCheck =
+        titleIncludesArr.length > 0
+          ? titleIncludesArr.some(title => issue.title.includes(title))
+          : true;
       /**
        * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
        * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
