@@ -7,6 +7,13 @@
 🛠 refactor
 -->
 
+## v3.7.2
+
+`2025.11.07`
+
+- 🚀 feat: doQueryIssues title/body-includes support multiple value. [#215](https://github.com/actions-cool/issues-helper/pull/215) [@btea](https://github.com/btea)
+- 🛠 refactor: avoid calling dealStringToArr inside loop. [#216](https://github.com/actions-cool/issues-helper/pull/216) [@btea](https://github.com/btea)
+
 ## v3.7.1
 
 `2025.11.03`

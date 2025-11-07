@@ -39473,9 +39473,13 @@ function doQueryIssues(state, creator, ignoreLabels) {
             const bodyIncludes = core.getInput('body-includes');
             const titleIncludes = core.getInput('title-includes');
             const excludeLabelsArr = (0, actions_util_1.dealStringToArr)(excludeLabels);
+            const bodyIncludesArr = (0, actions_util_1.dealStringToArr)(bodyIncludes);
+            const titleIncludesArr = (0, actions_util_1.dealStringToArr)(titleIncludes);
             issuesList.forEach((issue) => __awaiter(this, void 0, void 0, function* () {
-                const bodyCheck = bodyIncludes ? issue.body.includes(bodyIncludes) : true;
-                const titleCheck = titleIncludes ? issue.title.includes(titleIncludes) : true;
+                const bodyCheck = bodyIncludesArr.length > 0 ? bodyIncludesArr.some(body => issue.body.includes(body)) : true;
+                const titleCheck = titleIncludesArr.length > 0
+                    ? titleIncludesArr.some(title => issue.title.includes(title))
+                    : true;
                 /**
                  * Note: GitHub's REST API v3 considers every pull request an issue, but not every issue is a pull request.
                  * For this reason, "Issues" endpoints may return both issues and pull requests in the response.
@@ -39651,10 +39655,11 @@ function doFindComments() {
             const commentAuth = core.getInput('comment-auth');
             const bodyIncludes = core.getInput('body-includes');
             const direction = core.getInput('direction') === 'desc' ? 'desc' : 'asc';
+            const bodyIncludesArr = (0, actions_util_1.dealStringToArr)(bodyIncludes);
             for (const comment of commentList) {
                 const checkUser = commentAuth ? comment.user.login === commentAuth : true;
-                const checkBody = bodyIncludes
-                    ? (0, actions_util_1.dealStringToArr)(bodyIncludes).some(text => comment.body.includes(text))
+                const checkBody = bodyIncludesArr.length > 0
+                    ? bodyIncludesArr.some(text => comment.body.includes(text))
                     : true;
                 if (checkUser && checkBody) {
                     comments.push({
