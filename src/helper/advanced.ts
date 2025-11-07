@@ -238,11 +238,13 @@ export async function doFindComments() {
     const commentAuth = core.getInput('comment-auth');
     const bodyIncludes = core.getInput('body-includes');
     const direction = core.getInput('direction') === 'desc' ? 'desc' : 'asc';
+    const bodyIncludesArr = dealStringToArr(bodyIncludes);
     for (const comment of commentList) {
       const checkUser = commentAuth ? comment.user.login === commentAuth : true;
-      const checkBody = bodyIncludes
-        ? dealStringToArr(bodyIncludes).some(text => comment.body.includes(text))
-        : true;
+      const checkBody =
+        bodyIncludesArr.length > 0
+          ? bodyIncludesArr.some(text => comment.body.includes(text))
+          : true;
       if (checkUser && checkBody) {
         comments.push({
           id: comment.id,
