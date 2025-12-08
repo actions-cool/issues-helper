@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.7.3
+
+`2025.12.08`
+
+- 🛠 refactor: lockIssues filter locked issue. [#218](https://github.com/actions-cool/issues-helper/pull/218) [@btea](https://github.com/btea)
+
 ## v3.7.2
 
 `2025.11.07`
