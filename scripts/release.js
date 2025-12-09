@@ -48,7 +48,7 @@ async function run() {
 
   await open(url);
 
-  console.log(chalk.yellow('🚀 Please check tag and changelog. Then click publish!'));
+  console.log(chalk.yellow('🚀 Please check tag and changelog in a auto new webview tab. Then click publish!'));
 }
 
 run();
