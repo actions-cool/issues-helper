@@ -152,8 +152,6 @@ export async function doCheckInactive(body: string, emoji?: string) {
         core.info(`[doCheckInactive] Doing ---> ${number}`);
         await doAddLabels([inactiveLabel], number);
         if (body) await doCreateComment(body, emoji, number);
-      } else {
-        core.info(`[doCheckInactive] The issue ${number} already has ${inactiveLabel} label!`);
       }
     }
   } else {
