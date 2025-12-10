@@ -144,6 +144,7 @@ export async function doCheckInactive(body: string, emoji?: string) {
     const excludeIssueNumbers = dealStringToArr(core.getInput('exclude-issue-numbers') || '').map(
       Number,
     );
+    const hasInactiveLabelIssueNumbers: number[] = [];
     for (const issue of issues) {
       const { labels, number } = issue;
       if (excludeIssueNumbers?.includes(number)) continue;
@@ -152,7 +153,15 @@ export async function doCheckInactive(body: string, emoji?: string) {
         core.info(`[doCheckInactive] Doing ---> ${number}`);
         await doAddLabels([inactiveLabel], number);
         if (body) await doCreateComment(body, emoji, number);
+      } else {
+        hasInactiveLabelIssueNumbers.push(number);
       }
+    }
+    if (hasInactiveLabelIssueNumbers.length) {
+      core.info(
+        `[doCheckInactive] Thees issues already has ${inactiveLabel} label! ` +
+          JSON.stringify(hasInactiveLabelIssueNumbers),
+      );
     }
   } else {
     core.info(`[doCheckInactive] Query issues empty!`);
@@ -315,10 +324,18 @@ export async function doLockIssues(body: string, emoji?: string) {
   const issues = await doQueryIssues(issueState as TIssueState | 'all');
 
   if (issues.length) {
-    for (const { number } of issues.filter(issue => !issue.locked)) {
-      core.info(`[doLockIssues] Doing ---> ${number}`);
-      if (body) await doCreateComment(body, emoji, number);
-      await doLockIssue(number);
+    const hasLockedIssueNumbers: number[] = [];
+    for (const { number, locked } of issues) {
+      if (!locked) {
+        core.info(`[doLockIssues] Doing ---> ${number}`);
+        if (body) await doCreateComment(body, emoji, number);
+        await doLockIssue(number);
+      } else {
+        hasLockedIssueNumbers.push(number);
+      }
+    }
+    if (hasLockedIssueNumbers.length) {
+      core.info(`[doLockIssues] Locked issues ---> ${JSON.stringify(hasLockedIssueNumbers)}`);
     }
   } else {
     core.info(`[doLockIssues] Query issues empty!`);
