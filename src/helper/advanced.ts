@@ -160,7 +160,8 @@ export async function doCheckInactive(body: string, emoji?: string) {
     if (hasInactiveLabelIssueNumbers.length) {
       core.info(
         `[doCheckInactive] These issues already has ${inactiveLabel} label! ` +
-          JSON.stringify(hasInactiveLabelIssueNumbers) + ' total ${hasInactiveLabelIssueNumbers.length}',
+          JSON.stringify(hasInactiveLabelIssueNumbers) +
+          ' total ${hasInactiveLabelIssueNumbers.length}',
       );
     }
   } else {
@@ -335,7 +336,11 @@ export async function doLockIssues(body: string, emoji?: string) {
       }
     }
     if (hasLockedIssueNumbers.length) {
-      core.info(`[doLockIssues] Locked issues ---> ${JSON.stringify(hasLockedIssueNumbers)} total ${hasLockedIssueNumbers.length}`);
+      core.info(
+        `[doLockIssues] Locked issues ---> ${JSON.stringify(hasLockedIssueNumbers)} total ${
+          hasLockedIssueNumbers.length
+        }`,
+      );
     }
   } else {
     core.info(`[doLockIssues] Query issues empty!`);
