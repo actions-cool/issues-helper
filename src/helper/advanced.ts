@@ -144,6 +144,7 @@ export async function doCheckInactive(body: string, emoji?: string) {
     const excludeIssueNumbers = dealStringToArr(core.getInput('exclude-issue-numbers') || '').map(
       Number,
     );
+    const hasInactiveLabelIssueNumbers: number[] = [];
     for (const issue of issues) {
       const { labels, number } = issue;
       if (excludeIssueNumbers?.includes(number)) continue;
@@ -153,8 +154,15 @@ export async function doCheckInactive(body: string, emoji?: string) {
         await doAddLabels([inactiveLabel], number);
         if (body) await doCreateComment(body, emoji, number);
       } else {
-        core.info(`[doCheckInactive] The issue ${number} already has ${inactiveLabel} label!`);
+        hasInactiveLabelIssueNumbers.push(number);
       }
+    }
+    if (hasInactiveLabelIssueNumbers.length) {
+      core.info(
+        `[doCheckInactive] These issues already has ${inactiveLabel} label! ` +
+          JSON.stringify(hasInactiveLabelIssueNumbers) +
+          ' total ${hasInactiveLabelIssueNumbers.length}',
+      );
     }
   } else {
     core.info(`[doCheckInactive] Query issues empty!`);
@@ -317,10 +325,22 @@ export async function doLockIssues(body: string, emoji?: string) {
   const issues = await doQueryIssues(issueState as TIssueState | 'all');
 
   if (issues.length) {
-    for (const { number } of issues.filter(issue => !issue.locked)) {
-      core.info(`[doLockIssues] Doing ---> ${number}`);
-      if (body) await doCreateComment(body, emoji, number);
-      await doLockIssue(number);
+    const hasLockedIssueNumbers: number[] = [];
+    for (const { number, locked } of issues) {
+      if (!locked) {
+        core.info(`[doLockIssues] Doing ---> ${number}`);
+        if (body) await doCreateComment(body, emoji, number);
+        await doLockIssue(number);
+      } else {
+        hasLockedIssueNumbers.push(number);
+      }
+    }
+    if (hasLockedIssueNumbers.length) {
+      core.info(
+        `[doLockIssues] Locked issues ---> ${JSON.stringify(hasLockedIssueNumbers)} total ${
+          hasLockedIssueNumbers.length
+        }`,
+      );
     }
   } else {
     core.info(`[doLockIssues] Query issues empty!`);
