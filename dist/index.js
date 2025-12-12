@@ -39550,6 +39550,7 @@ function doCheckInactive(body, emoji) {
         if (issues.length) {
             const inactiveLabel = core.getInput('inactive-label') || 'inactive';
             const excludeIssueNumbers = (0, actions_util_1.dealStringToArr)(core.getInput('exclude-issue-numbers') || '').map(Number);
+            const hasInactiveLabelIssueNumbers = [];
             for (const issue of issues) {
                 const { labels, number } = issue;
                 if (excludeIssueNumbers === null || excludeIssueNumbers === void 0 ? void 0 : excludeIssueNumbers.includes(number))
@@ -39562,8 +39563,13 @@ function doCheckInactive(body, emoji) {
                         yield (0, base_1.doCreateComment)(body, emoji, number);
                 }
                 else {
-                    core.info(`[doCheckInactive] The issue ${number} already has ${inactiveLabel} label!`);
+                    hasInactiveLabelIssueNumbers.push(number);
                 }
+            }
+            if (hasInactiveLabelIssueNumbers.length) {
+                core.info(`[doCheckInactive] These issues already has ${inactiveLabel} label! ` +
+                    JSON.stringify(hasInactiveLabelIssueNumbers) +
+                    ' total ${hasInactiveLabelIssueNumbers.length}');
             }
         }
         else {
@@ -39732,11 +39738,20 @@ function doLockIssues(body, emoji) {
         }
         const issues = yield doQueryIssues(issueState);
         if (issues.length) {
-            for (const { number } of issues.filter(issue => !issue.locked)) {
-                core.info(`[doLockIssues] Doing ---> ${number}`);
-                if (body)
-                    yield (0, base_1.doCreateComment)(body, emoji, number);
-                yield (0, base_1.doLockIssue)(number);
+            const hasLockedIssueNumbers = [];
+            for (const { number, locked } of issues) {
+                if (!locked) {
+                    core.info(`[doLockIssues] Doing ---> ${number}`);
+                    if (body)
+                        yield (0, base_1.doCreateComment)(body, emoji, number);
+                    yield (0, base_1.doLockIssue)(number);
+                }
+                else {
+                    hasLockedIssueNumbers.push(number);
+                }
+            }
+            if (hasLockedIssueNumbers.length) {
+                core.info(`[doLockIssues] Locked issues ---> ${JSON.stringify(hasLockedIssueNumbers)} total ${hasLockedIssueNumbers.length}`);
             }
         }
         else {
