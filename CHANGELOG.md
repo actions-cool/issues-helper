@@ -9,7 +9,7 @@
 
 ## v3.7.4
 
-`2025.12.12`
+`2025.12.16`
 
 - 🛠 refactor: `check-inactive` action ignores already tagged issues. [#220](https://github.com/actions-cool/issues-helper/pull/220) [@btea](https://github.com/btea)
 
