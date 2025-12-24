@@ -7,6 +7,12 @@
 🛠 refactor
 -->
 
+## v3.7.5
+
+`2025.12.24`
+
+- 🐞 fix: the total of inactive issues output is incorrect. [#222](https://github.com/actions-cool/issues-helper/pull/222) [@btea](https://github.com/btea)
+
 ## v3.7.4
 
 `2025.12.16`
