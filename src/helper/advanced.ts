@@ -161,7 +161,7 @@ export async function doCheckInactive(body: string, emoji?: string) {
       core.info(
         `[doCheckInactive] These issues already has ${inactiveLabel} label! ` +
           JSON.stringify(hasInactiveLabelIssueNumbers) +
-          ' total ${hasInactiveLabelIssueNumbers.length}',
+          ` total ${hasInactiveLabelIssueNumbers.length}`,
       );
     }
   } else {
