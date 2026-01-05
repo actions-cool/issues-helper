@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://actions-cool.github.io/issues-helper/">
+  <a href="https://actions-cool.github.io/issues-helper/">ttt
     <img width="200" src="https://gw.alipayobjects.com/mdn/rms_f97235/afts/img/A*8xDgSL-O6O4AAAAAAAAAAAAAARQnAQ">
   </a>
 </p>
