@@ -11,7 +11,6 @@
     "src/export.ts",
     "src/helper/**/*",
     "src/issue/**/*",
-    "src/type.ts",
     "src/const.ts",
     "src/util/**/*",
     "src/types/**/*",
