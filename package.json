@@ -18,7 +18,7 @@
     "README.md"
   ],
   "scripts": {
-    "all": "npm run lint-all && npm run test && npm run package",
+    "all": "npm run lint-all && npm run test && npm run package && npm run build:export",
     "build:export": "tsc -p tsconfig.export.json",
     "check-commit": "node ./scripts/check-commit.js",
     "ci:fix": "npm run lint-up",
