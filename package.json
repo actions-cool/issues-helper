@@ -11,7 +11,7 @@
   "license": "MIT",
   "author": "xrkffgg",
   "main": "export/export.js",
-  "types": "export/type.d.ts",
+  "types": "export/export.d.ts",
   "files": [
     "export",
     "CHANGELOG.md",
