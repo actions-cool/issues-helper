@@ -3,12 +3,12 @@ import { dealStringToArr } from 'actions-util';
 import * as core from '../core';
 import { IssueCoreEngine } from '../issue';
 import type {
-  IIssueCoreEngine,
-  TCommentInfo,
-  IIssueHelperEngine,
   Context,
+  IIssueCoreEngine,
+  IIssueHelperEngine,
   TAction,
   TCloseReason,
+  TCommentInfo,
   TIssueState,
   TUpdateMode,
 } from '../types';

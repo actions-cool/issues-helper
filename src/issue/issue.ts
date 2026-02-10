@@ -2,18 +2,18 @@ import { Octokit } from '@octokit/rest';
 
 import { EEmoji } from '../const';
 import type {
+  IIssueBaseInfo,
+  IIssueCoreEngine,
+  IListIssuesParams,
   TCloseReason,
+  TCommentList,
   TEmoji,
+  TIssueInfo,
+  TIssueList,
   TIssueState,
   TLockReasons,
   TUpdateMode,
   TUserPermission,
-  IIssueBaseInfo,
-  IIssueCoreEngine,
-  IListIssuesParams,
-  TCommentList,
-  TIssueInfo,
-  TIssueList,
 } from '../types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {

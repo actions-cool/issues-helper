@@ -4,13 +4,9 @@ import dayjs from 'dayjs';
 import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
 import utc from 'dayjs/plugin/utc';
 
-// Initialize dayjs plugins once at module load time
-dayjs.extend(utc);
-dayjs.extend(isSameOrBefore);
-
+import { EConst } from '../const';
 import * as core from '../core';
 import type { IIssueCoreEngine, IListIssuesParams, TCommentInfo, TIssueList } from '../types';
-import { EConst } from '../const';
 import type { TCloseReason, TEmoji, TIssueState, TOutList } from '../types';
 import { checkDuplicate, matchKeyword, replaceStr2Arr } from '../util';
 import {
@@ -25,6 +21,10 @@ import {
   doSetLabels,
   doUpdateComment,
 } from './base';
+
+// Initialize dayjs plugins once at module load time
+dayjs.extend(utc);
+dayjs.extend(isSameOrBefore);
 
 let ICE: IIssueCoreEngine;
 export function initAdvancedICE(_ICE: IIssueCoreEngine) {

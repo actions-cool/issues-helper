@@ -39467,10 +39467,13 @@ const actions_util_1 = __nccwpck_require__(6972);
 const dayjs_1 = __importDefault(__nccwpck_require__(7401));
 const isSameOrBefore_1 = __importDefault(__nccwpck_require__(9517));
 const utc_1 = __importDefault(__nccwpck_require__(4359));
-const core = __importStar(__nccwpck_require__(9875));
 const const_1 = __nccwpck_require__(8032);
+const core = __importStar(__nccwpck_require__(9875));
 const util_1 = __nccwpck_require__(9604);
 const base_1 = __nccwpck_require__(8824);
+// Initialize dayjs plugins once at module load time
+dayjs_1.default.extend(utc_1.default);
+dayjs_1.default.extend(isSameOrBefore_1.default);
 let ICE;
 function initAdvancedICE(_ICE) {
     ICE = _ICE;
@@ -39530,8 +39533,6 @@ function doQueryIssues(state, creator, ignoreLabels) {
                     }
                     const inactiveDay = core.getInput('inactive-day');
                     if (inactiveDay) {
-                        dayjs_1.default.extend(utc_1.default);
-                        dayjs_1.default.extend(isSameOrBefore_1.default);
                         const lastTime = dayjs_1.default.utc().subtract(+inactiveDay, 'day');
                         const inactiveMode = (0, actions_util_1.dealStringToArr)(core.getInput('inactive-mode'));
                         let checkTime = null;
@@ -39959,8 +39960,8 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
 Object.defineProperty(exports, "__esModule", ({ value: true }));
 exports.doUpdateIssue = exports.doUpdateComment = exports.doUnlockIssue = exports.doSetLabels = exports.doRemoveLabels = exports.doRemoveAssignees = exports.doOpenIssue = exports.doLockIssue = exports.doGetIssue = exports.doDeleteComment = exports.doCreateLabel = exports.doCreateIssue = exports.doCreateCommentEmoji = exports.doCreateComment = exports.doCloseIssue = exports.doAddLabels = exports.doAddAssignees = exports.initBaseICE = void 0;
 const actions_util_1 = __nccwpck_require__(6972);
-const core = __importStar(__nccwpck_require__(9875));
 const const_1 = __nccwpck_require__(8032);
+const core = __importStar(__nccwpck_require__(9875));
 let ICE;
 function initBaseICE(_ICE) {
     ICE = _ICE;
@@ -40449,9 +40450,9 @@ var __exportStar = (this && this.__exportStar) || function(m, exports) {
     for (var p in m) if (p !== "default" && !Object.prototype.hasOwnProperty.call(exports, p)) __createBinding(exports, m, p);
 };
 Object.defineProperty(exports, "__esModule", ({ value: true }));
-__exportStar(__nccwpck_require__(2491), exports);
-__exportStar(__nccwpck_require__(8824), exports);
 __exportStar(__nccwpck_require__(5745), exports);
+__exportStar(__nccwpck_require__(8824), exports);
+__exportStar(__nccwpck_require__(2491), exports);
 
 
 /***/ }),
