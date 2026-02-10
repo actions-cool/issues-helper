@@ -1,6 +1,6 @@
 import { Octokit } from '@octokit/rest';
 
-import { EEmoji } from '../shared';
+import { EEmoji } from '../const';
 import type {
   TCloseReason,
   TEmoji,
@@ -8,15 +8,13 @@ import type {
   TLockReasons,
   TUpdateMode,
   TUserPermission,
-} from '../types';
-import type {
   IIssueBaseInfo,
   IIssueCoreEngine,
   IListIssuesParams,
   TCommentList,
   TIssueInfo,
   TIssueList,
-} from './types';
+} from '../types';
 
 export class IssueCoreEngine implements IIssueCoreEngine {
   private owner!: string;

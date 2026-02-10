@@ -3,6 +3,7 @@
 # production
 # /dist
 /docs-dist
+export/
 
 # Log file
 *.log

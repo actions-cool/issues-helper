@@ -1,8 +1,8 @@
 import { dealStringToArr } from 'actions-util';
 
 import * as core from '../core';
-import type { IIssueCoreEngine } from '../issue';
-import { ELockReasons } from '../shared';
+import type { IIssueCoreEngine } from '../types';
+import { ELockReasons } from '../const';
 import type { TCloseReason, TEmoji, TIssueState, TLockReasons, TUpdateMode } from '../types';
 
 let ICE: IIssueCoreEngine;

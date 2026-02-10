@@ -5,7 +5,7 @@ import type {
   TLockReasons,
   TUpdateMode,
   TUserPermission,
-} from '../types';
+} from './default';
 
 export interface IIssueBaseInfo {
   owner: string;

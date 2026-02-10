@@ -1,9 +1,17 @@
 import { dealStringToArr } from 'actions-util';
 
 import * as core from '../core';
-import type { IIssueCoreEngine, TCommentInfo } from '../issue';
 import { IssueCoreEngine } from '../issue';
-import type { Context, TAction, TCloseReason, TIssueState, TUpdateMode } from '../types';
+import type {
+  IIssueCoreEngine,
+  TCommentInfo,
+  IIssueHelperEngine,
+  Context,
+  TAction,
+  TCloseReason,
+  TIssueState,
+  TUpdateMode,
+} from '../types';
 import { dealRandomAssignees } from '../util';
 import {
   doCheckInactive,
@@ -37,7 +45,6 @@ import {
   doUpdateIssue,
   initBaseICE,
 } from './base';
-import type { IIssueHelperEngine } from './types';
 
 export class IssueHelperEngine implements IIssueHelperEngine {
   private ICE!: IIssueCoreEngine;

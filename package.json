@@ -1,4 +1,6 @@
 {
+  "name": "issues-helper",
+  "version": "3.7.6",
   "private": true,
   "description": "A GitHub Action easily helps you automatically manage issues.",
   "repository": {
@@ -8,30 +10,41 @@
   },
   "license": "MIT",
   "author": "xrkffgg",
+  "main": "export/export.js",
+  "types": "export/type.d.ts",
+  "files": [
+    "export",
+    "CHANGELOG.md",
+    "README.md"
+  ],
   "scripts": {
+    "all": "npm run lint-all && npm run test && npm run package",
+    "build:export": "tsc -p tsconfig.export.json",
+    "check-commit": "node ./scripts/check-commit.js",
+    "ci:fix": "npm run lint-up",
     "dev": "APP_ROOT=web dumi dev",
-    "start": "APP_ROOT=web dumi dev",
-    "docs:build": "APP_ROOT=web dumi build",
     "docs-dev:build": "APP_ROOT=web UMI_ENV=dev dumi build",
+    "docs:build": "APP_ROOT=web dumi build",
     "docs:deploy": "gh-pages -d docs-dist",
     "docs:preview": "PREVIEW=true npm run docs:build",
-    "gh-pages": "npm run docs:build && npm run docs:deploy",
     "format": "prettier --write **/*.ts **/*/*.ts",
     "format-check": "prettier --check **/*.ts **/*/*.ts",
+    "gh-pages": "npm run docs:build && npm run docs:deploy",
     "lint": "eslint src/*.ts src/*/*.ts",
+    "lint-all": "npm run format-check && npm run lint",
     "lint-fix": "eslint src/*.ts src/*/*.ts --fix",
     "lint-up": "npm run format && npm run lint-fix",
-    "ci:fix": "npm run lint-up",
-    "lint-all": "npm run format-check && npm run lint",
-    "check-commit": "node ./scripts/check-commit.js",
-    "tag": "node ./scripts/tag.js",
-    "release": "node ./scripts/release",
-    "test": "father test",
     "package": "ncc build src/main.ts -o dist",
-    "users": "node ./scripts/update-users.js",
-    "version": "node ./scripts/update-version.js",
     "pub": "sh -e ./scripts/pub.sh",
-    "all": "npm run lint-all && npm run test && npm run package"
+    "release": "node ./scripts/release",
+    "start": "APP_ROOT=web dumi dev",
+    "tag": "node ./scripts/tag.js",
+    "test": "father test",
+    "users": "node ./scripts/update-users.js",
+    "version": "node ./scripts/update-version.js"
+  },
+  "resolutions": {
+    "types-ramda": "0.29.4"
   },
   "dependencies": {
     "@actions/core": "^1.10.0",
@@ -60,8 +73,5 @@
     "prettier": "^2.2.1",
     "simple-git": "^2.46.0",
     "typescript": "^4.1.3"
-  },
-  "resolutions": {
-    "types-ramda": "0.29.4"
   }
 }

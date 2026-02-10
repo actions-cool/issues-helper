@@ -1,0 +1,29 @@
+{
+  "extends": "./tsconfig.json",
+  "compilerOptions": {
+    "outDir": "./export",
+    "rootDir": "./src",
+    "declaration": true,
+    "declarationMap": true,
+    "skipLibCheck": true
+  },
+  "include": [
+    "src/export.ts",
+    "src/helper/**/*",
+    "src/issue/**/*",
+    "src/type.ts",
+    "src/const.ts",
+    "src/util/**/*",
+    "src/types/**/*",
+    "src/core/**/*"
+  ],
+  "exclude": [
+    "node_modules",
+    "lib",
+    "lib-export",
+    "dist",
+    "docs-dist",
+    "web",
+    "**/*.test.ts"
+  ]
+}

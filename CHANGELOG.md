@@ -6,6 +6,12 @@
 ⚡️ Code style
 🛠 refactor
 -->
+## v3.7.6
+
+`2026.02.10`
+
+- 🚀 feat: build export.
+
 
 ## v3.7.5
 
