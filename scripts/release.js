@@ -2,6 +2,7 @@ const chalk = require('chalk');
 const open = require('open');
 const newGithubReleaseUrl = require('new-github-release-url');
 const { readFileSync } = require('fs');
+const { execSync } = require('child_process');
 const path = require('path');
 
 let tag = '';
@@ -49,6 +50,14 @@ async function run() {
   await open(url);
 
   console.log(chalk.yellow('🚀 Please check tag and changelog in a auto new webview tab. Then click publish!'));
+
+  try {
+    console.log(chalk.blue('\n📦 Publishing to npm...'));
+    execSync('npm publish', { stdio: 'inherit', cwd: path.join(__dirname, '..') });
+    console.log(chalk.green('✅ Successfully published to npm!'));
+  } catch (error) {
+    console.log(chalk.red('❌ Failed to publish to npm:'), error.message);
+  }
 }
 
 run();
