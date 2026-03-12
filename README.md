@@ -30,6 +30,7 @@ English | [简体中文](README.zh-CN.md)
 - [Online documentation](https://actions-cool.github.io/issues-helper)
 - [Online v2 documentation](https://actions-cool.github.io/issues-helper-2.x/)
 - [Changelog](./CHANGELOG.md)
+- [Class usage (programmatic)](./docs/USAGE.md)
 
 ## 😎 Why use GitHub Action?
 

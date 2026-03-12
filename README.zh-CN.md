@@ -30,6 +30,7 @@
 - [在线文档](https://actions-cool.github.io/issues-helper/)
 - [在线文档 v2 版本](https://actions-cool.github.io/issues-helper-2.x/)
 - [更新日志](./CHANGELOG.md)
+- [类使用说明（编程调用）](./docs/USAGE.zh-CN.md)
 
 ## 😎 为什么用 GitHub Action？
 
